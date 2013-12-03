@@ -233,6 +233,7 @@
 		FCD3DC13184DBB5200471C1E /* Cartoon-bird.png in Resources */ = {isa = PBXBuildFile; fileRef = FCD3DC12184DBB5200471C1E /* Cartoon-bird.png */; };
 		FCD3DC15184DBBFF00471C1E /* dice.png in Resources */ = {isa = PBXBuildFile; fileRef = FCD3DC14184DBBFF00471C1E /* dice.png */; };
 		FCD3DC18184DD79B00471C1E /* digital-7.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FCD3DC17184DD79B00471C1E /* digital-7.ttf */; };
+		FCD3DC20184DEEBD00471C1E /* drop.png in Resources */ = {isa = PBXBuildFile; fileRef = FCD3DC1F184DEEBD00471C1E /* drop.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -499,6 +500,7 @@
 		FCD3DC12184DBB5200471C1E /* Cartoon-bird.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Cartoon-bird.png"; sourceTree = "<group>"; };
 		FCD3DC14184DBBFF00471C1E /* dice.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dice.png; sourceTree = "<group>"; };
 		FCD3DC17184DD79B00471C1E /* digital-7.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "digital-7.ttf"; sourceTree = "<group>"; };
+		FCD3DC1F184DEEBD00471C1E /* drop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = drop.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -806,6 +808,7 @@
 		6834592D18365DEC00EFF321 /* ImagesForClassFive */ = {
 			isa = PBXGroup;
 			children = (
+				FCD3DC1F184DEEBD00471C1E /* drop.png */,
 				FCD3DC14184DBBFF00471C1E /* dice.png */,
 				FCD3DC12184DBB5200471C1E /* Cartoon-bird.png */,
 				FCD3DC10184DB0AD00471C1E /* SAD_FACE.png */,
@@ -1161,6 +1164,7 @@
 				68069C8E1820EA32009A24F6 /* bottle.png in Resources */,
 				68DDD876181E88FE004D7830 /* board.png in Resources */,
 				68069C851820DA21009A24F6 /* orangebubble.png in Resources */,
+				FCD3DC20184DEEBD00471C1E /* drop.png in Resources */,
 				68B1B870181AA07B00CB8CA0 /* backImage.jpg in Resources */,
 				6813EBD9183350B000D91090 /* bodypart9.png in Resources */,
 				6807E8041847177D00423B42 /* bug.png in Resources */,
@@ -1385,12 +1389,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Sonam Sangwan (Y4KBVRNL8D)";
+				CODE_SIGN_IDENTITY = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MathsPlay/MathsPlay-Prefix.pch";
 				INFOPLIST_FILE = "MathsPlay/MathsPlay-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "8FD974C0-0ACC-4D11-9158-A4E869191A7A";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1400,12 +1405,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Sonam Sangwan (Y4KBVRNL8D)";
+				CODE_SIGN_IDENTITY = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MathsPlay/MathsPlay-Prefix.pch";
 				INFOPLIST_FILE = "MathsPlay/MathsPlay-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "8FD974C0-0ACC-4D11-9158-A4E869191A7A";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

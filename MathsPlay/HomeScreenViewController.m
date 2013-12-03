@@ -845,7 +845,6 @@
     {
         [self storeToPlist];
         
-        AddViewController *addController;
         AdvanceMathViewController *carRaceController;
         SubViewController *subtractController;
         FollowViewController *followController;
