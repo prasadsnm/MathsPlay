@@ -27,6 +27,8 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>digital-7.ttf</string>
+		<string>PWChalk.ttf</string>
+		<string>Chalkboard by Marta van Eck.ttf</string>
 	</array>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>

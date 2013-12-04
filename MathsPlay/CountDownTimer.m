@@ -58,7 +58,7 @@ int secondsLeft;
         minutes = (secondsLeft % 3600) / 60;
         seconds = (secondsLeft %3600) % 60;
         myCounterLabel.text = [NSString stringWithFormat:@"%02d:%02d", minutes, seconds];
-        myCounterLabel.font=[UIFont fontWithName:@"digital-7" size:60];
+        myCounterLabel.font=[UIFont fontWithName:@"digital-7" size:40];
         myCounterLabel.textColor=[UIColor greenColor];
 
     }

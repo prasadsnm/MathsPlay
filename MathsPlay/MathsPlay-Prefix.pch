@@ -24,7 +24,7 @@
 #define MYYELLOWCOLOR  [UIColor colorWithRed:253/255.0 green:180/255.0  blue:9/255.0  alpha:1]
 #define MYGREENCOLOR   [UIColor colorWithRed:18/255.0 green:129/255.0  blue:91/255.0  alpha:1]
 #define MYPURPLECOLOR2 [UIColor colorWithRed:103/255.0 green:26/255.0  blue:204/255.0  alpha:1]
-#define NAVIGATIONBARCOLOR [UIColor colorWithRed:126/255.0 green:188/255.0 blue:74/255.0 alpha:1.0]
+#define NAVIGATIONBARCOLOR NavigationBarColor [UIColor colorWithRed:255.0/255.0 green:99.0/255.0 blue:71.0/255.0 alpha:1.0]
 #define FONT [UIFont fontWithName:@"Futura" size:50]
 
 
