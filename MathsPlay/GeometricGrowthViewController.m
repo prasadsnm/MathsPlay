@@ -42,19 +42,25 @@
     UIImageView *blackboard=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0,self.view.frame.size.width, (self.view.frame.size.height/3)-30)];
     blackboard.tag=333;
     [blackboard setImage:[UIImage imageNamed:@"ResultBoard"]];
-    [self.view addSubview:blackboard];
-    
     
     resultLabel=nil;
     resultLabel=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, blackboard.frame.size.width, blackboard.frame.size.height)];
     resultLabel.backgroundColor=[UIColor clearColor];
-    resultLabel.text=@"RESULT BOARD  \n\n\n\n";
     resultLabel.textColor=[UIColor whiteColor];
-    resultLabel.font=[UIFont fontWithName:@"PWChalk" size:60];
+    resultLabel.font=[UIFont fontWithName:@"Chalkduster" size:50];
     resultLabel.textAlignment=NSTextAlignmentCenter;
     resultLabel.numberOfLines=0;
+    resultLabel.tag=444;
+    resultLabel.text=@"Find the missing ball \nin the series?";
     [blackboard addSubview:resultLabel];
+    [self.view addSubview:blackboard];
 
+    
+//    UIGraphicsBeginImageContext(self.view.frame.size);
+//    [[UIImage imageNamed:@"series"] drawInRect:self.view.bounds];
+//    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+//    UIGraphicsEndImageContext();
+//    self.view.backgroundColor = [UIColor colorWithPatternImage:image];
     
     //to adjust the navigation bar size in ios7
     if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
@@ -90,22 +96,22 @@
     
     
     
-    modalForAnswerStatus=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 300, 200)];
-    modalForAnswerStatus.tag=222;
-    answerStatusText=[[UILabel alloc]initWithFrame:CGRectMake(0, 70, modalForAnswerStatus.frame.size.width, 50)];
-    answerStatusText.textAlignment=NSTextAlignmentCenter;
-    answerStatusText.numberOfLines=0;
-    answerStatusText.textColor=[UIColor colorWithRed:230/255.0 green:230/255.0  blue:230/255.0  alpha:1];
-    answerStatusText.font=[UIFont fontWithName:@"Futura" size:18];
-    answerStatusText.backgroundColor=[UIColor clearColor];
-    modalForAnswerStatus.center=CGPointMake(self.view.center.x-30, self.view.center.y+160);
-    [modalForAnswerStatus addSubview:answerStatusText];
-    modalForAnswerStatus.backgroundColor=[UIColor colorWithRed:57/255.0 green:57/255.0  blue:57/255.0  alpha:1];
-    modalForAnswerStatus.layer.cornerRadius=30.0f;
-    modalForAnswerStatus.layer.borderWidth=5.0;
-    modalForAnswerStatus.layer.borderColor=[UIColor colorWithRed:204/255.0 green:204/255.0  blue:204/255.0  alpha:1].CGColor;
-    [self.view addSubview:modalForAnswerStatus];
-    modalForAnswerStatus.alpha=0;
+//    modalForAnswerStatus=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 300, 200)];
+//    modalForAnswerStatus.tag=222;
+//    answerStatusText=[[UILabel alloc]initWithFrame:CGRectMake(0, 70, modalForAnswerStatus.frame.size.width, 50)];
+//    answerStatusText.textAlignment=NSTextAlignmentCenter;
+//    answerStatusText.numberOfLines=0;
+//    answerStatusText.textColor=[UIColor colorWithRed:230/255.0 green:230/255.0  blue:230/255.0  alpha:1];
+//    answerStatusText.font=[UIFont fontWithName:@"Futura" size:18];
+//    answerStatusText.backgroundColor=[UIColor clearColor];
+//    modalForAnswerStatus.center=CGPointMake(self.view.center.x-30, self.view.center.y+160);
+//    [modalForAnswerStatus addSubview:answerStatusText];
+//    modalForAnswerStatus.backgroundColor=[UIColor colorWithRed:57/255.0 green:57/255.0  blue:57/255.0  alpha:1];
+//    modalForAnswerStatus.layer.cornerRadius=30.0f;
+//    modalForAnswerStatus.layer.borderWidth=5.0;
+//    modalForAnswerStatus.layer.borderColor=[UIColor colorWithRed:204/255.0 green:204/255.0  blue:204/255.0  alpha:1].CGColor;
+//    [self.view addSubview:modalForAnswerStatus];
+//    modalForAnswerStatus.alpha=0;
 }
 
 
@@ -230,12 +236,16 @@
 -(void)refreshQuestion
 {
     for (UIView *view in [self.view subviews]) {
-        if (view.tag!=111 && view.tag!=222 &&view.tag!=1010 &&view.tag!=333) {
+        if (view.tag!=111 && view.tag!=222 &&view.tag!=1010 &&view.tag!=333 &&view.tag!=444) {
             [view removeFromSuperview];
         }
     }
     NSArray *array=[self getPatternArray:[self getRandomNumber:1 to:5] operationCode:[self getRandomNumber:1 to:2]];
-    [self.view addSubview:[self makeDisplayGrid:array]];
+    UIView *circleContainerView=[self makeDisplayGrid:array];
+    direction = 1;
+    shakes = 0;
+    [self.view addSubview:circleContainerView];
+    [self shake:circleContainerView];
     [self showOptions:[self getShuffledArrayWithAnswer:answer]];
 }
 
@@ -337,7 +347,7 @@
 }
 
 
-- (void)centerButtonAnimation:(UIButton *)buttonToAnimate{
+- (void)centerButtonAnimation:(UILabel *)buttonToAnimate{
     CAKeyframeAnimation *centerZoom = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
     centerZoom.duration = 1.0f;
     centerZoom.values = @[[NSValue valueWithCATransform3D:CATransform3DMakeScale(1, 1, 1)],[NSValue valueWithCATransform3D:CATransform3DMakeScale(1.5, 1.5, 1)],[NSValue valueWithCATransform3D:CATransform3DMakeScale(1, 1, 1)],[NSValue valueWithCATransform3D:CATransform3DMakeScale(1.2, 1.2, 1)],[NSValue valueWithCATransform3D:CATransform3DMakeScale(1, 1, 1)]];
@@ -345,11 +355,11 @@
     [buttonToAnimate.layer addAnimation:centerZoom forKey:@"buttonScale"];
 }
 
--(void)shake:(UIButton *)theButtonToShake
+-(void)shake:(UIView *)theButtonToShake
 {
-    [UIView animateWithDuration:0.03 animations:^
+    [UIView animateWithDuration:0.1 animations:^
      {
-         theButtonToShake.transform = CGAffineTransformMakeTranslation(10*direction, 0);
+         theButtonToShake.transform = CGAffineTransformMakeTranslation(50*direction, 0);
      }
                      completion:^(BOOL finished)
      {
@@ -392,47 +402,39 @@
 -(void)optionChoosen:(UIButton *)sender
 {
     sender.userInteractionEnabled=NO;
-    if (sender.tag==[answer integerValue]) {
-        correctAnswerCount++;
-        [UIView animateWithDuration:1.0 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            resultLabel.alpha=1;
-            [self centerButtonAnimation:sender];
-            resultLabel.text=@"Yippe !!\n Correct Answer";
-        } completion:^(BOOL finished) {
-            sleep(1);
-            resultLabel.alpha=0;
-            [self refreshQuestion];
-            sender.userInteractionEnabled=YES;
-        }];
-    }
-    else
-    {
-        direction = 1;
-        shakes = 0;
-        [self shake:sender];
-        
-        incorrectAnswerCount++;
-        [UIView animateWithDuration:1.0 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            resultLabel.text=@"Oops !!\n Wrong Answer ";
-            resultLabel.alpha=1;
-        } completion:^(BOOL finished) {
-            sleep(1);
-            resultLabel.alpha=0;
-            [self refreshQuestion];
-            sender.userInteractionEnabled=YES;
-            
-        }];
-    }
+                if (sender.tag==[answer integerValue]) {
+                    correctAnswerCount++;
+                    [resultLabel setText:@"Correct !!"];
+                    [UIView animateWithDuration:1.0 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+                        [self centerButtonAnimation:resultLabel];
+                    } completion:^(BOOL finished) {
+                        sleep(0.7);
+                        [self refreshQuestion];
+                    }];
+                }
+                else
+                {
+                    
+                    incorrectAnswerCount++;
+                    [resultLabel setText:@"Wrong !!"];
+
+                    [UIView animateWithDuration:1.0 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+                        [self centerButtonAnimation:resultLabel];
+
+                    } completion:^(BOOL finished) {
+                        sleep(0.7);
+                        [self refreshQuestion];
+                    }];
+                    
+                }
+ 
 }
 
 #pragma CountDownTimer-DELEGATE
 
 -(void)TimeUp
 {
-    int totalScore=(correctAnswerCount-(incorrectAnswerCount*0.25));
-    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"Result !!" message:[NSString stringWithFormat:@"%i Correct out of %i attempted",totalScore,correctAnswerCount+incorrectAnswerCount] delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
-    [alert show];
-    [self.navigationController popViewControllerAnimated:YES];
+    [resultLabel setText:[NSString stringWithFormat:@"%i Correct out of %i attempted",correctAnswerCount,correctAnswerCount+incorrectAnswerCount]];
     [firstOptionButton setUserInteractionEnabled:NO];
     [secondOptionButton setUserInteractionEnabled:NO];
     [thirdOptionButton setUserInteractionEnabled:NO];

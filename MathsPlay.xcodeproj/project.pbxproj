@@ -229,11 +229,11 @@
 		FCAD8861184F442900045198 /* ResultBoard.png in Resources */ = {isa = PBXBuildFile; fileRef = FCAD8860184F442900045198 /* ResultBoard.png */; };
 		FCAD8863184F4A1500045198 /* PWChalk.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FCAD8862184F4A1500045198 /* PWChalk.ttf */; };
 		FCAD8867184F4C1A00045198 /* Chalkboard by Marta van Eck.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FCAD8866184F4C1A00045198 /* Chalkboard by Marta van Eck.ttf */; };
+		FCAD8869184F61FD00045198 /* drop.png in Resources */ = {isa = PBXBuildFile; fileRef = FCAD8868184F61FD00045198 /* drop.png */; };
 		FCD3DC0F184DB0A700471C1E /* HAPPY_FACE.png in Resources */ = {isa = PBXBuildFile; fileRef = FCD3DC0E184DB0A700471C1E /* HAPPY_FACE.png */; };
 		FCD3DC11184DB0AD00471C1E /* SAD_FACE.png in Resources */ = {isa = PBXBuildFile; fileRef = FCD3DC10184DB0AD00471C1E /* SAD_FACE.png */; };
 		FCD3DC15184DBBFF00471C1E /* dice.png in Resources */ = {isa = PBXBuildFile; fileRef = FCD3DC14184DBBFF00471C1E /* dice.png */; };
 		FCD3DC18184DD79B00471C1E /* digital-7.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FCD3DC17184DD79B00471C1E /* digital-7.ttf */; };
-		FCD3DC20184DEEBD00471C1E /* drop.png in Resources */ = {isa = PBXBuildFile; fileRef = FCD3DC1F184DEEBD00471C1E /* drop.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -496,11 +496,11 @@
 		FCAD8860184F442900045198 /* ResultBoard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ResultBoard.png; sourceTree = "<group>"; };
 		FCAD8862184F4A1500045198 /* PWChalk.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PWChalk.ttf; sourceTree = "<group>"; };
 		FCAD8866184F4C1A00045198 /* Chalkboard by Marta van Eck.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Chalkboard by Marta van Eck.ttf"; sourceTree = "<group>"; };
+		FCAD8868184F61FD00045198 /* drop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = drop.png; sourceTree = "<group>"; };
 		FCD3DC0E184DB0A700471C1E /* HAPPY_FACE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HAPPY_FACE.png; sourceTree = "<group>"; };
 		FCD3DC10184DB0AD00471C1E /* SAD_FACE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SAD_FACE.png; sourceTree = "<group>"; };
 		FCD3DC14184DBBFF00471C1E /* dice.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dice.png; sourceTree = "<group>"; };
 		FCD3DC17184DD79B00471C1E /* digital-7.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "digital-7.ttf"; sourceTree = "<group>"; };
-		FCD3DC1F184DEEBD00471C1E /* drop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = drop.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -808,9 +808,9 @@
 		6834592D18365DEC00EFF321 /* ImagesForClassFive */ = {
 			isa = PBXGroup;
 			children = (
+				FCAD8868184F61FD00045198 /* drop.png */,
 				FCAD8860184F442900045198 /* ResultBoard.png */,
 				FCAD885C184F1D9600045198 /* series.png */,
-				FCD3DC1F184DEEBD00471C1E /* drop.png */,
 				FCD3DC14184DBBFF00471C1E /* dice.png */,
 				FCD3DC10184DB0AD00471C1E /* SAD_FACE.png */,
 				FCD3DC0E184DB0A700471C1E /* HAPPY_FACE.png */,
@@ -1156,6 +1156,7 @@
 				6807E80C18472E8000423B42 /* spider2.png in Resources */,
 				68DDD86A181E77F5004D7830 /* school.png in Resources */,
 				683459161836455000EFF321 /* raceiconfree.png in Resources */,
+				FCAD8869184F61FD00045198 /* drop.png in Resources */,
 				68DDD87B181E955A004D7830 /* speech-bubble-xxl.png in Resources */,
 				683458E31836007700EFF321 /* rightanswer.png in Resources */,
 				68069C811820D909009A24F6 /* appData.plist in Resources */,
@@ -1166,7 +1167,6 @@
 				68069C8E1820EA32009A24F6 /* bottle.png in Resources */,
 				68DDD876181E88FE004D7830 /* board.png in Resources */,
 				68069C851820DA21009A24F6 /* orangebubble.png in Resources */,
-				FCD3DC20184DEEBD00471C1E /* drop.png in Resources */,
 				68B1B870181AA07B00CB8CA0 /* backImage.jpg in Resources */,
 				6813EBD9183350B000D91090 /* bodypart9.png in Resources */,
 				6807E8041847177D00423B42 /* bug.png in Resources */,
