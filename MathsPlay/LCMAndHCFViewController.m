@@ -34,7 +34,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    SET_USERNAME_AS_TITLE    
     if (NSFoundationVersionNumber <= NSFoundationVersionNumber_iOS_6_1) {
         self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:65/255.0 green:105/255.0 blue:225/255.0 alpha:1.0];
     }
@@ -48,23 +48,9 @@
     // set  button color
     [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor greenColor], UITextAttributeTextColor,nil] forState:UIControlStateNormal];
     
-    NSString *str = @"1:45.PM";// put here item.TimeStart
-    
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"hh:mm.a"];// here give the format which you get in TimeStart
-    
-    NSDate *date = [dateFormatter dateFromString: str];
-    
-    dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"HH:mm"];
-    
-    NSString *convertedString = [dateFormatter stringFromDate:date];
-    NSLog(@"Converted String : %@",convertedString);
     
     
     selectedAnswer=0;
-    
-    self.title=@"LCM and HCF";
     self.view.backgroundColor=BACKGROUND_COLOR;
     
     questionLabel=nil;
@@ -75,13 +61,13 @@
     questionLabel.font = FONT;
     [self.view addSubview:questionLabel];
     
-    submitButton=nil;
-    submitButton=[UIButton buttonWithType:UIButtonTypeRoundedRect];
-    submitButton.frame=CGRectMake(219, 750, 300, 100);
-    submitButton.titleLabel.font = FONT;
-    [submitButton addTarget:self action:@selector(submitMethod) forControlEvents:UIControlEventTouchUpInside];
-    [submitButton setTitle:@"Submit" forState:UIControlStateNormal];
-    [self.view addSubview:submitButton];
+//    submitButton=nil;
+//    submitButton=[UIButton buttonWithType:UIButtonTypeRoundedRect];
+//    submitButton.frame=CGRectMake(219, 750, 300, 100);
+//    submitButton.titleLabel.font = FONT;
+//    [submitButton addTarget:self action:@selector(submitMethod) forControlEvents:UIControlEventTouchUpInside];
+//    [submitButton setTitle:@"Submit" forState:UIControlStateNormal];
+//    [self.view addSubview:submitButton];
     
     [self refreshQuestion];
     _tableView=[[UITableView alloc]initWithFrame:CGRectMake(84, 200, 600, 500)
@@ -229,87 +215,4 @@ int lcm(int a, int b)
 #pragma mark segment Controll
 
 
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    //cell.backgroundColor = CELL_COLOR;
-}
-
--(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    UIView *headerView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 100)];
-    headerView.backgroundColor=[UIColor colorWithRed:126/255.0 green:188/255.0 blue:74/255.0 alpha:1.0];
-    UILabel *titleLabel=[[UILabel alloc]initWithFrame:CGRectMake(5, 0, 310, 100)];
-    titleLabel.text=@"Options";
-    titleLabel.font=[UIFont fontWithName:@"Futura" size:40];
-    titleLabel.backgroundColor=[UIColor clearColor];
-    titleLabel.textColor=[UIColor blackColor];
-    [headerView addSubview:titleLabel];
-    return headerView;
-}
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
-}
-
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return[optionArray count];
-}
-
--(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    return 100.0;
-}
-
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 100.0;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static char i='a';
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell ;
-    cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil)
-    {
-        cell = [[UITableViewCell alloc] initWithFrame:CGRectZero];
-        cell.selectionStyle=UITableViewCellSelectionStyleGray;
-    }
-    cell.textLabel.font=FONT;
-    
-    if(indexPath.row == selectedIndex)
-    {
-        cell.accessoryType = UITableViewCellAccessoryCheckmark;
-    }
-    else
-    {
-        cell.accessoryType = UITableViewCellAccessoryNone;
-    }
-    cell.textLabel.text=[NSString stringWithFormat:@"%c)  %@",i+indexPath.row,[optionArray objectAtIndex:indexPath.row]];
-        cell.textLabel.font=[UIFont boldSystemFontOfSize:30];
-    cell.textLabel.textColor=[UIColor blackColor];
-    cell.backgroundColor=[UIColor clearColor];
-    return cell;
-}
-
-
-
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    selectedIndex = indexPath.row;
-    selectedAnswer=[[optionArray objectAtIndex:indexPath.row] intValue];
-
-    if (answer==selectedAnswer) {
-        isCorrect=YES;
-    }
-    else
-    {
-        isCorrect=NO;
-    }
-    [tableView reloadData];
-    
-}
 @end

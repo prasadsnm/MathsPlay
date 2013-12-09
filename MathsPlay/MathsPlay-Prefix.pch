@@ -30,6 +30,6 @@
 
 #define CHECK_IOS7  [self respondsToSelector:@selector(edgesForExtendedLayout)]
 #define SET_LAYOUT self.edgesForExtendedLayout = UIRectEdgeNone;
-
+#define SET_USERNAME_AS_TITLE  [self setTitle:[NSString stringWithFormat:@"Hi %@",[[Util readPListData] objectForKey:@"username"]]];
 
 #endif

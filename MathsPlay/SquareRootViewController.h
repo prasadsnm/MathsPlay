@@ -21,7 +21,6 @@
     int complexity;
     int level;
     int QuestionCount;
-    CustomModalBox *modal;
     UIImageView *moodImage;
     NSArray *questionArray;
     int Counter;
@@ -29,6 +28,6 @@
 -(int)getRandomPerfectSquare;
 -(void)showQuestion;
 -(void)submitClicked;
--(void)refreshLabels;
+@property(nonatomic,strong)CustomModalBox *modal;
 
 @end

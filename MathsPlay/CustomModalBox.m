@@ -5,7 +5,6 @@
 //  Created by qainfotech on 03/10/13.
 //  Copyright (c) 2013 QAInfotech. All rights reserved.
 //
-
 #import "CustomModalBox.h"
 #define QUESTION_TEXT_COLOR [UIColor blackColor]
 #define MODAL_BACKGROUND_COLOR [UIColor colorWithRed:85/255.0 green:192/255.0 blue:247/255.0 alpha:1]
@@ -22,8 +21,8 @@
     if (self) {
         self.frame=frame;
         self.backgroundColor=MODAL_BACKGROUND_COLOR;
-        self.layer.cornerRadius=10.0;
-        self.layer.borderWidth=5.0;
+        self.layer.cornerRadius=1.0;
+        self.layer.borderWidth=3.0;
         self.layer.borderColor=BORDER_COLOR;
         
         questionlabel=nil;
@@ -70,22 +69,28 @@
 -(void)setQuestion:(NSString *)question
 {
     questionlabel.text=question;
+    
 }
 
 -(void)setQuestionLabelColor:(UIColor *)color
 {
-
     [questionlabel setTextColor:color];
 }
 -(void)show
 {
-    [self setHidden:NO];
+    @synchronized(self){
+        [self setHidden:NO];
+    }
 }
 
 
 -(void)hide
 {
-    [self setHidden:YES];
+    @synchronized(self){
+        [self setHidden:YES];
+    }
+
+
 }
 
 -(void)buttonClicked:(UIButton *)sender

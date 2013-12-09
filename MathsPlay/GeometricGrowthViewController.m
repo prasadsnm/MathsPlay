@@ -37,6 +37,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    SET_USERNAME_AS_TITLE
      self.navigationController.navigationBar.titleTextAttributes = @{UITextAttributeTextColor : [UIColor whiteColor]}; // to change the color of navigation bar title to white color.
      self.view.backgroundColor=BACKGROUND_COLOR;
     UIImageView *blackboard=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0,self.view.frame.size.width, (self.view.frame.size.height/3)-30)];
@@ -56,17 +57,10 @@
     [self.view addSubview:blackboard];
 
     
-//    UIGraphicsBeginImageContext(self.view.frame.size);
-//    [[UIImage imageNamed:@"series"] drawInRect:self.view.bounds];
-//    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-//    UIGraphicsEndImageContext();
-//    self.view.backgroundColor = [UIColor colorWithPatternImage:image];
-    
     //to adjust the navigation bar size in ios7
     if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
         self.edgesForExtendedLayout = UIRectEdgeNone;
     correctAnswerCount=incorrectAnswerCount=0;
-    self.title=@"Find The Missing value ??";
 
     UIView *shadow=[[UIView alloc]initWithFrame:self.view.bounds];
     shadow.backgroundColor=[[UIColor blackColor] colorWithAlphaComponent:.9];
@@ -76,7 +70,7 @@
     infoLabel.backgroundColor=[UIColor clearColor];
     infoLabel.text=@"Find the missing number in the series.. \n Enjoy!!";
     infoLabel.textColor=[UIColor whiteColor];
-    infoLabel.font=[UIFont fontWithName:@"NoteWorthy" size:25];
+    infoLabel.font=[UIFont fontWithName:@"Lucida Grande" size:25];
     infoLabel.textAlignment=NSTextAlignmentCenter;
     infoLabel.numberOfLines=0;
     [shadow addSubview:infoLabel];
@@ -84,10 +78,10 @@
     UIButton *letsPlaybutton=[UIButton buttonWithType:UIButtonTypeCustom];
     letsPlaybutton.frame=CGRectMake(0, 0, 130, 60) ;
     letsPlaybutton.center=shadow.center;
-    letsPlaybutton.backgroundColor=[UIColor clearColor];
-    letsPlaybutton.layer.cornerRadius=10.0;
+    letsPlaybutton.backgroundColor=[UIColor redColor];
+    letsPlaybutton.layer.cornerRadius=1.0;
     letsPlaybutton.layer.borderWidth=2.0;
-    letsPlaybutton.layer.borderColor=[UIColor whiteColor].CGColor;
+    letsPlaybutton.layer.borderColor=[UIColor redColor].CGColor;
     letsPlaybutton.showsTouchWhenHighlighted=YES;
     [letsPlaybutton setTitle:@"Lets Go >>" forState:UIControlStateNormal];
     [letsPlaybutton addTarget:self action:@selector(startMethod) forControlEvents:UIControlEventTouchUpInside];

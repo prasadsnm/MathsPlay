@@ -8,17 +8,20 @@
 
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
-#import "CustomModalBox.h"
 #import <AVFoundation/AVFoundation.h>
+
+#import "CustomModalBox.h"
+#import "GiftView.h"
 
 @interface DivisibiltyCheckViewController : UIViewController<ModalDelegate>
 {
-int dividend;
-int divisor;
-UILabel *questionLabel;
-UIImageView *ant;
-CustomModalBox *modal;
-UILabel *builiding;
+    int dividend;
+    int divisor;
+    UILabel *questionLabel;
+    UIImageView *ant;
+    CustomModalBox *modal;
+    UILabel *builiding;
+    GiftView *giftView;
 }
 -(void)winMusicStart;
 -(void)displayQuestion;

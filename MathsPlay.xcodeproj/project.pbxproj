@@ -225,6 +225,10 @@
 		68FE92E6182B5E80004A6306 /* incorrect.png in Resources */ = {isa = PBXBuildFile; fileRef = 68FE92E2182B5E80004A6306 /* incorrect.png */; };
 		68FE92E7182B5E80004A6306 /* sad.png in Resources */ = {isa = PBXBuildFile; fileRef = 68FE92E3182B5E80004A6306 /* sad.png */; };
 		68FE92E8182B5E80004A6306 /* smile.png in Resources */ = {isa = PBXBuildFile; fileRef = 68FE92E4182B5E80004A6306 /* smile.png */; };
+		FC3DF87D1851B3AC006BCC48 /* GiftView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC3DF87C1851B3AC006BCC48 /* GiftView.m */; };
+		FC3DF8811851B7B8006BCC48 /* cup.png in Resources */ = {isa = PBXBuildFile; fileRef = FC3DF87E1851B7B8006BCC48 /* cup.png */; };
+		FC3DF8821851B7B8006BCC48 /* gift-box.png in Resources */ = {isa = PBXBuildFile; fileRef = FC3DF87F1851B7B8006BCC48 /* gift-box.png */; };
+		FC3DF8831851B7B8006BCC48 /* medal.png in Resources */ = {isa = PBXBuildFile; fileRef = FC3DF8801851B7B8006BCC48 /* medal.png */; };
 		FCAD885D184F1D9600045198 /* series.png in Resources */ = {isa = PBXBuildFile; fileRef = FCAD885C184F1D9600045198 /* series.png */; };
 		FCAD8861184F442900045198 /* ResultBoard.png in Resources */ = {isa = PBXBuildFile; fileRef = FCAD8860184F442900045198 /* ResultBoard.png */; };
 		FCAD8863184F4A1500045198 /* PWChalk.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FCAD8862184F4A1500045198 /* PWChalk.ttf */; };
@@ -492,6 +496,11 @@
 		68FE92E2182B5E80004A6306 /* incorrect.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = incorrect.png; sourceTree = "<group>"; };
 		68FE92E3182B5E80004A6306 /* sad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sad.png; sourceTree = "<group>"; };
 		68FE92E4182B5E80004A6306 /* smile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smile.png; sourceTree = "<group>"; };
+		FC3DF87B1851B3AC006BCC48 /* GiftView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GiftView.h; sourceTree = "<group>"; };
+		FC3DF87C1851B3AC006BCC48 /* GiftView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GiftView.m; sourceTree = "<group>"; };
+		FC3DF87E1851B7B8006BCC48 /* cup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cup.png; sourceTree = "<group>"; };
+		FC3DF87F1851B7B8006BCC48 /* gift-box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gift-box.png"; sourceTree = "<group>"; };
+		FC3DF8801851B7B8006BCC48 /* medal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = medal.png; sourceTree = "<group>"; };
 		FCAD885C184F1D9600045198 /* series.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = series.png; sourceTree = "<group>"; };
 		FCAD8860184F442900045198 /* ResultBoard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ResultBoard.png; sourceTree = "<group>"; };
 		FCAD8862184F4A1500045198 /* PWChalk.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PWChalk.ttf; sourceTree = "<group>"; };
@@ -799,6 +808,8 @@
 				6834590918363C0700EFF321 /* DivisibiltyCheckViewController.m */,
 				6834590A18363C0700EFF321 /* CustomModalBox.h */,
 				6834590B18363C0700EFF321 /* CustomModalBox.m */,
+				FC3DF87B1851B3AC006BCC48 /* GiftView.h */,
+				FC3DF87C1851B3AC006BCC48 /* GiftView.m */,
 				6834590C18363C0700EFF321 /* CarRaceViewController.h */,
 				6834590D18363C0700EFF321 /* CarRaceViewController.m */,
 			);
@@ -808,6 +819,9 @@
 		6834592D18365DEC00EFF321 /* ImagesForClassFive */ = {
 			isa = PBXGroup;
 			children = (
+				FC3DF87E1851B7B8006BCC48 /* cup.png */,
+				FC3DF87F1851B7B8006BCC48 /* gift-box.png */,
+				FC3DF8801851B7B8006BCC48 /* medal.png */,
 				FCAD8868184F61FD00045198 /* drop.png */,
 				FCAD8860184F442900045198 /* ResultBoard.png */,
 				FCAD885C184F1D9600045198 /* series.png */,
@@ -1003,6 +1017,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = qainfotech;
 				TargetAttributes = {
+					689F2B2E18152C0B00DC8553 = {
+						DevelopmentTeam = GRLZAPTA86;
+					};
 					689F2B4918152C0B00DC8553 = {
 						TestTargetID = 689F2B2E18152C0B00DC8553;
 					};
@@ -1098,6 +1115,7 @@
 				6813EBD4183350B000D91090 /* bodypart4.png in Resources */,
 				68DDD854181E4720004D7830 /* compare.png in Resources */,
 				68DDD85A181E4F31004D7830 /* back1.jpg in Resources */,
+				FC3DF8831851B7B8006BCC48 /* medal.png in Resources */,
 				683458DF1836007700EFF321 /* images.jpeg in Resources */,
 				68069C941820F45B009A24F6 /* nextlevel.png in Resources */,
 				68B1B876181AAE4600CB8CA0 /* 6.png in Resources */,
@@ -1187,6 +1205,7 @@
 				683458E21836007700EFF321 /* popoverBg@2x.png in Resources */,
 				6813EBD5183350B000D91090 /* bodypart5.png in Resources */,
 				6815A1AC1832158C00E5CC74 /* flower.png in Resources */,
+				FC3DF8811851B7B8006BCC48 /* cup.png in Resources */,
 				683458BD1835FE9E00EFF321 /* Acar2.jpg in Resources */,
 				68DDD868181E55AD004D7830 /* home2.png in Resources */,
 				687B71B61834BAC200DE772E /* equalto.jpg in Resources */,
@@ -1215,6 +1234,7 @@
 				6816711A182A810A008440B6 /* level 2.mp3 in Resources */,
 				6807E80E1847427B00423B42 /* sword.png in Resources */,
 				68DDD874181E8607004D7830 /* namebird1.png in Resources */,
+				FC3DF8821851B7B8006BCC48 /* gift-box.png in Resources */,
 				6813EBD1183350B000D91090 /* bodypart1.png in Resources */,
 				68B1B880181AB59A00CB8CA0 /* home.jpg in Resources */,
 				683458DE1836007700EFF321 /* homebutton.png in Resources */,
@@ -1262,6 +1282,7 @@
 				6834591418363C0700EFF321 /* CarRaceViewController.m in Sources */,
 				680AB4951816409400A49012 /* Util.m in Sources */,
 				6834590E18363C0700EFF321 /* LCMAndHCFViewController.m in Sources */,
+				FC3DF87D1851B3AC006BCC48 /* GiftView.m in Sources */,
 				682EE0081845F6C800B1F8F0 /* HMAView.m in Sources */,
 				68069C7F1820CE74009A24F6 /* DragToAddOrSubViewController.m in Sources */,
 				6834591318363C0700EFF321 /* CustomModalBox.m in Sources */,
@@ -1389,13 +1410,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MathsPlay/MathsPlay-Prefix.pch";
 				INFOPLIST_FILE = "MathsPlay/MathsPlay-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8FD974C0-0ACC-4D11-9158-A4E869191A7A";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1405,13 +1427,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MathsPlay/MathsPlay-Prefix.pch";
 				INFOPLIST_FILE = "MathsPlay/MathsPlay-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8FD974C0-0ACC-4D11-9158-A4E869191A7A";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

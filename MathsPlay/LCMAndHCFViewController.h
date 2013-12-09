@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Util.h"
 
 @interface LCMAndHCFViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
 {
@@ -19,6 +20,7 @@
     BOOL selection;
     BOOL isCorrect;
     UISegmentedControl *segmentControl;
+    Util *util;
 }
 -(NSMutableArray *)getShuffledArrayWithAnswer:(NSString *)correctAnswer;
 -(void)refreshQuestion;

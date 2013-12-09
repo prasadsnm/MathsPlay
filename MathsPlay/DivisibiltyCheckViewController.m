@@ -9,6 +9,11 @@
 #import "DivisibiltyCheckViewController.h"
 
 @interface DivisibiltyCheckViewController ()
+{
+    int correctCount;
+    int giftCount;
+
+}
 @end
 
 @implementation DivisibiltyCheckViewController
@@ -17,7 +22,8 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        correctCount=0;
+        giftCount=0;
     }
     return self;
 }
@@ -25,7 +31,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    SET_USERNAME_AS_TITLE
     if (NSFoundationVersionNumber <= NSFoundationVersionNumber_iOS_6_1) {
         self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:65/255.0 green:105/255.0 blue:225/255.0 alpha:1.0];
     }
@@ -33,6 +39,10 @@
     {
         self.navigationController.navigationBar.tintColor = [UIColor greenColor];
     }
+    
+    
+  
+    
     self.navigationController.navigationBar.translucent = NO;
     // set bar title color
     self.navigationController.navigationBar.titleTextAttributes = @{UITextAttributeTextColor : [UIColor whiteColor]};
@@ -58,7 +68,7 @@
     infoLabel.backgroundColor=[UIColor clearColor];
     infoLabel.text=@"Help the ant to Climb up the building by giving correct answers \n Enjoy!!";
     infoLabel.textColor=[UIColor whiteColor];
-    infoLabel.font=[UIFont fontWithName:@"NoteWorthy" size:25];
+    infoLabel.font=[UIFont fontWithName:@"Lucida Grande" size:25];
     infoLabel.textAlignment=NSTextAlignmentCenter;
     infoLabel.numberOfLines=0;
     [shadow addSubview:infoLabel];
@@ -84,7 +94,16 @@
     background.image=[UIImage imageNamed:@"background"];
     [background setContentMode:UIViewContentModeScaleToFill];
     [self.view addSubview:background];
-    self.title=@"Help ant climb up the building ";
+    
+    if (giftView) {
+        giftView=nil;
+    }
+    giftView=[[GiftView alloc]initWithFrame:CGRectMake(self.view.frame.size.width-100, 10, 50, 30)];
+    [giftView setGiftImage:[UIImage imageNamed:@"gift-box"]];
+    [giftView setGiftCount:@"0"];
+    [background addSubview:giftView];
+    
+    
     [self displayQuestion];
     
     //label equal to height of building.
@@ -108,7 +127,7 @@
     //Custom modal to show question.
     modal=nil;
     modal=[[CustomModalBox alloc]initWithFrame:CGRectMake(0, 0, 400, 300)];
-    modal.center=CGPointMake(self.view.center.x+80.0, self.view.center.y);
+    modal.center=self.view.center;
     modal.delegate=self;
     [modal setQuestion:@"1st question is here...."];
     [self.view addSubview:modal];
@@ -159,7 +178,12 @@
 }
 
 -(void)correctAnswer{
- 
+    correctCount++;
+    
+    if (correctCount % 5==0) {
+        [giftView setGiftCount:[NSString stringWithFormat:@"%d",++giftCount]];
+    }
+    
     if (!(ant.frame.origin.y<=0))  //relative coordinate (0 means end of y axis)
     {
         [UIView animateWithDuration:2.0 delay:0.5 options:UIViewAnimationOptionCurveEaseInOut animations:^{
