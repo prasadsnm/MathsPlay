@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "Util.h"
 
-@interface LCMAndHCFViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
+
+@interface LCMAndHCFViewController : UIViewController
 {
 
     UITableView *_tableView;
@@ -21,9 +22,12 @@
     BOOL isCorrect;
     UISegmentedControl *segmentControl;
     Util *util;
+    UITapGestureRecognizer *tapGestureRecognizer;
+    UIPanGestureRecognizer *panGestureRecognizer;
+
 }
 -(NSMutableArray *)getShuffledArrayWithAnswer:(NSString *)correctAnswer;
--(void)refreshQuestion;
+-(NSArray *)refreshQuestion;
 - (int)getRandomNumber:(int)from to:(int)to;
 -(void)submitMethod;
 

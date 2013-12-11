@@ -22,7 +22,7 @@
     splashImage = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"splashscreen"]];
     splashImage.frame = CGRectMake(0, 0, 768, 1024);
     [self.window addSubview:splashImage];
-    [NSTimer scheduledTimerWithTimeInterval:0.3 target:self selector:@selector(fadeScreen) userInfo:nil repeats:NO];
+    [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(fadeScreen) userInfo:nil repeats:NO];
     self.window.rootViewController = [[UIViewController alloc]init];
     [self.window makeKeyAndVisible];
     return YES;

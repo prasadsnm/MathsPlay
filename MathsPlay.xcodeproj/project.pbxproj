@@ -234,10 +234,15 @@
 		FCAD8863184F4A1500045198 /* PWChalk.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FCAD8862184F4A1500045198 /* PWChalk.ttf */; };
 		FCAD8867184F4C1A00045198 /* Chalkboard by Marta van Eck.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FCAD8866184F4C1A00045198 /* Chalkboard by Marta van Eck.ttf */; };
 		FCAD8869184F61FD00045198 /* drop.png in Resources */ = {isa = PBXBuildFile; fileRef = FCAD8868184F61FD00045198 /* drop.png */; };
+		FCD077C718584D72006CE8DF /* laser.png in Resources */ = {isa = PBXBuildFile; fileRef = FCD077C618584D72006CE8DF /* laser.png */; };
+		FCD077C918584FDA006CE8DF /* boom.png in Resources */ = {isa = PBXBuildFile; fileRef = FCD077C818584FDA006CE8DF /* boom.png */; };
+		FCD077CD18586C5A006CE8DF /* missile.png in Resources */ = {isa = PBXBuildFile; fileRef = FCD077CC18586C5A006CE8DF /* missile.png */; };
 		FCD3DC0F184DB0A700471C1E /* HAPPY_FACE.png in Resources */ = {isa = PBXBuildFile; fileRef = FCD3DC0E184DB0A700471C1E /* HAPPY_FACE.png */; };
 		FCD3DC11184DB0AD00471C1E /* SAD_FACE.png in Resources */ = {isa = PBXBuildFile; fileRef = FCD3DC10184DB0AD00471C1E /* SAD_FACE.png */; };
 		FCD3DC15184DBBFF00471C1E /* dice.png in Resources */ = {isa = PBXBuildFile; fileRef = FCD3DC14184DBBFF00471C1E /* dice.png */; };
 		FCD3DC18184DD79B00471C1E /* digital-7.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FCD3DC17184DD79B00471C1E /* digital-7.ttf */; };
+		FCD854C51856E1C400EACE3F /* fishHCF.png in Resources */ = {isa = PBXBuildFile; fileRef = FCD854C41856E1C400EACE3F /* fishHCF.png */; };
+		FCD854C9185717EF00EACE3F /* tank.png in Resources */ = {isa = PBXBuildFile; fileRef = FCD854C8185717EF00EACE3F /* tank.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -506,10 +511,16 @@
 		FCAD8862184F4A1500045198 /* PWChalk.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PWChalk.ttf; sourceTree = "<group>"; };
 		FCAD8866184F4C1A00045198 /* Chalkboard by Marta van Eck.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Chalkboard by Marta van Eck.ttf"; sourceTree = "<group>"; };
 		FCAD8868184F61FD00045198 /* drop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = drop.png; sourceTree = "<group>"; };
+		FCD077BE18582C4D006CE8DF /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
+		FCD077C618584D72006CE8DF /* laser.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = laser.png; sourceTree = "<group>"; };
+		FCD077C818584FDA006CE8DF /* boom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = boom.png; sourceTree = "<group>"; };
+		FCD077CC18586C5A006CE8DF /* missile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = missile.png; sourceTree = "<group>"; };
 		FCD3DC0E184DB0A700471C1E /* HAPPY_FACE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HAPPY_FACE.png; sourceTree = "<group>"; };
 		FCD3DC10184DB0AD00471C1E /* SAD_FACE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SAD_FACE.png; sourceTree = "<group>"; };
 		FCD3DC14184DBBFF00471C1E /* dice.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dice.png; sourceTree = "<group>"; };
 		FCD3DC17184DD79B00471C1E /* digital-7.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "digital-7.ttf"; sourceTree = "<group>"; };
+		FCD854C41856E1C400EACE3F /* fishHCF.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fishHCF.png; sourceTree = "<group>"; };
+		FCD854C8185717EF00EACE3F /* tank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tank.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -819,6 +830,11 @@
 		6834592D18365DEC00EFF321 /* ImagesForClassFive */ = {
 			isa = PBXGroup;
 			children = (
+				FCD077CC18586C5A006CE8DF /* missile.png */,
+				FCD077C818584FDA006CE8DF /* boom.png */,
+				FCD077C618584D72006CE8DF /* laser.png */,
+				FCD854C8185717EF00EACE3F /* tank.png */,
+				FCD854C41856E1C400EACE3F /* fishHCF.png */,
 				FC3DF87E1851B7B8006BCC48 /* cup.png */,
 				FC3DF87F1851B7B8006BCC48 /* gift-box.png */,
 				FC3DF8801851B7B8006BCC48 /* medal.png */,
@@ -883,6 +899,7 @@
 		689F2B3118152C0B00DC8553 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FCD077BE18582C4D006CE8DF /* SpriteKit.framework */,
 				680AB4C818168D8300A49012 /* AssetsLibrary.framework */,
 				689F2B3218152C0B00DC8553 /* Foundation.framework */,
 				689F2B3418152C0B00DC8553 /* CoreGraphics.framework */,
@@ -1084,6 +1101,7 @@
 				68167115182A810A008440B6 /* clap.mp3 in Resources */,
 				680AB4B218165F8F00A49012 /* greenlantern.png in Resources */,
 				68DDD882181E97A8004D7830 /* tweety3.png in Resources */,
+				FCD077C718584D72006CE8DF /* laser.png in Resources */,
 				6807E80618471A6100423B42 /* manstanding.png in Resources */,
 				6813EBD6183350B000D91090 /* bodypart6.png in Resources */,
 				681C582F183A42FD00D66828 /* searchblue.png in Resources */,
@@ -1101,8 +1119,10 @@
 				FCAD885D184F1D9600045198 /* series.png in Resources */,
 				681BF3DF18433BE60042A1D1 /* abc.png in Resources */,
 				6834592A18364F4500EFF321 /* ladder2.png in Resources */,
+				FCD077CD18586C5A006CE8DF /* missile.png in Resources */,
 				68DDD860181E526E004D7830 /* back2.jpg in Resources */,
 				68B1B86E181A90D400CB8CA0 /* LH.png in Resources */,
+				FCD077C918584FDA006CE8DF /* boom.png in Resources */,
 				68DDD880181E9695004D7830 /* tweety2.png in Resources */,
 				68069C891820E64C009A24F6 /* sea2.jpg in Resources */,
 				681BF3E518433D160042A1D1 /* followBackground.jpg in Resources */,
@@ -1220,6 +1240,8 @@
 				68345920183647B700EFF321 /* raceicon6.png in Resources */,
 				680AB4C518166D8600A49012 /* buttercup.png in Resources */,
 				6813EBDA183350B000D91090 /* bodypart10.png in Resources */,
+				FCD854C51856E1C400EACE3F /* fishHCF.png in Resources */,
+				FCD854C9185717EF00EACE3F /* tank.png in Resources */,
 				68A51449182B82920052EC43 /* ocean6.jpg in Resources */,
 				683458C71835FE9E00EFF321 /* ball4.png in Resources */,
 				68345918183645EF00EFF321 /* raceicon3.png in Resources */,

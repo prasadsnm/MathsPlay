@@ -103,7 +103,7 @@
     submitButton.titleLabel.font=[UIFont fontWithName:@"Helvitica" size:21];
     [submitButton setTitle:@"Check Result" forState:UIControlStateNormal];
     [submitButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [submitButton addTarget:self action:@selector(submitClicked) forControlEvents:UIControlEventTouchUpInside];
+    [submitButton addTarget:self action:@selector(submitClicked:) forControlEvents:UIControlEventTouchUpInside];
     submitButton.frame=CGRectMake(550, 230, 150, 100);
     submitButton.backgroundColor=[UIColor yellowColor];
     submitButton.showsTouchWhenHighlighted=YES;
@@ -133,9 +133,9 @@
 
 
 
--(void)submitClicked
+-(void)submitClicked:(UIButton *)sender
 {
-    
+    sender.userInteractionEnabled=NO;
     if (answer.text.length>0) {
         NSString* question =[[[sqrtLabel.text substringFromIndex:1] componentsSeparatedByString:@"="] objectAtIndex:0];
         if ([answer.text intValue]==sqrtf([question intValue]))
@@ -150,12 +150,14 @@
                 [_modal show];
             } completion:^(BOOL finished) {
                 sleep(1.0);
-
+                
                 [_modal hide];
                 NSLog(@"modal hidden");
                 if (correctCount+incorrectCount!=[questionArray count]) {
                     NSLog(@"show question 1");
                     [self showQuestion];
+                    sender.userInteractionEnabled=YES;
+
                 }
                 else  {
                     [self showResult];
@@ -180,12 +182,16 @@
                 sleep(1.0);
                 if (correctCount+incorrectCount!=[questionArray count]) {
                     [self showQuestion];
+                    sender.userInteractionEnabled=YES;
+
                 }
                 [_modal hide];
                 if (correctCount+incorrectCount==[questionArray count]) {
                     [self showResult];
                 }
             }];
+            sender.userInteractionEnabled=YES;
+            ;
         }
     }
     else{

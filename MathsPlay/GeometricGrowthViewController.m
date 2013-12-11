@@ -74,8 +74,9 @@
     infoLabel.textAlignment=NSTextAlignmentCenter;
     infoLabel.numberOfLines=0;
     [shadow addSubview:infoLabel];
+    [self startMethod];
     
-    UIButton *letsPlaybutton=[UIButton buttonWithType:UIButtonTypeCustom];
+  /*  UIButton *letsPlaybutton=[UIButton buttonWithType:UIButtonTypeCustom];
     letsPlaybutton.frame=CGRectMake(0, 0, 130, 60) ;
     letsPlaybutton.center=shadow.center;
     letsPlaybutton.backgroundColor=[UIColor redColor];
@@ -86,7 +87,7 @@
     [letsPlaybutton setTitle:@"Lets Go >>" forState:UIControlStateNormal];
     [letsPlaybutton addTarget:self action:@selector(startMethod) forControlEvents:UIControlEventTouchUpInside];
     [shadow addSubview:letsPlaybutton];
-    [self.view addSubview:shadow];
+    [self.view addSubview:shadow];*/
     
     
     
