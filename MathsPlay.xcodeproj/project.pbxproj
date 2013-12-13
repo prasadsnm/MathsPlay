@@ -234,6 +234,24 @@
 		FCAD8863184F4A1500045198 /* PWChalk.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FCAD8862184F4A1500045198 /* PWChalk.ttf */; };
 		FCAD8867184F4C1A00045198 /* Chalkboard by Marta van Eck.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FCAD8866184F4C1A00045198 /* Chalkboard by Marta van Eck.ttf */; };
 		FCAD8869184F61FD00045198 /* drop.png in Resources */ = {isa = PBXBuildFile; fileRef = FCAD8868184F61FD00045198 /* drop.png */; };
+		FCC7D67E1859896300039099 /* thumbs-up.png in Resources */ = {isa = PBXBuildFile; fileRef = FCC7D67C1859896300039099 /* thumbs-up.png */; };
+		FCC7D67F1859896300039099 /* thumbs-down.png in Resources */ = {isa = PBXBuildFile; fileRef = FCC7D67D1859896300039099 /* thumbs-down.png */; };
+		FCC7D6821859A46A00039099 /* CustomAudioToolBox.m in Sources */ = {isa = PBXBuildFile; fileRef = FCC7D6811859A46A00039099 /* CustomAudioToolBox.m */; };
+		FCC7D68C1859A51800039099 /* explosion_small.caf in Resources */ = {isa = PBXBuildFile; fileRef = FCC7D6851859A51800039099 /* explosion_small.caf */; };
+		FCC7D68D1859A51800039099 /* laser_enemy.caf in Resources */ = {isa = PBXBuildFile; fileRef = FCC7D6861859A51800039099 /* laser_enemy.caf */; };
+		FCC7D68E1859A51800039099 /* laser_ship.caf in Resources */ = {isa = PBXBuildFile; fileRef = FCC7D6871859A51800039099 /* laser_ship.caf */; };
+		FCC7D68F1859A51800039099 /* powerup.caf in Resources */ = {isa = PBXBuildFile; fileRef = FCC7D6881859A51800039099 /* powerup.caf */; };
+		FCC7D6901859A51800039099 /* shake.caf in Resources */ = {isa = PBXBuildFile; fileRef = FCC7D6891859A51800039099 /* shake.caf */; };
+		FCC7D6911859A51800039099 /* SpaceGame.caf in Resources */ = {isa = PBXBuildFile; fileRef = FCC7D68A1859A51800039099 /* SpaceGame.caf */; };
+		FCC7D6931859AB4C00039099 /* fighter.png in Resources */ = {isa = PBXBuildFile; fileRef = FCC7D6921859AB4C00039099 /* fighter.png */; };
+		FCC7D6981859D16F00039099 /* explosion_large.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FCC7D6971859D16F00039099 /* explosion_large.mp3 */; };
+		FCC7D69B1859D56500039099 /* Goodies.m in Sources */ = {isa = PBXBuildFile; fileRef = FCC7D69A1859D56500039099 /* Goodies.m */; };
+		FCC7D69F1859E8A200039099 /* star1.png in Resources */ = {isa = PBXBuildFile; fileRef = FCC7D69C1859E8A200039099 /* star1.png */; };
+		FCC7D6A01859E8A200039099 /* star2.png in Resources */ = {isa = PBXBuildFile; fileRef = FCC7D69D1859E8A200039099 /* star2.png */; };
+		FCC7D6A11859E8A200039099 /* star3.png in Resources */ = {isa = PBXBuildFile; fileRef = FCC7D69E1859E8A200039099 /* star3.png */; };
+		FCC7D6A31859EABA00039099 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = FCC7D6A21859EABA00039099 /* spark.png */; };
+		FCCEE9F8185ABD1E00AA690F /* instruction.png in Resources */ = {isa = PBXBuildFile; fileRef = FCCEE9F7185ABD1E00AA690F /* instruction.png */; };
+		FCCEE9FA185AC43300AA690F /* arial-cloud.png in Resources */ = {isa = PBXBuildFile; fileRef = FCCEE9F9185AC43300AA690F /* arial-cloud.png */; };
 		FCD077C718584D72006CE8DF /* laser.png in Resources */ = {isa = PBXBuildFile; fileRef = FCD077C618584D72006CE8DF /* laser.png */; };
 		FCD077C918584FDA006CE8DF /* boom.png in Resources */ = {isa = PBXBuildFile; fileRef = FCD077C818584FDA006CE8DF /* boom.png */; };
 		FCD077CD18586C5A006CE8DF /* missile.png in Resources */ = {isa = PBXBuildFile; fileRef = FCD077CC18586C5A006CE8DF /* missile.png */; };
@@ -511,6 +529,26 @@
 		FCAD8862184F4A1500045198 /* PWChalk.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PWChalk.ttf; sourceTree = "<group>"; };
 		FCAD8866184F4C1A00045198 /* Chalkboard by Marta van Eck.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Chalkboard by Marta van Eck.ttf"; sourceTree = "<group>"; };
 		FCAD8868184F61FD00045198 /* drop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = drop.png; sourceTree = "<group>"; };
+		FCC7D67C1859896300039099 /* thumbs-up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumbs-up.png"; sourceTree = "<group>"; };
+		FCC7D67D1859896300039099 /* thumbs-down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumbs-down.png"; sourceTree = "<group>"; };
+		FCC7D6801859A46A00039099 /* CustomAudioToolBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomAudioToolBox.h; sourceTree = "<group>"; };
+		FCC7D6811859A46A00039099 /* CustomAudioToolBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomAudioToolBox.m; sourceTree = "<group>"; };
+		FCC7D6851859A51800039099 /* explosion_small.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = explosion_small.caf; sourceTree = "<group>"; };
+		FCC7D6861859A51800039099 /* laser_enemy.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = laser_enemy.caf; sourceTree = "<group>"; };
+		FCC7D6871859A51800039099 /* laser_ship.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = laser_ship.caf; sourceTree = "<group>"; };
+		FCC7D6881859A51800039099 /* powerup.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = powerup.caf; sourceTree = "<group>"; };
+		FCC7D6891859A51800039099 /* shake.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = shake.caf; sourceTree = "<group>"; };
+		FCC7D68A1859A51800039099 /* SpaceGame.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SpaceGame.caf; sourceTree = "<group>"; };
+		FCC7D6921859AB4C00039099 /* fighter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fighter.png; sourceTree = "<group>"; };
+		FCC7D6971859D16F00039099 /* explosion_large.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = explosion_large.mp3; sourceTree = "<group>"; };
+		FCC7D6991859D56500039099 /* Goodies.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Goodies.h; sourceTree = "<group>"; };
+		FCC7D69A1859D56500039099 /* Goodies.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Goodies.m; sourceTree = "<group>"; };
+		FCC7D69C1859E8A200039099 /* star1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star1.png; sourceTree = "<group>"; };
+		FCC7D69D1859E8A200039099 /* star2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star2.png; sourceTree = "<group>"; };
+		FCC7D69E1859E8A200039099 /* star3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star3.png; sourceTree = "<group>"; };
+		FCC7D6A21859EABA00039099 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
+		FCCEE9F7185ABD1E00AA690F /* instruction.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = instruction.png; sourceTree = "<group>"; };
+		FCCEE9F9185AC43300AA690F /* arial-cloud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arial-cloud.png"; sourceTree = "<group>"; };
 		FCD077BE18582C4D006CE8DF /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
 		FCD077C618584D72006CE8DF /* laser.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = laser.png; sourceTree = "<group>"; };
 		FCD077C818584FDA006CE8DF /* boom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = boom.png; sourceTree = "<group>"; };
@@ -738,6 +776,13 @@
 		68167121182A8110008440B6 /* sound */ = {
 			isa = PBXGroup;
 			children = (
+				FCC7D6971859D16F00039099 /* explosion_large.mp3 */,
+				FCC7D6851859A51800039099 /* explosion_small.caf */,
+				FCC7D6861859A51800039099 /* laser_enemy.caf */,
+				FCC7D6871859A51800039099 /* laser_ship.caf */,
+				FCC7D6881859A51800039099 /* powerup.caf */,
+				FCC7D6891859A51800039099 /* shake.caf */,
+				FCC7D68A1859A51800039099 /* SpaceGame.caf */,
 				6807E813184774BE00423B42 /* insect.mp3 */,
 				6806531F183CE236005A3EC1 /* waitingaudio.mp3 */,
 				68074EE3183B9E8400232210 /* countdownaudio.mp3 */,
@@ -806,6 +851,7 @@
 		683458FF1836393E00EFF321 /* ClassFive */ = {
 			isa = PBXGroup;
 			children = (
+				FCC7D6831859A48600039099 /* CustomClasses */,
 				6834592D18365DEC00EFF321 /* ImagesForClassFive */,
 				6834590018363C0700EFF321 /* LCMAndHCFViewController.h */,
 				6834590118363C0700EFF321 /* LCMAndHCFViewController.m */,
@@ -819,8 +865,6 @@
 				6834590918363C0700EFF321 /* DivisibiltyCheckViewController.m */,
 				6834590A18363C0700EFF321 /* CustomModalBox.h */,
 				6834590B18363C0700EFF321 /* CustomModalBox.m */,
-				FC3DF87B1851B3AC006BCC48 /* GiftView.h */,
-				FC3DF87C1851B3AC006BCC48 /* GiftView.m */,
 				6834590C18363C0700EFF321 /* CarRaceViewController.h */,
 				6834590D18363C0700EFF321 /* CarRaceViewController.m */,
 			);
@@ -830,6 +874,15 @@
 		6834592D18365DEC00EFF321 /* ImagesForClassFive */ = {
 			isa = PBXGroup;
 			children = (
+				FCCEE9F9185AC43300AA690F /* arial-cloud.png */,
+				FCCEE9F7185ABD1E00AA690F /* instruction.png */,
+				FCC7D6A21859EABA00039099 /* spark.png */,
+				FCC7D69C1859E8A200039099 /* star1.png */,
+				FCC7D69D1859E8A200039099 /* star2.png */,
+				FCC7D69E1859E8A200039099 /* star3.png */,
+				FCC7D6921859AB4C00039099 /* fighter.png */,
+				FCC7D67C1859896300039099 /* thumbs-up.png */,
+				FCC7D67D1859896300039099 /* thumbs-down.png */,
 				FCD077CC18586C5A006CE8DF /* missile.png */,
 				FCD077C818584FDA006CE8DF /* boom.png */,
 				FCD077C618584D72006CE8DF /* laser.png */,
@@ -977,6 +1030,19 @@
 			name = Images;
 			sourceTree = "<group>";
 		};
+		FCC7D6831859A48600039099 /* CustomClasses */ = {
+			isa = PBXGroup;
+			children = (
+				FCC7D6991859D56500039099 /* Goodies.h */,
+				FCC7D69A1859D56500039099 /* Goodies.m */,
+				FC3DF87B1851B3AC006BCC48 /* GiftView.h */,
+				FC3DF87C1851B3AC006BCC48 /* GiftView.m */,
+				FCC7D6801859A46A00039099 /* CustomAudioToolBox.h */,
+				FCC7D6811859A46A00039099 /* CustomAudioToolBox.m */,
+			);
+			name = CustomClasses;
+			sourceTree = "<group>";
+		};
 		FCD3DC16184DD79000471C1E /* font */ = {
 			isa = PBXGroup;
 			children = (
@@ -1096,7 +1162,9 @@
 				68DDD87C181E955A004D7830 /* speech-bubble-xxl (2).png in Resources */,
 				FCAD8861184F442900045198 /* ResultBoard.png in Resources */,
 				687B71B41834BAB700DE772E /* greater.JPG in Resources */,
+				FCC7D68D1859A51800039099 /* laser_enemy.caf in Resources */,
 				683459241836488800EFF321 /* flagicon1.png in Resources */,
+				FCC7D6911859A51800039099 /* SpaceGame.caf in Resources */,
 				683458BC1835FE9E00EFF321 /* Acar1.png in Resources */,
 				68167115182A810A008440B6 /* clap.mp3 in Resources */,
 				680AB4B218165F8F00A49012 /* greenlantern.png in Resources */,
@@ -1104,8 +1172,10 @@
 				FCD077C718584D72006CE8DF /* laser.png in Resources */,
 				6807E80618471A6100423B42 /* manstanding.png in Resources */,
 				6813EBD6183350B000D91090 /* bodypart6.png in Resources */,
+				FCC7D67F1859896300039099 /* thumbs-down.png in Resources */,
 				681C582F183A42FD00D66828 /* searchblue.png in Resources */,
 				683458CD1835FE9E00EFF321 /* finishline2.png in Resources */,
+				FCC7D68C1859A51800039099 /* explosion_small.caf in Resources */,
 				68069C961820F5B9009A24F6 /* next_icon.png in Resources */,
 				683458DD1836007700EFF321 /* board.jpg in Resources */,
 				680AB4B118165F8F00A49012 /* flash.png in Resources */,
@@ -1121,6 +1191,7 @@
 				6834592A18364F4500EFF321 /* ladder2.png in Resources */,
 				FCD077CD18586C5A006CE8DF /* missile.png in Resources */,
 				68DDD860181E526E004D7830 /* back2.jpg in Resources */,
+				FCCEE9F8185ABD1E00AA690F /* instruction.png in Resources */,
 				68B1B86E181A90D400CB8CA0 /* LH.png in Resources */,
 				FCD077C918584FDA006CE8DF /* boom.png in Resources */,
 				68DDD880181E9695004D7830 /* tweety2.png in Resources */,
@@ -1131,14 +1202,17 @@
 				68A51441182B7C790052EC43 /* ocean2.jpg in Resources */,
 				6807E812184762DF00423B42 /* axe.png in Resources */,
 				68DDD888181EA091004D7830 /* browse3.png in Resources */,
+				FCC7D6A31859EABA00039099 /* spark.png in Resources */,
 				683F338D182243B300CF5D3A /* fish1_right.png in Resources */,
 				6813EBD4183350B000D91090 /* bodypart4.png in Resources */,
 				68DDD854181E4720004D7830 /* compare.png in Resources */,
+				FCC7D6931859AB4C00039099 /* fighter.png in Resources */,
 				68DDD85A181E4F31004D7830 /* back1.jpg in Resources */,
 				FC3DF8831851B7B8006BCC48 /* medal.png in Resources */,
 				683458DF1836007700EFF321 /* images.jpeg in Resources */,
 				68069C941820F45B009A24F6 /* nextlevel.png in Resources */,
 				68B1B876181AAE4600CB8CA0 /* 6.png in Resources */,
+				FCC7D69F1859E8A200039099 /* star1.png in Resources */,
 				68107032183DEAC500D13451 /* water.png in Resources */,
 				683458CE1835FE9E00EFF321 /* lives.png in Resources */,
 				6816711E182A810A008440B6 /* race.wav in Resources */,
@@ -1176,6 +1250,7 @@
 				6816711D182A810A008440B6 /* lose2.mp3 in Resources */,
 				68B1B86A181A5E7200CB8CA0 /* oval.png in Resources */,
 				683458C61835FE9E00EFF321 /* ball3.png in Resources */,
+				FCC7D6981859D16F00039099 /* explosion_large.mp3 in Resources */,
 				683458C01835FE9E00EFF321 /* Acomp1.jpg in Resources */,
 				6834591A183645F400EFF321 /* raceicon2.png in Resources */,
 				6834592818364F4100EFF321 /* ladder1.png in Resources */,
@@ -1184,6 +1259,7 @@
 				68DDD850181E3CF5004D7830 /* minus.png in Resources */,
 				68FE92E6182B5E80004A6306 /* incorrect.png in Resources */,
 				683458EC1836042A00EFF321 /* white_square.png in Resources */,
+				FCCEE9FA185AC43300AA690F /* arial-cloud.png in Resources */,
 				68069C901820EB5F009A24F6 /* fish1.png in Resources */,
 				6807E814184774BE00423B42 /* insect.mp3 in Resources */,
 				683458C31835FE9E00EFF321 /* arrow.png in Resources */,
@@ -1205,6 +1281,7 @@
 				68069C8E1820EA32009A24F6 /* bottle.png in Resources */,
 				68DDD876181E88FE004D7830 /* board.png in Resources */,
 				68069C851820DA21009A24F6 /* orangebubble.png in Resources */,
+				FCC7D6A11859E8A200039099 /* star3.png in Resources */,
 				68B1B870181AA07B00CB8CA0 /* backImage.jpg in Resources */,
 				6813EBD9183350B000D91090 /* bodypart9.png in Resources */,
 				6807E8041847177D00423B42 /* bug.png in Resources */,
@@ -1215,6 +1292,7 @@
 				683458E61836007700EFF321 /* wronganswer.png in Resources */,
 				68B1B87E181AB46900CB8CA0 /* bubbledrop.png in Resources */,
 				683458E81836038600EFF321 /* rightans.png in Resources */,
+				FCC7D6A01859E8A200039099 /* star2.png in Resources */,
 				683458BF1835FE9E00EFF321 /* Acar4.png in Resources */,
 				683458FC1836137200EFF321 /* nextnew2.png in Resources */,
 				68074EE2183B91A800232210 /* hifi.mp3 in Resources */,
@@ -1229,6 +1307,7 @@
 				683458BD1835FE9E00EFF321 /* Acar2.jpg in Resources */,
 				68DDD868181E55AD004D7830 /* home2.png in Resources */,
 				687B71B61834BAC200DE772E /* equalto.jpg in Resources */,
+				FCC7D68E1859A51800039099 /* laser_ship.caf in Resources */,
 				683458F818360CA500EFF321 /* lesserthannew2.png in Resources */,
 				683458F318360BA800EFF321 /* equaltonew3.png in Resources */,
 				68DDD87A181E955A004D7830 /* speech-bubble-xxl (1).png in Resources */,
@@ -1237,10 +1316,12 @@
 				687B71B21834BAAC00DE772E /* star.png in Resources */,
 				683458BE1835FE9E00EFF321 /* Acar3.png in Resources */,
 				6807E80A184722E500423B42 /* sleepy.png in Resources */,
+				FCC7D6901859A51800039099 /* shake.caf in Resources */,
 				68345920183647B700EFF321 /* raceicon6.png in Resources */,
 				680AB4C518166D8600A49012 /* buttercup.png in Resources */,
 				6813EBDA183350B000D91090 /* bodypart10.png in Resources */,
 				FCD854C51856E1C400EACE3F /* fishHCF.png in Resources */,
+				FCC7D68F1859A51800039099 /* powerup.caf in Resources */,
 				FCD854C9185717EF00EACE3F /* tank.png in Resources */,
 				68A51449182B82920052EC43 /* ocean6.jpg in Resources */,
 				683458C71835FE9E00EFF321 /* ball4.png in Resources */,
@@ -1254,6 +1335,7 @@
 				68B1B86C181A904800CB8CA0 /* LA.png in Resources */,
 				68069C981820F644009A24F6 /* next_icon.gif in Resources */,
 				6816711A182A810A008440B6 /* level 2.mp3 in Resources */,
+				FCC7D67E1859896300039099 /* thumbs-up.png in Resources */,
 				6807E80E1847427B00423B42 /* sword.png in Resources */,
 				68DDD874181E8607004D7830 /* namebird1.png in Resources */,
 				FC3DF8821851B7B8006BCC48 /* gift-box.png in Resources */,
@@ -1291,12 +1373,14 @@
 				689F2B641815305F00DC8553 /* HomeScreenViewController.m in Sources */,
 				687B71C718350CBD00DE772E /* SubViewController.m in Sources */,
 				6834591218363C0700EFF321 /* DivisibiltyCheckViewController.m in Sources */,
+				FCC7D69B1859D56500039099 /* Goodies.m in Sources */,
 				689F2B4318152C0B00DC8553 /* AppDelegate.m in Sources */,
 				689F2B3F18152C0B00DC8553 /* main.m in Sources */,
 				68065317183C9CBC005A3EC1 /* FollowTPModel.m in Sources */,
 				6834591118363C0700EFF321 /* SquareRootViewController.m in Sources */,
 				6834590F18363C0700EFF321 /* CountDownTimer.m in Sources */,
 				682EE0021845DE1F00B1F8F0 /* HMAModel.m in Sources */,
+				FCC7D6821859A46A00039099 /* CustomAudioToolBox.m in Sources */,
 				6815A1A61832050300E5CC74 /* ButterflyCatchViewController.m in Sources */,
 				687B71C518350CBD00DE772E /* AdvanceMathViewController.m in Sources */,
 				68069C7C1820CE52009A24F6 /* DragBubblesViewController.m in Sources */,
@@ -1385,7 +1469,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
@@ -1420,7 +1504,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 				VALIDATE_PRODUCT = YES;
@@ -1437,9 +1521,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MathsPlay/MathsPlay-Prefix.pch";
 				INFOPLIST_FILE = "MathsPlay/MathsPlay-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1454,9 +1539,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MathsPlay/MathsPlay-Prefix.pch";
 				INFOPLIST_FILE = "MathsPlay/MathsPlay-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

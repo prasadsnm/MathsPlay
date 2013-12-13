@@ -9,6 +9,7 @@
 #import "LCMAndHCFViewController.h"
 #define BACKGROUND_COLOR [UIColor colorWithRed:85/255.0 green:192/255.0 blue:247/255.0 alpha:1]
 #define Y_AXIS_VALUE 300
+#define ANSWER_LOCK @"THE_LOCK"
 
 
 @interface LCMAndHCFViewController ()
@@ -18,6 +19,11 @@
     int selectedAnswer;
     UIImageView *tanker;
     BOOL isALligned;
+    int currentHighlightedTag;
+    int correctAnswerLabelTag;
+    int scoreCount;
+    
+    UIViewController *modal;
 
 }
 @property(nonatomic,assign) CGPoint targetCenter;
@@ -31,7 +37,6 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
     }
     return self;
 }
@@ -39,9 +44,27 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
+    
+    modal=[[UIViewController alloc]init];
+    modal.view.backgroundColor=[UIColor yellowColor];
+    modal.modalTransitionStyle=UIModalTransitionStyleCrossDissolve;
+    modal.modalPresentationStyle=UIModalPresentationFormSheet;
+    
+    UILabel *resultLabel=nil;
+    resultLabel=[[UILabel alloc]initWithFrame:CGRectMake(140, 200, 300, 200)];
+    resultLabel.backgroundColor=[UIColor clearColor];
+    resultLabel.text=[NSString stringWithFormat:@"Game Over\n \nScore : %d",scoreCount+1];
+    resultLabel.textColor=[UIColor blackColor];
+    resultLabel.font=[UIFont fontWithName:@"Chalkduster" size:40];
+    resultLabel.textAlignment=NSTextAlignmentCenter;
+    resultLabel.numberOfLines=0;
+    [modal.view addSubview:resultLabel];
+        audioToolBox=[[CustomAudioToolBox alloc]init];
+    currentHighlightedTag=12345;
+    correctAnswerLabelTag=12346;
     self.view.tag=1111;
-    SET_USERNAME_AS_TITLE    
+    SET_USERNAME_AS_TITLE
     if (NSFoundationVersionNumber <= NSFoundationVersionNumber_iOS_6_1) {
         self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:65/255.0 green:105/255.0 blue:225/255.0 alpha:1.0];
     }
@@ -68,15 +91,16 @@
     questionLabel.font = FONT;
     [self.view addSubview:questionLabel];
     //[self refreshQuestion];
- 
+    
     tanker=nil;
     tanker=[[UIImageView alloc]initWithFrame:CGRectMake(self.view.frame.size.width/3, self.view.frame.size.height-200, 200, 100)];
-    tanker.image=[UIImage imageNamed:@"tank"];
+    tanker.image=[UIImage imageNamed:@"fighter"];
     tanker.userInteractionEnabled=YES;
+    tanker.tag=1007;
     [self.view addSubview:tanker];
-    _targetCenter=CGPointMake(tanker.center.x, Y_AXIS_VALUE);
-
-
+    _targetCenter=CGPointMake(tanker.center.x, 0);
+    
+    
     
     
     panGestureRecognizer=[[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(handlePan:)];
@@ -85,40 +109,40 @@
     tapGestureRecognizer=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(handleTap:)];
     tapGestureRecognizer.numberOfTapsRequired=1;
     [tanker addGestureRecognizer:tapGestureRecognizer];
-    
+
     [self start];
+    [self startEmmitter];
     
-//[NSTimer scheduledTimerWithTimeInterval:5    target:self    selector:@selector(start)    userInfo:nil repeats:YES];
+    
+   
     
     
     
 }
 
-//- (void)viewWillLayoutSubviews
-//{
-//    [super viewWillLayoutSubviews];
-//    // Configure the view.
-//    // Configure the view after it has been sized for the correct orientation.
-//    SKView *skView = (SKView *)self.view;
-//    if (!skView.scene) {
-//        skView.showsFPS = NO;
-//        skView.showsNodeCount = NO;
-//        
-//        // Create and configure the scene.
-//        MyScene *theScene = [MyScene sceneWithSize:skView.bounds.size];
-//        theScene.scaleMode = SKSceneScaleModeAspectFill;
-//        
-//        // Present the scene.
-//        [skView presentScene:theScene];
-//    }
-//}
+
+- (void) dismissInstructionScreen:(UITapGestureRecognizer *)recognize
+{
+    [recognize.view removeFromSuperview];
+}
+
+-(void)refreshGiftWithCount:(int)count
+{
+    for (Goodies *gift in self.view.subviews) {
+        if ([gift isKindOfClass:[Goodies class]] && gift.tag==5555) {
+            [gift removeFromSuperview];
+        }
+    }
+    
+    goodies=[[Goodies alloc]initWithFrame:CGRectZero Count:count giftimage:@"gift-box"];
+    goodies.tag=5555;
+    [self.view addSubview:goodies];
+}
 
 
 -(void)start
 {
     [self makeDisplayGrid];
-
-
 }
 
 
@@ -144,8 +168,6 @@
         UIAlertView *gameOver = [[UIAlertView alloc]initWithTitle:@"Error" message:@"Please Select at least one Option" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
         [gameOver show];
     }
-    
-   
 }
 
 
@@ -174,13 +196,16 @@
     if (([self getRandomNumber:1 to:8]%2)==0) {
         
         questionLabel.text=[NSString stringWithFormat:@"The LCM of %i and %i ?",firstRandom,secondRandom];
-        answer=lcm(firstRandom, secondRandom);
-        
+        @synchronized(ANSWER_LOCK){
+            answer=lcm(firstRandom, secondRandom);
+        }
     }
     else
     {
         questionLabel.text=[NSString stringWithFormat:@"The HCF of %i and %i ?",firstRandom,secondRandom];
-        answer=gcd(firstRandom, secondRandom);
+        @synchronized(ANSWER_LOCK){
+            answer=gcd(firstRandom, secondRandom);
+        }
     }
     optionArray=nil;
     optionArray=[[NSArray alloc]initWithArray:[self getShuffledArrayWithAnswer:[NSString stringWithFormat:@"%d",answer]]];
@@ -242,13 +267,13 @@ int lcm(int a, int b)
 -(void)makeDisplayGrid
 {
     NSArray *arrayWithResult=[self refreshQuestion];
-    // 4444 for millile
+    // 4444 for missile
     for (UIView *view in [self.view subviews]) {
-        if ([view isKindOfClass:[UIImageView class]] && view.tag==4444 ) {
-            [view removeFromSuperview];
-        }
+       if ([view isKindOfClass:[UIImageView class]]&& view.tag==4444) {
+          [view removeFromSuperview];
+       }
         
-        if (view.tag==1 && view.tag==2 &&view.tag==3 &&view.tag==4 )  {
+        if (view.tag==1 && view.tag==2 &&view.tag==3 &&view.tag==4)  {
             [view removeFromSuperview];
         }
     }
@@ -256,7 +281,7 @@ int lcm(int a, int b)
     int yValue=300;
     int width=100;
     int height=100;
-
+    
     for (int count=0; count<[arrayWithResult count]; count++) {
         UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(xValue, yValue, width, height)];
         label.tag=count+1;
@@ -268,16 +293,44 @@ int lcm(int a, int b)
         label.textColor=[UIColor whiteColor];
         label.textAlignment=NSTextAlignmentCenter;
         label.text=[NSString stringWithFormat:@"%@",[arrayWithResult objectAtIndex:count]];
+        if ([[arrayWithResult objectAtIndex:count] intValue]==answer) {
+                    correctAnswerLabelTag=label.tag;
+        }
         xValue=xValue+width+50;
         [self.view addSubview:label];
     }
+  //  [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(refreshDisplayGrid) userInfo:nil repeats:YES];
+
+}
+
+
+
+-(void)refreshDisplayGrid
+{
     
+    for (UIView *view in [self.view subviews]) {
+        if ([view isKindOfClass:[UIImageView class]]&& view.tag==4444) {
+            [view removeFromSuperview];
+        }}
+    
+    NSArray *arrayWithResult=[self refreshQuestion];
+    int index=0;
+    for (UILabel *options  in self.view.subviews) {
+        if ([options isKindOfClass:[UILabel class]] && options.tag>0 && options.tag<5 ) {  //instropection
+            
+            if ([[arrayWithResult objectAtIndex:index] intValue]==answer) {
+                correctAnswerLabelTag=options.tag;
+            }
+            [options setText:[NSString stringWithFormat:@"%@",[arrayWithResult objectAtIndex:index++]]];
+        }
+    }
+
 }
 
 
 -(void) dragTank : (UIImageView *) sender {
     
-     sender.center=[tapGestureRecognizer locationInView:self.view];
+    sender.center=[tapGestureRecognizer locationInView:self.view];
 }
 
 
@@ -285,40 +338,27 @@ int lcm(int a, int b)
     [self handleMovementView:recognizer];
     
     
-
-    
-    
-    for (UILabel *optionLabel in self.view.subviews)
+    for (UIView *optionLabel in self.view.subviews)
     {
         if ([optionLabel isKindOfClass:[UILabel class]]&& optionLabel.tag>0 && optionLabel.tag<5) {
             if (recognizer.view.center.x >= optionLabel.center.x-49 && recognizer.view.center.x <= optionLabel.center.x+49 )
             {
-                
                 _targetCenter=CGPointMake(recognizer.view.center.x, optionLabel.center.y);
-
                 [optionLabel setBackgroundColor:[UIColor redColor]];
-                
-                NSLog(@"if option tag%d",optionLabel.tag);
+                currentHighlightedTag=optionLabel.tag;
                 break;
-                
             }
             else
             {
-                    [optionLabel setBackgroundColor:[UIColor colorWithRed:59/255.0 green:0/255.0 blue:133/255.0 alpha:1.0]];
+                [optionLabel setBackgroundColor:[UIColor colorWithRed:59/255.0 green:0/255.0 blue:133/255.0 alpha:1.0]];
+                currentHighlightedTag=12345;
             }
-
-  
         }
         else
         {
             _targetCenter=CGPointMake(recognizer.view.center.x, 0);
-
         }
-        
-        
     }
-    
-    
 }
 
 
@@ -356,45 +396,111 @@ int lcm(int a, int b)
             [recognizer setTranslation:CGPointZero inView:recognizer.view.superview];
         }
     }
-
+    
 }
 - (void)handleTap:(UITapGestureRecognizer *)recognizer {
-
-    // Step 1 - Create a new peaball image
+    recognizer.enabled=NO;
+    recognizer.view.transform = CGAffineTransformIdentity;
+    [UIView animateWithDuration:0.1 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        recognizer.view.transform = CGAffineTransformMakeTranslation(0,+10);
+    } completion:^(BOOL finished){
+        recognizer.view.transform = CGAffineTransformMakeTranslation(0,-10);
+    }];
+    
     UIImage *lazerImage = [UIImage imageNamed:@"missile"];
-   __block UIImageView *lazerImageView = [[UIImageView alloc] initWithImage:lazerImage];
+    __block UIImageView *lazerImageView = [[UIImageView alloc] initWithImage:lazerImage];
     lazerImageView.tag=4444;
-
     [lazerImageView setFrame:CGRectMake(0, 0, 20, 20)];
     [lazerImageView setCenter:recognizer.view.center];
     [self.view addSubview:lazerImageView];
     
-    // Step 2 - Use the in-built animation methods by Apple to animate our pea
-    
-    
     
     [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-    [lazerImageView setCenter:_targetCenter];
-
+        
+        [lazerImageView setCenter:_targetCenter];
+        
+        // [lazerImageView setCenter:_targetCenter];
+        [audioToolBox playSound:@"lazer_ship" withExtension:@"caf"];
+        
         NSLog(@"target point ===%f %f ",_targetCenter.x,_targetCenter.y);
     } completion:^(BOOL finished) {
-        [lazerImageView setImage:[UIImage imageNamed:@"boom"]];
-        //[self start];
+        
+        [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
+            
+            lazerImageView.center=CGPointMake([self targetCenter:_targetCenter].x, _targetCenter.y);
+            CGAffineTransform zoom    = CGAffineTransformMakeScale(7.0, 7.0);
+            lazerImageView.transform=zoom;
+            
+            
+            if (correctAnswerLabelTag==currentHighlightedTag ) {
+                [audioToolBox playSound:@"powerup" withExtension:@"caf"];
+                [self refreshGiftWithCount:++scoreCount];
+                [lazerImageView setImage:[UIImage imageNamed:@"thumbs-up"]];
+                
+            }
+            else if (_targetCenter.y==0){
+                [audioToolBox playSound:@"explosion_large" withExtension:@"mp3"];
+                [lazerImageView setImage:[UIImage imageNamed:@"boom"]];
+            }
+            
+            else {
+                [audioToolBox playSound:@"shake" withExtension:@"caf"];
+                [lazerImageView setImage:[UIImage imageNamed:@"thumbs-down"]];
+            }
+        }completion:^(BOOL finished) {
+            
+            
+            if (scoreCount>0) {
+                [self presentViewController:modal animated:YES completion:NULL];
+            }
+            
+            [self refreshDisplayGrid];
+            recognizer.enabled=YES;
+            
+        }];
     }];
     
 }
 
 
-/*-(CGPoint *)detectTheAllignedBallCenter:(UITapGestureRecognizer *)recognizer
+-(CGPoint )targetCenter:(CGPoint )point
 {
-//    CGPoint center;
-//
-//    
-//    
-//    
-//    return center;
-    
-}*/
+    for (UILabel *lbl in [self.view subviews]) {
+        if ([lbl isKindOfClass:[UILabel class]]&& lbl.tag>0 && lbl.tag<5) {
+            if (CGRectContainsPoint (lbl.frame, point ))
+            {
+                return lbl.center;
+            }
+        }}
+    return point;
+}
 
+-(void)startEmmitter
+{
+    CAEmitterLayer *emiterLayer=[CAEmitterLayer layer];
+    emiterLayer.emitterPosition =CGPointMake(self.view.center.x, 0);
+    //CGPointMake(self.view.bounds.size.width/2,self.view.bounds.origin.y);
+    emiterLayer.emitterZPosition=10;
+    emiterLayer.emitterSize=CGSizeMake(self.view.bounds.size.width, 0);
+    emiterLayer.emitterShape = kCAEmitterLayerSphere;
+  
+    CAEmitterCell * emitterCell = [CAEmitterCell emitterCell];
+    emitterCell.scale = 0.2;
+    emitterCell.scaleRange = 0.2;
+    emitterCell.birthRate = 40;
+    emitterCell.emissionRange = 269.0;
+    emitterCell.lifetime = 8.0;
+    emitterCell.velocity = 5;
+    emitterCell.velocityRange = 150;
+    emitterCell.yAcceleration = 10;
+    emitterCell.contents = (id)[[UIImage imageNamed:@"spark"] CGImage];
+    emiterLayer.emitterCells = [NSArray arrayWithObject:emitterCell];
+    [self.view.layer addSublayer:emiterLayer];
+    
+}
+
+- (void)viewDidUnload {
+    [audioToolBox dispose];
+}
 
 @end

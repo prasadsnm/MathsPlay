@@ -8,11 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "Util.h"
+#import "CustomAudioToolBox.h"
+#import "Goodies.h"
 
 
-@interface LCMAndHCFViewController : UIViewController
+@interface LCMAndHCFViewController : UIViewController<UIViewControllerTransitioningDelegate>
 {
-
     UITableView *_tableView;
     UILabel *questionLabel;
     UIButton * submitButton;
@@ -24,12 +25,16 @@
     Util *util;
     UITapGestureRecognizer *tapGestureRecognizer;
     UIPanGestureRecognizer *panGestureRecognizer;
-
+    CustomAudioToolBox *audioToolBox;
+    Goodies *goodies;
+    
 }
+
+-(void)submitMethod;
+- (int)getRandomNumber:(int)from to:(int)to;
 -(NSMutableArray *)getShuffledArrayWithAnswer:(NSString *)correctAnswer;
 -(NSArray *)refreshQuestion;
-- (int)getRandomNumber:(int)from to:(int)to;
--(void)submitMethod;
+
 
 int lcm(int a, int b);
 int gcd(int a, int b);
