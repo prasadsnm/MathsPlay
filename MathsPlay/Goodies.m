@@ -23,11 +23,9 @@
         for (int index=0; index<count; index++)
         {
             UIImageView * giftImaeView =[[UIImageView alloc]initWithFrame:CGRectMake(xvalue, 0, WIDTH, HEIGHT)];
-                giftImaeView.backgroundColor=[UIColor clearColor];
+            giftImaeView.backgroundColor=[UIColor clearColor];
             [self addSubview:giftImaeView];
             [giftImaeView setImage:[UIImage imageNamed:imageName]];
-            
-            NSLog(@"%d",xvalue);
             xvalue=xvalue+WIDTH+5;
         }
 }

@@ -125,13 +125,13 @@
     emitterCell = [CAEmitterCell emitterCell];
     emitterCell.scale = 0.2;
     emitterCell.scaleRange = 0.4;
-    emitterCell.birthRate = 50;
+    emitterCell.birthRate = 15;
     emitterCell.emissionRange = (CGFloat)M_PI;
-    emitterCell.lifetime = 15.0;
+    emitterCell.lifetime = 8.0;
     emitterCell.velocity = 5;
     emitterCell.velocityRange = 150;
     emitterCell.yAcceleration = 9.8;
-    emitterCell.contents = (id)[[UIImage imageNamed:@"drop"] CGImage];
+    emitterCell.contents = (id)[[UIImage imageNamed:@"spark"] CGImage];
     emiterLayer.emitterCells = [NSArray arrayWithObject:emitterCell];
     [self.view.layer addSublayer:emiterLayer];
 

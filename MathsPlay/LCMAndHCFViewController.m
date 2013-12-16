@@ -10,6 +10,7 @@
 #define BACKGROUND_COLOR [UIColor colorWithRed:85/255.0 green:192/255.0 blue:247/255.0 alpha:1]
 #define Y_AXIS_VALUE 300
 #define ANSWER_LOCK @"THE_LOCK"
+#define TOTAL_QUESTION_COUNT 15
 
 
 @interface LCMAndHCFViewController ()
@@ -20,11 +21,10 @@
     UIImageView *tanker;
     BOOL isALligned;
     int currentHighlightedTag;
-    int correctAnswerLabelTag;
-    int scoreCount;
-    
+    int correctAnswerLabelTag,totalGiftObject;    //totalGiftObject is gift earned (1 in 5 correct)
+    int scoreCount,totalQuestionCount;             //
     UIViewController *modal;
-
+    UILabel *resultLabel;
 }
 @property(nonatomic,assign) CGPoint targetCenter;
 
@@ -44,23 +44,57 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    scoreCount=totalQuestionCount=totalGiftObject=0;
+    modal=nil;
     
+    if (modal) {
+        [modal removeFromParentViewController];
+        modal=nil;
+    }
     
     modal=[[UIViewController alloc]init];
-    modal.view.backgroundColor=[UIColor yellowColor];
+    modal.view.backgroundColor=[UIColor colorWithRed:132/255.0 green:240/255.0 blue:88/255.0 alpha:1];
     modal.modalTransitionStyle=UIModalTransitionStyleCrossDissolve;
     modal.modalPresentationStyle=UIModalPresentationFormSheet;
     
-    UILabel *resultLabel=nil;
+    
+    resultLabel=nil;
     resultLabel=[[UILabel alloc]initWithFrame:CGRectMake(140, 200, 300, 200)];
     resultLabel.backgroundColor=[UIColor clearColor];
-    resultLabel.text=[NSString stringWithFormat:@"Game Over\n \nScore : %d",scoreCount+1];
     resultLabel.textColor=[UIColor blackColor];
     resultLabel.font=[UIFont fontWithName:@"Chalkduster" size:40];
     resultLabel.textAlignment=NSTextAlignmentCenter;
     resultLabel.numberOfLines=0;
     [modal.view addSubview:resultLabel];
-        audioToolBox=[[CustomAudioToolBox alloc]init];
+    
+    
+    UIButton *replayButton=[UIButton buttonWithType:UIButtonTypeCustom];
+    replayButton.layer.cornerRadius=15.0;
+    replayButton.tag=2001;
+    replayButton.titleLabel.font=[UIFont fontWithName:@"Chalkduster" size:30];
+    [replayButton setTitle:@"Play Again" forState:UIControlStateNormal];
+    [replayButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [replayButton addTarget:self action:@selector(modalActionMethods:) forControlEvents:UIControlEventTouchUpInside];
+    replayButton.frame=CGRectMake(70 , 500, 200, 80);
+    replayButton.backgroundColor=[UIColor colorWithRed:161/255.0 green:132/255.0  blue:210/255.0  alpha:1];
+    replayButton.showsTouchWhenHighlighted=YES;
+    [modal.view addSubview:replayButton];
+  
+    
+    UIButton *quitButton=[UIButton buttonWithType:UIButtonTypeCustom];
+    quitButton.layer.cornerRadius=15.0;
+    quitButton.tag=2002;
+    quitButton.titleLabel.font=[UIFont fontWithName:@"Chalkduster" size:30];
+    [quitButton setTitle:@"Quit" forState:UIControlStateNormal];
+    [quitButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [quitButton addTarget:self action:@selector(modalActionMethods:) forControlEvents:UIControlEventTouchUpInside];
+    quitButton.frame=CGRectMake(300 , 500, 200, 80);
+    quitButton.backgroundColor=[UIColor redColor];
+    quitButton.showsTouchWhenHighlighted=YES;
+    [modal.view addSubview:quitButton];
+    
+    
+    audioToolBox=[[CustomAudioToolBox alloc]init];
     currentHighlightedTag=12345;
     correctAnswerLabelTag=12346;
     self.view.tag=1111;
@@ -101,29 +135,42 @@
     _targetCenter=CGPointMake(tanker.center.x, 0);
     
     
-    
-    
     panGestureRecognizer=[[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(handlePan:)];
     [tanker addGestureRecognizer:panGestureRecognizer];
     
     tapGestureRecognizer=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(handleTap:)];
     tapGestureRecognizer.numberOfTapsRequired=1;
     [tanker addGestureRecognizer:tapGestureRecognizer];
-
+    
     [self start];
     [self startEmmitter];
-    
-    
-   
-    
-    
-    
+  
 }
 
 
 - (void) dismissInstructionScreen:(UITapGestureRecognizer *)recognize
 {
     [recognize.view removeFromSuperview];
+}
+
+-(void)modalActionMethods:(UIButton *)sender
+{
+    [self dismissResultModalFromMainView];
+    if (sender.tag==2001) {
+        for (UIView *view in self.view.subviews) {              //remove all view from self.view
+            [view removeFromSuperview];
+        }
+        [self viewDidLoad];
+    }
+    else
+    {
+        [self.navigationController popToRootViewControllerAnimated:YES];  //beacuse root is Home View
+    }
+}
+
+-(void)dismissResultModalFromMainView
+{
+    [modal dismissModalViewControllerAnimated:YES];
 }
 
 -(void)refreshGiftWithCount:(int)count
@@ -139,13 +186,10 @@
     [self.view addSubview:goodies];
 }
 
-
 -(void)start
 {
     [self makeDisplayGrid];
 }
-
-
 
 -(void)submitMethod
 {
@@ -170,8 +214,6 @@
     }
 }
 
-
-
 // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
 
 - (int)getRandomNumber:(int)from to:(int)to
@@ -189,6 +231,7 @@
 
 -(NSArray *)refreshQuestion
 {
+    totalQuestionCount++;
     int firstRandom=[self getRandomNumber:1 to:10];
     int secondRandom=[self getRandomNumber:1 to:10];
     answer=0;
@@ -269,9 +312,9 @@ int lcm(int a, int b)
     NSArray *arrayWithResult=[self refreshQuestion];
     // 4444 for missile
     for (UIView *view in [self.view subviews]) {
-       if ([view isKindOfClass:[UIImageView class]]&& view.tag==4444) {
-          [view removeFromSuperview];
-       }
+        if ([view isKindOfClass:[UIImageView class]]&& view.tag==4444) {
+            [view removeFromSuperview];
+        }
         
         if (view.tag==1 && view.tag==2 &&view.tag==3 &&view.tag==4)  {
             [view removeFromSuperview];
@@ -294,20 +337,17 @@ int lcm(int a, int b)
         label.textAlignment=NSTextAlignmentCenter;
         label.text=[NSString stringWithFormat:@"%@",[arrayWithResult objectAtIndex:count]];
         if ([[arrayWithResult objectAtIndex:count] intValue]==answer) {
-                    correctAnswerLabelTag=label.tag;
+            correctAnswerLabelTag=label.tag;
         }
         xValue=xValue+width+50;
         [self.view addSubview:label];
     }
-  //  [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(refreshDisplayGrid) userInfo:nil repeats:YES];
-
 }
 
 
 
 -(void)refreshDisplayGrid
 {
-    
     for (UIView *view in [self.view subviews]) {
         if ([view isKindOfClass:[UIImageView class]]&& view.tag==4444) {
             [view removeFromSuperview];
@@ -324,7 +364,7 @@ int lcm(int a, int b)
             [options setText:[NSString stringWithFormat:@"%@",[arrayWithResult objectAtIndex:index++]]];
         }
     }
-
+    
 }
 
 
@@ -398,6 +438,7 @@ int lcm(int a, int b)
     }
     
 }
+
 - (void)handleTap:(UITapGestureRecognizer *)recognizer {
     recognizer.enabled=NO;
     recognizer.view.transform = CGAffineTransformIdentity;
@@ -433,8 +474,11 @@ int lcm(int a, int b)
             
             
             if (correctAnswerLabelTag==currentHighlightedTag ) {
+                ++scoreCount;
+                if (scoreCount%5==0) {
+                    [self refreshGiftWithCount:++totalGiftObject];
+                }
                 [audioToolBox playSound:@"powerup" withExtension:@"caf"];
-                [self refreshGiftWithCount:++scoreCount];
                 [lazerImageView setImage:[UIImage imageNamed:@"thumbs-up"]];
                 
             }
@@ -450,10 +494,19 @@ int lcm(int a, int b)
         }completion:^(BOOL finished) {
             
             
-            if (scoreCount>0) {
-                [self presentViewController:modal animated:YES completion:NULL];
+            if (totalQuestionCount>=TOTAL_QUESTION_COUNT) {
+            [self presentViewController:modal animated:YES completion:NULL];
+                modal.view.bounds=modal.view.superview.bounds;
+                modal.view.superview.layer.cornerRadius    = 15.0f;
+                modal.view.superview.clipsToBounds         = YES;
+        
+                goodies=[[Goodies alloc]initWithFrame:CGRectZero Count:totalGiftObject giftimage:@"gift-box"];
+                goodies.tag=6666;
+                goodies.center=modal.view.center;
+                [modal.view addSubview:goodies];
+                [resultLabel setText:[NSString stringWithFormat:@"Game Over\n \nScore : %d",scoreCount]];
+
             }
-            
             [self refreshDisplayGrid];
             recognizer.enabled=YES;
             
@@ -477,13 +530,22 @@ int lcm(int a, int b)
 
 -(void)startEmmitter
 {
+    
+    for (CALayer *layer in self.view.layer.sublayers) {
+        if (layer.class == [CAEmitterLayer class]) {
+            [layer removeFromSuperlayer];
+            break;
+        }
+        
+    }
+    
     CAEmitterLayer *emiterLayer=[CAEmitterLayer layer];
     emiterLayer.emitterPosition =CGPointMake(self.view.center.x, 0);
     //CGPointMake(self.view.bounds.size.width/2,self.view.bounds.origin.y);
     emiterLayer.emitterZPosition=10;
     emiterLayer.emitterSize=CGSizeMake(self.view.bounds.size.width, 0);
     emiterLayer.emitterShape = kCAEmitterLayerSphere;
-  
+    
     CAEmitterCell * emitterCell = [CAEmitterCell emitterCell];
     emitterCell.scale = 0.2;
     emitterCell.scaleRange = 0.2;
@@ -496,7 +558,6 @@ int lcm(int a, int b)
     emitterCell.contents = (id)[[UIImage imageNamed:@"spark"] CGImage];
     emiterLayer.emitterCells = [NSArray arrayWithObject:emitterCell];
     [self.view.layer addSublayer:emiterLayer];
-    
 }
 
 - (void)viewDidUnload {
