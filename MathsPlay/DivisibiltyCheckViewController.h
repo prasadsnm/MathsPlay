@@ -9,9 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 #import <AVFoundation/AVFoundation.h>
+#import "Goodies.h"
 
 #import "CustomModalBox.h"
-#import "GiftView.h"
 
 @interface DivisibiltyCheckViewController : UIViewController<ModalDelegate>
 {
@@ -21,7 +21,8 @@
     UIImageView *ant;
     CustomModalBox *modal;
     UILabel *builiding;
-    GiftView *giftView;
+    UIButton *helpButton;
+
 }
 -(void)winMusicStart;
 -(void)displayQuestion;

@@ -13,7 +13,8 @@
 
 @interface GeometricGrowthViewController : UIViewController<CountDownTimerDelegate>
 {
-    UIButton *firstOptionButton,*secondOptionButton,*thirdOptionButton,*fourthOptionButton;
+    UIButton *firstOptionButton,*secondOptionButton,*thirdOptionButton,*fourthOptionButton,*helpButton;
+;
 }
 -(void)TimeUp;
 -(void)startMethod;

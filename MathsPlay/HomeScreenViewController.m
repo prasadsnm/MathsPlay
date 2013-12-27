@@ -24,6 +24,7 @@
 #import "DivisibiltyCheckViewController.h"
 #import "GeometricGrowthViewController.h"
 #import "LCMAndHCFViewController.h"
+#import "SquareRootQuizViewController.h"
 
 @interface HomeScreenViewController ()
 {
@@ -891,7 +892,7 @@
         [self storeToPlist];
         
         CarRaceViewController *advanceCarRaceController;
-        SquareRootViewController *classFiveAddition;
+        SquareRootViewController *squareRootQuiz;
         DivisibiltyCheckViewController *divisibilityCheckController;
         GeometricGrowthViewController *geometricGrowthViewController;
         LCMAndHCFViewController *lcmAndHcfViewController;
@@ -899,10 +900,9 @@
         switch (button.tag)
         {
             case 501: //class 5 square root
-                classFiveAddition = nil;
-                classFiveAddition=[[SquareRootViewController alloc]init];
-                [self.navigationController pushViewController:classFiveAddition animated:YES];
-               
+                squareRootQuiz = nil;
+                squareRootQuiz=[[SquareRootViewController alloc]init];
+                [self.navigationController pushViewController:squareRootQuiz animated:NO];
                 break;
                 
             case 502: //class 5 divisibility

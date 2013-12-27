@@ -27,6 +27,7 @@
     UIPanGestureRecognizer *panGestureRecognizer;
     CustomAudioToolBox *audioToolBox;
     Goodies *goodies;
+    UIButton *helpButton;
     
 }
 

@@ -13,7 +13,7 @@
 {
     int correctCount;
     int incorrectCount;
-    UILabel *sqrtLabel;
+    UILabel *sqrtLabel,*equalTolabel;
     UITextField *answer;
     UILabel *correctCountLabel;
     UILabel *incorrectCountLabel;
@@ -24,6 +24,8 @@
     UIImageView *moodImage;
     NSArray *questionArray;
     int Counter;
+    UIButton *helpButton;
+
 }
 -(int)getRandomPerfectSquare;
 -(void)showQuestion;

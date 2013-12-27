@@ -7,7 +7,6 @@
 //
 
 #import "LCMAndHCFViewController.h"
-#define BACKGROUND_COLOR [UIColor colorWithRed:85/255.0 green:192/255.0 blue:247/255.0 alpha:1]
 #define Y_AXIS_VALUE 300
 #define ANSWER_LOCK @"THE_LOCK"
 #define TOTAL_QUESTION_COUNT 15
@@ -44,6 +43,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     scoreCount=totalQuestionCount=totalGiftObject=0;
     modal=nil;
     
@@ -56,6 +56,24 @@
     modal.view.backgroundColor=[UIColor colorWithRed:132/255.0 green:240/255.0 blue:88/255.0 alpha:1];
     modal.modalTransitionStyle=UIModalTransitionStyleCrossDissolve;
     modal.modalPresentationStyle=UIModalPresentationFormSheet;
+    
+    
+    helpButton=[UIButton buttonWithType:UIButtonTypeCustom];
+    [helpButton setImage:[UIImage imageNamed:@"rules"] forState:UIControlStateNormal];
+    helpButton.tag=100011;
+    [helpButton addTarget:self action:@selector(modalActionMethods:) forControlEvents:UIControlEventTouchUpInside];
+    helpButton.frame=CGRectMake(self.view.frame.size.width-200 , 50, 200, 80);
+    helpButton.showsTouchWhenHighlighted=YES;
+    [self.view addSubview:helpButton];
+  
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     resultLabel=nil;
@@ -76,10 +94,10 @@
     [replayButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [replayButton addTarget:self action:@selector(modalActionMethods:) forControlEvents:UIControlEventTouchUpInside];
     replayButton.frame=CGRectMake(70 , 500, 200, 80);
-    replayButton.backgroundColor=[UIColor colorWithRed:161/255.0 green:132/255.0  blue:210/255.0  alpha:1];
+    replayButton.backgroundColor=[UIColor yellowColor];
     replayButton.showsTouchWhenHighlighted=YES;
     [modal.view addSubview:replayButton];
-  
+    
     
     UIButton *quitButton=[UIButton buttonWithType:UIButtonTypeCustom];
     quitButton.layer.cornerRadius=15.0;
@@ -113,8 +131,14 @@
     [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor greenColor], UITextAttributeTextColor,nil] forState:UIControlStateNormal];
     
     
+    
     selectedAnswer=0;
-    self.view.backgroundColor=BACKGROUND_COLOR;
+    
+    UIGraphicsBeginImageContext(self.view.frame.size);
+    [[UIImage imageNamed:@"sky"] drawInRect:self.view.bounds];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    self.view.backgroundColor = [UIColor colorWithPatternImage:image];
     
     questionLabel=nil;
     questionLabel=[[UILabel alloc]initWithFrame:CGRectMake(84, 50, 600, 200)];
@@ -123,12 +147,12 @@
     questionLabel.numberOfLines=0;
     questionLabel.textAlignment=NSTextAlignmentCenter;
     questionLabel.font = FONT;
+    questionLabel.textColor=[UIColor whiteColor];
     [self.view addSubview:questionLabel];
-    //[self refreshQuestion];
     
     tanker=nil;
-    tanker=[[UIImageView alloc]initWithFrame:CGRectMake(self.view.frame.size.width/3, self.view.frame.size.height-200, 200, 100)];
-    tanker.image=[UIImage imageNamed:@"fighter"];
+    tanker=[[UIImageView alloc]initWithFrame:CGRectMake(self.view.frame.size.width/3, self.view.frame.size.height-200, 150, 132)];
+    tanker.image=[UIImage imageNamed:@"fighter-3"];
     tanker.userInteractionEnabled=YES;
     tanker.tag=1007;
     [self.view addSubview:tanker];
@@ -144,7 +168,7 @@
     
     [self start];
     [self startEmmitter];
-  
+    
 }
 
 
@@ -307,6 +331,9 @@ int lcm(int a, int b)
 
 #pragma mark Diplay options
 
+
+
+
 -(void)makeDisplayGrid
 {
     NSArray *arrayWithResult=[self refreshQuestion];
@@ -328,10 +355,13 @@ int lcm(int a, int b)
     for (int count=0; count<[arrayWithResult count]; count++) {
         UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(xValue, yValue, width, height)];
         label.tag=count+1;
+        label.opaque=YES;
         label.layer.cornerRadius=50.0;
         label.layer.borderWidth=1.0;
         
-        label.backgroundColor=[UIColor colorWithRed:59/255.0 green:0/255.0 blue:133/255.0 alpha:1.0];
+        [label setBackgroundColor:[UIColor colorWithRed:59/255.0 green:0/255.0 blue:133/255.0 alpha:1.0]];
+        
+        
         label.font=[UIFont fontWithName:@"Marker Felt" size:30];
         label.textColor=[UIColor whiteColor];
         label.textAlignment=NSTextAlignmentCenter;
@@ -376,9 +406,7 @@ int lcm(int a, int b)
 
 - (void)handlePan:(UIPanGestureRecognizer *)recognizer {
     [self handleMovementView:recognizer];
-    
-    
-    for (UIView *optionLabel in self.view.subviews)
+        for (UIView *optionLabel in self.view.subviews)
     {
         if ([optionLabel isKindOfClass:[UILabel class]]&& optionLabel.tag>0 && optionLabel.tag<5) {
             if (recognizer.view.center.x >= optionLabel.center.x-49 && recognizer.view.center.x <= optionLabel.center.x+49 )
@@ -463,7 +491,6 @@ int lcm(int a, int b)
         // [lazerImageView setCenter:_targetCenter];
         [audioToolBox playSound:@"lazer_ship" withExtension:@"caf"];
         
-        NSLog(@"target point ===%f %f ",_targetCenter.x,_targetCenter.y);
     } completion:^(BOOL finished) {
         
         [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
@@ -495,17 +522,19 @@ int lcm(int a, int b)
             
             
             if (totalQuestionCount>=TOTAL_QUESTION_COUNT) {
-            [self presentViewController:modal animated:YES completion:NULL];
+                [self presentViewController:modal animated:YES completion:NULL];
                 modal.view.bounds=modal.view.superview.bounds;
                 modal.view.superview.layer.cornerRadius    = 15.0f;
                 modal.view.superview.clipsToBounds         = YES;
-        
+                
                 goodies=[[Goodies alloc]initWithFrame:CGRectZero Count:totalGiftObject giftimage:@"gift-box"];
                 goodies.tag=6666;
                 goodies.center=modal.view.center;
                 [modal.view addSubview:goodies];
-                [resultLabel setText:[NSString stringWithFormat:@"Game Over\n \nScore : %d",scoreCount]];
-
+                [self centerButtonAnimation:goodies];
+                [resultLabel setText:[NSString stringWithFormat:@"Game Over\n \nScore : %d",scoreCount]
+                 ];
+                
             }
             [self refreshDisplayGrid];
             recognizer.enabled=YES;
@@ -549,7 +578,7 @@ int lcm(int a, int b)
     CAEmitterCell * emitterCell = [CAEmitterCell emitterCell];
     emitterCell.scale = 0.2;
     emitterCell.scaleRange = 0.2;
-    emitterCell.birthRate = 40;
+    emitterCell.birthRate = 20;
     emitterCell.emissionRange = 269.0;
     emitterCell.lifetime = 8.0;
     emitterCell.velocity = 5;
@@ -559,7 +588,13 @@ int lcm(int a, int b)
     emiterLayer.emitterCells = [NSArray arrayWithObject:emitterCell];
     [self.view.layer addSublayer:emiterLayer];
 }
-
+- (void)centerButtonAnimation:(UIView *)view{
+    CAKeyframeAnimation *centerZoom = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
+    centerZoom.duration = 1.0f;
+    centerZoom.values = @[[NSValue valueWithCATransform3D:CATransform3DMakeScale(1, 1, 1)],[NSValue valueWithCATransform3D:CATransform3DMakeScale(1.5, 1.5, 1)],[NSValue valueWithCATransform3D:CATransform3DMakeScale(1, 1, 1)],[NSValue valueWithCATransform3D:CATransform3DMakeScale(1.2, 1.2, 1)],[NSValue valueWithCATransform3D:CATransform3DMakeScale(1, 1, 1)]];
+    centerZoom.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
+    [view.layer addAnimation:centerZoom forKey:@"buttonScale"];
+}
 - (void)viewDidUnload {
     [audioToolBox dispose];
 }

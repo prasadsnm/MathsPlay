@@ -27,6 +27,8 @@
     
     // variables to check which car came first, second, third
     NSInteger firstCar, secondCar, myCar;
+    UIButton *helpButton;
+
 }
 - (void)goButtonClicked:(UIButton *)btn ;
 - (void)backButtonPressed;

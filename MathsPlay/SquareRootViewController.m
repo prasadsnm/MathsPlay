@@ -38,37 +38,45 @@
     questionArray=[[self getTenRandomLessThan:complexity] mutableCopy];
     self.navigationController.navigationBar.titleTextAttributes = @{UITextAttributeTextColor : [UIColor whiteColor]}; // to change the color of navigation bar title to white color.
 
-    UIView *lightBackgroundView=[[UIView alloc]initWithFrame:CGRectMake(50, 150,self.view.frame.size.width-100, 250)];
-    lightBackgroundView.layer.cornerRadius=20.0;
-    lightBackgroundView.backgroundColor= [UIColor colorWithRed:65/255.0 green:105/255.0 blue:225/255.0 alpha:1.0];
+    UIView *lightBackgroundView=[[UIView alloc]initWithFrame:CGRectMake(120, 150,550, 550)];
+    lightBackgroundView.layer.cornerRadius=275.0;
+    lightBackgroundView.layer.borderWidth=2.0;
+    lightBackgroundView.layer.borderColor=[UIColor blackColor].CGColor;
+    lightBackgroundView.backgroundColor=[UIColor colorWithRed:195.0/255.0 green:0.0/255.0 blue:99.0/255.0 alpha:1.0];
     lightBackgroundView.alpha=1;
     [self.view addSubview:lightBackgroundView];
-    
-
-    
-    
-    
+        
     if (sqrtLabel) {
         sqrtLabel=nil;
     }
-    sqrtLabel=[[UILabel alloc]initWithFrame:CGRectMake(80, 200, 350, 150)];
+    sqrtLabel=[[UILabel alloc]initWithFrame:CGRectMake(80, 180, 170, 170)];
     sqrtLabel.backgroundColor=[UIColor clearColor];
-    sqrtLabel.layer.cornerRadius=10.0;
-    
-    sqrtLabel.font=[UIFont boldSystemFontOfSize:90];
-    sqrtLabel.textColor=[UIColor whiteColor];
+    sqrtLabel.layer.cornerRadius=85.0;
+    sqrtLabel.font=[UIFont boldSystemFontOfSize:70];
+    sqrtLabel.backgroundColor=[UIColor whiteColor];
+    sqrtLabel.textColor=[UIColor blackColor];
     sqrtLabel.text=@"";
-    [self.view addSubview:sqrtLabel];
+    sqrtLabel.textAlignment=NSTextAlignmentCenter;
+    [lightBackgroundView addSubview:sqrtLabel];
 
     
-    
+    equalTolabel=[[UILabel alloc]initWithFrame:CGRectMake(255, 180, 50, 170)];
+    equalTolabel.backgroundColor=[UIColor clearColor];
+   // equalTolabel.layer.cornerRadius=85.0;
+    equalTolabel.font=[UIFont boldSystemFontOfSize:70];
+    equalTolabel.backgroundColor=[UIColor clearColor];
+    equalTolabel.textColor=[UIColor whiteColor];
+    equalTolabel.text=@"=";
+    equalTolabel.textAlignment=NSTextAlignmentCenter;
+    [lightBackgroundView addSubview:equalTolabel];
+
     
     
     
     
     
     UIGraphicsBeginImageContext(self.view.frame.size);
-    [[UIImage imageNamed:@"dice"] drawInRect:self.view.bounds];
+    [[UIImage imageNamed:@"sqrt-frame"] drawInRect:self.view.bounds];
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     self.view.backgroundColor = [UIColor colorWithPatternImage:image];
@@ -85,18 +93,18 @@
         [answer removeFromSuperview];
         answer=nil;
     }
-    answer=[[UITextField alloc]initWithFrame:CGRectMake(370, 200, 170,150)];
+    answer=[[UITextField alloc]initWithFrame:CGRectMake(330, 180, 170,170)];
     answer.delegate=self;
     answer.keyboardType=UIKeyboardTypeNumberPad;
-    answer.font=[UIFont boldSystemFontOfSize:90];
+    answer.font=[UIFont boldSystemFontOfSize:70];
     answer.placeholder=@"?";
-    answer.borderStyle=UITextBorderStyleRoundedRect;
+    answer.layer.cornerRadius=85.0;
     answer.backgroundColor=[UIColor whiteColor];
     answer.textAlignment=NSTextAlignmentCenter;
     answer.textColor=[UIColor colorWithRed:65/255.0 green:105/255.0 blue:225/255.0 alpha:1.0];
     answer.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     [answer becomeFirstResponder];
-    [self.view addSubview:answer];
+    [lightBackgroundView addSubview:answer];
     
     UIButton *submitButton=[UIButton buttonWithType:UIButtonTypeCustom];
     submitButton.layer.cornerRadius=10.0;
@@ -104,10 +112,10 @@
     [submitButton setTitle:@"Check Result" forState:UIControlStateNormal];
     [submitButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [submitButton addTarget:self action:@selector(submitClicked:) forControlEvents:UIControlEventTouchUpInside];
-    submitButton.frame=CGRectMake(550, 230, 150, 100);
+    submitButton.frame=CGRectMake(190, 400, 150, 70);
     submitButton.backgroundColor=[UIColor yellowColor];
     submitButton.showsTouchWhenHighlighted=YES;
-    [self.view addSubview:submitButton];
+    [lightBackgroundView addSubview:submitButton];
     //Custom modal to show question.
     _modal=nil;
     _modal=[[CustomModalBox alloc]initWithFrame:CGRectMake(0, 0, 400, 300)];
@@ -135,7 +143,7 @@
 
 -(void)submitClicked:(UIButton *)sender
 {
-    sender.userInteractionEnabled=NO;
+    //sender.userInteractionEnabled=NO;
     if (answer.text.length>0) {
         NSString* question =[[[sqrtLabel.text substringFromIndex:1] componentsSeparatedByString:@"="] objectAtIndex:0];
         if ([answer.text intValue]==sqrtf([question intValue]))
@@ -190,7 +198,7 @@
                     [self showResult];
                 }
             }];
-            sender.userInteractionEnabled=YES;
+           // sender.userInteractionEnabled=YES;
             ;
         }
     }
@@ -207,8 +215,6 @@
         [moodImage setHidden:YES];
         [_modal setQuestion:[NSString stringWithFormat:@"Game Completed \nResult \n %.2f %@",[self calculatePercentage:correctCount total:correctCount+incorrectCount],@"%"]];
         [_modal show];
-       
-
     } completion:^(BOOL finished) {
         sleep(3);
         [self.navigationController popViewControllerAnimated:YES];
@@ -219,7 +225,7 @@
 -(void)showQuestion
 {
     int  random=[[questionArray objectAtIndex:Counter++] intValue];
-    [sqrtLabel setText:[NSString stringWithFormat:@"√%i =",random]];
+    [sqrtLabel setText:[NSString stringWithFormat:@"√%i",random]];
 }
 - (int)getRandomNumber:(int)from to:(int)to
 {

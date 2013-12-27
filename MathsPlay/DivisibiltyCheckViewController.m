@@ -12,6 +12,7 @@
 {
     int correctCount;
     int giftCount;
+    int totalGiftObject;
 
 }
 @end
@@ -31,6 +32,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    totalGiftObject=0;
     SET_USERNAME_AS_TITLE
     if (NSFoundationVersionNumber <= NSFoundationVersionNumber_iOS_6_1) {
         self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:65/255.0 green:105/255.0 blue:225/255.0 alpha:1.0];
@@ -94,15 +96,6 @@
     background.image=[UIImage imageNamed:@"background"];
     [background setContentMode:UIViewContentModeScaleToFill];
     [self.view addSubview:background];
-    
-    if (giftView) {
-        giftView=nil;
-    }
-    giftView=[[GiftView alloc]initWithFrame:CGRectMake(self.view.frame.size.width-100, 10, 50, 30)];
-    [giftView setGiftImage:[UIImage imageNamed:@"gift-box"]];
-    [giftView setGiftCount:@"0"];
-    [background addSubview:giftView];
-    
     
     [self displayQuestion];
     
@@ -181,7 +174,8 @@
     correctCount++;
     
     if (correctCount % 5==0) {
-        [giftView setGiftCount:[NSString stringWithFormat:@"%d",++giftCount]];
+            [self refreshGiftWithCount:++totalGiftObject];
+        
     }
     
     if (!(ant.frame.origin.y<=0))  //relative coordinate (0 means end of y axis)
@@ -286,6 +280,22 @@
 
 
 }
+
+
+
+-(void)refreshGiftWithCount:(int)count
+{
+    for (Goodies *gift in self.view.subviews) {
+        if ([gift isKindOfClass:[Goodies class]] && gift.tag==5555) {
+            [gift removeFromSuperview];
+        }
+    }
+    
+    Goodies  *goodies=[[Goodies alloc]initWithFrame:CGRectZero Count:count giftimage:@"gift-box"];
+    goodies.tag=5555;
+    [self.view addSubview:goodies];
+}
+
 
 - (void)didReceiveMemoryWarning
 {
