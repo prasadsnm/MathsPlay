@@ -51,7 +51,6 @@
         [modal removeFromParentViewController];
         modal=nil;
     }
-    
     modal=[[UIViewController alloc]init];
     modal.view.backgroundColor=[UIColor colorWithRed:132/255.0 green:240/255.0 blue:88/255.0 alpha:1];
     modal.modalTransitionStyle=UIModalTransitionStyleCrossDissolve;
@@ -61,20 +60,10 @@
     helpButton=[UIButton buttonWithType:UIButtonTypeCustom];
     [helpButton setImage:[UIImage imageNamed:@"rules"] forState:UIControlStateNormal];
     helpButton.tag=100011;
-    [helpButton addTarget:self action:@selector(modalActionMethods:) forControlEvents:UIControlEventTouchUpInside];
+    [helpButton addTarget:self action:@selector(buttonActionMethod:) forControlEvents:UIControlEventTouchUpInside];
     helpButton.frame=CGRectMake(self.view.frame.size.width-200 , 50, 200, 80);
     helpButton.showsTouchWhenHighlighted=YES;
     [self.view addSubview:helpButton];
-  
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     resultLabel=nil;
     resultLabel=[[UILabel alloc]initWithFrame:CGRectMake(140, 200, 300, 200)];
@@ -129,9 +118,6 @@
     self.navigationController.navigationBar.titleTextAttributes = @{UITextAttributeTextColor : [UIColor whiteColor]};
     // set  button color
     [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor greenColor], UITextAttributeTextColor,nil] forState:UIControlStateNormal];
-    
-    
-    
     selectedAnswer=0;
     
     UIGraphicsBeginImageContext(self.view.frame.size);
@@ -559,7 +545,6 @@ int lcm(int a, int b)
 
 -(void)startEmmitter
 {
-    
     for (CALayer *layer in self.view.layer.sublayers) {
         if (layer.class == [CAEmitterLayer class]) {
             [layer removeFromSuperlayer];
@@ -567,7 +552,6 @@ int lcm(int a, int b)
         }
         
     }
-    
     CAEmitterLayer *emiterLayer=[CAEmitterLayer layer];
     emiterLayer.emitterPosition =CGPointMake(self.view.center.x, 0);
     //CGPointMake(self.view.bounds.size.width/2,self.view.bounds.origin.y);
@@ -595,8 +579,36 @@ int lcm(int a, int b)
     centerZoom.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
     [view.layer addAnimation:centerZoom forKey:@"buttonScale"];
 }
+-(void)buttonActionMethod:(UIButton *)sender
+{
+    UIViewController *modalForRules=[[UIViewController alloc]init];
+    modalForRules.view.backgroundColor=[UIColor colorWithRed:132/255.0 green:240/255.0 blue:88/255.0 alpha:1];
+    modalForRules.modalTransitionStyle=UIModalTransitionStyleCrossDissolve;
+    modalForRules.modalPresentationStyle=UIModalPresentationFormSheet;
+    [self presentViewController:modalForRules animated:YES completion:NULL];
+    
+    UITapGestureRecognizer *tapEvent=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(handleTapOnModal:)];
+    [modalForRules.view addGestureRecognizer:tapEvent];
+
+    
+    UILabel *instructionLabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 0, modalForRules.view.frame.size.width-30, modalForRules.view.frame.size.height)];
+    instructionLabel.numberOfLines=0;
+    instructionLabel.backgroundColor=[UIColor clearColor];
+    instructionLabel.textAlignment=NSTextAlignmentLeft;
+    instructionLabel.font=[UIFont systemFontOfSize:30];
+    instructionLabel.text=@"\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tRules \n\n\t\ta) Allingn the aircfart to the right answer and then tap to fire on correct answer.\n\n\t\tb) If the answer is correct Thumbs up & thumbs down  is dispalyed and if wrong answer.\n\n\t\tc)For every 5 correct answer you get a goodies.";
+    [modalForRules.view addSubview:instructionLabel];
+}
+
+
+-(void)handleTapOnModal:(UITapGestureRecognizer *)recognizer
+{
+    [self dismissModalViewControllerAnimated:YES];
+}
+
 - (void)viewDidUnload {
     [audioToolBox dispose];
 }
+
 
 @end
