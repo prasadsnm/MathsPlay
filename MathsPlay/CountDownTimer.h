@@ -19,9 +19,9 @@ NSTimer *timer;
 @property(nonatomic,strong)UILabel *myCounterLabel;
 @property(unsafe_unretained,assign)id<CountDownTimerDelegate>delegate;
 -(void)updateCounter:(NSTimer *)theTimer;
-//-(void)countdownTimer;
+-(void)resume;
 -(void)start;
-//-(void)reset;
+-(void)pause;
 -(void)stop;
 -(void)setMaxSecond:(double)sec;
 @end

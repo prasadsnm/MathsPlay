@@ -76,41 +76,49 @@
     [shadow addSubview:infoLabel];
     [self startMethod];
     
-  /*  UIButton *letsPlaybutton=[UIButton buttonWithType:UIButtonTypeCustom];
-    letsPlaybutton.frame=CGRectMake(0, 0, 130, 60) ;
-    letsPlaybutton.center=shadow.center;
-    letsPlaybutton.backgroundColor=[UIColor redColor];
-    letsPlaybutton.layer.cornerRadius=1.0;
-    letsPlaybutton.layer.borderWidth=2.0;
-    letsPlaybutton.layer.borderColor=[UIColor redColor].CGColor;
-    letsPlaybutton.showsTouchWhenHighlighted=YES;
-    [letsPlaybutton setTitle:@"Lets Go >>" forState:UIControlStateNormal];
-    [letsPlaybutton addTarget:self action:@selector(startMethod) forControlEvents:UIControlEventTouchUpInside];
-    [shadow addSubview:letsPlaybutton];
-    [self.view addSubview:shadow];*/
+    helpButton=[UIButton buttonWithType:UIButtonTypeCustom];
+    [helpButton setImage:[UIImage imageNamed:@"rules"] forState:UIControlStateNormal];
+    helpButton.tag=100011;
+    [helpButton addTarget:self action:@selector(buttonActionMethod:) forControlEvents:UIControlEventTouchUpInside];
+    helpButton.frame=CGRectMake(self.view.frame.size.width-160 , 10, 150, 80);
+    helpButton.showsTouchWhenHighlighted=YES;
+    [self.view addSubview:helpButton];
+    
+ }
+
+-(void)buttonActionMethod:(UIButton *)sender
+{
+    [timer pause];
+    UIViewController *modalForRules=[[UIViewController alloc]init];
+    modalForRules.view.backgroundColor=[UIColor colorWithRed:132/255.0 green:240/255.0 blue:88/255.0 alpha:1];
+    modalForRules.modalTransitionStyle=UIModalTransitionStyleCrossDissolve;
+    modalForRules.modalPresentationStyle=UIModalPresentationFormSheet;
+    [self presentViewController:modalForRules animated:YES completion:NULL];
+    UITapGestureRecognizer *tapEvent=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(handleTapOnModal:)];
+    [modalForRules.view addGestureRecognizer:tapEvent];
+    UILabel *instructionLabelTitle=[[UILabel alloc]initWithFrame:CGRectMake(10, 25,modalForRules.view.frame.size.width-30, 50)];
+    instructionLabelTitle.numberOfLines=1;
+    instructionLabelTitle.backgroundColor=[UIColor clearColor];
+    instructionLabelTitle.textAlignment=NSTextAlignmentCenter;
+    instructionLabelTitle.font=[UIFont fontWithName:RULES_FONT_NAME size:35];
+    instructionLabelTitle.text=@"Rules";
+    [modalForRules.view addSubview:instructionLabelTitle];
     
     
-    
-//    modalForAnswerStatus=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 300, 200)];
-//    modalForAnswerStatus.tag=222;
-//    answerStatusText=[[UILabel alloc]initWithFrame:CGRectMake(0, 70, modalForAnswerStatus.frame.size.width, 50)];
-//    answerStatusText.textAlignment=NSTextAlignmentCenter;
-//    answerStatusText.numberOfLines=0;
-//    answerStatusText.textColor=[UIColor colorWithRed:230/255.0 green:230/255.0  blue:230/255.0  alpha:1];
-//    answerStatusText.font=[UIFont fontWithName:@"Futura" size:18];
-//    answerStatusText.backgroundColor=[UIColor clearColor];
-//    modalForAnswerStatus.center=CGPointMake(self.view.center.x-30, self.view.center.y+160);
-//    [modalForAnswerStatus addSubview:answerStatusText];
-//    modalForAnswerStatus.backgroundColor=[UIColor colorWithRed:57/255.0 green:57/255.0  blue:57/255.0  alpha:1];
-//    modalForAnswerStatus.layer.cornerRadius=30.0f;
-//    modalForAnswerStatus.layer.borderWidth=5.0;
-//    modalForAnswerStatus.layer.borderColor=[UIColor colorWithRed:204/255.0 green:204/255.0  blue:204/255.0  alpha:1].CGColor;
-//    [self.view addSubview:modalForAnswerStatus];
-//    modalForAnswerStatus.alpha=0;
+    UILabel *instructionLabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 80, modalForRules.view.frame.size.width-30, modalForRules.view.frame.size.height-100)];
+    instructionLabel.numberOfLines=0;
+    instructionLabel.backgroundColor=[UIColor clearColor];
+    instructionLabel.textAlignment=NSTextAlignmentLeft;
+    instructionLabel.font=[UIFont fontWithName:RULES_FONT_NAME size:30];
+    instructionLabel.text=@"\t\ta)Choose the missing number in the series(balls).\n\n\t\tb)Status of answer is shown in screen.\n\n\t\tc)Try as many question in given time, the result will be shown after time finishes.\n\n \t\t\t[ Note:Tap to dismiss. ]";
+    [modalForRules.view addSubview:instructionLabel];
 }
 
-
-
+-(void)handleTapOnModal:(UITapGestureRecognizer *)recognizer
+{
+    [timer resume];
+    [self dismissModalViewControllerAnimated:YES];
+}
 -(void)startEmmitter
 {
     CAEmitterLayer *emiterLayer=[CAEmitterLayer layer];
@@ -141,7 +149,7 @@
     [self performSelector:@selector(startEmmitter) withObject:nil afterDelay:2.0 ];
     [self refreshQuestion];
     timer=nil;
-    timer=[[CountDownTimer alloc]initWithFrame:CGRectMake(625, 20, 120
+    timer=[[CountDownTimer alloc]initWithFrame:CGRectMake(625, 220, 120
                                                           , 44)];
     timer.tag=111;
     timer.backgroundColor=[UIColor clearColor];
@@ -231,7 +239,7 @@
 -(void)refreshQuestion
 {
     for (UIView *view in [self.view subviews]) {
-        if (view.tag!=111 && view.tag!=222 &&view.tag!=1010 &&view.tag!=333 &&view.tag!=444) {
+        if (view.tag!=111 && view.tag!=222 &&view.tag!=1010 &&view.tag!=333 &&view.tag!=444 &&view.tag!=100011) {
             [view removeFromSuperview];
         }
     }

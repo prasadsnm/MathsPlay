@@ -85,8 +85,29 @@ int secondsLeft;
     }
 }
 
+-(void)pause
+{
+
+    if([timer isValid])
+    {
+        [timer invalidate];
+        timer=nil;
+    }
+}
+
+-(void)resume
+{
+    @autoreleasepool {
+        timer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(updateCounter:) userInfo:nil repeats:YES];
+        
+    }
+
+
+}
+
 -(void)stop
 {
+    
     if([timer isValid])
     {
         [timer invalidate];

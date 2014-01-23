@@ -26,7 +26,7 @@
 #define MYPURPLECOLOR2 [UIColor colorWithRed:103/255.0 green:26/255.0  blue:204/255.0  alpha:1]
 #define NAVIGATIONBARCOLOR NavigationBarColor [UIColor colorWithRed:255.0/255.0 green:99.0/255.0 blue:71.0/255.0 alpha:1.0]
 #define FONT [UIFont fontWithName:@"Futura" size:50]
-
+#define RULES_FONT_NAME @"Futura"
 
 #define CHECK_IOS7  [self respondsToSelector:@selector(edgesForExtendedLayout)]
 #define SET_LAYOUT self.edgesForExtendedLayout = UIRectEdgeNone;

@@ -137,7 +137,8 @@
     [self.view addSubview:questionLabel];
     
     tanker=nil;
-    tanker=[[UIImageView alloc]initWithFrame:CGRectMake(self.view.frame.size.width/3, self.view.frame.size.height-200, 150, 132)];
+    //self.view.frame.size.width/3
+    tanker=[[UIImageView alloc]initWithFrame:CGRectMake(20, self.view.frame.size.height-200, 150, 132)];
     tanker.image=[UIImage imageNamed:@"fighter-3"];
     tanker.userInteractionEnabled=YES;
     tanker.tag=1007;
@@ -288,7 +289,7 @@ int lcm(int a, int b)
 
 -(NSMutableArray *)getShuffledArrayWithAnswer:(NSString *)correctAnswer
 {
-    int localTemp=[correctAnswer integerValue];
+    int localTemp=(int)[correctAnswer integerValue];
     NSMutableArray *tempArray=[[NSMutableArray alloc]initWithCapacity:0];
     [tempArray addObject:[NSNumber numberWithInt:localTemp]];
     [tempArray addObject:[NSNumber numberWithInt:abs(localTemp-[self getRandomNumber:1 to:100])]];
@@ -375,7 +376,7 @@ int lcm(int a, int b)
         if ([options isKindOfClass:[UILabel class]] && options.tag>0 && options.tag<5 ) {  //instropection
             
             if ([[arrayWithResult objectAtIndex:index] intValue]==answer) {
-                correctAnswerLabelTag=options.tag;
+                correctAnswerLabelTag=(int)options.tag;
             }
             [options setText:[NSString stringWithFormat:@"%@",[arrayWithResult objectAtIndex:index++]]];
         }
@@ -399,7 +400,7 @@ int lcm(int a, int b)
             {
                 _targetCenter=CGPointMake(recognizer.view.center.x, optionLabel.center.y);
                 [optionLabel setBackgroundColor:[UIColor redColor]];
-                currentHighlightedTag=optionLabel.tag;
+                currentHighlightedTag=(int)optionLabel.tag;
                 break;
             }
             else
@@ -586,17 +587,23 @@ int lcm(int a, int b)
     modalForRules.modalTransitionStyle=UIModalTransitionStyleCrossDissolve;
     modalForRules.modalPresentationStyle=UIModalPresentationFormSheet;
     [self presentViewController:modalForRules animated:YES completion:NULL];
-    
     UITapGestureRecognizer *tapEvent=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(handleTapOnModal:)];
     [modalForRules.view addGestureRecognizer:tapEvent];
-
+    UILabel *instructionLabelTitle=[[UILabel alloc]initWithFrame:CGRectMake(10, 25,modalForRules.view.frame.size.width-30, 50)];
+    instructionLabelTitle.numberOfLines=1;
+    instructionLabelTitle.backgroundColor=[UIColor clearColor];
+    instructionLabelTitle.textAlignment=NSTextAlignmentCenter;
+    instructionLabelTitle.font=[UIFont fontWithName:RULES_FONT_NAME size:35];
+    instructionLabelTitle.text=@"Rules";
+    [modalForRules.view addSubview:instructionLabelTitle];
     
-    UILabel *instructionLabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 0, modalForRules.view.frame.size.width-30, modalForRules.view.frame.size.height)];
+    
+    UILabel *instructionLabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 80, modalForRules.view.frame.size.width-30, modalForRules.view.frame.size.height-100)];
     instructionLabel.numberOfLines=0;
     instructionLabel.backgroundColor=[UIColor clearColor];
     instructionLabel.textAlignment=NSTextAlignmentLeft;
-    instructionLabel.font=[UIFont systemFontOfSize:30];
-    instructionLabel.text=@"\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tRules \n\n\t\ta) Allingn the aircfart to the right answer and then tap to fire on correct answer.\n\n\t\tb) If the answer is correct Thumbs up & thumbs down  is dispalyed and if wrong answer.\n\n\t\tc)For every 5 correct answer you get a goodies.";
+    instructionLabel.font=[UIFont fontWithName:RULES_FONT_NAME size:30];
+    instructionLabel.text=@"\t\ta) Allign the aircfart to the right answer and then tap to fire on correct answer.\n\n\t\tb) If the answer is correct thumbs up & if wrong thumbs down  is dispalyed.\n\n\t\tc)For every 5 correct answer you get a goodies.\n\n\n \t\t\t\t [ Tap to dismiss. ]";
     [modalForRules.view addSubview:instructionLabel];
 }
 
