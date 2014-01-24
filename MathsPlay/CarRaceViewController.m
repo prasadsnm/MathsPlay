@@ -11,7 +11,8 @@
 @interface CarRaceViewController ()
 {
     int hh,mm,ss;
-    int run_onlyone_time; 
+    int run_onlyone_time;
+    BOOL isTimerPaused;
 }
 @end
 
@@ -89,15 +90,15 @@
     clockLabel.font = [UIFont fontWithName:@"BradleyHandITCTT-Bold" size:40];
     [self.view addSubview:clockLabel];
     
-    UIImageView *correctImageLogo = [[UIImageView alloc]initWithFrame:CGRectMake(630, 25, 30, 30)];
+    UIImageView *correctImageLogo = [[UIImageView alloc]initWithFrame:CGRectMake(380, 40, 30, 30)];
     correctImageLogo.image = [UIImage imageNamed:@"correct"];
     [self.view addSubview:correctImageLogo];
     
-    UIImageView *inCorrectImageLogo = [[UIImageView alloc]initWithFrame:CGRectMake(630, 80, 30, 30)];
+    UIImageView *inCorrectImageLogo = [[UIImageView alloc]initWithFrame:CGRectMake(380, 80, 30, 30)];
     inCorrectImageLogo.image = [UIImage imageNamed:@"incorrect"];
     [self.view addSubview:inCorrectImageLogo];
     
-    correctAnsLabel = [[UILabel alloc]initWithFrame:CGRectMake(670, 25, 80, 30)];
+    correctAnsLabel = [[UILabel alloc]initWithFrame:CGRectMake(300, 30, 80, 30)];
     correctAnsLabel.backgroundColor = [UIColor clearColor];
     correctAnsLabel.textAlignment = NSTextAlignmentCenter;
     correctAnsLabel.font = [UIFont fontWithName:@"BradleyHandITCTT-Bold" size:40];
@@ -105,7 +106,7 @@
     correctAnsLabel.textColor = [UIColor purpleColor];
     [self.view addSubview:correctAnsLabel];
     
-    inCorrectAnsLabel = [[UILabel alloc]initWithFrame:CGRectMake(670, 80, 80, 30)];
+    inCorrectAnsLabel = [[UILabel alloc]initWithFrame:CGRectMake(300, 80, 80, 30)];
     inCorrectAnsLabel.backgroundColor = [UIColor clearColor];
     inCorrectAnsLabel.textAlignment = NSTextAlignmentCenter;
     inCorrectAnsLabel.font = [UIFont fontWithName:@"BradleyHandITCTT-Bold" size:40];
@@ -178,8 +179,52 @@
     questionLabel.backgroundColor = [UIColor clearColor];
     [self.view addSubview:questionLabel];
     
+    helpButton=[UIButton buttonWithType:UIButtonTypeCustom];
+    [helpButton setImage:[UIImage imageNamed:@"rules"] forState:UIControlStateNormal];
+    helpButton.tag=100011;
+    [helpButton addTarget:self action:@selector(buttonActionMethod:) forControlEvents:UIControlEventTouchUpInside];
+    helpButton.frame=CGRectMake(self.view.frame.size.width-200 , 20, 200, 80);
+    helpButton.showsTouchWhenHighlighted=YES;
+    [self.view addSubview:helpButton];
+    
     plistDict = [[Util readPListData]copy];
 }
+
+
+-(void)buttonActionMethod:(UIButton *)sender
+{
+    [self pauseTheGame];
+    UIViewController *modalForRules=[[UIViewController alloc]init];
+    modalForRules.view.backgroundColor=[UIColor colorWithRed:132/255.0 green:240/255.0 blue:88/255.0 alpha:1];
+    modalForRules.modalTransitionStyle=UIModalTransitionStyleCoverVertical;
+    modalForRules.modalPresentationStyle=UIModalPresentationFormSheet;
+    [self presentViewController:modalForRules animated:YES completion:NULL];
+    UITapGestureRecognizer *tapEvent=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(handleTapOnModal:)];
+    [modalForRules.view addGestureRecognizer:tapEvent];
+    UILabel *instructionLabelTitle=[[UILabel alloc]initWithFrame:CGRectMake(10, 25,modalForRules.view.frame.size.width-30, 50)];
+    instructionLabelTitle.numberOfLines=1;
+    instructionLabelTitle.backgroundColor=[UIColor clearColor];
+    instructionLabelTitle.textAlignment=NSTextAlignmentCenter;
+    instructionLabelTitle.font=[UIFont fontWithName:RULES_FONT_NAME size:35];
+    instructionLabelTitle.text=@"Rules";
+    [modalForRules.view addSubview:instructionLabelTitle];
+    
+    
+    UILabel *instructionLabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 80, modalForRules.view.frame.size.width-30, modalForRules.view.frame.size.height-100)];
+    instructionLabel.numberOfLines=0;
+    instructionLabel.backgroundColor=[UIColor clearColor];
+    instructionLabel.textAlignment=NSTextAlignmentLeft;
+    instructionLabel.font=[UIFont fontWithName:RULES_FONT_NAME size:30];
+    instructionLabel.text=@"\t\ta)Choose the right option among the ballons.\n\n\t\tb)If answer is correct your car moves toward the destination.\n\n\t\tc)Answer quickly to accelerate the car.\n\n \t\t\t\t[ Note:Tap to dismiss. ]";
+    [modalForRules.view addSubview:instructionLabel];
+}
+
+-(void)handleTapOnModal:(UITapGestureRecognizer *)recognizer
+{
+    [self resumeTheGame];
+    [self dismissModalViewControllerAnimated:YES];
+}
+
 
 #pragma mark Go Button Clicked
 
@@ -523,7 +568,6 @@
 
 -(void) showQuestionAndAnswer {
     
-    
     questionLabel.text = [NSString stringWithFormat:@"%ld",(long)question];
     // RANDOMLY SELECT BALLO0N BTN FROM BALLOON ARRAY AND PASTE RIGHT ANS TO IT
     int i = arc4random() % [balloonArray count];
@@ -640,10 +684,6 @@
             }
         }
     }
-    
-    
-    
-    
 }
 
 
@@ -736,18 +776,20 @@
 
 - (void)clockTimer {
     
-    ss++;
-    if (ss>59) {
-        ss=0;
-        mm++;
-        if (mm>59)
-        {
+    if (!isTimerPaused) {
+        ss++;
+        if (ss>59) {
             ss=0;
-            mm=0;
-            hh++;
+            mm++;
+            if (mm>59)
+            {
+                ss=0;
+                mm=0;
+                hh++;
+            }
         }
+        clockLabel.text = [NSString stringWithFormat:@"%i : %i : %i",hh,mm,ss];
     }
-    clockLabel.text = [NSString stringWithFormat:@"%i : %i : %i",hh,mm,ss];
 }
 
 
@@ -757,11 +799,81 @@
     return (int)from + arc4random() % (to-from+1);
 }
 
+-(void)pauseTheGame
+{
+    isTimerPaused=YES;
+    
+    if ([carTimer1 isValid]) {
+        [carTimer1 invalidate];
+    }
+    if ([carTimer2 isValid]) {
+        [carTimer2 invalidate];
+    }
+    if ([carTimer3 isValid]) {
+        [carTimer3 invalidate];
+    }
+    if ([carTimer1 isValid]) {
+        [carTimer1 invalidate];
+    }
+    
+    if ([myCarTimer isValid]) {
+        [myCarTimer invalidate];
+    }
 
+    if ([balloonMoveTimer isValid]) {
+        [balloonMoveTimer invalidate];
+        balloonMoveTimer = nil;
+    }
+   
+}
+
+-(void)resumeTheGame
+{
+    isTimerPaused=NO;
+
+    carTimer1 = [NSTimer scheduledTimerWithTimeInterval:.1 target:self selector:@selector(firstAutoCar) userInfo:nil repeats:YES];
+    carTimer2 = [NSTimer scheduledTimerWithTimeInterval:.1 target:self selector:@selector(secondAutoCar) userInfo:nil repeats:YES];
+    carTimer3 = [NSTimer scheduledTimerWithTimeInterval:.1 target:self selector:@selector(thirdAutoCar) userInfo:nil repeats:YES];
+    myCarTimer = [NSTimer scheduledTimerWithTimeInterval:.1 target:self selector:@selector(myCarMoveWithNormalSpeed) userInfo:nil repeats:YES];
+
+    if ([[plistDict objectForKey:@"level"] isEqualToString:@"EASY"]) {
+        if (myCar !=1 ||myCar !=2||myCar !=3||myCar !=4) {
+            balloonMoveTimer = [NSTimer scheduledTimerWithTimeInterval:0.04 target:self selector:@selector(moveBalloonUpwards) userInfo:nil repeats:YES];
+        } else {
+            if ([balloonMoveTimer isValid]) {
+                [balloonMoveTimer invalidate];
+                balloonMoveTimer = nil;
+            }
+        }
+    }
+    else if ([[plistDict objectForKey:@"level"] isEqualToString:@"MEDIUM"])
+    {
+        if (myCar !=1 ||myCar !=2||myCar !=3||myCar !=4) {
+            balloonMoveTimer = [NSTimer scheduledTimerWithTimeInterval:0.028 target:self selector:@selector(moveBalloonUpwards) userInfo:nil repeats:YES];
+        } else {
+            if ([balloonMoveTimer isValid]) {
+                [balloonMoveTimer invalidate];
+                balloonMoveTimer = nil;
+            }
+        }
+    }
+    else
+    {
+        if (myCar !=1 ||myCar !=2||myCar !=3||myCar !=4) {
+            balloonMoveTimer = [NSTimer scheduledTimerWithTimeInterval:0.022 target:self selector:@selector(moveBalloonUpwards) userInfo:nil repeats:YES];
+        } else {
+            if ([balloonMoveTimer isValid]) {
+                [balloonMoveTimer invalidate];
+                balloonMoveTimer = nil;
+            }
+        }
+    }
+
+    
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 // TO DO :

@@ -158,6 +158,32 @@
     
 }
 
+-(void)buttonActionMethod:(UIButton *)sender
+{
+    UIViewController *modalForRules=[[UIViewController alloc]init];
+    modalForRules.view.backgroundColor=[UIColor colorWithRed:132/255.0 green:240/255.0 blue:88/255.0 alpha:1];
+    modalForRules.modalTransitionStyle=UIModalTransitionStyleCoverVertical;
+    modalForRules.modalPresentationStyle=UIModalPresentationFormSheet;
+    [self presentViewController:modalForRules animated:YES completion:NULL];
+    UITapGestureRecognizer *tapEvent=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(handleTapOnModal:)];
+    [modalForRules.view addGestureRecognizer:tapEvent];
+    UILabel *instructionLabelTitle=[[UILabel alloc]initWithFrame:CGRectMake(10, 25,modalForRules.view.frame.size.width-30, 50)];
+    instructionLabelTitle.numberOfLines=1;
+    instructionLabelTitle.backgroundColor=[UIColor clearColor];
+    instructionLabelTitle.textAlignment=NSTextAlignmentCenter;
+    instructionLabelTitle.font=[UIFont fontWithName:RULES_FONT_NAME size:35];
+    instructionLabelTitle.text=@"Rules";
+    [modalForRules.view addSubview:instructionLabelTitle];
+    
+    
+    UILabel *instructionLabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 80, modalForRules.view.frame.size.width-30, modalForRules.view.frame.size.height-100)];
+    instructionLabel.numberOfLines=0;
+    instructionLabel.backgroundColor=[UIColor clearColor];
+    instructionLabel.textAlignment=NSTextAlignmentLeft;
+    instructionLabel.font=[UIFont fontWithName:RULES_FONT_NAME size:30];
+    instructionLabel.text=@"\t\ta) Allign the aircfart to the right answer and then tap to fire on correct answer.\n\n\t\tb) If the answer is correct thumbs up & if wrong thumbs down  is dispalyed.\n\n\t\tc)For every 5 correct answer you get a goodies.\n\n\n \t\t\t\t [ Tap to dismiss. ]";
+    [modalForRules.view addSubview:instructionLabel];
+}
 
 - (void) dismissInstructionScreen:(UITapGestureRecognizer *)recognize
 {
@@ -579,32 +605,6 @@ int lcm(int a, int b)
     centerZoom.values = @[[NSValue valueWithCATransform3D:CATransform3DMakeScale(1, 1, 1)],[NSValue valueWithCATransform3D:CATransform3DMakeScale(1.5, 1.5, 1)],[NSValue valueWithCATransform3D:CATransform3DMakeScale(1, 1, 1)],[NSValue valueWithCATransform3D:CATransform3DMakeScale(1.2, 1.2, 1)],[NSValue valueWithCATransform3D:CATransform3DMakeScale(1, 1, 1)]];
     centerZoom.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
     [view.layer addAnimation:centerZoom forKey:@"buttonScale"];
-}
--(void)buttonActionMethod:(UIButton *)sender
-{
-    UIViewController *modalForRules=[[UIViewController alloc]init];
-    modalForRules.view.backgroundColor=[UIColor colorWithRed:132/255.0 green:240/255.0 blue:88/255.0 alpha:1];
-    modalForRules.modalTransitionStyle=UIModalTransitionStyleCrossDissolve;
-    modalForRules.modalPresentationStyle=UIModalPresentationFormSheet;
-    [self presentViewController:modalForRules animated:YES completion:NULL];
-    UITapGestureRecognizer *tapEvent=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(handleTapOnModal:)];
-    [modalForRules.view addGestureRecognizer:tapEvent];
-    UILabel *instructionLabelTitle=[[UILabel alloc]initWithFrame:CGRectMake(10, 25,modalForRules.view.frame.size.width-30, 50)];
-    instructionLabelTitle.numberOfLines=1;
-    instructionLabelTitle.backgroundColor=[UIColor clearColor];
-    instructionLabelTitle.textAlignment=NSTextAlignmentCenter;
-    instructionLabelTitle.font=[UIFont fontWithName:RULES_FONT_NAME size:35];
-    instructionLabelTitle.text=@"Rules";
-    [modalForRules.view addSubview:instructionLabelTitle];
-    
-    
-    UILabel *instructionLabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 80, modalForRules.view.frame.size.width-30, modalForRules.view.frame.size.height-100)];
-    instructionLabel.numberOfLines=0;
-    instructionLabel.backgroundColor=[UIColor clearColor];
-    instructionLabel.textAlignment=NSTextAlignmentLeft;
-    instructionLabel.font=[UIFont fontWithName:RULES_FONT_NAME size:30];
-    instructionLabel.text=@"\t\ta) Allign the aircfart to the right answer and then tap to fire on correct answer.\n\n\t\tb) If the answer is correct thumbs up & if wrong thumbs down  is dispalyed.\n\n\t\tc)For every 5 correct answer you get a goodies.\n\n\n \t\t\t\t [ Tap to dismiss. ]";
-    [modalForRules.view addSubview:instructionLabel];
 }
 
 

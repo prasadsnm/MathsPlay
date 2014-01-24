@@ -41,11 +41,7 @@
     {
         self.navigationController.navigationBar.tintColor = [UIColor greenColor];
     }
-    
-    
-  
-    
-    self.navigationController.navigationBar.translucent = NO;
+        self.navigationController.navigationBar.translucent = NO;
     // set bar title color
     self.navigationController.navigationBar.titleTextAttributes = @{UITextAttributeTextColor : [UIColor whiteColor]};
     // set  button color
@@ -117,6 +113,14 @@
    [builiding addSubview:ant];
     
     
+    helpButton=[UIButton buttonWithType:UIButtonTypeCustom];
+    [helpButton setImage:[UIImage imageNamed:@"rules"] forState:UIControlStateNormal];
+    helpButton.tag=100011;
+    [helpButton addTarget:self action:@selector(buttonActionMethod:) forControlEvents:UIControlEventTouchUpInside];
+    helpButton.frame=CGRectMake(self.view.frame.size.width-200 , 50, 200, 80);
+    helpButton.showsTouchWhenHighlighted=YES;
+    [self.view addSubview:helpButton];
+    
     //Custom modal to show question.
     modal=nil;
     modal=[[CustomModalBox alloc]initWithFrame:CGRectMake(0, 0, 400, 300)];
@@ -127,6 +131,42 @@
     [modal hide];
     [self.view addSubview:shadow];
     
+   
+    
+    
+    
+}
+
+-(void)buttonActionMethod:(UIButton *)sender
+{
+    UIViewController *modalForRules=[[UIViewController alloc]init];
+    modalForRules.view.backgroundColor=[UIColor colorWithRed:132/255.0 green:240/255.0 blue:88/255.0 alpha:1];
+    modalForRules.modalTransitionStyle=UIModalTransitionStyleCoverVertical;
+    modalForRules.modalPresentationStyle=UIModalPresentationFormSheet;
+    [self presentViewController:modalForRules animated:YES completion:NULL];
+    UITapGestureRecognizer *tapEvent=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(handleTapOnModal:)];
+    [modalForRules.view addGestureRecognizer:tapEvent];
+    UILabel *instructionLabelTitle=[[UILabel alloc]initWithFrame:CGRectMake(10, 25,modalForRules.view.frame.size.width-30, 50)];
+    instructionLabelTitle.numberOfLines=1;
+    instructionLabelTitle.backgroundColor=[UIColor clearColor];
+    instructionLabelTitle.textAlignment=NSTextAlignmentCenter;
+    instructionLabelTitle.font=[UIFont fontWithName:RULES_FONT_NAME size:35];
+    instructionLabelTitle.text=@"Rules";
+    [modalForRules.view addSubview:instructionLabelTitle];
+    
+    
+    UILabel *instructionLabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 80, modalForRules.view.frame.size.width-30, modalForRules.view.frame.size.height-100)];
+    instructionLabel.numberOfLines=0;
+    instructionLabel.backgroundColor=[UIColor clearColor];
+    instructionLabel.textAlignment=NSTextAlignmentLeft;
+    instructionLabel.font=[UIFont fontWithName:RULES_FONT_NAME size:25];
+    instructionLabel.text=@"\t\ta)Choose true (right) or false (cross) for every question .\n\n\t\tb)If answer is correct the ant moves up the building and if answer is incorrect it slips (double)the building.\n\n\t\tc)Avoid ant to slips below the original position.\n\n\t\td)For every 5 correct answer you get a gift.\n\n \t\t\t\t[ Note:Tap to dismiss. ]";
+    [modalForRules.view addSubview:instructionLabel];
+}
+
+-(void)handleTapOnModal:(UITapGestureRecognizer *)recognizer
+{
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 

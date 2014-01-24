@@ -91,7 +91,7 @@
     [timer pause];
     UIViewController *modalForRules=[[UIViewController alloc]init];
     modalForRules.view.backgroundColor=[UIColor colorWithRed:132/255.0 green:240/255.0 blue:88/255.0 alpha:1];
-    modalForRules.modalTransitionStyle=UIModalTransitionStyleCrossDissolve;
+    modalForRules.modalTransitionStyle=UIModalTransitionStyleCoverVertical;
     modalForRules.modalPresentationStyle=UIModalPresentationFormSheet;
     [self presentViewController:modalForRules animated:YES completion:NULL];
     UITapGestureRecognizer *tapEvent=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(handleTapOnModal:)];
