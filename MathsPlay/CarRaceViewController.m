@@ -830,45 +830,49 @@
 -(void)resumeTheGame
 {
     isTimerPaused=NO;
-
-    carTimer1 = [NSTimer scheduledTimerWithTimeInterval:.1 target:self selector:@selector(firstAutoCar) userInfo:nil repeats:YES];
-    carTimer2 = [NSTimer scheduledTimerWithTimeInterval:.1 target:self selector:@selector(secondAutoCar) userInfo:nil repeats:YES];
-    carTimer3 = [NSTimer scheduledTimerWithTimeInterval:.1 target:self selector:@selector(thirdAutoCar) userInfo:nil repeats:YES];
-    myCarTimer = [NSTimer scheduledTimerWithTimeInterval:.1 target:self selector:@selector(myCarMoveWithNormalSpeed) userInfo:nil repeats:YES];
-
-    if ([[plistDict objectForKey:@"level"] isEqualToString:@"EASY"]) {
-        if (myCar !=1 ||myCar !=2||myCar !=3||myCar !=4) {
-            balloonMoveTimer = [NSTimer scheduledTimerWithTimeInterval:0.04 target:self selector:@selector(moveBalloonUpwards) userInfo:nil repeats:YES];
-        } else {
-            if ([balloonMoveTimer isValid]) {
-                [balloonMoveTimer invalidate];
-                balloonMoveTimer = nil;
+    
+    if (run_onlyone_time) {
+        carTimer1 = [NSTimer scheduledTimerWithTimeInterval:.1 target:self selector:@selector(firstAutoCar) userInfo:nil repeats:YES];
+        carTimer2 = [NSTimer scheduledTimerWithTimeInterval:.1 target:self selector:@selector(secondAutoCar) userInfo:nil repeats:YES];
+        carTimer3 = [NSTimer scheduledTimerWithTimeInterval:.1 target:self selector:@selector(thirdAutoCar) userInfo:nil repeats:YES];
+        myCarTimer = [NSTimer scheduledTimerWithTimeInterval:.1 target:self selector:@selector(myCarMoveWithNormalSpeed) userInfo:nil repeats:YES];
+        
+        if ([[plistDict objectForKey:@"level"] isEqualToString:@"EASY"]) {
+            if (myCar !=1 ||myCar !=2||myCar !=3||myCar !=4) {
+                balloonMoveTimer = [NSTimer scheduledTimerWithTimeInterval:0.04 target:self selector:@selector(moveBalloonUpwards) userInfo:nil repeats:YES];
+            } else {
+                if ([balloonMoveTimer isValid]) {
+                    [balloonMoveTimer invalidate];
+                    balloonMoveTimer = nil;
+                }
             }
         }
-    }
-    else if ([[plistDict objectForKey:@"level"] isEqualToString:@"MEDIUM"])
-    {
-        if (myCar !=1 ||myCar !=2||myCar !=3||myCar !=4) {
-            balloonMoveTimer = [NSTimer scheduledTimerWithTimeInterval:0.028 target:self selector:@selector(moveBalloonUpwards) userInfo:nil repeats:YES];
-        } else {
-            if ([balloonMoveTimer isValid]) {
-                [balloonMoveTimer invalidate];
-                balloonMoveTimer = nil;
+        else if ([[plistDict objectForKey:@"level"] isEqualToString:@"MEDIUM"])
+        {
+            if (myCar !=1 ||myCar !=2||myCar !=3||myCar !=4) {
+                balloonMoveTimer = [NSTimer scheduledTimerWithTimeInterval:0.028 target:self selector:@selector(moveBalloonUpwards) userInfo:nil repeats:YES];
+            } else {
+                if ([balloonMoveTimer isValid]) {
+                    [balloonMoveTimer invalidate];
+                    balloonMoveTimer = nil;
+                }
             }
         }
-    }
-    else
-    {
-        if (myCar !=1 ||myCar !=2||myCar !=3||myCar !=4) {
-            balloonMoveTimer = [NSTimer scheduledTimerWithTimeInterval:0.022 target:self selector:@selector(moveBalloonUpwards) userInfo:nil repeats:YES];
-        } else {
-            if ([balloonMoveTimer isValid]) {
-                [balloonMoveTimer invalidate];
-                balloonMoveTimer = nil;
+        else
+        {
+            if (myCar !=1 ||myCar !=2||myCar !=3||myCar !=4) {
+                balloonMoveTimer = [NSTimer scheduledTimerWithTimeInterval:0.022 target:self selector:@selector(moveBalloonUpwards) userInfo:nil repeats:YES];
+            } else {
+                if ([balloonMoveTimer isValid]) {
+                    [balloonMoveTimer invalidate];
+                    balloonMoveTimer = nil;
+                }
             }
         }
+
     }
 
+    
     
 }
 - (void)didReceiveMemoryWarning
