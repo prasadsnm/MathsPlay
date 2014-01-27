@@ -154,13 +154,16 @@
     instructionLabelTitle.text=@"Rules";
     [modalForRules.view addSubview:instructionLabelTitle];
     
+    UIImageView *topbar=[[UIImageView alloc]initWithFrame:CGRectMake(0, -10, modalForRules.view.frame.size.width, 50)];
+    topbar.image=[UIImage imageNamed:@"sp-top"];
+    [modalForRules.view addSubview:topbar];
     
-    UILabel *instructionLabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 80, modalForRules.view.frame.size.width-30, modalForRules.view.frame.size.height-100)];
+    UILabel *instructionLabel=[[UILabel alloc]initWithFrame:CGRectMake(40, 80, modalForRules.view.frame.size.width-70, modalForRules.view.frame.size.height-100)];
     instructionLabel.numberOfLines=0;
     instructionLabel.backgroundColor=[UIColor clearColor];
     instructionLabel.textAlignment=NSTextAlignmentLeft;
     instructionLabel.font=[UIFont fontWithName:RULES_FONT_NAME size:25];
-    instructionLabel.text=@"\t\ta)Choose true (right) or false (cross) for every question .\n\n\t\tb)If answer is correct the ant moves up the building and if answer is incorrect it slips (double)the building.\n\n\t\tc)Avoid ant to slips below the original position.\n\n\t\td)For every 5 correct answer you get a gift.\n\n \t\t\t\t[ Note:Tap to dismiss. ]";
+    instructionLabel.text=@"a)Choose true (right) or false (cross) for every question .\n\nb)If answer is correct the ant moves up the building and if answer is incorrect it slips (double)the building.\n\nc)Avoid ant to slips below the original position.\n\nd)For every 5 correct answer you get a gift.\n\n \t\t\t\t[ Tap to dismiss. ]";
     [modalForRules.view addSubview:instructionLabel];
 }
 

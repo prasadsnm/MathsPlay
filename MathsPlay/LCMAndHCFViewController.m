@@ -176,12 +176,17 @@
     [modalForRules.view addSubview:instructionLabelTitle];
     
     
-    UILabel *instructionLabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 80, modalForRules.view.frame.size.width-30, modalForRules.view.frame.size.height-100)];
+    
+    UIImageView *topbar=[[UIImageView alloc]initWithFrame:CGRectMake(0, -10, modalForRules.view.frame.size.width, 50)];
+    topbar.image=[UIImage imageNamed:@"sp-top"];
+    [modalForRules.view addSubview:topbar];
+    
+    UILabel *instructionLabel=[[UILabel alloc]initWithFrame:CGRectMake(40, 80, modalForRules.view.frame.size.width-70, modalForRules.view.frame.size.height-100)];
     instructionLabel.numberOfLines=0;
     instructionLabel.backgroundColor=[UIColor clearColor];
     instructionLabel.textAlignment=NSTextAlignmentLeft;
     instructionLabel.font=[UIFont fontWithName:RULES_FONT_NAME size:30];
-    instructionLabel.text=@"\t\ta) Allign the aircfart to the right answer and then tap to fire on correct answer.\n\n\t\tb) If the answer is correct thumbs up & if wrong thumbs down  is dispalyed.\n\n\t\tc)For every 5 correct answer you get a goodies.\n\n\n \t\t\t\t [ Tap to dismiss. ]";
+    instructionLabel.text=@"a) Allign the aircfart to the right answer and then tap to fire on correct answer.\n\nb) If the answer is correct thumbs up & if wrong thumbs down  is dispalyed.\n\nc)For every 5 correct answer you get a goodies.\n\n \t\t\t\t[ Tap to dismiss. ]";
     [modalForRules.view addSubview:instructionLabel];
 }
 

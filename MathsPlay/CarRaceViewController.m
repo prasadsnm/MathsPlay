@@ -209,13 +209,16 @@
     instructionLabelTitle.text=@"Rules";
     [modalForRules.view addSubview:instructionLabelTitle];
     
+    UIImageView *topbar=[[UIImageView alloc]initWithFrame:CGRectMake(0, -10, modalForRules.view.frame.size.width, 50)];
+    topbar.image=[UIImage imageNamed:@"sp-top"];
+    [modalForRules.view addSubview:topbar];
     
-    UILabel *instructionLabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 80, modalForRules.view.frame.size.width-30, modalForRules.view.frame.size.height-100)];
+    UILabel *instructionLabel=[[UILabel alloc]initWithFrame:CGRectMake(40, 80, modalForRules.view.frame.size.width-70, modalForRules.view.frame.size.height-100)];
     instructionLabel.numberOfLines=0;
     instructionLabel.backgroundColor=[UIColor clearColor];
     instructionLabel.textAlignment=NSTextAlignmentLeft;
     instructionLabel.font=[UIFont fontWithName:RULES_FONT_NAME size:30];
-    instructionLabel.text=@"\t\ta)Choose the right option among the ballons.\n\n\t\tb)If answer is correct your car moves toward the destination.\n\n\t\tc)Answer quickly to accelerate the car.\n\n \t\t\t\t[ Note:Tap to dismiss. ]";
+    instructionLabel.text=@"a)Choose the right option among the ballons.\n\nb)If answer is correct your car's(2nd from top) speed increases.\n\nc)Answer quickly to accelerate the car.\n\n \t\t\t\t[ Tap to dismiss. ]";
     [modalForRules.view addSubview:instructionLabel];
 }
 

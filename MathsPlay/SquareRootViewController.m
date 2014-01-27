@@ -136,10 +136,53 @@
     [self.view addSubview:_modal];
     [_modal hide];
     
+    
+    helpButton=[UIButton buttonWithType:UIButtonTypeCustom];
+    [helpButton setImage:[UIImage imageNamed:@"rules"] forState:UIControlStateNormal];
+    helpButton.tag=100011;
+    [helpButton addTarget:self action:@selector(buttonActionMethod:) forControlEvents:UIControlEventTouchUpInside];
+    helpButton.frame=CGRectMake(self.view.frame.size.width-170 , 20, 200, 80);
+    helpButton.showsTouchWhenHighlighted=YES;
+    [self.view addSubview:helpButton];
   	// Do any additional setup after loading the view.
 }
 
 
+-(void)buttonActionMethod:(UIButton *)sender
+{
+    UIViewController *modalForRules=[[UIViewController alloc]init];
+    modalForRules.view.backgroundColor=[UIColor colorWithRed:132/255.0 green:240/255.0 blue:88/255.0 alpha:1];
+    modalForRules.modalTransitionStyle=UIModalTransitionStyleCoverVertical;
+    modalForRules.modalPresentationStyle=UIModalPresentationFormSheet;
+    [self presentViewController:modalForRules animated:YES completion:NULL];
+    UITapGestureRecognizer *tapEvent=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(handleTapOnModal:)];
+    [modalForRules.view addGestureRecognizer:tapEvent];
+    UILabel *instructionLabelTitle=[[UILabel alloc]initWithFrame:CGRectMake(10, 25,modalForRules.view.frame.size.width-30, 50)];
+    instructionLabelTitle.numberOfLines=1;
+    instructionLabelTitle.backgroundColor=[UIColor clearColor];
+    instructionLabelTitle.textAlignment=NSTextAlignmentCenter;
+    instructionLabelTitle.font=[UIFont fontWithName:RULES_FONT_NAME size:35];
+    instructionLabelTitle.text=@"Rules";
+    [modalForRules.view addSubview:instructionLabelTitle];
+    
+    UIImageView *topbar=[[UIImageView alloc]initWithFrame:CGRectMake(0, -10, modalForRules.view.frame.size.width, 50)];
+    topbar.image=[UIImage imageNamed:@"sp-top"];
+    [modalForRules.view addSubview:topbar];
+    
+    UILabel *instructionLabel=[[UILabel alloc]initWithFrame:CGRectMake(40, 80, modalForRules.view.frame.size.width-80, modalForRules.view.frame.size.height-100)];
+    instructionLabel.numberOfLines=0;
+    instructionLabel.backgroundColor=[UIColor clearColor];
+    instructionLabel.textAlignment=NSTextAlignmentLeft;
+    instructionLabel.font=[UIFont fontWithName:RULES_FONT_NAME size:30];
+    instructionLabel.text=@"\na)Enter the correct answer in right circle.\n\nb)10 question are in total with no time limit.\n\nb)Result will be shown after attempting all 10 question.\n\n\n \t\t\t\t[ Tap to dismiss. ]";
+    [modalForRules.view addSubview:instructionLabel];
+}
+
+
+-(void)handleTapOnModal:(UITapGestureRecognizer *)recognizer
+{
+    [self dismissModalViewControllerAnimated:YES];
+}
 
 -(void)submitClicked:(UIButton *)sender
 {

@@ -104,13 +104,16 @@
     instructionLabelTitle.text=@"Rules";
     [modalForRules.view addSubview:instructionLabelTitle];
     
+    UIImageView *topbar=[[UIImageView alloc]initWithFrame:CGRectMake(0, -10, modalForRules.view.frame.size.width, 50)];
+    topbar.image=[UIImage imageNamed:@"sp-top"];
+    [modalForRules.view addSubview:topbar];
     
-    UILabel *instructionLabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 80, modalForRules.view.frame.size.width-30, modalForRules.view.frame.size.height-100)];
+    UILabel *instructionLabel=[[UILabel alloc]initWithFrame:CGRectMake(40, 80, modalForRules.view.frame.size.width-70, modalForRules.view.frame.size.height-100)];
     instructionLabel.numberOfLines=0;
     instructionLabel.backgroundColor=[UIColor clearColor];
     instructionLabel.textAlignment=NSTextAlignmentLeft;
     instructionLabel.font=[UIFont fontWithName:RULES_FONT_NAME size:30];
-    instructionLabel.text=@"\t\ta)Choose the missing number in the series(balls).\n\n\t\tb)Status of answer is shown in screen.\n\n\t\tc)Try as many question in given time, the result will be shown after time finishes.\n\n \t\t\t[ Note:Tap to dismiss. ]";
+    instructionLabel.text=@"a)Choose the missing number in the series(balls).\n\nb)Status of answer is shown in screen.\n\nc)Try as many question in given time, the result will be shown after time finishes.\n\n \t\t\t[ Tap to dismiss. ]";
     [modalForRules.view addSubview:instructionLabel];
 }
 
