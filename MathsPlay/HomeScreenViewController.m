@@ -25,6 +25,8 @@
 #import "GeometricGrowthViewController.h"
 #import "LCMAndHCFViewController.h"
 #import "SquareRootQuizViewController.h"
+//class six
+#import "QuadrantViewController.h"
 
 @interface HomeScreenViewController ()
 {
@@ -513,6 +515,104 @@
     [classFiveView addSubview:HcfLcm];
 }
 
+
+
+
+#pragma mark Class Six Games
+
+- (void)showClassSixGames
+{
+    classSixView = [[UIView alloc]initWithFrame:CGRectMake(78, 495, 645, 250)];
+    classSixView.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:classSixView];
+    
+    UIView *borderview = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 645, 250)];
+    borderview.alpha = 0.3;
+    borderview.layer.borderWidth = 1.0;
+    borderview.layer.cornerRadius = 15.0;
+    borderview.layer.borderColor = [[UIColor grayColor]CGColor];
+    borderview.backgroundColor = [UIColor lightGrayColor];
+    [classSixView addSubview:borderview];
+    
+    UIButton *quadRant = [UIButton buttonWithType:UIButtonTypeCustom];
+    quadRant.frame = CGRectMake(522,20,120,80);
+    quadRant.tag = 601;
+    [quadRant setImage:[UIImage imageNamed:@"compare"] forState:UIControlStateNormal];
+    UILabel *footnoteSqrt = [[UILabel alloc]initWithFrame:CGRectMake(0, 80, 120, 20)];
+    footnoteSqrt.text = @"D.I";
+    footnoteSqrt.textColor = [UIColor blackColor];
+    footnoteSqrt.backgroundColor = [UIColor clearColor];
+    footnoteSqrt.textAlignment = NSTextAlignmentCenter;
+    footnoteSqrt.font = [UIFont fontWithName:@"Optima-ExtraBlack" size:18.0];
+    [quadRant addTarget:self action:@selector(loadClassSixComponent:) forControlEvents:UIControlEventTouchUpInside];
+    [quadRant addSubview:footnoteSqrt];
+    [classSixView addSubview:quadRant];
+    
+    
+    UIButton *divisibility = [UIButton buttonWithType:UIButtonTypeCustom];
+    divisibility.frame = CGRectMake(10, 10, 100, 80);
+    divisibility.tag = 602;
+    [divisibility setImage:[UIImage imageNamed:@"add"] forState:UIControlStateNormal];
+    UILabel *footnoteDiv = [[UILabel alloc]initWithFrame:CGRectMake(0, 65, 100, 25)];
+    footnoteDiv.text = @"Coming soon..";
+    footnoteDiv.numberOfLines = 0;
+    footnoteDiv.lineBreakMode = NSLineBreakByWordWrapping;
+    footnoteDiv.textColor = [UIColor blackColor];
+    footnoteDiv.backgroundColor = [UIColor clearColor];
+    footnoteDiv.textAlignment = NSTextAlignmentCenter;
+    footnoteDiv.font = [UIFont fontWithName:@"Optima-ExtraBlack" size:18.0];
+    [divisibility addTarget:self action:@selector(loadClassSixComponent:) forControlEvents:UIControlEventTouchUpInside];
+    [divisibility addSubview:footnoteDiv];
+    [classSixView addSubview:divisibility];
+    
+    
+    UIButton *multiplication = [UIButton buttonWithType:UIButtonTypeCustom];
+    multiplication.frame = CGRectMake(267, 20, 130, 80);
+    multiplication.tag = 603;
+    [multiplication setImage:[UIImage imageNamed:@"minus"] forState:UIControlStateNormal];
+    UILabel *footnoteMul = [[UILabel alloc]initWithFrame:CGRectMake(0, 65, 130, 15)];
+    footnoteMul.text = @"Coming soon..";
+    footnoteMul.textColor = [UIColor blackColor];
+    footnoteMul.backgroundColor = [UIColor clearColor];
+    footnoteMul.textAlignment = NSTextAlignmentCenter;
+    footnoteMul.font = [UIFont fontWithName:@"Optima-ExtraBlack" size:18.0];
+    [multiplication addTarget:self action:@selector(loadClassSixComponent:) forControlEvents:UIControlEventTouchUpInside];
+    [multiplication addSubview:footnoteMul];
+    [classSixView addSubview:multiplication];
+    
+    UIButton *pattern = [UIButton buttonWithType:UIButtonTypeCustom];
+    pattern.frame = CGRectMake(122, 125, 100, 80);
+    pattern.tag = 604;
+    [pattern setImage:[UIImage imageNamed:@"bubble"] forState:UIControlStateNormal];
+    UILabel *footnotePattern = [[UILabel alloc]initWithFrame:CGRectMake(-10, 70, 120, 50)];
+    footnotePattern.text = @"Coming soon..";
+    footnotePattern.numberOfLines = 0;
+    footnotePattern.lineBreakMode = NSLineBreakByWordWrapping;
+    footnotePattern.textColor = [UIColor blackColor];
+    footnotePattern.backgroundColor = [UIColor clearColor];
+    footnotePattern.textAlignment = NSTextAlignmentCenter;
+    footnotePattern.font = [UIFont fontWithName:@"Optima-ExtraBlack" size:18.0];
+    [pattern addTarget:self action:@selector(loadClassSixComponent:) forControlEvents:UIControlEventTouchUpInside];
+    [pattern addSubview:footnotePattern];
+    [classSixView addSubview:pattern];
+    
+    UIButton *HcfLcm = [UIButton buttonWithType:UIButtonTypeCustom];
+    HcfLcm.frame = CGRectMake(372, 125, 100, 80);
+    HcfLcm.tag = 605;
+    [HcfLcm setImage:[UIImage imageNamed:@"reversebubble"] forState:UIControlStateNormal];
+    UILabel *footnoteHcfLcm = [[UILabel alloc]initWithFrame:CGRectMake(0, 70, 120, 60)];
+    footnoteHcfLcm.text = @"Coming soon..";
+    footnoteHcfLcm.textColor = [UIColor blackColor];
+    footnoteHcfLcm.backgroundColor = [UIColor clearColor];
+    footnoteHcfLcm.textAlignment = NSTextAlignmentCenter;
+    footnoteHcfLcm.font = [UIFont fontWithName:@"Optima-ExtraBlack" size:18.0];
+    [HcfLcm addTarget:self action:@selector(loadClassSixComponent:) forControlEvents:UIControlEventTouchUpInside];
+    [HcfLcm addSubview:footnoteHcfLcm];
+    [classSixView addSubview:HcfLcm];
+}
+
+
+
 #pragma mark Segment
 
 
@@ -551,6 +651,15 @@
             
             [self showClassOneGames];
         }
+        else if (oldsegmentindex ==5)
+        {
+            // remove classSixGames
+            
+            [classSixView removeFromSuperview];
+            [self showClassOneGames];
+        }
+
+        
         oldsegmentindex = 0;
     }
     else if (segment.selectedSegmentIndex == 2 || segment.selectedSegmentIndex == 3)
@@ -570,7 +679,42 @@
             
             [self showClassThreeGames];
         }
+        else if (oldsegmentindex ==5)
+        {
+            // remove classSixGames
+            
+            [classSixView removeFromSuperview];
+            [self showClassThreeGames];
+        }
         oldsegmentindex = 2;
+    }
+    
+    
+    else if (segment.selectedSegmentIndex==5)
+    {
+        if (oldsegmentindex == 0 )
+        {
+            // remove classOneGames
+            [classOneView removeFromSuperview];
+            
+            // show classSixeGames
+            [self showClassSixGames];
+        }
+        else if (oldsegmentindex == 2 )
+        {
+            // remove classThreeGames
+            [classThreeView removeFromSuperview];
+            // show classSixeGames
+            [self showClassSixGames];
+        }
+        else if (oldsegmentindex == 4)
+        {
+            // remove classFiveGames
+            [classFiveView removeFromSuperview];
+            // show classSixeGames
+            [self showClassSixGames];
+        }
+        oldsegmentindex = 5;
     }
     else
     {
@@ -584,13 +728,21 @@
         }
         else if (oldsegmentindex == 2 )
         {
-            
             // remove classThreeGames
             [classThreeView removeFromSuperview];
-            
+                        // show classFiveGames
+            [self showClassFiveGames];
+        }
+        
+        else if (oldsegmentindex ==5)
+        {
+            // remove classSixGames
+
+            [classSixView removeFromSuperview];
             // show classFiveGames
             [self showClassFiveGames];
         }
+        
         oldsegmentindex = 4;
     }
 }
@@ -935,6 +1087,60 @@
         
     }
 }
+
+
+
+
+
+
+- (void)loadClassSixComponent:(UIButton *)button
+{
+    {
+        [self storeToPlist];
+        
+        QuadrantViewController *quadrantViewController;
+        
+        switch (button.tag)
+        {
+            case 601: //class 6 Quadrant
+                quadrantViewController=nil;
+                quadrantViewController=[[QuadrantViewController alloc]init];
+                [self.navigationController pushViewController:quadrantViewController animated:NO];
+                break;
+                
+            case 702: //class 6 divisibility
+              //  divisibilityCheckController=[[DivisibiltyCheckViewController alloc]init];
+              //  [self.navigationController pushViewController:divisibilityCheckController animated:YES];
+                
+                break;
+                
+            case 703: // class 6 advance race
+             //   advanceCarRaceController = [[CarRaceViewController alloc]init];
+               // [self.navigationController pushViewController:advanceCarRaceController animated:YES];
+                
+                break;
+                
+            case 704: // class 6 pattern
+               // geometricGrowthViewController = [[GeometricGrowthViewController alloc]init];
+                //[self.navigationController pushViewController:geometricGrowthViewController animated:YES];
+                
+                break;
+                
+            case 505://class 5 HCF/LCM
+              //  lcmAndHcfViewController=nil;
+               // lcmAndHcfViewController=[[LCMAndHCFViewController alloc]init];
+               // [self.navigationController pushViewController:lcmAndHcfViewController animated:YES];
+                
+                
+            default:
+                break;
+        }
+        
+    }
+}
+
+
+
 
     #pragma mark ImagePicker Delegates
 

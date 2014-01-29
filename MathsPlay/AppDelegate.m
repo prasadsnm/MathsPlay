@@ -10,6 +10,10 @@
 #import "HomeScreenViewController.h"
 
 @implementation AppDelegate
+@synthesize managedObjectContext = _managedObjectContext;
+@synthesize managedObjectModel = _managedObjectModel;
+
+@synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -72,6 +76,136 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+
+#pragma Mark CoreData methods
+
+// 1
+- (NSManagedObjectContext *) managedObjectContext {
+    if (_managedObjectContext != nil) {
+        return _managedObjectContext;
+    }
+    NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
+    if (coordinator != nil) {
+        _managedObjectContext = [[NSManagedObjectContext alloc] init];
+        [_managedObjectContext setPersistentStoreCoordinator: coordinator];
+    }
+    
+    return _managedObjectContext;
+}
+
+//2
+- (NSManagedObjectModel *)managedObjectModel {
+    if (_managedObjectModel != nil) {
+        return _managedObjectModel;
+    }
+    _managedObjectModel = [NSManagedObjectModel mergedModelFromBundles:nil];
+    
+    return _managedObjectModel;
+}
+
+//3
+- (NSPersistentStoreCoordinator *)persistentStoreCoordinator {
+    if (_persistentStoreCoordinator != nil) {
+        return _persistentStoreCoordinator;
+    }
+    
+    
+    NSString *storePath = [[self applicationDocumentsDirectory]
+                           stringByAppendingPathComponent: @"Questionare.sqlite"];
+    NSURL *storeUrl;
+    
+    if (storePath) {
+        storeUrl = [NSURL fileURLWithPath:storePath];
+        
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        if (![fileManager fileExistsAtPath:storePath]) {
+            NSString *defaultStorePath = [[NSBundle mainBundle]
+                                          pathForResource:@"Questionare" ofType:@"sqlite"];
+            if (defaultStorePath) {
+                [fileManager copyItemAtPath:defaultStorePath toPath:storePath error:NULL];
+            }
+        }
+    }
+    else
+    {
+        storeUrl = [NSURL fileURLWithPath: [[self applicationDocumentsDirectory]
+                                            stringByAppendingPathComponent: @"Questionare.sqlite"]];
+    }
+    
+    
+    
+    
+    NSDictionary *options = @{ NSSQLitePragmasOption : @{@"journal_mode" : @"DELETE"} };//for prepopulating persistence store.
+
+    NSError *error = nil;
+    _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc]
+                                   initWithManagedObjectModel:[self managedObjectModel]];
+    if(![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType
+                                                  configuration:nil URL:storeUrl options:options error:&error]) {
+        /*Error for store creation should be handled in here*/
+    }
+    
+    return _persistentStoreCoordinator;
+}
+
+
+//3
+//- (NSPersistentStoreCoordinator *)persistentStoreCoordinator {
+//    if (_persistentStoreCoordinator != nil) {
+//        return _persistentStoreCoordinator;
+//    }
+//    NSURL *storeUrl = [NSURL fileURLWithPath: [[self applicationDocumentsDirectory]
+//                                               stringByAppendingPathComponent: @"PhoneBook.sqlite"]];
+//    NSError *error = nil;
+//    _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc]
+//                                   initWithManagedObjectModel:[self managedObjectModel]];
+//    if(![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType
+//                                                  configuration:nil URL:storeUrl options:nil error:&error]) {
+//        /*Error for store creation should be handled in here*/
+//    }
+//    return _persistentStoreCoordinator;
+//}
+
+
+
+-(void) checkAndCreateDatabase{
+    
+    NSString  *databaseName=@"Questionare.sqlite";
+    
+    NSArray *documentPath=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDir = [documentPath objectAtIndex:0];
+    NSString	*databasePath = [documentsDir stringByAppendingPathComponent:databaseName];
+    
+	// Check if the SQL database has already been saved to the users phone, if not then copy it over
+	BOOL success;
+	
+	// Create a FileManager object, we will use this to check the status
+	// of the database and to copy it over if required
+	NSFileManager *fileManager = [NSFileManager defaultManager];
+	
+	// Check if the database has already been created in the users filesystem
+	success = [fileManager fileExistsAtPath:databasePath];
+	
+	// If the database already exists then return without doing anything
+	if(success) return;
+	
+	// If not then proceed to copy the database from the application to the users filesystem
+	
+	// Get the path to the database in the application package
+	NSString *databasePathFromApp = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:databaseName];
+	
+	// Copy the database from the package to the users filesystem
+	[fileManager copyItemAtPath:databasePathFromApp toPath:databasePath error:nil];
+	
+	
+}
+
+
+
+- (NSString *)applicationDocumentsDirectory {
+    return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
 }
 
 @end

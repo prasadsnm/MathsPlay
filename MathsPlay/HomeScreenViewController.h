@@ -17,6 +17,6 @@
     UIPopoverController *popover;
     UIImagePickerController *imagePicker;
     UILabel *skillLabelValue;
-    UIView *classOneView, *classThreeView, *classFiveView;
+    UIView *classOneView, *classThreeView, *classFiveView,*classSixView;
 }
 @end

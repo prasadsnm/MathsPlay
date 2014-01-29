@@ -232,6 +232,7 @@
 		FC7897C7186C4AC1007B641F /* rules.png in Resources */ = {isa = PBXBuildFile; fileRef = FC7897C6186C4AC1007B641F /* rules.png */; };
 		FC7897CA186C4B53007B641F /* RulesCustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FC7897C9186C4B53007B641F /* RulesCustomButton.m */; };
 		FCA35E1918963B5900C11B9F /* sp-top.png in Resources */ = {isa = PBXBuildFile; fileRef = FCA35E1818963B5900C11B9F /* sp-top.png */; };
+		FCA35E201896463D00C11B9F /* QuadrantViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA35E1F1896463D00C11B9F /* QuadrantViewController.m */; };
 		FCAD885D184F1D9600045198 /* series.png in Resources */ = {isa = PBXBuildFile; fileRef = FCAD885C184F1D9600045198 /* series.png */; };
 		FCAD8861184F442900045198 /* ResultBoard.png in Resources */ = {isa = PBXBuildFile; fileRef = FCAD8860184F442900045198 /* ResultBoard.png */; };
 		FCAD8863184F4A1500045198 /* PWChalk.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FCAD8862184F4A1500045198 /* PWChalk.ttf */; };
@@ -265,8 +266,26 @@
 		FCD3DC11184DB0AD00471C1E /* SAD_FACE.png in Resources */ = {isa = PBXBuildFile; fileRef = FCD3DC10184DB0AD00471C1E /* SAD_FACE.png */; };
 		FCD3DC15184DBBFF00471C1E /* dice.png in Resources */ = {isa = PBXBuildFile; fileRef = FCD3DC14184DBBFF00471C1E /* dice.png */; };
 		FCD3DC18184DD79B00471C1E /* digital-7.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FCD3DC17184DD79B00471C1E /* digital-7.ttf */; };
+		FCD764A81897831D003D0EAC /* BarChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCD764901897831D003D0EAC /* BarChartView.m */; };
+		FCD764A91897831D003D0EAC /* BarLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = FCD764921897831D003D0EAC /* BarLabel.m */; };
+		FCD764AA1897831D003D0EAC /* BarView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCD764951897831D003D0EAC /* BarView.m */; };
+		FCD764AB1897831D003D0EAC /* CMPopTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCD764991897831D003D0EAC /* CMPopTipView.m */; };
+		FCD764AC1897831D003D0EAC /* UIColor+i7HexColor.m in Sources */ = {isa = PBXBuildFile; fileRef = FCD7649C1897831D003D0EAC /* UIColor+i7HexColor.m */; };
+		FCD764AD1897831D003D0EAC /* UIViewSizeShortcuts.m in Sources */ = {isa = PBXBuildFile; fileRef = FCD7649E1897831D003D0EAC /* UIViewSizeShortcuts.m */; };
+		FCD764AE1897831D003D0EAC /* XMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = FCD764A11897831D003D0EAC /* XMLElement.m */; };
+		FCD764AF1897831D003D0EAC /* XMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = FCD764A31897831D003D0EAC /* XMLParser.m */; };
+		FCD764B01897831D003D0EAC /* XMLParserDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FCD764A51897831D003D0EAC /* XMLParserDelegate.m */; };
+		FCD764B11897831D003D0EAC /* PlotChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCD764A71897831D003D0EAC /* PlotChartView.m */; };
+		FCD764B318978438003D0EAC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCD764B218978438003D0EAC /* QuartzCore.framework */; };
+		FCD764B61897B41D003D0EAC /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FCD764B41897B41D003D0EAC /* Model.xcdatamodeld */; };
 		FCD854C51856E1C400EACE3F /* fishHCF.png in Resources */ = {isa = PBXBuildFile; fileRef = FCD854C41856E1C400EACE3F /* fishHCF.png */; };
 		FCD854C9185717EF00EACE3F /* tank.png in Resources */ = {isa = PBXBuildFile; fileRef = FCD854C8185717EF00EACE3F /* tank.png */; };
+		FCF12E4A1898E7750063929B /* Questionare.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF12E491898E7750063929B /* Questionare.m */; };
+		FCF12E541898FF710063929B /* checked.png in Resources */ = {isa = PBXBuildFile; fileRef = FCF12E4E1898FF710063929B /* checked.png */; };
+		FCF12E551898FF710063929B /* checked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FCF12E4F1898FF710063929B /* checked@2x.png */; };
+		FCF12E571898FF710063929B /* unchecked.png in Resources */ = {isa = PBXBuildFile; fileRef = FCF12E521898FF710063929B /* unchecked.png */; };
+		FCF12E581898FF710063929B /* unchecked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FCF12E531898FF710063929B /* unchecked@2x.png */; };
+		FCF12E6118990B020063929B /* RadioButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF12E6018990B020063929B /* RadioButton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -533,6 +552,8 @@
 		FC7897C8186C4B53007B641F /* RulesCustomButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RulesCustomButton.h; sourceTree = "<group>"; };
 		FC7897C9186C4B53007B641F /* RulesCustomButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RulesCustomButton.m; sourceTree = "<group>"; };
 		FCA35E1818963B5900C11B9F /* sp-top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sp-top.png"; sourceTree = "<group>"; };
+		FCA35E1E1896463D00C11B9F /* QuadrantViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuadrantViewController.h; sourceTree = "<group>"; };
+		FCA35E1F1896463D00C11B9F /* QuadrantViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuadrantViewController.m; sourceTree = "<group>"; };
 		FCAD885C184F1D9600045198 /* series.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = series.png; sourceTree = "<group>"; };
 		FCAD8860184F442900045198 /* ResultBoard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ResultBoard.png; sourceTree = "<group>"; };
 		FCAD8862184F4A1500045198 /* PWChalk.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PWChalk.ttf; sourceTree = "<group>"; };
@@ -570,8 +591,39 @@
 		FCD3DC10184DB0AD00471C1E /* SAD_FACE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SAD_FACE.png; sourceTree = "<group>"; };
 		FCD3DC14184DBBFF00471C1E /* dice.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dice.png; sourceTree = "<group>"; };
 		FCD3DC17184DD79B00471C1E /* digital-7.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "digital-7.ttf"; sourceTree = "<group>"; };
+		FCD7648F1897831D003D0EAC /* BarChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarChartView.h; sourceTree = "<group>"; };
+		FCD764901897831D003D0EAC /* BarChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarChartView.m; sourceTree = "<group>"; };
+		FCD764911897831D003D0EAC /* BarLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarLabel.h; sourceTree = "<group>"; };
+		FCD764921897831D003D0EAC /* BarLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarLabel.m; sourceTree = "<group>"; };
+		FCD764931897831D003D0EAC /* BarTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarTypes.h; sourceTree = "<group>"; };
+		FCD764941897831D003D0EAC /* BarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarView.h; sourceTree = "<group>"; };
+		FCD764951897831D003D0EAC /* BarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarView.m; sourceTree = "<group>"; };
+		FCD764981897831D003D0EAC /* CMPopTipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMPopTipView.h; sourceTree = "<group>"; };
+		FCD764991897831D003D0EAC /* CMPopTipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMPopTipView.m; sourceTree = "<group>"; };
+		FCD7649B1897831D003D0EAC /* UIColor+i7HexColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+i7HexColor.h"; sourceTree = "<group>"; };
+		FCD7649C1897831D003D0EAC /* UIColor+i7HexColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+i7HexColor.m"; sourceTree = "<group>"; };
+		FCD7649D1897831D003D0EAC /* UIViewSizeShortcuts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewSizeShortcuts.h; sourceTree = "<group>"; };
+		FCD7649E1897831D003D0EAC /* UIViewSizeShortcuts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIViewSizeShortcuts.m; sourceTree = "<group>"; };
+		FCD764A01897831D003D0EAC /* XMLElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLElement.h; sourceTree = "<group>"; };
+		FCD764A11897831D003D0EAC /* XMLElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLElement.m; sourceTree = "<group>"; };
+		FCD764A21897831D003D0EAC /* XMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLParser.h; sourceTree = "<group>"; };
+		FCD764A31897831D003D0EAC /* XMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLParser.m; sourceTree = "<group>"; };
+		FCD764A41897831D003D0EAC /* XMLParserDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLParserDelegate.h; sourceTree = "<group>"; };
+		FCD764A51897831D003D0EAC /* XMLParserDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLParserDelegate.m; sourceTree = "<group>"; };
+		FCD764A61897831D003D0EAC /* PlotChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlotChartView.h; sourceTree = "<group>"; };
+		FCD764A71897831D003D0EAC /* PlotChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlotChartView.m; sourceTree = "<group>"; };
+		FCD764B218978438003D0EAC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		FCD764B51897B41D003D0EAC /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		FCD854C41856E1C400EACE3F /* fishHCF.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fishHCF.png; sourceTree = "<group>"; };
 		FCD854C8185717EF00EACE3F /* tank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tank.png; sourceTree = "<group>"; };
+		FCF12E481898E7750063929B /* Questionare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Questionare.h; sourceTree = "<group>"; };
+		FCF12E491898E7750063929B /* Questionare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Questionare.m; sourceTree = "<group>"; };
+		FCF12E4E1898FF710063929B /* checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checked.png; sourceTree = "<group>"; };
+		FCF12E4F1898FF710063929B /* checked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checked@2x.png"; sourceTree = "<group>"; };
+		FCF12E521898FF710063929B /* unchecked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unchecked.png; sourceTree = "<group>"; };
+		FCF12E531898FF710063929B /* unchecked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "unchecked@2x.png"; sourceTree = "<group>"; };
+		FCF12E5F18990B020063929B /* RadioButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RadioButton.h; path = ../RadioButton.h; sourceTree = "<group>"; };
+		FCF12E6018990B020063929B /* RadioButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RadioButton.m; path = ../RadioButton.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -579,6 +631,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCD764B318978438003D0EAC /* QuartzCore.framework in Frameworks */,
 				680AB4C918168D8300A49012 /* AssetsLibrary.framework in Frameworks */,
 				689F2B3518152C0B00DC8553 /* CoreGraphics.framework in Frameworks */,
 				689F2B3718152C0B00DC8553 /* UIKit.framework in Frameworks */,
@@ -972,6 +1025,7 @@
 		689F2B3118152C0B00DC8553 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FCD764B218978438003D0EAC /* QuartzCore.framework */,
 				FCD077BE18582C4D006CE8DF /* SpriteKit.framework */,
 				680AB4C818168D8300A49012 /* AssetsLibrary.framework */,
 				689F2B3218152C0B00DC8553 /* Foundation.framework */,
@@ -1031,6 +1085,7 @@
 		689F2B611815304100DC8553 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				FCA35E1D1896461400C11B9F /* ClassSix */,
 				683458FF1836393E00EFF321 /* ClassFive */,
 				687B71BB18350C6E00DE772E /* ClassThree */,
 				68069C821820D978009A24F6 /* ClassOne */,
@@ -1048,6 +1103,22 @@
 				689F2B68181548AF00DC8553 /* splashscreen.png */,
 			);
 			name = Images;
+			sourceTree = "<group>";
+		};
+		FCA35E1D1896461400C11B9F /* ClassSix */ = {
+			isa = PBXGroup;
+			children = (
+				FCF12E5F18990B020063929B /* RadioButton.h */,
+				FCF12E6018990B020063929B /* RadioButton.m */,
+				FCF12E4D1898FF710063929B /* radio-res-ios */,
+				FCD7648E1897831D003D0EAC /* BarChart Library */,
+				FCA35E1E1896463D00C11B9F /* QuadrantViewController.h */,
+				FCA35E1F1896463D00C11B9F /* QuadrantViewController.m */,
+				FCF12E481898E7750063929B /* Questionare.h */,
+				FCF12E491898E7750063929B /* Questionare.m */,
+				FCD764B41897B41D003D0EAC /* Model.xcdatamodeld */,
+			);
+			name = ClassSix;
 			sourceTree = "<group>";
 		};
 		FCC7D6831859A48600039099 /* CustomClasses */ = {
@@ -1071,6 +1142,78 @@
 				FCD3DC17184DD79B00471C1E /* digital-7.ttf */,
 			);
 			name = font;
+			sourceTree = "<group>";
+		};
+		FCD7648E1897831D003D0EAC /* BarChart Library */ = {
+			isa = PBXGroup;
+			children = (
+				FCD7648F1897831D003D0EAC /* BarChartView.h */,
+				FCD764901897831D003D0EAC /* BarChartView.m */,
+				FCD764911897831D003D0EAC /* BarLabel.h */,
+				FCD764921897831D003D0EAC /* BarLabel.m */,
+				FCD764931897831D003D0EAC /* BarTypes.h */,
+				FCD764941897831D003D0EAC /* BarView.h */,
+				FCD764951897831D003D0EAC /* BarView.m */,
+				FCD764961897831D003D0EAC /* External */,
+				FCD764A61897831D003D0EAC /* PlotChartView.h */,
+				FCD764A71897831D003D0EAC /* PlotChartView.m */,
+			);
+			path = "BarChart Library";
+			sourceTree = "<group>";
+		};
+		FCD764961897831D003D0EAC /* External */ = {
+			isa = PBXGroup;
+			children = (
+				FCD764971897831D003D0EAC /* CMPopTipView */,
+				FCD7649A1897831D003D0EAC /* Helpers */,
+				FCD7649F1897831D003D0EAC /* XMLParser */,
+			);
+			path = External;
+			sourceTree = "<group>";
+		};
+		FCD764971897831D003D0EAC /* CMPopTipView */ = {
+			isa = PBXGroup;
+			children = (
+				FCD764981897831D003D0EAC /* CMPopTipView.h */,
+				FCD764991897831D003D0EAC /* CMPopTipView.m */,
+			);
+			path = CMPopTipView;
+			sourceTree = "<group>";
+		};
+		FCD7649A1897831D003D0EAC /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				FCD7649B1897831D003D0EAC /* UIColor+i7HexColor.h */,
+				FCD7649C1897831D003D0EAC /* UIColor+i7HexColor.m */,
+				FCD7649D1897831D003D0EAC /* UIViewSizeShortcuts.h */,
+				FCD7649E1897831D003D0EAC /* UIViewSizeShortcuts.m */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		FCD7649F1897831D003D0EAC /* XMLParser */ = {
+			isa = PBXGroup;
+			children = (
+				FCD764A01897831D003D0EAC /* XMLElement.h */,
+				FCD764A11897831D003D0EAC /* XMLElement.m */,
+				FCD764A21897831D003D0EAC /* XMLParser.h */,
+				FCD764A31897831D003D0EAC /* XMLParser.m */,
+				FCD764A41897831D003D0EAC /* XMLParserDelegate.h */,
+				FCD764A51897831D003D0EAC /* XMLParserDelegate.m */,
+			);
+			path = XMLParser;
+			sourceTree = "<group>";
+		};
+		FCF12E4D1898FF710063929B /* radio-res-ios */ = {
+			isa = PBXGroup;
+			children = (
+				FCF12E4E1898FF710063929B /* checked.png */,
+				FCF12E4F1898FF710063929B /* checked@2x.png */,
+				FCF12E521898FF710063929B /* unchecked.png */,
+				FCF12E531898FF710063929B /* unchecked@2x.png */,
+			);
+			name = "radio-res-ios";
+			path = "BarChart Library/radio-res-ios";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1233,6 +1376,7 @@
 				68DDD85A181E4F31004D7830 /* back1.jpg in Resources */,
 				FC3DF8831851B7B8006BCC48 /* medal.png in Resources */,
 				683458DF1836007700EFF321 /* images.jpeg in Resources */,
+				FCF12E551898FF710063929B /* checked@2x.png in Resources */,
 				68069C941820F45B009A24F6 /* nextlevel.png in Resources */,
 				68B1B876181AAE4600CB8CA0 /* 6.png in Resources */,
 				FCC7D69F1859E8A200039099 /* star1.png in Resources */,
@@ -1264,6 +1408,7 @@
 				68167116182A810A008440B6 /* congratulations.mp3 in Resources */,
 				FCD3DC11184DB0AD00471C1E /* SAD_FACE.png in Resources */,
 				6807E80818471C9200423B42 /* spider.png in Resources */,
+				FCF12E541898FF710063929B /* checked.png in Resources */,
 				68B1B874181AA33500CB8CA0 /* game_background.png in Resources */,
 				68A51439182B686E0052EC43 /* treasurebox.png in Resources */,
 				6815A1B418324AF800E5CC74 /* butterfly2.png in Resources */,
@@ -1363,8 +1508,10 @@
 				FCC7D67E1859896300039099 /* thumbs-up.png in Resources */,
 				6807E80E1847427B00423B42 /* sword.png in Resources */,
 				68DDD874181E8607004D7830 /* namebird1.png in Resources */,
+				FCF12E571898FF710063929B /* unchecked.png in Resources */,
 				FC3DF8821851B7B8006BCC48 /* gift-box.png in Resources */,
 				6813EBD1183350B000D91090 /* bodypart1.png in Resources */,
+				FCF12E581898FF710063929B /* unchecked@2x.png in Resources */,
 				68B1B880181AB59A00CB8CA0 /* home.jpg in Resources */,
 				683458DE1836007700EFF321 /* homebutton.png in Resources */,
 				68FE92E8182B5E80004A6306 /* smile.png in Resources */,
@@ -1391,22 +1538,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCF12E6118990B020063929B /* RadioButton.m in Sources */,
+				FCD764B11897831D003D0EAC /* PlotChartView.m in Sources */,
+				FCD764AD1897831D003D0EAC /* UIViewSizeShortcuts.m in Sources */,
 				68069C7B1820CE52009A24F6 /* CompareViewController.m in Sources */,
 				681D25D5183F280000E0A791 /* MPCustomAlert.m in Sources */,
 				687B71C618350CBD00DE772E /* FollowViewController.m in Sources */,
+				FCD764AF1897831D003D0EAC /* XMLParser.m in Sources */,
 				6834591018363C0700EFF321 /* GeometricGrowthViewController.m in Sources */,
+				FCA35E201896463D00C11B9F /* QuadrantViewController.m in Sources */,
 				689F2B641815305F00DC8553 /* HomeScreenViewController.m in Sources */,
 				687B71C718350CBD00DE772E /* SubViewController.m in Sources */,
 				6834591218363C0700EFF321 /* DivisibiltyCheckViewController.m in Sources */,
 				FCC7D69B1859D56500039099 /* Goodies.m in Sources */,
 				689F2B4318152C0B00DC8553 /* AppDelegate.m in Sources */,
+				FCD764AC1897831D003D0EAC /* UIColor+i7HexColor.m in Sources */,
+				FCD764A81897831D003D0EAC /* BarChartView.m in Sources */,
 				689F2B3F18152C0B00DC8553 /* main.m in Sources */,
 				68065317183C9CBC005A3EC1 /* FollowTPModel.m in Sources */,
+				FCD764AA1897831D003D0EAC /* BarView.m in Sources */,
 				6834591118363C0700EFF321 /* SquareRootViewController.m in Sources */,
 				6834590F18363C0700EFF321 /* CountDownTimer.m in Sources */,
 				682EE0021845DE1F00B1F8F0 /* HMAModel.m in Sources */,
 				FCC7D6821859A46A00039099 /* CustomAudioToolBox.m in Sources */,
 				6815A1A61832050300E5CC74 /* ButterflyCatchViewController.m in Sources */,
+				FCD764AE1897831D003D0EAC /* XMLElement.m in Sources */,
+				FCF12E4A1898E7750063929B /* Questionare.m in Sources */,
 				687B71C518350CBD00DE772E /* AdvanceMathViewController.m in Sources */,
 				68069C7C1820CE52009A24F6 /* DragBubblesViewController.m in Sources */,
 				FC7897CA186C4B53007B641F /* RulesCustomButton.m in Sources */,
@@ -1414,12 +1571,16 @@
 				6834591418363C0700EFF321 /* CarRaceViewController.m in Sources */,
 				680AB4951816409400A49012 /* Util.m in Sources */,
 				6834590E18363C0700EFF321 /* LCMAndHCFViewController.m in Sources */,
+				FCD764B01897831D003D0EAC /* XMLParserDelegate.m in Sources */,
 				682EE0081845F6C800B1F8F0 /* HMAView.m in Sources */,
 				68069C7F1820CE74009A24F6 /* DragToAddOrSubViewController.m in Sources */,
+				FCD764B61897B41D003D0EAC /* Model.xcdatamodeld in Sources */,
+				FCD764A91897831D003D0EAC /* BarLabel.m in Sources */,
 				FCC21D39186033EA0036C44B /* SquareRootQuizViewController.m in Sources */,
 				6834591318363C0700EFF321 /* CustomModalBox.m in Sources */,
 				687B71C418350CBD00DE772E /* AddViewController.m in Sources */,
 				682EDFFF1845DB3000B1F8F0 /* HelpMeAdditionViewController.m in Sources */,
+				FCD764AB1897831D003D0EAC /* CMPopTipView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1646,6 +1807,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		FCD764B41897B41D003D0EAC /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				FCD764B51897B41D003D0EAC /* Model.xcdatamodel */,
+			);
+			currentVersion = FCD764B51897B41D003D0EAC /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 689F2B2718152C0B00DC8553 /* Project object */;
 }

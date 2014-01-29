@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3401" systemVersion="13A603" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Questionare" representedClassName="Questionare" syncable="YES">
+        <attribute name="answer" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="firstoption" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="firsttitle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="forthoption" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="forthtitle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="qid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="question" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="secondoption" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="secondtitle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="thirdoption" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="thirdtitle" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Questionare" positionX="160" positionY="192" width="128" height="193"/>
+    </elements>
+</model>
