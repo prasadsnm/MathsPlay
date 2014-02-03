@@ -46,7 +46,7 @@ int secondsLeft;
 }
 - (void)updateCounter:(NSTimer *)theTimer
 {
-        if (secondsLeft<60 && secondsLeft>0) {
+        if (secondsLeft<20 && secondsLeft>0) {
         [myCounterLabel setHidden:![myCounterLabel isHidden]];
         myCounterLabel.textColor=[UIColor redColor];
     }

@@ -233,6 +233,8 @@
 		FC1052CE189F759A00B3D70B /* accelerating.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FC1052CD189F759A00B3D70B /* accelerating.mp3 */; };
 		FC1052D0189F76EB00B3D70B /* brakes.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FC1052CF189F76EB00B3D70B /* brakes.mp3 */; };
 		FC1052D2189F78F400B3D70B /* fall.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FC1052D1189F78F400B3D70B /* fall.mp3 */; };
+		FC1052D8189FB38200B3D70B /* Questionare.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = FC1052D7189FB38200B3D70B /* Questionare.sqlite */; };
+		FC1052DA189FCAB400B3D70B /* mycar.png in Resources */ = {isa = PBXBuildFile; fileRef = FC1052D9189FCAB400B3D70B /* mycar.png */; };
 		FC2487E3189A437100270460 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FC2487E1189A437100270460 /* Model.xcdatamodeld */; };
 		FC2487E6189A443200270460 /* Questionare.m in Sources */ = {isa = PBXBuildFile; fileRef = FC2487E5189A443200270460 /* Questionare.m */; };
 		FC3DF8811851B7B8006BCC48 /* cup.png in Resources */ = {isa = PBXBuildFile; fileRef = FC3DF87E1851B7B8006BCC48 /* cup.png */; };
@@ -288,7 +290,6 @@
 		FCD764B318978438003D0EAC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCD764B218978438003D0EAC /* QuartzCore.framework */; };
 		FCD854C51856E1C400EACE3F /* fishHCF.png in Resources */ = {isa = PBXBuildFile; fileRef = FCD854C41856E1C400EACE3F /* fishHCF.png */; };
 		FCD854C9185717EF00EACE3F /* tank.png in Resources */ = {isa = PBXBuildFile; fileRef = FCD854C8185717EF00EACE3F /* tank.png */; };
-		FCDFF9FC189BAFAF00CCD8C7 /* Questionare.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = FCDFF9FB189BAFAF00CCD8C7 /* Questionare.sqlite */; };
 		FCF12E541898FF710063929B /* checked.png in Resources */ = {isa = PBXBuildFile; fileRef = FCF12E4E1898FF710063929B /* checked.png */; };
 		FCF12E551898FF710063929B /* checked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FCF12E4F1898FF710063929B /* checked@2x.png */; };
 		FCF12E571898FF710063929B /* unchecked.png in Resources */ = {isa = PBXBuildFile; fileRef = FCF12E521898FF710063929B /* unchecked.png */; };
@@ -560,6 +561,8 @@
 		FC1052CD189F759A00B3D70B /* accelerating.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = accelerating.mp3; sourceTree = "<group>"; };
 		FC1052CF189F76EB00B3D70B /* brakes.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = brakes.mp3; sourceTree = "<group>"; };
 		FC1052D1189F78F400B3D70B /* fall.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fall.mp3; sourceTree = "<group>"; };
+		FC1052D7189FB38200B3D70B /* Questionare.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = Questionare.sqlite; sourceTree = "<group>"; };
+		FC1052D9189FCAB400B3D70B /* mycar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mycar.png; sourceTree = "<group>"; };
 		FC2487E2189A437100270460 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		FC2487E4189A443200270460 /* Questionare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Questionare.h; sourceTree = "<group>"; };
 		FC2487E5189A443200270460 /* Questionare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Questionare.m; sourceTree = "<group>"; };
@@ -632,7 +635,6 @@
 		FCD764B218978438003D0EAC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		FCD854C41856E1C400EACE3F /* fishHCF.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fishHCF.png; sourceTree = "<group>"; };
 		FCD854C8185717EF00EACE3F /* tank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tank.png; sourceTree = "<group>"; };
-		FCDFF9FB189BAFAF00CCD8C7 /* Questionare.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = Questionare.sqlite; sourceTree = "<group>"; };
 		FCF12E4E1898FF710063929B /* checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checked.png; sourceTree = "<group>"; };
 		FCF12E4F1898FF710063929B /* checked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checked@2x.png"; sourceTree = "<group>"; };
 		FCF12E521898FF710063929B /* unchecked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unchecked.png; sourceTree = "<group>"; };
@@ -731,6 +733,7 @@
 				683458B11835FE9E00EFF321 /* ball3.png */,
 				683458B21835FE9E00EFF321 /* ball4.png */,
 				683458B31835FE9E00EFF321 /* blueBox.png */,
+				FC1052D9189FCAB400B3D70B /* mycar.png */,
 				683458B41835FE9E00EFF321 /* car.png */,
 				683458B51835FE9E00EFF321 /* car1.png */,
 				683458B61835FE9E00EFF321 /* cartoon-forest.jpg */,
@@ -1224,7 +1227,7 @@
 		FCE89996189A266E0095A631 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				FCDFF9FB189BAFAF00CCD8C7 /* Questionare.sqlite */,
+				FC1052D7189FB38200B3D70B /* Questionare.sqlite */,
 				FC2487E1189A437100270460 /* Model.xcdatamodeld */,
 				FC2487E4189A443200270460 /* Questionare.h */,
 				FC2487E5189A443200270460 /* Questionare.m */,
@@ -1421,7 +1424,6 @@
 				680AB4B318165F8F00A49012 /* minion.png in Resources */,
 				68B1B872181AA2A600CB8CA0 /* background.jpg in Resources */,
 				683458C51835FE9E00EFF321 /* ball2.png in Resources */,
-				FCDFF9FC189BAFAF00CCD8C7 /* Questionare.sqlite in Resources */,
 				6816711F182A810A008440B6 /* win1.mp3 in Resources */,
 				68167119182A810A008440B6 /* level 1.mp3 in Resources */,
 				FCAD8863184F4A1500045198 /* PWChalk.ttf in Resources */,
@@ -1437,7 +1439,9 @@
 				FC1052C6189F6EFF00B3D70B /* car-constant.mp3 in Resources */,
 				683458C81835FE9E00EFF321 /* blueBox.png in Resources */,
 				68DDD886181E9FBD004D7830 /* browse1.png in Resources */,
+				FC1052DA189FCAB400B3D70B /* mycar.png in Resources */,
 				68DDD872181E83C8004D7830 /* pitch.png in Resources */,
+				FC1052D8189FB38200B3D70B /* Questionare.sqlite in Resources */,
 				FC1052CE189F759A00B3D70B /* accelerating.mp3 in Resources */,
 				FC1052D0189F76EB00B3D70B /* brakes.mp3 in Resources */,
 				68167116182A810A008440B6 /* congratulations.mp3 in Resources */,

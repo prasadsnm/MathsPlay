@@ -21,8 +21,7 @@
     UIAlertView *_progresAlert;
     int myCounter;
     UIBarButtonItem *rightBarButton;
-
-    
+    BOOL answerChoosen;
 }
 @end
 
@@ -56,49 +55,38 @@
     NSLog(@"View did Load");
     SET_USERNAME_AS_TITLE
     myCounter=0;
-  
-    
     questionLabel=[[UILabel alloc]initWithFrame:CGRectMake(50, self.view.frame.size.height/2+70, self.view.frame.size.width-100, 60)];
     questionLabel.text=@"";
     questionLabel.numberOfLines=0;
-    questionLabel.backgroundColor=[UIColor redColor];
+    questionLabel.backgroundColor=[UIColor lightGrayColor];
     [self.view addSubview:questionLabel];
-    
-
-
     
     // radio button
     optionOne=[[RadioButton alloc]initWithFrame:CGRectMake(50,  650, 30, 30)];
     optionOne.tag=1;
     optionOne.delegate=self;
     [self.view addSubview:optionOne];
-    optionOneTitleLabel=[[UILabel alloc]initWithFrame:CGRectMake(80, 650, 50, 30)];
+    optionOneTitleLabel=[[UILabel alloc]initWithFrame:CGRectMake(80, 650, 80, 30)];
     optionOneTitleLabel.textAlignment=NSTextAlignmentLeft;
     optionOneTitleLabel.textColor=[UIColor blackColor];
     optionOneTitleLabel.tag=10;
     [self.view addSubview:optionOneTitleLabel];
     
-    
-    
-    
-    
     optionTwo=[[RadioButton alloc]initWithFrame:CGRectMake(50,  700, 30, 30)];
     optionTwo.tag=2;
     optionTwo.delegate=self;
     [self.view addSubview:optionTwo];
-    optionTwoTitleLabel=[[UILabel alloc]initWithFrame:CGRectMake(80, 700, 50, 30)];
+    optionTwoTitleLabel=[[UILabel alloc]initWithFrame:CGRectMake(80, 700, 80, 30)];
     optionTwoTitleLabel.textAlignment=NSTextAlignmentLeft;
     optionTwoTitleLabel.textColor=[UIColor blackColor];
     optionTwoTitleLabel.tag=20;
     [self.view addSubview:optionTwoTitleLabel];
     
-    
-    
     optionThree=[[RadioButton alloc]initWithFrame:CGRectMake(50,  750, 30, 30)];
     optionThree.tag=3;
     optionThree.delegate=self;
     [self.view addSubview:optionThree];
-    optionThreeTitleLabel=[[UILabel alloc]initWithFrame:CGRectMake(80, 750, 50, 30)];
+    optionThreeTitleLabel=[[UILabel alloc]initWithFrame:CGRectMake(80, 750, 80, 30)];
     optionThreeTitleLabel.textAlignment=NSTextAlignmentLeft;
     optionThreeTitleLabel.textColor=[UIColor blackColor];
     optionThreeTitleLabel.tag=30;
@@ -108,13 +96,11 @@
     optionFour.tag=4;
     optionFour.delegate=self;
     [self.view addSubview:optionFour];
-    optionFourTitleLabel=[[UILabel alloc]initWithFrame:CGRectMake(80, 800, 50, 30)];
+    optionFourTitleLabel=[[UILabel alloc]initWithFrame:CGRectMake(80, 800, 80, 30)];
     optionFourTitleLabel.textAlignment=NSTextAlignmentLeft;
     optionFourTitleLabel.textColor=[UIColor blackColor];
     optionFourTitleLabel.tag=40;
     [self.view addSubview:optionFourTitleLabel];
-    
-    
     
     horizontalLabel=[[UILabel alloc]initWithFrame:CGRectMake(50, questionLabel.origin.y-50, self.view.frame.size.width-100, 50)];
     horizontalLabel.text=@"";
@@ -133,65 +119,61 @@
     verticalLabel.transform= CGAffineTransformMakeRotation(DEGREES_TO_RADIANS(270));
     
     
-   rightBarButton = [[UIBarButtonItem alloc]
-                                   initWithTitle:@"Next Question"
-                                   style:UIBarButtonItemStyleBordered
-                                   target:self
-                                   action:@selector(next)];
+    rightBarButton = [[UIBarButtonItem alloc]
+                      initWithTitle:@"Next Question"
+                      style:UIBarButtonItemStyleBordered
+                      target:self
+                      action:@selector(next)];
     self.navigationItem.rightBarButtonItem = rightBarButton;
-    
-//    UIButton *nextQuestionbutton=[UIButton buttonWithType:UIButtonTypeRoundedRect];
-//    nextQuestionbutton.frame=CGRectMake(300, 600, 80, 30);
-//    [nextQuestionbutton setTitle:@"Next" forState:UIControlStateNormal];
-//    [nextQuestionbutton addTarget:self action:@selector(next) forControlEvents:UIControlEventTouchUpInside];
-//    [self.view addSubview:nextQuestionbutton];
-    
-    
-   
 }
 
 #pragma mark - Radio Button
 
 -(void)didSelectedOption:(NSInteger)option{
-    NSString *status;
+    NSString *status,*message;
     NSLog(@"%@", _sharedResultSet.answer) ;
     UILabel *lbl=(UILabel *)[self.view viewWithTag:option*10];
     if ([_sharedResultSet.answer isEqualToString:lbl.text]) {
-        status=@"Correct Answer!!";
+        status=@"Hurray !!";
+        message=@"Correct Answer",
+        [self refreshGraph];
+        [self next];
     }
     else{
         status=@"Wrong Answer!!";
-           }
-    NSLog(@"%@",lbl.text);
-    _progresAlert = [[UIAlertView alloc] initWithTitle:status message:Nil delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-    [_progresAlert show];
-   switch (option) {
-       case 1:{
-           optionTwo.selected=NO;
-           optionThree.selected=NO;
-           optionFour.selected=NO;
+        message=@"Try Again";
 
-       }break;
-           case 2:
-           optionOne.selected=NO;
-           optionThree.selected=NO;
-           optionFour.selected=NO;
+    }
+    _progresAlert = [[UIAlertView alloc] initWithTitle:status message:message delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+    [_progresAlert show];
+    switch (option) {
+            answerChoosen=YES;
+        case 1:{
+            optionTwo.selected=NO;
+            optionThree.selected=NO;
+            optionFour.selected=NO;
+            
+        }break;
+        case 2:
+            optionOne.selected=NO;
+            optionThree.selected=NO;
+            optionFour.selected=NO;
             break;
-           
-           case 3:
-           optionOne.selected=NO;
-           optionTwo.selected=NO;
-           optionFour.selected=NO;
-           break;
-           
+            
+        case 3:
+            optionOne.selected=NO;
+            optionTwo.selected=NO;
+            optionFour.selected=NO;
+            break;
+            
         case 4:
-           optionOne.selected=NO;
-           optionTwo.selected=NO;
-           optionThree.selected=NO;
-           break;
-  default:
-    break;
-}
+            optionOne.selected=NO;
+            optionTwo.selected=NO;
+            optionThree.selected=NO;
+            break;
+        default:
+            break;
+    }
     
 }
 
@@ -203,17 +185,14 @@
 #pragma mark - Bar Chart Setup
 
 - (void)loadBarChartUsingArray :(Questionare *)result {
-
+    
     if (result) {
         [barChart removeFromSuperview];
         barChart=[[BarChartView alloc]initWithFrame:CGRectMake(50, 50, self.view.frame.size.width-100, (self.view.frame.size.height)/2)];
         barChart.userInteractionEnabled=YES;
-        
-        
-        
         [self.view addSubview:barChart];
         //Generate properly formatted data to give to the bar chart
-       NSArray *array = [barChart createChartDataWithTitles:[NSArray arrayWithObjects:result.graphFirstTitleText,result.graphSecondTitleText, result.graphThirdTitleText, result.graphFourtTitleText, nil]values:[NSArray arrayWithObjects:result.graphFourthInputValue , result.graphSecondInputValue,result.graphThirdInputValue, result.graphFourthInputValue , nil]colors:[NSArray arrayWithObjects:@"87E317", @"0000FF", @"FF0000", @"9B30FF", nil]labelColors:[NSArray arrayWithObjects:@"FF0000", @"FF0000", @"FF0000", @"FF0000", nil]];
+        NSArray *array = [barChart createChartDataWithTitles:[NSArray arrayWithObjects:result.graphFirstTitleText,result.graphSecondTitleText, result.graphThirdTitleText, result.graphFourtTitleText, nil]values:[NSArray arrayWithObjects:result.graphFourthInputValue , result.graphSecondInputValue,result.graphThirdInputValue, result.graphFourthInputValue , nil]colors:[NSArray arrayWithObjects:@"87E317", @"0000FF", @"FF0000", @"9B30FF", nil]labelColors:[NSArray arrayWithObjects:@"FF0000", @"FF0000", @"FF0000", @"FF0000", nil]];
         
         //Set the Shape of the Bars (Rounded or Squared) - Rounded is default
         [barChart setupBarViewShape:BarShapeSquared];
@@ -242,39 +221,38 @@
             verticalLabel.text=result.yAxisTitle;
             _answer=result.answer;
         });
-
+        
     }
     else
+    {
         NSLog(@"no data found");
-
-
-
+    }
+    
 }
 
 
 -(void)next
 {
-    ++myCounter;
-    if (myCounter<_count) {
-        
-        NSLog(@"myCounter:%d _count:%d",myCounter,_count);
-        
-        _sharedResultSet= [[self getAllQuestion] objectAtIndex:myCounter];
-        [self loadBarChartUsingArray:_sharedResultSet];
-    }
-    else
-    [rightBarButton setTitle:@"Done"  ];
-    
+        if (myCounter<_count) {
+            
+            NSLog(@"myCounter:%d _count:%ld",myCounter,(long)_count);
+            
+            _sharedResultSet= [[self getAllQuestion] objectAtIndex:myCounter];
+            [self loadBarChartUsingArray:_sharedResultSet];
+        }
+        if (myCounter==_count-1) {
+            self.navigationItem.rightBarButtonItem = nil;
+        }
+        myCounter++;
+
 }
 
 -(void)refreshGraph
 {
-    
     optionOne.selected=NO;
     optionTwo.selected=NO;
     optionThree.selected=NO;
     optionFour.selected=NO;
-    
     questionLabel.text=@"";
     optionOneTitleLabel.text=@"";
     optionTwoTitleLabel.text=@"";
@@ -283,16 +261,14 @@
     
     horizontalLabel.text=@"";
     verticalLabel.text=@"";
-
+    
 }
 
 -(void)addQuestion
 {
-    
     static int tempID = 1;
-    // Add Entry to PhoneBook Data base and reset all fields
     Questionare * newEntry = [NSEntityDescription insertNewObjectForEntityForName:@"Questionare"
-                                                      inManagedObjectContext:self.managedObjectContext];
+                                                           inManagedObjectContext:self.managedObjectContext];
     newEntry.question = @"Which Year Population rise is maximum?";
     newEntry.answer =@"2012";
     newEntry.xAxisTitle=@"Population Rise Trend";
@@ -315,27 +291,19 @@
     if (![self.managedObjectContext save:&error]) {
         NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
     }
-     [self.view endEditing:YES];
+    [self.view endEditing:YES];
 }
 
 -(NSArray *)getAllQuestion
 {
-    // initializing NSFetchRequest
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    
-    //Setting Entity to be Queried
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Questionare"
                                               inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
     NSError* error;
-    
-    // Query on managedObjectContext With Generated fetchRequest
     NSArray *fetchedRecords = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
     
-    
- //   Questionare *result= [fetchedRecords objectAtIndex:0];
-  //  NSString *str=   [NSString stringWithFormat:@" %@ %f %f %f %f %f %@ %@ %@ %@",result.question,[result.answer floatValue],[result.firstoption floatValue],[result.secondoption floatValue],[result.thirdoption floatValue],[result.forthoption floatValue],result.firsttitle,result.secondtitle,result.thirdtitle,result.forthtitle];
-    // Returning Fetched Records
+    NSLog(@"%d",[fetchedRecords count]);
     return fetchedRecords;
 }
 
@@ -348,8 +316,8 @@
     anim.subtype = @"fromRight";
     [self.navigationController.view.layer addAnimation:anim forKey:@"an"];
 }
-     
-     
+
+
 
 
 
@@ -362,15 +330,18 @@
     if ([[self getAllQuestion] count]) {
         _count=[[self getAllQuestion]count];
     }
-  
-
 }
 
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    [self next];
+}
+
+-(void)finished
+{
     
-   [self next];
+    
 }
 - (void)didReceiveMemoryWarning
 {

@@ -38,14 +38,12 @@
 {
     [super viewDidLoad];
     audioToolBox=[[CustomAudioToolBox alloc]init];
-
     SET_USERNAME_AS_TITLE
      self.navigationController.navigationBar.titleTextAttributes = @{UITextAttributeTextColor : [UIColor whiteColor]}; // to change the color of navigation bar title to white color.
      self.view.backgroundColor=BACKGROUND_COLOR;
     UIImageView *blackboard=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0,self.view.frame.size.width, (self.view.frame.size.height/3)-30)];
     blackboard.tag=333;
     [blackboard setImage:[UIImage imageNamed:@"ResultBoard"]];
-    
     resultLabel=nil;
     resultLabel=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, blackboard.frame.size.width, blackboard.frame.size.height)];
     resultLabel.backgroundColor=[UIColor clearColor];
@@ -91,32 +89,12 @@
 -(void)buttonActionMethod:(UIButton *)sender
 {
     [timer pause];
-    UIViewController *modalForRules=[[UIViewController alloc]init];
-    modalForRules.view.backgroundColor=[UIColor colorWithRed:132/255.0 green:240/255.0 blue:88/255.0 alpha:1];
-    modalForRules.modalTransitionStyle=UIModalTransitionStyleCoverVertical;
-    modalForRules.modalPresentationStyle=UIModalPresentationFormSheet;
-    [self presentViewController:modalForRules animated:YES completion:NULL];
-    UITapGestureRecognizer *tapEvent=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(handleTapOnModal:)];
-    [modalForRules.view addGestureRecognizer:tapEvent];
-    UILabel *instructionLabelTitle=[[UILabel alloc]initWithFrame:CGRectMake(10, 25,modalForRules.view.frame.size.width-30, 50)];
-    instructionLabelTitle.numberOfLines=1;
-    instructionLabelTitle.backgroundColor=[UIColor clearColor];
-    instructionLabelTitle.textAlignment=NSTextAlignmentCenter;
-    instructionLabelTitle.font=[UIFont fontWithName:RULES_FONT_NAME size:35];
-    instructionLabelTitle.text=@"Rules";
-    [modalForRules.view addSubview:instructionLabelTitle];
-    
-    UIImageView *topbar=[[UIImageView alloc]initWithFrame:CGRectMake(0, -10, modalForRules.view.frame.size.width, 50)];
-    topbar.image=[UIImage imageNamed:@"sp-top"];
-    [modalForRules.view addSubview:topbar];
-    
-    UILabel *instructionLabel=[[UILabel alloc]initWithFrame:CGRectMake(40, 80, modalForRules.view.frame.size.width-70, modalForRules.view.frame.size.height-100)];
-    instructionLabel.numberOfLines=0;
-    instructionLabel.backgroundColor=[UIColor clearColor];
-    instructionLabel.textAlignment=NSTextAlignmentLeft;
-    instructionLabel.font=[UIFont fontWithName:RULES_FONT_NAME size:30];
+    MODAL_FOR_RULES;
+    HEADER_TITLE;
+    SPIRAL_VIEW;
+    INSTRUCTION_LABEL_WITHOUT_TEXT;
     instructionLabel.text=@"a)Choose the missing number in the series(balls).\n\nb)Status of answer is shown in screen.\n\nc)Try as many question in given time, the result will be shown after time finishes.";
-    [modalForRules.view addSubview:instructionLabel];
+    FOOTER_TITLE;
 }
 
 -(void)handleTapOnModal:(UITapGestureRecognizer *)recognizer
@@ -165,7 +143,7 @@
     
    [self.view addSubview:timer];
     [timer start];
-    [timer setMaxSecond:120];
+    [timer setMaxSecond:60];
 }
 
 

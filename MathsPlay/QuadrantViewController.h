@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-//#import "AppDelegate.h"
 #import "BarChartView.h"
 #import "Questionare.h"
 #import "RadioButton.h"

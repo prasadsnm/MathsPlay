@@ -17,7 +17,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
@@ -28,7 +28,7 @@
     [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(fadeScreen) userInfo:nil repeats:NO];
     self.window.rootViewController = [[UIViewController alloc]init];
     [self.window makeKeyAndVisible];
-
+    
     
     [self fadeScreen];
     return YES;
@@ -37,7 +37,7 @@
 
 - (void)fadeScreen
 {
- [splashImage removeFromSuperview];
+    [splashImage removeFromSuperview];
     HomeScreenViewController *homeController = [[HomeScreenViewController alloc]init];
     UINavigationController *navigation = [[UINavigationController alloc]initWithRootViewController:homeController];
     navigation.navigationBar.translucent = NO;
@@ -48,7 +48,7 @@
     else
     {
         navigation.navigationBar.barTintColor = [UIColor colorWithRed:30/255.0 green:144/255.0 blue:255/255.0 alpha:1.0];
-    } 
+    }
     self.window.rootViewController = navigation;
     [self.window addSubview:navigation.view];
 }
@@ -61,7 +61,7 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
+    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }
 
@@ -83,7 +83,6 @@
 
 #pragma Mark CoreData methods
 
-// 1
 - (NSManagedObjectContext *) managedObjectContext {
     if (_managedObjectContext != nil) {
         return _managedObjectContext;
@@ -93,31 +92,27 @@
         _managedObjectContext = [[NSManagedObjectContext alloc] init];
         [_managedObjectContext setPersistentStoreCoordinator: coordinator];
     }
-    
     return _managedObjectContext;
 }
 
-//2
+
 - (NSManagedObjectModel *)managedObjectModel {
     if (_managedObjectModel != nil) {
         return _managedObjectModel;
     }
     _managedObjectModel = [NSManagedObjectModel mergedModelFromBundles:nil];
-    
     return _managedObjectModel;
 }
 
-//3
+
 - (NSPersistentStoreCoordinator *)persistentStoreCoordinator {
     if (_persistentStoreCoordinator != nil) {
         return _persistentStoreCoordinator;
     }
     
-    
     NSString *storePath = [[self applicationDocumentsDirectory]
                            stringByAppendingPathComponent: @"Questionare.sqlite"];
     NSURL *storeUrl;
-    
     if (storePath) {
         storeUrl = [NSURL fileURLWithPath:storePath];
         
@@ -135,76 +130,30 @@
         storeUrl = [NSURL fileURLWithPath: [[self applicationDocumentsDirectory]
                                             stringByAppendingPathComponent: @"Questionare.sqlite"]];
     }
-    
-    
-    
-    
     NSDictionary *options = @{ NSSQLitePragmasOption : @{@"journal_mode" : @"DELETE"} };//for prepopulating persistence store.
-
     NSError *error = nil;
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc]
                                    initWithManagedObjectModel:[self managedObjectModel]];
     if(![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType
                                                   configuration:nil URL:storeUrl options:options error:&error]) {
-        /*Error for store creation should be handled in here*/
     }
-    
     return _persistentStoreCoordinator;
 }
 
 
-//3
-//- (NSPersistentStoreCoordinator *)persistentStoreCoordinator {
-//    if (_persistentStoreCoordinator != nil) {
-//        return _persistentStoreCoordinator;
-//    }
-//    NSURL *storeUrl = [NSURL fileURLWithPath: [[self applicationDocumentsDirectory]
-//                                               stringByAppendingPathComponent: @"PhoneBook.sqlite"]];
-//    NSError *error = nil;
-//    _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc]
-//                                   initWithManagedObjectModel:[self managedObjectModel]];
-//    if(![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType
-//                                                  configuration:nil URL:storeUrl options:nil error:&error]) {
-//        /*Error for store creation should be handled in here*/
-//    }
-//    return _persistentStoreCoordinator;
-//}
-
-
-
 -(void) checkAndCreateDatabase{
-    
     NSString  *databaseName=@"Questionare.sqlite";
-    
     NSArray *documentPath=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDir = [documentPath objectAtIndex:0];
     NSString	*databasePath = [documentsDir stringByAppendingPathComponent:databaseName];
-    
-	// Check if the SQL database has already been saved to the users phone, if not then copy it over
-	BOOL success;
 	
-	// Create a FileManager object, we will use this to check the status
-	// of the database and to copy it over if required
+    BOOL success;
 	NSFileManager *fileManager = [NSFileManager defaultManager];
-	
-	// Check if the database has already been created in the users filesystem
-	success = [fileManager fileExistsAtPath:databasePath];
-	
-	// If the database already exists then return without doing anything
-	if(success) return;
-	
-	// If not then proceed to copy the database from the application to the users filesystem
-	
-	// Get the path to the database in the application package
+    success = [fileManager fileExistsAtPath:databasePath];
+    if(success) return;
 	NSString *databasePathFromApp = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:databaseName];
-	
-	// Copy the database from the package to the users filesystem
-	[fileManager copyItemAtPath:databasePathFromApp toPath:databasePath error:nil];
-	
-	
+    [fileManager copyItemAtPath:databasePathFromApp toPath:databasePath error:nil];
 }
-
-
 
 - (NSString *)applicationDocumentsDirectory {
     return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
