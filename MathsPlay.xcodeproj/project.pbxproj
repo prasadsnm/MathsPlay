@@ -225,6 +225,16 @@
 		68FE92E6182B5E80004A6306 /* incorrect.png in Resources */ = {isa = PBXBuildFile; fileRef = 68FE92E2182B5E80004A6306 /* incorrect.png */; };
 		68FE92E7182B5E80004A6306 /* sad.png in Resources */ = {isa = PBXBuildFile; fileRef = 68FE92E3182B5E80004A6306 /* sad.png */; };
 		68FE92E8182B5E80004A6306 /* smile.png in Resources */ = {isa = PBXBuildFile; fileRef = 68FE92E4182B5E80004A6306 /* smile.png */; };
+		FC1052C2189F68D600B3D70B /* award.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FC1052C1189F68D600B3D70B /* award.mp3 */; };
+		FC1052C4189F6D1A00B3D70B /* car-start.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FC1052C3189F6D1A00B3D70B /* car-start.mp3 */; };
+		FC1052C6189F6EFF00B3D70B /* car-constant.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FC1052C5189F6EFF00B3D70B /* car-constant.mp3 */; };
+		FC1052C8189F726900B3D70B /* ant-wrong.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FC1052C7189F726900B3D70B /* ant-wrong.mp3 */; };
+		FC1052CA189F727600B3D70B /* ant-right.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FC1052C9189F727600B3D70B /* ant-right.mp3 */; };
+		FC1052CE189F759A00B3D70B /* accelerating.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FC1052CD189F759A00B3D70B /* accelerating.mp3 */; };
+		FC1052D0189F76EB00B3D70B /* brakes.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FC1052CF189F76EB00B3D70B /* brakes.mp3 */; };
+		FC1052D2189F78F400B3D70B /* fall.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FC1052D1189F78F400B3D70B /* fall.mp3 */; };
+		FC2487E3189A437100270460 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FC2487E1189A437100270460 /* Model.xcdatamodeld */; };
+		FC2487E6189A443200270460 /* Questionare.m in Sources */ = {isa = PBXBuildFile; fileRef = FC2487E5189A443200270460 /* Questionare.m */; };
 		FC3DF8811851B7B8006BCC48 /* cup.png in Resources */ = {isa = PBXBuildFile; fileRef = FC3DF87E1851B7B8006BCC48 /* cup.png */; };
 		FC3DF8821851B7B8006BCC48 /* gift-box.png in Resources */ = {isa = PBXBuildFile; fileRef = FC3DF87F1851B7B8006BCC48 /* gift-box.png */; };
 		FC3DF8831851B7B8006BCC48 /* medal.png in Resources */ = {isa = PBXBuildFile; fileRef = FC3DF8801851B7B8006BCC48 /* medal.png */; };
@@ -238,7 +248,6 @@
 		FCAD8863184F4A1500045198 /* PWChalk.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FCAD8862184F4A1500045198 /* PWChalk.ttf */; };
 		FCAD8867184F4C1A00045198 /* Chalkboard by Marta van Eck.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FCAD8866184F4C1A00045198 /* Chalkboard by Marta van Eck.ttf */; };
 		FCAD8869184F61FD00045198 /* drop.png in Resources */ = {isa = PBXBuildFile; fileRef = FCAD8868184F61FD00045198 /* drop.png */; };
-		FCC21D39186033EA0036C44B /* SquareRootQuizViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCC21D38186033EA0036C44B /* SquareRootQuizViewController.m */; };
 		FCC21D3F186064B40036C44B /* sky.png in Resources */ = {isa = PBXBuildFile; fileRef = FCC21D3E186064B40036C44B /* sky.png */; };
 		FCC21D4B186075590036C44B /* fighter-3.png in Resources */ = {isa = PBXBuildFile; fileRef = FCC21D4A186075590036C44B /* fighter-3.png */; };
 		FCC7D67E1859896300039099 /* thumbs-up.png in Resources */ = {isa = PBXBuildFile; fileRef = FCC7D67C1859896300039099 /* thumbs-up.png */; };
@@ -277,10 +286,9 @@
 		FCD764B01897831D003D0EAC /* XMLParserDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FCD764A51897831D003D0EAC /* XMLParserDelegate.m */; };
 		FCD764B11897831D003D0EAC /* PlotChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCD764A71897831D003D0EAC /* PlotChartView.m */; };
 		FCD764B318978438003D0EAC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCD764B218978438003D0EAC /* QuartzCore.framework */; };
-		FCD764B61897B41D003D0EAC /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FCD764B41897B41D003D0EAC /* Model.xcdatamodeld */; };
 		FCD854C51856E1C400EACE3F /* fishHCF.png in Resources */ = {isa = PBXBuildFile; fileRef = FCD854C41856E1C400EACE3F /* fishHCF.png */; };
 		FCD854C9185717EF00EACE3F /* tank.png in Resources */ = {isa = PBXBuildFile; fileRef = FCD854C8185717EF00EACE3F /* tank.png */; };
-		FCF12E4A1898E7750063929B /* Questionare.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF12E491898E7750063929B /* Questionare.m */; };
+		FCDFF9FC189BAFAF00CCD8C7 /* Questionare.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = FCDFF9FB189BAFAF00CCD8C7 /* Questionare.sqlite */; };
 		FCF12E541898FF710063929B /* checked.png in Resources */ = {isa = PBXBuildFile; fileRef = FCF12E4E1898FF710063929B /* checked.png */; };
 		FCF12E551898FF710063929B /* checked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FCF12E4F1898FF710063929B /* checked@2x.png */; };
 		FCF12E571898FF710063929B /* unchecked.png in Resources */ = {isa = PBXBuildFile; fileRef = FCF12E521898FF710063929B /* unchecked.png */; };
@@ -544,6 +552,17 @@
 		68FE92E2182B5E80004A6306 /* incorrect.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = incorrect.png; sourceTree = "<group>"; };
 		68FE92E3182B5E80004A6306 /* sad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sad.png; sourceTree = "<group>"; };
 		68FE92E4182B5E80004A6306 /* smile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smile.png; sourceTree = "<group>"; };
+		FC1052C1189F68D600B3D70B /* award.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = award.mp3; sourceTree = "<group>"; };
+		FC1052C3189F6D1A00B3D70B /* car-start.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "car-start.mp3"; sourceTree = "<group>"; };
+		FC1052C5189F6EFF00B3D70B /* car-constant.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "car-constant.mp3"; sourceTree = "<group>"; };
+		FC1052C7189F726900B3D70B /* ant-wrong.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "ant-wrong.mp3"; sourceTree = "<group>"; };
+		FC1052C9189F727600B3D70B /* ant-right.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "ant-right.mp3"; sourceTree = "<group>"; };
+		FC1052CD189F759A00B3D70B /* accelerating.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = accelerating.mp3; sourceTree = "<group>"; };
+		FC1052CF189F76EB00B3D70B /* brakes.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = brakes.mp3; sourceTree = "<group>"; };
+		FC1052D1189F78F400B3D70B /* fall.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fall.mp3; sourceTree = "<group>"; };
+		FC2487E2189A437100270460 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		FC2487E4189A443200270460 /* Questionare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Questionare.h; sourceTree = "<group>"; };
+		FC2487E5189A443200270460 /* Questionare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Questionare.m; sourceTree = "<group>"; };
 		FC3DF87E1851B7B8006BCC48 /* cup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cup.png; sourceTree = "<group>"; };
 		FC3DF87F1851B7B8006BCC48 /* gift-box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gift-box.png"; sourceTree = "<group>"; };
 		FC3DF8801851B7B8006BCC48 /* medal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = medal.png; sourceTree = "<group>"; };
@@ -559,8 +578,6 @@
 		FCAD8862184F4A1500045198 /* PWChalk.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PWChalk.ttf; sourceTree = "<group>"; };
 		FCAD8866184F4C1A00045198 /* Chalkboard by Marta van Eck.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Chalkboard by Marta van Eck.ttf"; sourceTree = "<group>"; };
 		FCAD8868184F61FD00045198 /* drop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = drop.png; sourceTree = "<group>"; };
-		FCC21D37186033EA0036C44B /* SquareRootQuizViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SquareRootQuizViewController.h; sourceTree = "<group>"; };
-		FCC21D38186033EA0036C44B /* SquareRootQuizViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SquareRootQuizViewController.m; sourceTree = "<group>"; };
 		FCC21D3E186064B40036C44B /* sky.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sky.png; sourceTree = "<group>"; };
 		FCC21D4A186075590036C44B /* fighter-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fighter-3.png"; sourceTree = "<group>"; };
 		FCC7D67C1859896300039099 /* thumbs-up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumbs-up.png"; sourceTree = "<group>"; };
@@ -613,17 +630,15 @@
 		FCD764A61897831D003D0EAC /* PlotChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlotChartView.h; sourceTree = "<group>"; };
 		FCD764A71897831D003D0EAC /* PlotChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlotChartView.m; sourceTree = "<group>"; };
 		FCD764B218978438003D0EAC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		FCD764B51897B41D003D0EAC /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		FCD854C41856E1C400EACE3F /* fishHCF.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fishHCF.png; sourceTree = "<group>"; };
 		FCD854C8185717EF00EACE3F /* tank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tank.png; sourceTree = "<group>"; };
-		FCF12E481898E7750063929B /* Questionare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Questionare.h; sourceTree = "<group>"; };
-		FCF12E491898E7750063929B /* Questionare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Questionare.m; sourceTree = "<group>"; };
+		FCDFF9FB189BAFAF00CCD8C7 /* Questionare.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = Questionare.sqlite; sourceTree = "<group>"; };
 		FCF12E4E1898FF710063929B /* checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checked.png; sourceTree = "<group>"; };
 		FCF12E4F1898FF710063929B /* checked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checked@2x.png"; sourceTree = "<group>"; };
 		FCF12E521898FF710063929B /* unchecked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unchecked.png; sourceTree = "<group>"; };
 		FCF12E531898FF710063929B /* unchecked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "unchecked@2x.png"; sourceTree = "<group>"; };
-		FCF12E5F18990B020063929B /* RadioButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RadioButton.h; path = ../RadioButton.h; sourceTree = "<group>"; };
-		FCF12E6018990B020063929B /* RadioButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RadioButton.m; path = ../RadioButton.m; sourceTree = "<group>"; };
+		FCF12E5F18990B020063929B /* RadioButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RadioButton.h; path = ../../../RadioButton.h; sourceTree = "<group>"; };
+		FCF12E6018990B020063929B /* RadioButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RadioButton.m; path = ../../../RadioButton.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -842,6 +857,14 @@
 		68167121182A8110008440B6 /* sound */ = {
 			isa = PBXGroup;
 			children = (
+				FC1052CF189F76EB00B3D70B /* brakes.mp3 */,
+				FC1052D1189F78F400B3D70B /* fall.mp3 */,
+				FC1052CD189F759A00B3D70B /* accelerating.mp3 */,
+				FC1052C9189F727600B3D70B /* ant-right.mp3 */,
+				FC1052C7189F726900B3D70B /* ant-wrong.mp3 */,
+				FC1052C5189F6EFF00B3D70B /* car-constant.mp3 */,
+				FC1052C3189F6D1A00B3D70B /* car-start.mp3 */,
+				FC1052C1189F68D600B3D70B /* award.mp3 */,
 				FCC7D6971859D16F00039099 /* explosion_large.mp3 */,
 				FCC7D6851859A51800039099 /* explosion_small.caf */,
 				FCC7D6861859A51800039099 /* laser_enemy.caf */,
@@ -933,8 +956,6 @@
 				6834590B18363C0700EFF321 /* CustomModalBox.m */,
 				6834590C18363C0700EFF321 /* CarRaceViewController.h */,
 				6834590D18363C0700EFF321 /* CarRaceViewController.m */,
-				FCC21D37186033EA0036C44B /* SquareRootQuizViewController.h */,
-				FCC21D38186033EA0036C44B /* SquareRootQuizViewController.m */,
 			);
 			name = ClassFive;
 			sourceTree = "<group>";
@@ -1108,15 +1129,11 @@
 		FCA35E1D1896461400C11B9F /* ClassSix */ = {
 			isa = PBXGroup;
 			children = (
-				FCF12E5F18990B020063929B /* RadioButton.h */,
-				FCF12E6018990B020063929B /* RadioButton.m */,
+				FCE89996189A266E0095A631 /* CoreData */,
 				FCF12E4D1898FF710063929B /* radio-res-ios */,
 				FCD7648E1897831D003D0EAC /* BarChart Library */,
 				FCA35E1E1896463D00C11B9F /* QuadrantViewController.h */,
 				FCA35E1F1896463D00C11B9F /* QuadrantViewController.m */,
-				FCF12E481898E7750063929B /* Questionare.h */,
-				FCF12E491898E7750063929B /* Questionare.m */,
-				FCD764B41897B41D003D0EAC /* Model.xcdatamodeld */,
 			);
 			name = ClassSix;
 			sourceTree = "<group>";
@@ -1204,9 +1221,22 @@
 			path = XMLParser;
 			sourceTree = "<group>";
 		};
+		FCE89996189A266E0095A631 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				FCDFF9FB189BAFAF00CCD8C7 /* Questionare.sqlite */,
+				FC2487E1189A437100270460 /* Model.xcdatamodeld */,
+				FC2487E4189A443200270460 /* Questionare.h */,
+				FC2487E5189A443200270460 /* Questionare.m */,
+			);
+			name = CoreData;
+			sourceTree = "<group>";
+		};
 		FCF12E4D1898FF710063929B /* radio-res-ios */ = {
 			isa = PBXGroup;
 			children = (
+				FCF12E5F18990B020063929B /* RadioButton.h */,
+				FCF12E6018990B020063929B /* RadioButton.m */,
 				FCF12E4E1898FF710063929B /* checked.png */,
 				FCF12E4F1898FF710063929B /* checked@2x.png */,
 				FCF12E521898FF710063929B /* unchecked.png */,
@@ -1380,6 +1410,7 @@
 				68069C941820F45B009A24F6 /* nextlevel.png in Resources */,
 				68B1B876181AAE4600CB8CA0 /* 6.png in Resources */,
 				FCC7D69F1859E8A200039099 /* star1.png in Resources */,
+				FC1052D2189F78F400B3D70B /* fall.mp3 in Resources */,
 				68107032183DEAC500D13451 /* water.png in Resources */,
 				683458CE1835FE9E00EFF321 /* lives.png in Resources */,
 				6816711E182A810A008440B6 /* race.wav in Resources */,
@@ -1390,6 +1421,7 @@
 				680AB4B318165F8F00A49012 /* minion.png in Resources */,
 				68B1B872181AA2A600CB8CA0 /* background.jpg in Resources */,
 				683458C51835FE9E00EFF321 /* ball2.png in Resources */,
+				FCDFF9FC189BAFAF00CCD8C7 /* Questionare.sqlite in Resources */,
 				6816711F182A810A008440B6 /* win1.mp3 in Resources */,
 				68167119182A810A008440B6 /* level 1.mp3 in Resources */,
 				FCAD8863184F4A1500045198 /* PWChalk.ttf in Resources */,
@@ -1402,9 +1434,12 @@
 				6813EBD2183350B000D91090 /* bodypart2.png in Resources */,
 				683458CA1835FE9E00EFF321 /* car1.png in Resources */,
 				683458C21835FE9E00EFF321 /* Acomp3.png in Resources */,
+				FC1052C6189F6EFF00B3D70B /* car-constant.mp3 in Resources */,
 				683458C81835FE9E00EFF321 /* blueBox.png in Resources */,
 				68DDD886181E9FBD004D7830 /* browse1.png in Resources */,
 				68DDD872181E83C8004D7830 /* pitch.png in Resources */,
+				FC1052CE189F759A00B3D70B /* accelerating.mp3 in Resources */,
+				FC1052D0189F76EB00B3D70B /* brakes.mp3 in Resources */,
 				68167116182A810A008440B6 /* congratulations.mp3 in Resources */,
 				FCD3DC11184DB0AD00471C1E /* SAD_FACE.png in Resources */,
 				6807E80818471C9200423B42 /* spider.png in Resources */,
@@ -1423,6 +1458,8 @@
 				6834591A183645F400EFF321 /* raceicon2.png in Resources */,
 				6834592818364F4100EFF321 /* ladder1.png in Resources */,
 				68DDD856181E4929004D7830 /* bubble.png in Resources */,
+				FC1052C4189F6D1A00B3D70B /* car-start.mp3 in Resources */,
+				FC1052C2189F68D600B3D70B /* award.mp3 in Resources */,
 				6815A1AA1832154200E5CC74 /* btrflyback.jpg in Resources */,
 				68DDD850181E3CF5004D7830 /* minus.png in Resources */,
 				68FE92E6182B5E80004A6306 /* incorrect.png in Resources */,
@@ -1472,6 +1509,7 @@
 				6813EBD5183350B000D91090 /* bodypart5.png in Resources */,
 				FC7897C7186C4AC1007B641F /* rules.png in Resources */,
 				6815A1AC1832158C00E5CC74 /* flower.png in Resources */,
+				FC1052C8189F726900B3D70B /* ant-wrong.mp3 in Resources */,
 				FC3DF8811851B7B8006BCC48 /* cup.png in Resources */,
 				683458BD1835FE9E00EFF321 /* Acar2.jpg in Resources */,
 				68DDD868181E55AD004D7830 /* home2.png in Resources */,
@@ -1490,6 +1528,7 @@
 				68345920183647B700EFF321 /* raceicon6.png in Resources */,
 				680AB4C518166D8600A49012 /* buttercup.png in Resources */,
 				6813EBDA183350B000D91090 /* bodypart10.png in Resources */,
+				FC1052CA189F727600B3D70B /* ant-right.mp3 in Resources */,
 				FCD854C51856E1C400EACE3F /* fishHCF.png in Resources */,
 				FCC7D68F1859A51800039099 /* powerup.caf in Resources */,
 				FCD854C9185717EF00EACE3F /* tank.png in Resources */,
@@ -1543,9 +1582,11 @@
 				FCD764AD1897831D003D0EAC /* UIViewSizeShortcuts.m in Sources */,
 				68069C7B1820CE52009A24F6 /* CompareViewController.m in Sources */,
 				681D25D5183F280000E0A791 /* MPCustomAlert.m in Sources */,
+				FC2487E6189A443200270460 /* Questionare.m in Sources */,
 				687B71C618350CBD00DE772E /* FollowViewController.m in Sources */,
 				FCD764AF1897831D003D0EAC /* XMLParser.m in Sources */,
 				6834591018363C0700EFF321 /* GeometricGrowthViewController.m in Sources */,
+				FC2487E3189A437100270460 /* Model.xcdatamodeld in Sources */,
 				FCA35E201896463D00C11B9F /* QuadrantViewController.m in Sources */,
 				689F2B641815305F00DC8553 /* HomeScreenViewController.m in Sources */,
 				687B71C718350CBD00DE772E /* SubViewController.m in Sources */,
@@ -1563,7 +1604,6 @@
 				FCC7D6821859A46A00039099 /* CustomAudioToolBox.m in Sources */,
 				6815A1A61832050300E5CC74 /* ButterflyCatchViewController.m in Sources */,
 				FCD764AE1897831D003D0EAC /* XMLElement.m in Sources */,
-				FCF12E4A1898E7750063929B /* Questionare.m in Sources */,
 				687B71C518350CBD00DE772E /* AdvanceMathViewController.m in Sources */,
 				68069C7C1820CE52009A24F6 /* DragBubblesViewController.m in Sources */,
 				FC7897CA186C4B53007B641F /* RulesCustomButton.m in Sources */,
@@ -1574,9 +1614,7 @@
 				FCD764B01897831D003D0EAC /* XMLParserDelegate.m in Sources */,
 				682EE0081845F6C800B1F8F0 /* HMAView.m in Sources */,
 				68069C7F1820CE74009A24F6 /* DragToAddOrSubViewController.m in Sources */,
-				FCD764B61897B41D003D0EAC /* Model.xcdatamodeld in Sources */,
 				FCD764A91897831D003D0EAC /* BarLabel.m in Sources */,
-				FCC21D39186033EA0036C44B /* SquareRootQuizViewController.m in Sources */,
 				6834591318363C0700EFF321 /* CustomModalBox.m in Sources */,
 				687B71C418350CBD00DE772E /* AddViewController.m in Sources */,
 				682EDFFF1845DB3000B1F8F0 /* HelpMeAdditionViewController.m in Sources */,
@@ -1809,12 +1847,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		FCD764B41897B41D003D0EAC /* Model.xcdatamodeld */ = {
+		FC2487E1189A437100270460 /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				FCD764B51897B41D003D0EAC /* Model.xcdatamodel */,
+				FC2487E2189A437100270460 /* Model.xcdatamodel */,
 			);
-			currentVersion = FCD764B51897B41D003D0EAC /* Model.xcdatamodel */;
+			currentVersion = FC2487E2189A437100270460 /* Model.xcdatamodel */;
 			path = Model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

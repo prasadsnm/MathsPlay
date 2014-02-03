@@ -21,7 +21,6 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
-    
     // splash screen
     splashImage = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"splashscreen"]];
     splashImage.frame = CGRectMake(0, 0, 768, 1024);
@@ -29,13 +28,16 @@
     [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(fadeScreen) userInfo:nil repeats:NO];
     self.window.rootViewController = [[UIViewController alloc]init];
     [self.window makeKeyAndVisible];
+
+    
+    [self fadeScreen];
     return YES;
 }
 
 
 - (void)fadeScreen
 {
-    [splashImage removeFromSuperview];
+ [splashImage removeFromSuperview];
     HomeScreenViewController *homeController = [[HomeScreenViewController alloc]init];
     UINavigationController *navigation = [[UINavigationController alloc]initWithRootViewController:homeController];
     navigation.navigationBar.translucent = NO;

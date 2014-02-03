@@ -7,7 +7,8 @@
 //
 
 #import "QuadrantViewController.h"
-
+#import "AppDelegate.h"
+#define DEGREES_TO_RADIANS(x) (M_PI * x / 180.0)
 @interface QuadrantViewController ()
 {
     BarChartView *barChart;
@@ -16,12 +17,19 @@
     UILabel *questionLabel;
     RadioButton *optionOne, *optionTwo,*optionThree,*optionFour;
     UILabel *optionOneTitleLabel,*optionTwoTitleLabel,*optionThreeTitleLabel,*optionFourTitleLabel;
+    UILabel *verticalLabel,*horizontalLabel;
+    UIAlertView *_progresAlert;
+    int myCounter;
+    UIBarButtonItem *rightBarButton;
+
+    
 }
 @end
 
 @implementation QuadrantViewController
 @synthesize answer=_answer;
 @synthesize sharedResultSet=_sharedResultSet;
+@synthesize count=_count;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -32,28 +40,32 @@
     return self;
 }
 
+
+
+-(id)init
+{
+    self=[super init];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    NSLog(@"View did Load");
+    SET_USERNAME_AS_TITLE
+    myCounter=0;
+  
     
-    UIButton *refresh=[UIButton buttonWithType:UIButtonTypeRoundedRect];
-    refresh.frame=CGRectMake(100, 600, 70, 50);
-    [refresh setTitle:@"Refresh" forState:UIControlStateNormal];
-    [refresh addTarget:self action:@selector(refreshGraph) forControlEvents:UIControlEventTouchUpInside];
-   // [self.view addSubview:refresh];
-    
-    questionLabel=[[UILabel alloc]initWithFrame:CGRectMake(50, self.view.frame.size.height/2+5, self.view.frame.size.width-100, 100)];
+    questionLabel=[[UILabel alloc]initWithFrame:CGRectMake(50, self.view.frame.size.height/2+70, self.view.frame.size.width-100, 60)];
     questionLabel.text=@"";
     questionLabel.numberOfLines=0;
-    questionLabel.backgroundColor=[UIColor clearColor];
+    questionLabel.backgroundColor=[UIColor redColor];
     [self.view addSubview:questionLabel];
     
 
-	// Do any additional setup after loading the view.
-    
-    
-    AppDelegate* appDelegate = [UIApplication sharedApplication].delegate;
-    self.managedObjectContext = appDelegate.managedObjectContext;
+
     
     // radio button
     optionOne=[[RadioButton alloc]initWithFrame:CGRectMake(50,  650, 30, 30)];
@@ -101,22 +113,58 @@
     optionFourTitleLabel.textColor=[UIColor blackColor];
     optionFourTitleLabel.tag=40;
     [self.view addSubview:optionFourTitleLabel];
-    [self refreshGraph];
-
+    
+    
+    
+    horizontalLabel=[[UILabel alloc]initWithFrame:CGRectMake(50, questionLabel.origin.y-50, self.view.frame.size.width-100, 50)];
+    horizontalLabel.text=@"";
+    horizontalLabel.numberOfLines=0;
+    horizontalLabel.textAlignment=NSTextAlignmentCenter;
+    horizontalLabel.backgroundColor=[UIColor clearColor];
+    [self.view addSubview:horizontalLabel];
+    
+    
+    verticalLabel=[[UILabel alloc]initWithFrame:CGRectMake(-230, 300, self.view.frame.size.height/2, 50)];
+    verticalLabel.text=@"";
+    verticalLabel.numberOfLines=0;
+    verticalLabel.textAlignment=NSTextAlignmentCenter;
+    verticalLabel.backgroundColor=[UIColor clearColor];
+    [self.view addSubview:verticalLabel];
+    verticalLabel.transform= CGAffineTransformMakeRotation(DEGREES_TO_RADIANS(270));
+    
+    
+   rightBarButton = [[UIBarButtonItem alloc]
+                                   initWithTitle:@"Next Question"
+                                   style:UIBarButtonItemStyleBordered
+                                   target:self
+                                   action:@selector(next)];
+    self.navigationItem.rightBarButtonItem = rightBarButton;
+    
+//    UIButton *nextQuestionbutton=[UIButton buttonWithType:UIButtonTypeRoundedRect];
+//    nextQuestionbutton.frame=CGRectMake(300, 600, 80, 30);
+//    [nextQuestionbutton setTitle:@"Next" forState:UIControlStateNormal];
+//    [nextQuestionbutton addTarget:self action:@selector(next) forControlEvents:UIControlEventTouchUpInside];
+//    [self.view addSubview:nextQuestionbutton];
+    
+    
+   
 }
 
 #pragma mark - Radio Button
 
 -(void)didSelectedOption:(NSInteger)option{
-
+    NSString *status;
+    NSLog(@"%@", _sharedResultSet.answer) ;
     UILabel *lbl=(UILabel *)[self.view viewWithTag:option*10];
     if ([_sharedResultSet.answer isEqualToString:lbl.text]) {
-        NSLog(@"Correct answer");
+        status=@"Correct Answer!!";
     }
-    else
-        NSLog(@"wrong answer");
-
-    
+    else{
+        status=@"Wrong Answer!!";
+           }
+    NSLog(@"%@",lbl.text);
+    _progresAlert = [[UIAlertView alloc] initWithTitle:status message:Nil delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+    [_progresAlert show];
    switch (option) {
        case 1:{
            optionTwo.selected=NO;
@@ -141,13 +189,9 @@
            optionTwo.selected=NO;
            optionThree.selected=NO;
            break;
-           
-           
-           
   default:
     break;
 }
-    [self refreshGraph];
     
 }
 
@@ -162,17 +206,14 @@
 
     if (result) {
         [barChart removeFromSuperview];
-        barChart=[[BarChartView alloc]initWithFrame:CGRectMake(50, 50, self.view.frame.size.width-100, self.view.frame.size.height/2)];
+        barChart=[[BarChartView alloc]initWithFrame:CGRectMake(50, 50, self.view.frame.size.width-100, (self.view.frame.size.height)/2)];
         barChart.userInteractionEnabled=YES;
         
         
         
         [self.view addSubview:barChart];
         //Generate properly formatted data to give to the bar chart
-        NSArray *array = [barChart createChartDataWithTitles:[NSArray arrayWithObjects:result.firsttitle,result.secondtitle, result.thirdtitle, result.forthtitle, nil]
-                                                      values:[NSArray arrayWithObjects:result.firstoption , result.secondoption,result.thirdoption, result.forthoption , nil]
-                                                      colors:[NSArray arrayWithObjects:@"87E317", @"0000FF", @"FF0000", @"9B30FF", nil]
-                                                 labelColors:[NSArray arrayWithObjects:@"FF0000", @"FF0000", @"FF0000", @"FF0000", nil]];
+       NSArray *array = [barChart createChartDataWithTitles:[NSArray arrayWithObjects:result.graphFirstTitleText,result.graphSecondTitleText, result.graphThirdTitleText, result.graphFourtTitleText, nil]values:[NSArray arrayWithObjects:result.graphFourthInputValue , result.graphSecondInputValue,result.graphThirdInputValue, result.graphFourthInputValue , nil]colors:[NSArray arrayWithObjects:@"87E317", @"0000FF", @"FF0000", @"9B30FF", nil]labelColors:[NSArray arrayWithObjects:@"FF0000", @"FF0000", @"FF0000", @"FF0000", nil]];
         
         //Set the Shape of the Bars (Rounded or Squared) - Rounded is default
         [barChart setupBarViewShape:BarShapeSquared];
@@ -192,11 +233,13 @@
         
         dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 1.0 * NSEC_PER_SEC);
         dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-            questionLabel.text=result.question;
-            optionOneTitleLabel.text=result.firsttitle;
-            optionTwoTitleLabel.text=result.secondtitle;
-            optionThreeTitleLabel.text=result.thirdtitle;
-            optionFourTitleLabel.text=result.forthtitle;
+            questionLabel.text=[NSString stringWithFormat:@"%@)%@",result.qid,result.question ];
+            optionOneTitleLabel.text=result.radioFirstLabelText;
+            optionTwoTitleLabel.text=result.radioSecondLabelText;
+            optionThreeTitleLabel.text=result.radioThirdLabelText;
+            optionFourTitleLabel.text=result.radioFourthLabelText;
+            horizontalLabel.text=result.xAxisTitle;
+            verticalLabel.text=result.yAxisTitle;
             _answer=result.answer;
         });
 
@@ -204,20 +247,29 @@
     else
         NSLog(@"no data found");
 
-    
-    
-    
+
+
 }
 
+
+-(void)next
+{
+    ++myCounter;
+    if (myCounter<_count) {
+        
+        NSLog(@"myCounter:%d _count:%d",myCounter,_count);
+        
+        _sharedResultSet= [[self getAllQuestion] objectAtIndex:myCounter];
+        [self loadBarChartUsingArray:_sharedResultSet];
+    }
+    else
+    [rightBarButton setTitle:@"Done"  ];
+    
+}
 
 -(void)refreshGraph
 {
-    [self addQuestion];
-    if ([[self getAllQuestion] count]) {
-        _sharedResultSet= [[self getAllQuestion] lastObject];
-        [self loadBarChartUsingArray:_sharedResultSet];
-}
-
+    
     optionOne.selected=NO;
     optionTwo.selected=NO;
     optionThree.selected=NO;
@@ -229,31 +281,36 @@
     optionThreeTitleLabel.text=@"";
     optionFourTitleLabel.text=@"";
     
+    horizontalLabel.text=@"";
+    verticalLabel.text=@"";
+
 }
 
 -(void)addQuestion
 {
     
-    static int tempID = 0;
-    
+    static int tempID = 1;
     // Add Entry to PhoneBook Data base and reset all fields
     Questionare * newEntry = [NSEntityDescription insertNewObjectForEntityForName:@"Questionare"
                                                       inManagedObjectContext:self.managedObjectContext];
-
     newEntry.question = @"Which Year Population rise is maximum?";
-    newEntry.answer =@"2010";
-    newEntry.firstoption =@"474.66";
-    newEntry.secondoption =@"66.77";
-    newEntry.thirdoption =@"55.44";
-    newEntry.forthoption =@"22.44";
-    
-    newEntry.firsttitle=@"2010";
-    newEntry.secondtitle=@"2011";
-    newEntry.thirdtitle=@"2013";
-    newEntry.forthtitle=@"2014";
+    newEntry.answer =@"2012";
+    newEntry.xAxisTitle=@"Population Rise Trend";
+    newEntry.yAxisTitle=@"Percentage";
+    newEntry.level=@"Easy";
+    newEntry.radioFirstLabelText=@"2010";
+    newEntry.radioSecondLabelText=@"2011";
+    newEntry.radioThirdLabelText=@"2012";
+    newEntry.radioFourthLabelText=@"2013";
+    newEntry.graphFirstTitleText=@"2010";
+    newEntry.graphSecondTitleText=@"2011";
+    newEntry.graphThirdTitleText=@"2012";
+    newEntry.graphFourtTitleText=@"2013";
+    newEntry.graphFirstInputValue=@"15";
+    newEntry.graphSecondInputValue=@"66";
+    newEntry.graphThirdInputValue=@"77";
+    newEntry.graphFourthInputValue=@"21";
     newEntry.qid=[NSString stringWithFormat:@"%i",tempID];
-
-    
     NSError *error;
     if (![self.managedObjectContext save:&error]) {
         NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
@@ -278,12 +335,43 @@
     
  //   Questionare *result= [fetchedRecords objectAtIndex:0];
   //  NSString *str=   [NSString stringWithFormat:@" %@ %f %f %f %f %f %@ %@ %@ %@",result.question,[result.answer floatValue],[result.firstoption floatValue],[result.secondoption floatValue],[result.thirdoption floatValue],[result.forthoption floatValue],result.firsttitle,result.secondtitle,result.thirdtitle,result.forthtitle];
-    
-    
     // Returning Fetched Records
     return fetchedRecords;
 }
 
+
+-(void)addQuestionToDatabase
+{
+    CATransition *anim = [CATransition animation];
+    anim.duration = 1;
+    anim.type = @"oglFlip";
+    anim.subtype = @"fromRight";
+    [self.navigationController.view.layer addAnimation:anim forKey:@"an"];
+}
+     
+     
+
+
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    NSLog(@"View will appear");
+    AppDelegate* appDelegate = [UIApplication sharedApplication].delegate;
+    self.managedObjectContext = appDelegate.managedObjectContext;
+    if ([[self getAllQuestion] count]) {
+        _count=[[self getAllQuestion]count];
+    }
+  
+
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+   [self next];
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

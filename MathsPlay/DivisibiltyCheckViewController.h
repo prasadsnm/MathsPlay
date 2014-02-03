@@ -10,7 +10,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import <AVFoundation/AVFoundation.h>
 #import "Goodies.h"
-
+#import "CustomAudioToolBox.h"
 #import "CustomModalBox.h"
 
 @interface DivisibiltyCheckViewController : UIViewController<ModalDelegate>
@@ -22,6 +22,8 @@
     CustomModalBox *modal;
     UILabel *builiding;
     UIButton *helpButton;
+    CustomAudioToolBox *audioToolBox;
+
 
 }
 -(void)winMusicStart;

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "CustomModalBox.h"
+#import "CustomAudioToolBox.h"
 
 @interface SquareRootViewController : UIViewController<UITextFieldDelegate>
 {
@@ -25,6 +26,8 @@
     NSArray *questionArray;
     int Counter;
     UIButton *helpButton;
+    CustomAudioToolBox *audioToolBox;
+
 
 }
 -(int)getRandomPerfectSquare;

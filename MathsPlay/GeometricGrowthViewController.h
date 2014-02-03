@@ -10,11 +10,14 @@
 #import <QuartzCore/QuartzCore.h>
 #import <math.h>
 #import "CountDownTimer.h"
+#import "CustomAudioToolBox.h"
 
 @interface GeometricGrowthViewController : UIViewController<CountDownTimerDelegate>
 {
     UIButton *firstOptionButton,*secondOptionButton,*thirdOptionButton,*fourthOptionButton,*helpButton;
 ;
+    CustomAudioToolBox *audioToolBox;
+
 }
 -(void)TimeUp;
 -(void)startMethod;

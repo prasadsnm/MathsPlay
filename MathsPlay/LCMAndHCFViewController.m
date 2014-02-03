@@ -186,7 +186,7 @@
     instructionLabel.backgroundColor=[UIColor clearColor];
     instructionLabel.textAlignment=NSTextAlignmentLeft;
     instructionLabel.font=[UIFont fontWithName:RULES_FONT_NAME size:30];
-    instructionLabel.text=@"a) Allign the aircfart to the right answer and then tap to fire on correct answer.\n\nb) If the answer is correct thumbs up & if wrong thumbs down  is dispalyed.\n\nc)For every 5 correct answer you get a goodies.\n\n \t\t\t\t[ Tap to dismiss. ]";
+    instructionLabel.text=@"a) Allign the aircfart to the right answer and then tap to fire on correct answer.\n\nb) If the answer is correct thumbs up & if wrong thumbs down  is dispalyed.\n\nc)For every 5 correct answer you get a goodies.";
     [modalForRules.view addSubview:instructionLabel];
 }
 
@@ -274,11 +274,16 @@
 -(NSArray *)refreshQuestion
 {
     totalQuestionCount++;
-    int firstRandom=[self getRandomNumber:1 to:10];
-    int secondRandom=[self getRandomNumber:1 to:10];
+    
+    
+    int firstRandom=[self getRandomNumber:2 to:10];
+    int secondRandom=[self getRandomNumber:2 to:10];
+    if (firstRandom==secondRandom) {
+        firstRandom++;
+    }
     answer=0;
     
-    if (([self getRandomNumber:1 to:8]%2)==0) {
+    if (([self getRandomNumber:2 to:8]%2)==0) {
         
         questionLabel.text=[NSString stringWithFormat:@"The LCM of %i and %i ?",firstRandom,secondRandom];
         @synchronized(ANSWER_LOCK){
@@ -450,7 +455,7 @@ int lcm(int a, int b)
 
 -(void)handleMovementView:(UIPanGestureRecognizer *)recognizer
 {
-    CGPoint movement;
+   // CGPoint movement;
     
     if(recognizer.state == UIGestureRecognizerStateBegan || recognizer.state == UIGestureRecognizerStateChanged || recognizer.state == UIGestureRecognizerStateEnded)
     {
@@ -459,7 +464,7 @@ int lcm(int a, int b)
         if((rec.origin.x >= imgvw.origin.x && (rec.origin.x + rec.size.width <= imgvw.origin.x + imgvw.size.width)))
         {
             CGPoint translation = [recognizer translationInView:recognizer.view.superview];
-            movement = translation;
+           // movement = translation;
             recognizer.view.center = CGPointMake(recognizer.view.center.x + translation.x, recognizer.view.center.y + translation.y);
             rec = recognizer.view.frame;
             
@@ -501,12 +506,8 @@ int lcm(int a, int b)
     [lazerImageView setCenter:recognizer.view.center];
     [self.view addSubview:lazerImageView];
     
-    
     [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-        
         [lazerImageView setCenter:_targetCenter];
-        
-        // [lazerImageView setCenter:_targetCenter];
         [audioToolBox playSound:@"lazer_ship" withExtension:@"caf"];
         
     } completion:^(BOOL finished) {
@@ -613,6 +614,10 @@ int lcm(int a, int b)
 }
 
 
+-(void)viewWillAppear:(BOOL)animated
+{
+
+}
 -(void)handleTapOnModal:(UITapGestureRecognizer *)recognizer
 {
     [self dismissModalViewControllerAnimated:YES];

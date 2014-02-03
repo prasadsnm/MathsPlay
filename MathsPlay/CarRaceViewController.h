@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CustomAudioToolBox.h"
 #import <QuartzCore/QuartzCore.h>
 @interface CarRaceViewController : UIViewController
 {
@@ -28,6 +29,7 @@
     // variables to check which car came first, second, third
     NSInteger firstCar, secondCar, myCar;
     UIButton *helpButton;
+    CustomAudioToolBox *audioToolBox;
 
 }
 - (void)goButtonClicked:(UIButton *)btn ;

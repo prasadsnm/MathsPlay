@@ -37,6 +37,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    audioToolBox=[[CustomAudioToolBox alloc]init];
+
     SET_USERNAME_AS_TITLE
      self.navigationController.navigationBar.titleTextAttributes = @{UITextAttributeTextColor : [UIColor whiteColor]}; // to change the color of navigation bar title to white color.
      self.view.backgroundColor=BACKGROUND_COLOR;
@@ -113,7 +115,7 @@
     instructionLabel.backgroundColor=[UIColor clearColor];
     instructionLabel.textAlignment=NSTextAlignmentLeft;
     instructionLabel.font=[UIFont fontWithName:RULES_FONT_NAME size:30];
-    instructionLabel.text=@"a)Choose the missing number in the series(balls).\n\nb)Status of answer is shown in screen.\n\nc)Try as many question in given time, the result will be shown after time finishes.\n\n \t\t\t[ Tap to dismiss. ]";
+    instructionLabel.text=@"a)Choose the missing number in the series(balls).\n\nb)Status of answer is shown in screen.\n\nc)Try as many question in given time, the result will be shown after time finishes.";
     [modalForRules.view addSubview:instructionLabel];
 }
 
@@ -409,6 +411,7 @@
 {
     sender.userInteractionEnabled=NO;
                 if (sender.tag==[answer integerValue]) {
+                    [audioToolBox playSound:@"correct" withExtension:@"mp3"];
                     correctAnswerCount++;
                     [resultLabel setText:@"Correct !!"];
                     [UIView animateWithDuration:1.0 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
@@ -422,6 +425,8 @@
                 {
                     
                     incorrectAnswerCount++;
+                    [audioToolBox playSound:@"wrong" withExtension:@"mp3"];
+
                     [resultLabel setText:@"Wrong !!"];
 
                     [UIView animateWithDuration:1.0 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
@@ -440,7 +445,8 @@
 
 -(void)TimeUp
 {
-    [resultLabel setText:[NSString stringWithFormat:@"%i Correct out of %i attempted",correctAnswerCount,correctAnswerCount+incorrectAnswerCount]];
+    [audioToolBox playSound:@"award" withExtension:@"mp3"];
+    [resultLabel setText:[NSString stringWithFormat:@"Game Over!! \n %i Correct out of %i attempted",correctAnswerCount,correctAnswerCount+incorrectAnswerCount]];
     [firstOptionButton setUserInteractionEnabled:NO];
     [secondOptionButton setUserInteractionEnabled:NO];
     [thirdOptionButton setUserInteractionEnabled:NO];
@@ -455,6 +461,9 @@
 
 
 
+- (void)viewDidUnload {
+    [audioToolBox dispose];
+}
 
 - (void)didReceiveMemoryWarning
 {

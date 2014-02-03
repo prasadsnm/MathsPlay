@@ -60,6 +60,8 @@
 {
     [super viewDidLoad];
     SET_USERNAME_AS_TITLE
+    audioToolBox=[[CustomAudioToolBox alloc]init];
+
 	// Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor colorWithRed:0/255.0 green:178/255.0 blue:236/255.0 alpha:1.0];
     
@@ -213,12 +215,12 @@
     topbar.image=[UIImage imageNamed:@"sp-top"];
     [modalForRules.view addSubview:topbar];
     
-    UILabel *instructionLabel=[[UILabel alloc]initWithFrame:CGRectMake(40, 80, modalForRules.view.frame.size.width-70, modalForRules.view.frame.size.height-100)];
+    UILabel *instructionLabel=[[UILabel alloc]initWithFrame:CGRectMake(40, 60, modalForRules.view.frame.size.width-70, modalForRules.view.frame.size.height-100)];
     instructionLabel.numberOfLines=0;
     instructionLabel.backgroundColor=[UIColor clearColor];
     instructionLabel.textAlignment=NSTextAlignmentLeft;
     instructionLabel.font=[UIFont fontWithName:RULES_FONT_NAME size:30];
-    instructionLabel.text=@"a)Choose the right option among the ballons.\n\nb)If answer is correct your car's(2nd from top) speed increases.\n\nc)Answer quickly to accelerate the car.\n\n \t\t\t\t[ Tap to dismiss. ]";
+    instructionLabel.text=@"a)Choose the right option among the ballons.\n\nb)If answer is correct your car's(red) speed increases.\n\nc)Answer quickly to accelerate the car.";
     [modalForRules.view addSubview:instructionLabel];
 }
 
@@ -233,6 +235,7 @@
 
 - (void)goButtonClicked:(UIButton *)btn  {
     
+
     self.view.userInteractionEnabled = YES;
     if (run_onlyone_time==0) {
         // remove arrow and go btn
@@ -245,6 +248,7 @@
         carTimer2 = [NSTimer scheduledTimerWithTimeInterval:.1 target:self selector:@selector(secondAutoCar) userInfo:nil repeats:YES];
         carTimer3 = [NSTimer scheduledTimerWithTimeInterval:.1 target:self selector:@selector(thirdAutoCar) userInfo:nil repeats:YES];
         myCarTimer = [NSTimer scheduledTimerWithTimeInterval:.1 target:self selector:@selector(myCarMoveWithNormalSpeed) userInfo:nil repeats:YES];
+        [audioToolBox playSound:@"car-start" withExtension:@"mp3"];
         run_onlyone_time++;
     }
     
@@ -270,7 +274,7 @@
         [balloonBtn4 setImage:[UIImage imageNamed:@"ball4"] forState:UIControlStateNormal];
         [balloonBtn4 addTarget:self action:@selector(balloonClicked:) forControlEvents:UIControlEventTouchUpInside];
         [balloonBtn4 setFrame:CGRectMake(560, 850, 150, 100)];
-        
+    
         balloonArray = [[NSArray alloc]initWithObjects:balloonBtn1,balloonBtn2,balloonBtn3,balloonBtn4, nil]; // so that we can randomly select a balloon and put right ans on it
     
         // show question and options
@@ -718,7 +722,7 @@
     
     self.view.userInteractionEnabled = NO;
     if (sender.tag == [questionLabel.text integerValue]) {
-        NSLog(@"Correct Answer");
+        [audioToolBox playSound:@"accelerating" withExtension:@"mp3"];
         correctAns++;
         correctAnsLabel.text = [NSString stringWithFormat:@"%d",correctAns];
         if ([myCarTimer isValid]) {
@@ -735,6 +739,7 @@
         
     } else {
         
+        [audioToolBox playSound:@"brakes" withExtension:@"mp3"];
         wrongAns++;
         inCorrectAnsLabel.text = [NSString stringWithFormat:@"%d",wrongAns];
         
@@ -878,6 +883,10 @@
     
     
 }
+- (void)viewDidUnload {
+    [audioToolBox dispose];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

@@ -19,4 +19,5 @@
     UILabel *skillLabelValue;
     UIView *classOneView, *classThreeView, *classFiveView,*classSixView;
 }
+-(id)init;
 @end

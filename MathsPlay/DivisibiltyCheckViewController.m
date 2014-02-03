@@ -32,6 +32,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    audioToolBox=[[CustomAudioToolBox alloc]init];
     totalGiftObject=0;
     SET_USERNAME_AS_TITLE
     if (NSFoundationVersionNumber <= NSFoundationVersionNumber_iOS_6_1) {
@@ -163,7 +164,7 @@
     instructionLabel.backgroundColor=[UIColor clearColor];
     instructionLabel.textAlignment=NSTextAlignmentLeft;
     instructionLabel.font=[UIFont fontWithName:RULES_FONT_NAME size:25];
-    instructionLabel.text=@"a)Choose true (right) or false (cross) for every question .\n\nb)If answer is correct the ant moves up the building and if answer is incorrect it slips (double)the building.\n\nc)Avoid ant to slips below the original position.\n\nd)For every 5 correct answer you get a gift.\n\n \t\t\t\t[ Tap to dismiss. ]";
+    instructionLabel.text=@"a)Choose true (right) or false (cross) for every question .\n\nb)If answer is correct the ant moves up the building and if answer is incorrect it slips (double)the building.\n\nc)Avoid ant to slips below the original position.\n\nd)For every 5 correct answer you get a gift.";
     [modalForRules.view addSubview:instructionLabel];
 }
 
@@ -183,8 +184,8 @@
 //falling ant
 -(void)initialAnimation
 {
-    
-    [UIView animateWithDuration:2.0 delay:0.5 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+    [audioToolBox playSound:@"fall" withExtension:@"mp3"];
+    [UIView animateWithDuration:3.0 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         [modal hide];
         ant.frame=CGRectMake(0, builiding.frame.size.height-50, 50, 50);
     } completion:^(BOOL finished) {
@@ -223,14 +224,15 @@
     
     if (!(ant.frame.origin.y<=0))  //relative coordinate (0 means end of y axis)
     {
+        [audioToolBox playSound:@"ant-right" withExtension:@"mp3"];
+
         [UIView animateWithDuration:2.0 delay:0.5 options:UIViewAnimationOptionCurveEaseInOut animations:^{
             [modal hide];
-            [self winMusicStart];
             ant.frame=CGRectMake(ant.frame.origin.x, ant.frame.origin.y-50, ant.frame.size.width, ant.frame.size.height);
             
         } completion:^(BOOL finished) {
             
-            if ((ant.frame.origin.y<=0)) {
+            if ((ant.frame.origin.y<=0)) {  //if new frame reaches to destination
                 [modal show];
                 [modal setQuestion:@" You Win !!"];
                 [modal.yesButton setHidden:YES];
@@ -258,11 +260,11 @@
 {
     
     if (!(ant.frame.origin.y>builiding.frame.size.height)) {
-        
+        [audioToolBox playSound:@"ant-wrong" withExtension:@"mp3"];
+
         [UIView animateWithDuration:2.0 delay:0.5 options:UIViewAnimationOptionCurveEaseInOut animations:^{
             ant.frame=CGRectMake(ant.frame.origin.x, ant.frame.origin.y+100, ant.frame.size.width, ant.frame.size.height);
             [modal hide];
-            
         } completion:^(BOOL finished) {
             
             
@@ -339,7 +341,9 @@
     [self.view addSubview:goodies];
 }
 
-
+- (void)viewDidUnload {
+    [audioToolBox dispose];
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

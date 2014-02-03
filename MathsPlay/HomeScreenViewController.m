@@ -24,7 +24,6 @@
 #import "DivisibiltyCheckViewController.h"
 #import "GeometricGrowthViewController.h"
 #import "LCMAndHCFViewController.h"
-#import "SquareRootQuizViewController.h"
 //class six
 #import "QuadrantViewController.h"
 
@@ -46,6 +45,14 @@
     }
     return self;
 }
+
+-(id)init
+{
+    self=[super init];
+    return self;
+
+}
+
 
 - (void)viewDidLoad
 {
@@ -1054,22 +1061,25 @@
             case 501: //class 5 square root
                 squareRootQuiz = nil;
                 squareRootQuiz=[[SquareRootViewController alloc]init];
-                [self.navigationController pushViewController:squareRootQuiz animated:NO];
+                [self.navigationController pushViewController:squareRootQuiz animated:YES];
                 break;
                 
             case 502: //class 5 divisibility
+                divisibilityCheckController=nil;
                 divisibilityCheckController=[[DivisibiltyCheckViewController alloc]init];
                 [self.navigationController pushViewController:divisibilityCheckController animated:YES];
               
                 break;
                 
             case 503: // class 5 advance race
+                advanceCarRaceController=nil;
                 advanceCarRaceController = [[CarRaceViewController alloc]init];
                 [self.navigationController pushViewController:advanceCarRaceController animated:YES];
                 
                 break;
                 
             case 504: // class 5 pattern
+                geometricGrowthViewController=nil;
                 geometricGrowthViewController = [[GeometricGrowthViewController alloc]init];
                 [self.navigationController pushViewController:geometricGrowthViewController animated:YES];
                 
@@ -1095,8 +1105,8 @@
 
 - (void)loadClassSixComponent:(UIButton *)button
 {
-    {
-        [self storeToPlist];
+    
+       // [self storeToPlist];
         
         QuadrantViewController *quadrantViewController;
         
@@ -1105,7 +1115,7 @@
             case 601: //class 6 Quadrant
                 quadrantViewController=nil;
                 quadrantViewController=[[QuadrantViewController alloc]init];
-                [self.navigationController pushViewController:quadrantViewController animated:NO];
+                [self.navigationController pushViewController:quadrantViewController animated:YES];
                 break;
                 
             case 702: //class 6 divisibility
@@ -1136,7 +1146,7 @@
                 break;
         }
         
-    }
+    
 }
 
 
@@ -1278,6 +1288,12 @@
     [Util writeToPlist:plistdic];
 }
 
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
