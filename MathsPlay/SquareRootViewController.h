@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "CustomModalBox.h"
 #import "CustomAudioToolBox.h"
+#import "DropDownAlert.h"
 
 @interface SquareRootViewController : UIViewController<UITextFieldDelegate>
 {
@@ -22,11 +23,12 @@
     int complexity;
     int level;
     int QuestionCount;
-    UIImageView *moodImage;
     NSArray *questionArray;
     int Counter;
     UIButton *helpButton;
     CustomAudioToolBox *audioToolBox;
+    UIProgressView *progreeView;
+    DropDownAlert *dropAlert;
 
 
 }

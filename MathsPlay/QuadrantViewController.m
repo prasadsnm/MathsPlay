@@ -302,9 +302,7 @@
     [fetchRequest setEntity:entity];
     NSError* error;
     NSArray *fetchedRecords = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
-    
-    NSLog(@"%d",[fetchedRecords count]);
-    return fetchedRecords;
+        return fetchedRecords;
 }
 
 

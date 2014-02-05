@@ -357,7 +357,7 @@
     UIButton *compareGame = [UIButton buttonWithType:UIButtonTypeCustom];
     compareGame.frame = CGRectMake(522,20,100,90);
     compareGame.tag = 301;
-    [compareGame setImage:[UIImage imageNamed:@"ladder2"] forState:UIControlStateNormal];
+    [compareGame setImage:[UIImage imageNamed:@"puzzle"] forState:UIControlStateNormal];
     UILabel *footnoteCompare = [[UILabel alloc]initWithFrame:CGRectMake(0, 88, 100, 45)];
     footnoteCompare.text = @"Follow The Path";
     footnoteCompare.numberOfLines = 0;
@@ -448,7 +448,7 @@
     UIButton *squareRoot = [UIButton buttonWithType:UIButtonTypeCustom];
     squareRoot.frame = CGRectMake(522,20,120,80);
     squareRoot.tag = 501;
-    [squareRoot setImage:[UIImage imageNamed:@"compare"] forState:UIControlStateNormal];
+    [squareRoot setImage:[UIImage imageNamed:@"square_root"] forState:UIControlStateNormal];
     UILabel *footnoteSqrt = [[UILabel alloc]initWithFrame:CGRectMake(0, 80, 120, 20)];
     footnoteSqrt.text = @"Square Root";
     footnoteSqrt.textColor = [UIColor blackColor];
@@ -544,7 +544,7 @@
     UIButton *quadRant = [UIButton buttonWithType:UIButtonTypeCustom];
     quadRant.frame = CGRectMake(522,20,120,80);
     quadRant.tag = 601;
-    [quadRant setImage:[UIImage imageNamed:@"compare"] forState:UIControlStateNormal];
+    [quadRant setImage:[UIImage imageNamed:@"barGraph"] forState:UIControlStateNormal];
     UILabel *footnoteSqrt = [[UILabel alloc]initWithFrame:CGRectMake(0, 80, 120, 20)];
     footnoteSqrt.text = @"D.I";
     footnoteSqrt.textColor = [UIColor blackColor];

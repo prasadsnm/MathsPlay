@@ -206,7 +206,7 @@
         xValue=xValue+width+9;
         [displayCard addSubview:label];
     }
-    int randomNumber=[self getRandomNumber:1 to:[arrayToDisplay count]];
+    int randomNumber=[self getRandomNumber:1 to:(long)[arrayToDisplay count]];
     UIView *viewToHide=[displayCard viewWithTag:randomNumber];
     if ([viewToHide isKindOfClass:[UILabel class]]) {
         UILabel *numberlabel=(UILabel *)viewToHide;

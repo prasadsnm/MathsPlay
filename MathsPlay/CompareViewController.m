@@ -34,11 +34,6 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-	// Do any additional setup after loading the view.
-    
-    //[audioPlayer1 stop];
-    
     dic = [Util readPListData];
     totalattempts = 0;
     rightans = 0;
@@ -250,6 +245,8 @@
     
     
     [self startGame];
+    [super viewDidLoad];
+
     
 }
 
