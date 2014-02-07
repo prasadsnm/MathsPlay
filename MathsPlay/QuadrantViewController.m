@@ -125,6 +125,7 @@
                       target:self
                       action:@selector(next)];
     self.navigationItem.rightBarButtonItem = rightBarButton;
+
 }
 
 #pragma mark - Radio Button

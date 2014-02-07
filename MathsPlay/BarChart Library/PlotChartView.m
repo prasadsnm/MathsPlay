@@ -115,7 +115,7 @@
 			NSString *textX = [NSString stringWithFormat:@"%i",(NSUInteger)(maxValueAxisY - i*stepValueAxisY)];
 			CGRect textRect = CGRectMake(CGRectGetMinX(rect), CGRectGetMinY(rect) + i*stepHeightAxisY - labelSizeAxisY.height/2, labelSizeAxisY.width, labelSizeAxisY.height);
 		
-			[textX drawInRect:textRect withFont:[UIFont systemFontOfSize:fontSize] lineBreakMode:UILineBreakModeClip alignment:UITextAlignmentCenter];
+			[textX drawInRect:textRect withFont:[UIFont systemFontOfSize:fontSize] lineBreakMode:NSLineBreakByClipping alignment:NSTextAlignmentCenter];
 		
 			CGContextBeginPath(context);
 			CGContextMoveToPoint(context, CGRectGetMinX(rect) + labelSizeAxisY.width, CGRectGetMinY(rect) + i*stepHeightAxisY);

@@ -44,6 +44,9 @@
 {
     [super viewDidLoad];
     
+    circularProgressView=[[CircularProgressView alloc]init];
+    circularProgressView.tag=55555;
+    [self.view addSubview:circularProgressView];
     scoreCount=totalQuestionCount=totalGiftObject=0;
     modal=nil;
     
@@ -213,6 +216,8 @@
 
 -(void)submitMethod
 {
+    
+    
     if (selectedIndex<4) {
         if (isCorrect) {
             UIAlertView *gameOver = [[UIAlertView alloc]initWithTitle:@"Correct !!" message:@"Your Answer is Correct" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
@@ -247,12 +252,29 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+
+#pragma mark Update Progress View
+
+
+- (void)updateProgress:(CGFloat )timer {
+    if (timer!=1) {
+        circularProgressView.progress = timer;
+    }
+    else
+    {
+        [circularProgressView removeFromSuperview];
+    }
+}
+
+
 #pragma mark Fresh Question
 
 -(NSArray *)refreshQuestion
 {
     totalQuestionCount++;
-    
+    CGFloat fraction=(float)totalQuestionCount-1/TOTAL_QUESTION_COUNT;
+    [self updateProgress:fraction];
     
     int firstRandom=[self getRandomNumber:2 to:10];
     int secondRandom=[self getRandomNumber:2 to:10];
@@ -344,7 +366,8 @@ int lcm(int a, int b)
             [view removeFromSuperview];
         }
         
-        if (view.tag==1 && view.tag==2 &&view.tag==3 &&view.tag==4)  {
+        if (view.tag==1 && view.tag==2 &&view.tag==3 &&view.tag==4 &&view
+            .tag==55555)  {
             [view removeFromSuperview];
         }
     }

@@ -296,6 +296,7 @@
 		FCD764B318978438003D0EAC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCD764B218978438003D0EAC /* QuartzCore.framework */; };
 		FCD854C51856E1C400EACE3F /* fishHCF.png in Resources */ = {isa = PBXBuildFile; fileRef = FCD854C41856E1C400EACE3F /* fishHCF.png */; };
 		FCD854C9185717EF00EACE3F /* tank.png in Resources */ = {isa = PBXBuildFile; fileRef = FCD854C8185717EF00EACE3F /* tank.png */; };
+		FCE3DA4118A39BF800AA6802 /* CircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCE3DA4018A39BF800AA6802 /* CircularProgressView.m */; };
 		FCE5D6AA18A221C5003D36BA /* puzzle.png in Resources */ = {isa = PBXBuildFile; fileRef = FCE5D6A918A221C5003D36BA /* puzzle.png */; };
 		FCE5D6AD18A223D8003D36BA /* barGraph.png in Resources */ = {isa = PBXBuildFile; fileRef = FCE5D6AC18A223D8003D36BA /* barGraph.png */; };
 		FCF12E541898FF710063929B /* checked.png in Resources */ = {isa = PBXBuildFile; fileRef = FCF12E4E1898FF710063929B /* checked.png */; };
@@ -650,6 +651,8 @@
 		FCD764B218978438003D0EAC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		FCD854C41856E1C400EACE3F /* fishHCF.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fishHCF.png; sourceTree = "<group>"; };
 		FCD854C8185717EF00EACE3F /* tank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tank.png; sourceTree = "<group>"; };
+		FCE3DA3F18A39BF800AA6802 /* CircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircularProgressView.h; sourceTree = "<group>"; };
+		FCE3DA4018A39BF800AA6802 /* CircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircularProgressView.m; sourceTree = "<group>"; };
 		FCE5D6A918A221C5003D36BA /* puzzle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = puzzle.png; sourceTree = "<group>"; };
 		FCE5D6AC18A223D8003D36BA /* barGraph.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = barGraph.png; sourceTree = "<group>"; };
 		FCF12E4E1898FF710063929B /* checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checked.png; sourceTree = "<group>"; };
@@ -1176,6 +1179,8 @@
 		FCC7D6831859A48600039099 /* CustomClasses */ = {
 			isa = PBXGroup;
 			children = (
+				FCE3DA3F18A39BF800AA6802 /* CircularProgressView.h */,
+				FCE3DA4018A39BF800AA6802 /* CircularProgressView.m */,
 				FCC98FA918A0C98600805888 /* DropDownAlert.h */,
 				FCC98FAA18A0C98600805888 /* DropDownAlert.m */,
 				FC7897C8186C4B53007B641F /* RulesCustomButton.h */,
@@ -1648,6 +1653,7 @@
 				FCC7D69B1859D56500039099 /* Goodies.m in Sources */,
 				689F2B4318152C0B00DC8553 /* AppDelegate.m in Sources */,
 				FCD764AC1897831D003D0EAC /* UIColor+i7HexColor.m in Sources */,
+				FCE3DA4118A39BF800AA6802 /* CircularProgressView.m in Sources */,
 				FCD764A81897831D003D0EAC /* BarChartView.m in Sources */,
 				689F2B3F18152C0B00DC8553 /* main.m in Sources */,
 				68065317183C9CBC005A3EC1 /* FollowTPModel.m in Sources */,

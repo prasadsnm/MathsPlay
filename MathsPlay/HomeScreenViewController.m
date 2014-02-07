@@ -359,7 +359,7 @@
     compareGame.tag = 301;
     [compareGame setImage:[UIImage imageNamed:@"puzzle"] forState:UIControlStateNormal];
     UILabel *footnoteCompare = [[UILabel alloc]initWithFrame:CGRectMake(0, 88, 100, 45)];
-    footnoteCompare.text = @"Follow The Path";
+    footnoteCompare.text = @"Miscellaneous";
     footnoteCompare.numberOfLines = 0;
     footnoteCompare.lineBreakMode = NSLineBreakByWordWrapping;
     footnoteCompare.textColor = [UIColor blackColor];
@@ -546,7 +546,7 @@
     quadRant.tag = 601;
     [quadRant setImage:[UIImage imageNamed:@"barGraph"] forState:UIControlStateNormal];
     UILabel *footnoteSqrt = [[UILabel alloc]initWithFrame:CGRectMake(0, 80, 120, 20)];
-    footnoteSqrt.text = @"D.I";
+    footnoteSqrt.text = @"Bar Graph";
     footnoteSqrt.textColor = [UIColor blackColor];
     footnoteSqrt.backgroundColor = [UIColor clearColor];
     footnoteSqrt.textAlignment = NSTextAlignmentCenter;

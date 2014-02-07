@@ -10,6 +10,7 @@
 #import "Util.h"
 #import "CustomAudioToolBox.h"
 #import "Goodies.h"
+#import "CircularProgressView.h"
 
 
 @interface LCMAndHCFViewController : UIViewController<UIViewControllerTransitioningDelegate>
@@ -27,6 +28,7 @@
     UIPanGestureRecognizer *panGestureRecognizer;
     CustomAudioToolBox *audioToolBox;
     Goodies *goodies;
+    CircularProgressView *circularProgressView;
     UIButton *helpButton;
     
 }

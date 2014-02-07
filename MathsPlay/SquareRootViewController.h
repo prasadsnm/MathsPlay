@@ -10,6 +10,7 @@
 #import "CustomModalBox.h"
 #import "CustomAudioToolBox.h"
 #import "DropDownAlert.h"
+#import "CircularProgressView.h"
 
 @interface SquareRootViewController : UIViewController<UITextFieldDelegate>
 {
@@ -29,12 +30,12 @@
     CustomAudioToolBox *audioToolBox;
     UIProgressView *progreeView;
     DropDownAlert *dropAlert;
-
+    CircularProgressView *circularProgressView;
+    
 
 }
 -(int)getRandomPerfectSquare;
 -(void)showQuestion;
--(void)submitClicked;
 @property(nonatomic,strong)CustomModalBox *modal;
 
 @end
