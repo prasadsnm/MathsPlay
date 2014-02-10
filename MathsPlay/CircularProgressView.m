@@ -32,7 +32,6 @@
 {
 	[self setOpaque:NO];
 	[self setBackgroundColor:[UIColor clearColor]];
-	
 	progress = 0;
 	strokeWidth = 1;
 	fillColor = [UIColor darkGrayColor] ;

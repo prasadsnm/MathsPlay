@@ -377,7 +377,7 @@
                 [touch view].center = ansboxOne.center;
                 if (numberOfCircleDragged == 2) { // both the circles are filled; so restart the game
                     // check if correct ans or not
-                    NSInteger firstValue, secondValue;
+                    NSInteger firstValue,secondValue;
                     for (id subview_ in firstCircle.subviews) {
                         if ([subview_ isKindOfClass:[UILabel class]]) {
                             UILabel *lbl = (UILabel *)subview_;
@@ -390,7 +390,7 @@
                             secondValue = [lbl.text integerValue];
                         }
                     }
-                    if([[questionArr objectAtIndex:numberOfQuestionsAttempted]integerValue] == firstValue + secondValue)
+                    if([[questionArr objectAtIndex:numberOfQuestionsAttempted]integerValue] == firstValue  + secondValue)
                     {
                         // user has chosen correct options
                         correctAns++;

@@ -1214,6 +1214,9 @@
                 [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:clickedBtn3 cache:YES];
                 [UIView commitAnimations];
                 
+                
+                
+                #pragma unused (context1,context2,context3)
                 [clickedBtn1 setImage:[UIImage imageNamed:@"righttick1.png"] forState:UIControlStateNormal];
                 [clickedBtn2 setImage:[UIImage imageNamed:@"righttick1.png"] forState:UIControlStateNormal];
                 [clickedBtn3 setImage:[UIImage imageNamed:@"righttick1.png"] forState:UIControlStateNormal];
@@ -1316,7 +1319,8 @@
                 CGAffineTransform transform = CGAffineTransformMakeScale(1.5f, 1.5f);
                 heartbroken.transform = transform;
                 [UIView commitAnimations];
-                
+                #pragma unused (context1,context2,context3)
+
             } // if wrong ans ends
             
         } // if click count is 3 ends

@@ -241,9 +241,7 @@
 
 -(void)showRandomAddValues
 {
-    
     self.view.userInteractionEnabled = YES;
-    
     numberOfCorrectAnsLabel.text = [NSString stringWithFormat:@"%d",correctAnsCount];
     numberOfInCorrectAnsLabel.text = [NSString stringWithFormat:@"%d",wrongAnsCount];
     
@@ -594,7 +592,6 @@
             {
                 // correct ans
                 wrongOrRightValue = 1;
-                
                 NSValue *touchPointValue = [NSValue valueWithCGPoint:touchPoint];
                 [UIView beginAnimations:nil context:(__bridge void *)(touchPointValue)];
                 [UIView setAnimationDuration:0.15];
@@ -614,6 +611,28 @@
             {
                 // wrong ans
                 wrongOrRightValue = 0;
+                
+                
+                UILabel *answerLabel=[[UILabel alloc]initWithFrame:CGRectMake(490, 350, 250, 60)];
+                answerLabel.backgroundColor=[UIColor whiteColor];
+                answerLabel.textColor=[UIColor redColor];
+                answerLabel.layer.cornerRadius=5.0;
+                answerLabel.layer.borderWidth=1.0;
+                answerLabel.textAlignment=NSTextAlignmentCenter;
+                answerLabel.font=[UIFont boldSystemFontOfSize:18];
+                [self.view addSubview:answerLabel];
+                [answerLabel setHidden:NO];
+                answerLabel.text=[NSString stringWithFormat:@"Correct Answer is: %d",ans];
+                
+
+                dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 1.0 * NSEC_PER_SEC);
+                dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                    [answerLabel setHidden:YES];
+                });
+                
+                
+                
+                NSLog(@"answer is %d",ans);
                 
                 NSValue *touchPointValue = [NSValue valueWithCGPoint:touchPoint];
                 [UIView beginAnimations:nil context:(__bridge void *)(touchPointValue)];

@@ -132,7 +132,7 @@
 			barLabel.textColor = [barInfo objectForKey:@"labelColor"];
 			barLabel.text =  [barInfo objectForKey:@"label"];
 			barLabel.font = [UIFont systemFontOfSize:fontSize];
-			barLabel.textAlignment = UITextAlignmentCenter;
+			barLabel.textAlignment = NSTextAlignmentCenter;
 			barLabel.clipsToBounds = false;
 			barLabel.backgroundColor = [UIColor clearColor];
 			[barLabels addObject:barLabel];

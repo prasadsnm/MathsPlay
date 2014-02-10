@@ -159,7 +159,7 @@
     [helpButton setImage:[UIImage imageNamed:@"rules"] forState:UIControlStateNormal];
     helpButton.tag=100011;
     [helpButton addTarget:self action:@selector(buttonActionMethod:) forControlEvents:UIControlEventTouchUpInside];
-    helpButton.frame=CGRectMake(self.view.frame.size.width-170 , 20, 200, 80);
+    helpButton.frame=CGRectMake(self.view.frame.size.width-100 ,20, 90, 50);
     helpButton.showsTouchWhenHighlighted=YES;
     [self.view addSubview:helpButton];
 #pragma mark dropAlert
@@ -206,7 +206,7 @@
 -(void)handleTapOnModal:(UITapGestureRecognizer *)recognizer
 {
     [self resignFirstResponder];
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:NULL];
     
 }
 
@@ -352,10 +352,6 @@
     return NO;
 }
 
-- (void)viewDidUnload {
-    [audioToolBox dispose];
-}
-
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
@@ -370,6 +366,8 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+    [audioToolBox dispose];
+
     // Dispose of any resources that can be recreated.
 }
 

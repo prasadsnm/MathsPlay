@@ -11,9 +11,9 @@
 
 @interface CustomAudioToolBox : NSObject
 {
-    SystemSoundID soundClick;
-
+SystemSoundID soundClick;
 }
 -(void)playSound:(NSString *)soundName withExtension:(NSString *)extension;
 -(void)dispose;
+@property(nonatomic,weak)NSURL *clickSound;
 @end

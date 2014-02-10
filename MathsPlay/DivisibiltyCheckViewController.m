@@ -67,21 +67,22 @@
     infoLabel.backgroundColor=[UIColor clearColor];
     infoLabel.text=@"Help the ant to Climb up the building by giving correct answers \n Enjoy!!";
     infoLabel.textColor=[UIColor whiteColor];
-    infoLabel.font=[UIFont fontWithName:@"Lucida Grande" size:25];
+    infoLabel.font=[UIFont fontWithName:@"Lucida Grande" size:30];
     infoLabel.textAlignment=NSTextAlignmentCenter;
     infoLabel.numberOfLines=0;
     [shadow addSubview:infoLabel];
 
     
     UIButton *letsPlaybutton=[UIButton buttonWithType:UIButtonTypeCustom];
-    letsPlaybutton.frame=CGRectMake(0, 0, 90, 60) ;
+    letsPlaybutton.frame=CGRectMake(0, 0, 90, 30) ;
     letsPlaybutton.center=shadow.center;
-    letsPlaybutton.backgroundColor=[UIColor clearColor];
-    letsPlaybutton.layer.cornerRadius=10.0;
-    letsPlaybutton.layer.borderWidth=5.0;
-    letsPlaybutton.layer.borderColor=[UIColor whiteColor].CGColor;
+    letsPlaybutton.backgroundColor=[UIColor lightGrayColor];
+    letsPlaybutton.layer.cornerRadius=2.0;
+    letsPlaybutton.layer.borderWidth=2.0;
+    letsPlaybutton.layer.borderColor=[UIColor lightGrayColor].CGColor;
     letsPlaybutton.showsTouchWhenHighlighted=YES;
     [letsPlaybutton setTitle:@"Lets Play" forState:UIControlStateNormal];
+    [letsPlaybutton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [letsPlaybutton addTarget:self action:@selector(startMethod:) forControlEvents:UIControlEventTouchUpInside];
     [shadow addSubview:letsPlaybutton];
 
@@ -118,7 +119,7 @@
     [helpButton setImage:[UIImage imageNamed:@"rules"] forState:UIControlStateNormal];
     helpButton.tag=100011;
     [helpButton addTarget:self action:@selector(buttonActionMethod:) forControlEvents:UIControlEventTouchUpInside];
-    helpButton.frame=CGRectMake(self.view.frame.size.width-200 , 50, 200, 80);
+    helpButton.frame=CGRectMake(self.view.frame.size.width-100 ,20, 90, 50);
     helpButton.showsTouchWhenHighlighted=YES;
     [self.view addSubview:helpButton];
     
@@ -151,7 +152,7 @@
 
 -(void)handleTapOnModal:(UITapGestureRecognizer *)recognizer
 {
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
 
@@ -322,12 +323,11 @@
     [self.view addSubview:goodies];
 }
 
-- (void)viewDidUnload {
-    [audioToolBox dispose];
-}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+    [audioToolBox dispose];
     // Dispose of any resources that can be recreated.
 }
 

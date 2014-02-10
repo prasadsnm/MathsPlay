@@ -9,13 +9,13 @@
 #import "CustomAudioToolBox.h"
 
 @implementation CustomAudioToolBox
+@synthesize clickSound;
 -(void)playSound:(NSString *)soundName withExtension:(NSString *)extension;
 {
-    NSURL *clickSound   = [[NSBundle mainBundle] URLForResource:soundName withExtension:extension];
+    clickSound  = [[NSBundle mainBundle] URLForResource:soundName withExtension:extension];
     //initialize SystemSounID variable with file URL
     AudioServicesCreateSystemSoundID (CFBridgingRetain(clickSound), &soundClick);
     AudioServicesPlaySystemSound(soundClick);
-    
 }
 -(void)dispose
 {

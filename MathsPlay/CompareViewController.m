@@ -31,7 +31,10 @@
     }
     return self;
 }
-
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:YES];
+}
 - (void)viewDidLoad
 {
     dic = [Util readPListData];

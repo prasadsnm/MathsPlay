@@ -160,12 +160,9 @@
     spikesImage1.frame = CGRectMake(384, 550, 384, 30);
     [self.view addSubview:spikesImage1];
     
-    UIButton *playButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [playButton setTitle:@"< GO >" forState:UIControlStateNormal];
-    [playButton setBackgroundColor:[UIColor yellowColor]];
-    [playButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    UIButton *playButton = [UIButton buttonWithType:UIButtonTypeCustom];
     playButton.frame = CGRectMake(300, 280, 150, 50);
-    playButton.titleLabel.font = [UIFont fontWithName:@"Chalkduster" size:20.0];;
+    [playButton setImage:[UIImage imageNamed:@"begin_race"] forState:UIControlStateNormal];
     [playButton addTarget:self action:@selector(goButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:playButton];
     
@@ -185,7 +182,7 @@
     [helpButton setImage:[UIImage imageNamed:@"rules"] forState:UIControlStateNormal];
     helpButton.tag=100011;
     [helpButton addTarget:self action:@selector(buttonActionMethod:) forControlEvents:UIControlEventTouchUpInside];
-    helpButton.frame=CGRectMake(self.view.frame.size.width-200 , 20, 200, 80);
+    helpButton.frame=CGRectMake(self.view.frame.size.width-100 ,20, 90, 50);
     helpButton.showsTouchWhenHighlighted=YES;
     [self.view addSubview:helpButton];
     
@@ -207,7 +204,7 @@
 -(void)handleTapOnModal:(UITapGestureRecognizer *)recognizer
 {
     [self resumeTheGame];
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
 
@@ -861,13 +858,12 @@
     }
 
 }
-- (void)viewDidUnload {
-    [audioToolBox dispose];
-}
+
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+    [audioToolBox dispose];
 }
 
 // TO DO :

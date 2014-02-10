@@ -240,7 +240,8 @@
         }
         
         CGColorSpaceRelease(rgbColorspace);
-        
+        #pragma unused(lastPoint)
+
     } else if (barViewDisplayStyle == BarStyleMatte) {
         //Draw the bars without a darkened shadow gradient or a gloss effect
         CGGradientRef shadowGradient;
@@ -303,6 +304,7 @@
             lastPoint = currentBounds.size.height/4;
         }
         
+#pragma unused(lastPoint)
         CGColorSpaceRelease(rgbColorspace);
         
     } else if (barViewDisplayStyle == BarStyleFlat) {
@@ -320,6 +322,9 @@
         //CGContextDrawLinearGradient(context, shadowGradient, topCenter, bottomCenter, 0); //Lighting Gradient
         CGGradientRelease(shadowGradient);
         
+#pragma unused(topCenter)
+#pragma unused(bottomCenter)
+
         CGFloat glossCornerRadius = cornerRadius;
         CGRect glossRect;
         
@@ -368,7 +373,8 @@
         }
         
         CGColorSpaceRelease(rgbColorspace);
-        
+        #pragma unused(lastPoint)
+
     } else {
         //Draw the bars with a full gloss effect - this is the default behavior
         CGGradientRef shadowGradient;
@@ -432,7 +438,10 @@
         }
         
         CGColorSpaceRelease(rgbColorspace);
+        #pragma unused(lastPoint)
+
     }
+    
     
     
     //Add a shadow to each bar

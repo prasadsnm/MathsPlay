@@ -80,7 +80,7 @@
     [helpButton setImage:[UIImage imageNamed:@"rules"] forState:UIControlStateNormal];
     helpButton.tag=100011;
     [helpButton addTarget:self action:@selector(buttonActionMethod:) forControlEvents:UIControlEventTouchUpInside];
-    helpButton.frame=CGRectMake(self.view.frame.size.width-160 , 10, 150, 80);
+    helpButton.frame=CGRectMake(self.view.frame.size.width-130 ,30, 90, 50);
     helpButton.showsTouchWhenHighlighted=YES;
     [self.view addSubview:helpButton];
     
@@ -100,7 +100,7 @@
 -(void)handleTapOnModal:(UITapGestureRecognizer *)recognizer
 {
     [timer resume];
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:NULL];
 }
 -(void)startEmmitter
 {
@@ -440,13 +440,13 @@
 
 
 - (void)viewDidUnload {
-    [audioToolBox dispose];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    [audioToolBox dispose];
+
 }
 
 @end

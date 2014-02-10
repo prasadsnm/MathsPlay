@@ -494,7 +494,7 @@
     UIButton *pattern = [UIButton buttonWithType:UIButtonTypeCustom];
     pattern.frame = CGRectMake(122, 125, 100, 80);
     pattern.tag = 504;
-    [pattern setImage:[UIImage imageNamed:@"bubble"] forState:UIControlStateNormal];
+    [pattern setImage:[UIImage imageNamed:@"number_puzzle"] forState:UIControlStateNormal];
     UILabel *footnotePattern = [[UILabel alloc]initWithFrame:CGRectMake(-10, 70, 120, 50)];
     footnotePattern.text = @"Complete The Pattern";
     footnotePattern.numberOfLines = 0;

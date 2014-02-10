@@ -44,9 +44,6 @@
 {
     [super viewDidLoad];
     
-    circularProgressView=[[CircularProgressView alloc]init];
-    circularProgressView.tag=55555;
-    [self.view addSubview:circularProgressView];
     scoreCount=totalQuestionCount=totalGiftObject=0;
     modal=nil;
     
@@ -64,7 +61,7 @@
     [helpButton setImage:[UIImage imageNamed:@"rules"] forState:UIControlStateNormal];
     helpButton.tag=100011;
     [helpButton addTarget:self action:@selector(buttonActionMethod:) forControlEvents:UIControlEventTouchUpInside];
-    helpButton.frame=CGRectMake(self.view.frame.size.width-200 , 50, 200, 80);
+    helpButton.frame=CGRectMake(self.view.frame.size.width-100 ,20, 90, 50);
     helpButton.showsTouchWhenHighlighted=YES;
     [self.view addSubview:helpButton];
     
@@ -118,9 +115,9 @@
     }
     self.navigationController.navigationBar.translucent = NO;
     // set bar title color
-    self.navigationController.navigationBar.titleTextAttributes = @{UITextAttributeTextColor : [UIColor whiteColor]};
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
     // set  button color
-    [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor greenColor], UITextAttributeTextColor,nil] forState:UIControlStateNormal];
+    [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor greenColor], NSForegroundColorAttributeName,nil] forState:UIControlStateNormal];
     selectedAnswer=0;
     
     UIGraphicsBeginImageContext(self.view.frame.size);
@@ -159,6 +156,13 @@
     [self start];
     [self startEmmitter];
     
+    circularProgressView=[[CircularProgressView alloc]initWithFrame:CGRectMake(self.view.frame.size.width-50, self.view.frame.size.height-110, 44, 44)];
+    circularProgressView.tag=55555;
+    circularProgressView.fillColor=[UIColor grayColor];
+    circularProgressView.fillBackgroundColor=[UIColor whiteColor];
+    [self.view addSubview:circularProgressView];
+
+    
 }
 
 -(void)buttonActionMethod:(UIButton *)sender
@@ -193,7 +197,7 @@
 
 -(void)dismissResultModalFromMainView
 {
-    [modal dismissModalViewControllerAnimated:YES];
+    [modal dismissViewControllerAnimated:YES completion:NULL];
 }
 
 -(void)refreshGiftWithCount:(int)count
@@ -214,30 +218,6 @@
     [self makeDisplayGrid];
 }
 
--(void)submitMethod
-{
-    
-    
-    if (selectedIndex<4) {
-        if (isCorrect) {
-            UIAlertView *gameOver = [[UIAlertView alloc]initWithTitle:@"Correct !!" message:@"Your Answer is Correct" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
-            [gameOver show];
-            
-        }
-        else
-        {
-            UIAlertView *gameOver = [[UIAlertView alloc]initWithTitle:@"Wrong" message:@"Your Answer is inCorrect" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
-            [gameOver show];
-            
-        }
-        [self refreshQuestion];
-    }
-    else
-    {
-        UIAlertView *gameOver = [[UIAlertView alloc]initWithTitle:@"Error" message:@"Please Select at least one Option" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
-        [gameOver show];
-    }
-}
 
 // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
 
@@ -246,11 +226,6 @@
     return (int)from + arc4random() % (to-from+1);
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 
 
@@ -258,14 +233,7 @@
 
 
 - (void)updateProgress:(CGFloat )timer {
-    if (timer!=1) {
-        circularProgressView.progress = timer;
     }
-    else
-    {
-        [circularProgressView removeFromSuperview];
-    }
-}
 
 
 #pragma mark Fresh Question
@@ -273,9 +241,6 @@
 -(NSArray *)refreshQuestion
 {
     totalQuestionCount++;
-    CGFloat fraction=(float)totalQuestionCount-1/TOTAL_QUESTION_COUNT;
-    [self updateProgress:fraction];
-    
     int firstRandom=[self getRandomNumber:2 to:10];
     int secondRandom=[self getRandomNumber:2 to:10];
     if (firstRandom==secondRandom) {
@@ -351,11 +316,7 @@ int lcm(int a, int b)
     return tempArray;
 }
 
-
 #pragma mark Diplay options
-
-
-
 
 -(void)makeDisplayGrid
 {
@@ -366,8 +327,7 @@ int lcm(int a, int b)
             [view removeFromSuperview];
         }
         
-        if (view.tag==1 && view.tag==2 &&view.tag==3 &&view.tag==4 &&view
-            .tag==55555)  {
+        if (view.tag==1 && view.tag==2 &&view.tag==3 &&view.tag==4 ) {
             [view removeFromSuperview];
         }
     }
@@ -398,8 +358,6 @@ int lcm(int a, int b)
     }
 }
 
-
-
 -(void)refreshDisplayGrid
 {
     for (UIView *view in [self.view subviews]) {
@@ -420,14 +378,10 @@ int lcm(int a, int b)
     }
     
 }
-
-
 -(void) dragTank : (UIImageView *) sender {
     
     sender.center=[tapGestureRecognizer locationInView:self.view];
 }
-
-
 - (void)handlePan:(UIPanGestureRecognizer *)recognizer {
     [self handleMovementView:recognizer];
         for (UIView *optionLabel in self.view.subviews)
@@ -452,7 +406,6 @@ int lcm(int a, int b)
         }
     }
 }
-
 
 -(void)handleMovementView:(UIPanGestureRecognizer *)recognizer
 {
@@ -490,7 +443,6 @@ int lcm(int a, int b)
     }
     
 }
-
 - (void)handleTap:(UITapGestureRecognizer *)recognizer {
     recognizer.enabled=NO;
     recognizer.view.transform = CGAffineTransformIdentity;
@@ -540,6 +492,17 @@ int lcm(int a, int b)
             }
         }completion:^(BOOL finished) {
             
+#pragma mark Update Progress 
+            
+            CGFloat fraction=((CGFloat)totalQuestionCount)/TOTAL_QUESTION_COUNT;
+            if (fraction!=1) {
+                circularProgressView.progress = fraction;
+            }
+            else
+            {
+                [circularProgressView removeFromSuperview];
+            }
+
             
             if (totalQuestionCount>=TOTAL_QUESTION_COUNT) {
                 [self presentViewController:modal animated:YES completion:NULL];
@@ -563,8 +526,6 @@ int lcm(int a, int b)
     }];
     
 }
-
-
 -(CGPoint )targetCenter:(CGPoint )point
 {
     for (UILabel *lbl in [self.view subviews]) {
@@ -576,7 +537,6 @@ int lcm(int a, int b)
         }}
     return point;
 }
-
 -(void)startEmmitter
 {
     for (CALayer *layer in self.view.layer.sublayers) {
@@ -588,7 +548,6 @@ int lcm(int a, int b)
     }
     CAEmitterLayer *emiterLayer=[CAEmitterLayer layer];
     emiterLayer.emitterPosition =CGPointMake(self.view.center.x, 0);
-    //CGPointMake(self.view.bounds.size.width/2,self.view.bounds.origin.y);
     emiterLayer.emitterZPosition=10;
     emiterLayer.emitterSize=CGSizeMake(self.view.bounds.size.width, 0);
     emiterLayer.emitterShape = kCAEmitterLayerSphere;
@@ -613,20 +572,22 @@ int lcm(int a, int b)
     centerZoom.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
     [view.layer addAnimation:centerZoom forKey:@"buttonScale"];
 }
-
-
 -(void)viewWillAppear:(BOOL)animated
 {
 
 }
 -(void)handleTapOnModal:(UITapGestureRecognizer *)recognizer
 {
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
 - (void)viewDidUnload {
-    [audioToolBox dispose];
 }
 
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    [audioToolBox dispose];    // Dispose of any resources that can be recreated.
+}
 
 @end

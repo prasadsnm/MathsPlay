@@ -58,8 +58,9 @@
 	self.backgroundColor = [UIColor clearColor];
 	self.textColor = [UIColor blackColor];
 	self.font = [UIFont boldSystemFontOfSize:13.0f];
-	self.textAlignment = UITextAlignmentCenter;
-	self.lineBreakMode = UILineBreakModeTailTruncation;
+	self.textAlignment =  NSTextAlignmentCenter;
+	self.lineBreakMode = NSLineBreakByTruncatingTail;
+   
 }
 
 @end

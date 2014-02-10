@@ -33,7 +33,6 @@
     
 }
 
--(void)submitMethod;
 - (int)getRandomNumber:(int)from to:(int)to;
 -(NSMutableArray *)getShuffledArrayWithAnswer:(NSString *)correctAnswer;
 -(NSArray *)refreshQuestion;
