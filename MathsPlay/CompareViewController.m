@@ -27,7 +27,7 @@
         startupAudio = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:nil];
         startupAudio.numberOfLoops = 0;
         [startupAudio play];
-
+        
     }
     return self;
 }
@@ -37,6 +37,7 @@
 }
 - (void)viewDidLoad
 {
+    
     dic = [Util readPListData];
     totalattempts = 0;
     rightans = 0;
@@ -57,10 +58,14 @@
     // set  button color
     [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor greenColor], UITextAttributeTextColor,nil] forState:UIControlStateNormal];
     
-    backgroundImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 768, 1024)];
-    //backgroundImage.backgroundColor = [UIColor colorWithRed:94/255.0 green:141/255.0 blue:141/255.0 alpha:1];
-    backgroundImage.image = [UIImage imageNamed:@"comparebackground"];
+    
+    backgroundImage = [[UIImageView alloc]initWithFrame:self.view.frame];
+    backgroundImage.image = [UIImage imageNamed:@"bground"];
     [self.view addSubview:backgroundImage];
+    
+  
+    
+    self.view.backgroundColor=[UIColor darkGrayColor];
     
     gameHeading = [[UILabel alloc]initWithFrame:CGRectMake(10, 10, 400, 60)];
     gameHeading.text = @"What would you like ?";
@@ -110,18 +115,11 @@
     if (![levelString isEqualToString:@"HARD"])
     {
         nextLevelBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [nextLevelBtn setImage:[UIImage imageNamed:@"nextnew2"] forState:UIControlStateNormal];
-        [nextLevelBtn setFrame:CGRectMake(630, 10, 60, 60)];
+        [nextLevelBtn setImage:[UIImage imageNamed:@"next-level"] forState:UIControlStateNormal];
+        [nextLevelBtn setFrame:CGRectMake(630, 50, 100, 40)];
         nextLevelBtn.backgroundColor = [UIColor clearColor];
         [nextLevelBtn addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:nextLevelBtn];
-        
-        nextLevelLabel = [[UILabel alloc]initWithFrame:CGRectMake(623, 57, 80, 50)];
-        nextLevelLabel.text = @"Next Level";
-        nextLevelLabel.font = [UIFont boldSystemFontOfSize:15];
-        nextLevelLabel.textColor = [UIColor whiteColor];
-        nextLevelLabel.backgroundColor = [UIColor clearColor];
-        [self.view addSubview:nextLevelLabel];
     }
     
     starEarnedLabel = [[UILabel alloc]initWithFrame:CGRectMake(60, 210, 260, 40)];
@@ -130,37 +128,46 @@
     starEarnedLabel.textColor = [UIColor yellowColor];
     starEarnedLabel.backgroundColor = [UIColor clearColor];
     [self.view addSubview:starEarnedLabel];
-   
     
-    star1 = [[UIImageView alloc]initWithFrame:CGRectMake(55, 260, 30, 30)];
+    
+    star1 = [[UIImageView alloc]initWithFrame:CGRectMake(60, 260, 30, 30)];
     star1.image = [UIImage imageNamed:@"star.png"];
     star1.alpha = .3;
     [self.view addSubview:star1];
-
     
-    star2 = [[UIImageView alloc]initWithFrame:CGRectMake(90, 260, 35, 35)];
+    
+    star2 = [[UIImageView alloc]initWithFrame:CGRectMake(100, 260, 30, 30)];
     star2.image = [UIImage imageNamed:@"star.png"];
     star2.alpha = .3;
     [self.view addSubview:star2];
-
     
-    star3 = [[UIImageView alloc]initWithFrame:CGRectMake(130, 260, 40, 40)];
+    
+    star3 = [[UIImageView alloc]initWithFrame:CGRectMake(140, 260, 30, 30)];
     star3.image = [UIImage imageNamed:@"star.png"];
     star3.alpha = .3;
     [self.view addSubview:star3];
- 
     
-    star4 = [[UIImageView alloc]initWithFrame:CGRectMake(175, 260, 45, 45)];
+    
+    star4 = [[UIImageView alloc]initWithFrame:CGRectMake(180, 260, 30, 30)];
     star4.image = [UIImage imageNamed:@"star.png"];
     star4.alpha = .3;
     [self.view addSubview:star4];
- 
     
-    star5 = [[UIImageView alloc]initWithFrame:CGRectMake(225, 260, 50, 50)];
+    
+    star5 = [[UIImageView alloc]initWithFrame:CGRectMake(225, 260, 30, 30)];
     star5.image = [UIImage imageNamed:@"star.png"];
     star5.alpha = .3;
     [self.view addSubview:star5];
-
+    
+    
+    
+    
+    circularProgressView=[[CircularProgressView alloc]initWithFrame:star1.frame];
+    circularProgressView.fillColor=[UIColor whiteColor];
+    circularProgressView.fillBackgroundColor=[UIColor clearColor];
+    [backgroundImage addSubview:circularProgressView];
+    
+    
     
     congratsLabelForFiveStars = [[UILabel alloc]initWithFrame:CGRectMake(25, 330, 380, 60)];
     congratsLabelForFiveStars.text = @"\t\t\t\t\t\t        Congratulations!!!! \nYou have earned maximum stars";
@@ -195,47 +202,94 @@
     numberOfInCorrectAnsLabel.textAlignment = NSTextAlignmentCenter;
     numberOfInCorrectAnsLabel.font = [UIFont fontWithName:@"GillSans-Bold" size:30.0];
     [self.view addSubview:numberOfInCorrectAnsLabel];
-
+    
+    
+    
+    
     
     greaterBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    //[greaterBtn setImage:[UIImage imageNamed:@"greater.JPG"] forState:UIControlStateNormal];
-    [greaterBtn setImage:[UIImage imageNamed:@"greaterthannew2"] forState:UIControlStateNormal];
-    [greaterBtn setFrame:CGRectMake(345, 480, 80, 80)];
+    [greaterBtn setFrame:CGRectMake(220, 750, 100, 100)];
+    greaterBtn.layer.cornerRadius=10.0;
+    [greaterBtn.titleLabel setFont:[UIFont fontWithName:@"Futura" size:80]];
+    greaterBtn.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+    [greaterBtn setTitleColor:[UIColor colorWithRed:120/255.0 green:192/255.0  blue:42/255.0  alpha:1] forState:UIControlStateNormal];
+    [greaterBtn setTitle:@">" forState:UIControlStateNormal];
+    [greaterBtn setBackgroundColor:[UIColor whiteColor]];
     [greaterBtn addTarget:self action:@selector(operationButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:greaterBtn];
     
     equalBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [equalBtn setImage:[UIImage imageNamed:@"equaltonew3"] forState:UIControlStateNormal];
-    [equalBtn setFrame:CGRectMake(345, 580, 80, 80)];
+    [equalBtn setFrame:CGRectMake(330, 750, 100, 100)];
+    equalBtn.layer.cornerRadius=10.0;
+    [equalBtn.titleLabel setFont:[UIFont fontWithName:@"Futura" size:80]];
+    equalBtn.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+    [equalBtn setTitleColor:[UIColor colorWithRed:120/255.0 green:192/255.0  blue:42/255.0  alpha:1] forState:UIControlStateNormal];
+    [equalBtn setTitle:@"=" forState:UIControlStateNormal];
+    [equalBtn setBackgroundColor:[UIColor whiteColor]];
     [equalBtn addTarget:self action:@selector(operationButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:equalBtn];
     
     lesserBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [lesserBtn setImage:[UIImage imageNamed:@"lesserthannew2"] forState:UIControlStateNormal];
-    [lesserBtn setFrame:CGRectMake(345, 680, 80, 80)];
+    [lesserBtn setFrame:CGRectMake(440, 750, 100, 100)];
+    lesserBtn.layer.cornerRadius=10.0;
+    [lesserBtn.titleLabel setFont:[UIFont fontWithName:@"Futura" size:80]];
+    lesserBtn.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+    [lesserBtn setTitleColor:[UIColor colorWithRed:120/255.0 green:192/255.0  blue:42/255.0  alpha:1] forState:UIControlStateNormal];
+    [lesserBtn setTitle:@"<" forState:UIControlStateNormal];
+    [lesserBtn setBackgroundColor:[UIColor whiteColor]];
     [lesserBtn addTarget:self action:@selector(operationButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:lesserBtn];
     
-    leftNumberLbl = [[UILabel alloc]initWithFrame:CGRectMake(40, 510, 200, 180)];
-    leftNumberLbl.backgroundColor = [UIColor clearColor];
+    
+    
+    
+   
+    
+    
+    
+    
+    
+    leftNumberLbl = [[UILabel alloc]initWithFrame:CGRectMake(40, 510, 200, 200)];
+    leftNumberLbl.backgroundColor = [UIColor colorWithRed:120/255.0 green:192/255.0  blue:42/255.0  alpha:1];
     leftNumberLbl.textAlignment = NSTextAlignmentCenter;
-    leftNumberLbl.textColor = [UIColor colorWithRed:255/255.0 green:127/255.0 blue:80/255.0 alpha:1.0];
+    leftNumberLbl.layer.cornerRadius=20.0;
+    leftNumberLbl.textColor = [UIColor whiteColor];
     leftNumberLbl.font = [UIFont fontWithName:@"MarkerFelt-Wide" size:100.0f];
     [self.view addSubview:leftNumberLbl];
-
     
-    rightNumberLbl = [[UILabel alloc]initWithFrame:CGRectMake(510, 510, 200, 180)];
-    rightNumberLbl.backgroundColor = [UIColor clearColor];
+   
+    
+    centerLabel = [[UILabel alloc]initWithFrame:CGRectMake(284, 510, 200, 200)];
+    centerLabel.backgroundColor =[UIColor whiteColor];
+    centerLabel.textAlignment = NSTextAlignmentCenter;
+    centerLabel.layer.cornerRadius=100.0;
+    centerLabel.textColor = [UIColor colorWithRed:120/255.0 green:192/255.0  blue:42/255.0  alpha:1];
+    centerLabel.text=@"?";
+    centerLabel.font = [UIFont fontWithName:@"MarkerFelt-Wide" size:100.0f];
+    [self.view addSubview:centerLabel];
+    
+    
+    UITapGestureRecognizer *recognizer=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(handleTap:)];
+    recognizer.numberOfTapsRequired=1;
+    centerLabel.userInteractionEnabled=YES;
+    [centerLabel addGestureRecognizer:recognizer];
+
+    rightNumberLbl = [[UILabel alloc]initWithFrame:CGRectMake(528, 510, 200, 200)];
+    rightNumberLbl.backgroundColor = [UIColor colorWithRed:120/255.0 green:192/255.0  blue:42/255.0  alpha:1];
     rightNumberLbl.textAlignment = NSTextAlignmentCenter;
-    rightNumberLbl.textColor = [UIColor colorWithRed:255/255.0 green:127/255.0 blue:80/255.0 alpha:1.0];
+    rightNumberLbl.layer.cornerRadius=20.0;
+    rightNumberLbl.textColor = [UIColor whiteColor];
     rightNumberLbl.font = [UIFont fontWithName:@"MarkerFelt-Wide" size:100.0f];
     [self.view addSubview:rightNumberLbl];
-
+    
+    
+    
+    
+    
     
     winAnsUrl = [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/win1.mp3", [[NSBundle mainBundle] resourcePath]]];
     winAudioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:winAnsUrl error:nil];
     winAudioPlayer.numberOfLoops = 0;
-    
     wrongAnsUrl = [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/fb.mp3", [[NSBundle mainBundle] resourcePath]]];
     wrongAudioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:wrongAnsUrl error:nil];
     wrongAudioPlayer.numberOfLoops = 0;
@@ -249,8 +303,12 @@
     
     [self startGame];
     [super viewDidLoad];
-
     
+    
+}
+
+-(void)handleTap:(UITapGestureRecognizer *)recognizer {
+    [self DisplayWarning];
 }
 
 -(void)operationButtonClicked:(id)sender
@@ -261,9 +319,11 @@
         {
             if ([leftNumberLbl.text intValue]>[rightNumberLbl.text intValue])
             {
+                
                 rightans++;
-                NSLog(@"correct");
-        
+             
+                [self updateProgress];
+                [self DisplayCorrectAnswerMessage];
                 if (!(rightans==5 || rightans==10||rightans==15||rightans==20||rightans==25))
                 {
                     [winAudioPlayer play];
@@ -274,6 +334,8 @@
                 
                 if (rightans==5)
                 {
+                    
+                    circularProgressView.frame=star2.frame;
                     [self zoomObject:1];
                     [audioPlayerClap play];
                     self.view.userInteractionEnabled = NO;
@@ -285,6 +347,7 @@
                 }
                 if (rightans==10)
                 {
+                    circularProgressView.frame=star3.frame;
                     [self zoomObject:2];
                     [audioPlayerClap play];
                     self.view.userInteractionEnabled = NO;
@@ -295,6 +358,7 @@
                 }
                 if (rightans==15)
                 {
+                    circularProgressView.frame=star4.frame;
                     [self zoomObject:3];
                     [audioPlayerClap play];
                     self.view.userInteractionEnabled = NO;
@@ -305,6 +369,7 @@
                 }
                 if (rightans==20)
                 {
+                    circularProgressView.frame=star5.frame;
                     [self zoomObject:4];
                     [audioPlayerClap play];
                     self.view.userInteractionEnabled = NO;
@@ -315,6 +380,7 @@
                 }
                 if (rightans==25)
                 {
+                     [circularProgressView removeFromSuperview];
                     [self zoomObject:5];
                     [audioPlayerClap play];
                     self.view.userInteractionEnabled = NO;
@@ -325,7 +391,6 @@
                     star5.alpha = 1.0;
                 }
                 numberOfCorrectAnsLabel.text = [NSString stringWithFormat:@"%d",rightans];
-                
                 [UIView beginAnimations:nil context:NULL];
                 [UIView setAnimationDuration:1];
                 [UIView setAnimationDelegate:self];
@@ -336,14 +401,13 @@
             }
             else
             {
-                NSLog(@"wrong");
+                [self DisplayCorrectAnswer];
                 wrongans++;
-                
                 [wrongAudioPlayer play];
                 self.view.userInteractionEnabled = NO;
                 [self performSelector:@selector(wrongMusicStop) withObject:nil afterDelay:1];
                 
-                 numberOfInCorrectAnsLabel.text = [NSString stringWithFormat:@"%d",wrongans];
+                numberOfInCorrectAnsLabel.text = [NSString stringWithFormat:@"%d",wrongans];
                 
                 [UIView beginAnimations:nil context:NULL];
                 [UIView setAnimationDuration:1];
@@ -352,6 +416,7 @@
                 CGAffineTransform transform = CGAffineTransformMakeScale(2.5f, 2.5f);
                 wrongAns.transform = transform;
                 [UIView commitAnimations];
+                
             }
         }
         else
@@ -359,6 +424,8 @@
             if (leftcounterobjects>rightcounterobjects)
             {
                 rightans++;
+                 [self updateProgress];
+                [self DisplayCorrectAnswerMessage];
                 NSLog(@"correct");
                 
                 if (!(rightans==5 || rightans==10||rightans==15||rightans==20||rightans==25))
@@ -371,6 +438,7 @@
                 
                 if (rightans==5)
                 {
+                    circularProgressView.frame=star2.frame;
                     [self zoomObject:1];
                     [audioPlayerClap play];
                     self.view.userInteractionEnabled = NO;
@@ -381,6 +449,7 @@
                 }
                 if (rightans==10)
                 {
+                    circularProgressView.frame=star3.frame;
                     [self zoomObject:2];
                     [audioPlayerClap play];
                     self.view.userInteractionEnabled = NO;
@@ -391,6 +460,8 @@
                 }
                 if (rightans==15)
                 {
+                    circularProgressView.frame=star4.frame;
+
                     [self zoomObject:3];
                     [audioPlayerClap play];
                     self.view.userInteractionEnabled = NO;
@@ -401,6 +472,7 @@
                 }
                 if (rightans==20)
                 {
+                    circularProgressView.frame=star5.frame;
                     [self zoomObject:4];
                     [audioPlayerClap play];
                     self.view.userInteractionEnabled = NO;
@@ -411,6 +483,7 @@
                 }
                 if (rightans==25)
                 {
+                    [circularProgressView removeFromSuperview];
                     [self zoomObject:5];
                     [audioPlayerClap play];
                     self.view.userInteractionEnabled = NO;
@@ -432,13 +505,13 @@
             }
             else
             {
+                [self DisplayCorrectAnswer];
                 wrongans++;
-                
                 [wrongAudioPlayer play];
                 self.view.userInteractionEnabled = NO;
                 [self performSelector:@selector(wrongMusicStop) withObject:nil afterDelay:1];
                 
-                 numberOfInCorrectAnsLabel.text = [NSString stringWithFormat:@"%d",wrongans];
+                numberOfInCorrectAnsLabel.text = [NSString stringWithFormat:@"%d",wrongans];
                 
                 [UIView beginAnimations:nil context:NULL];
                 [UIView setAnimationDuration:1];
@@ -459,6 +532,8 @@
             if ([leftNumberLbl.text intValue]==[rightNumberLbl.text intValue])
             {
                 rightans++;
+                 [self updateProgress];
+                [self DisplayCorrectAnswerMessage];
                 NSLog(@"correct");
                 
                 if (!(rightans==5 || rightans==10||rightans==15||rightans==20||rightans==25))
@@ -471,6 +546,7 @@
                 
                 if (rightans==5)
                 {
+                    circularProgressView.frame=star2.frame;
                     [self zoomObject:1];
                     [audioPlayerClap play];
                     self.view.userInteractionEnabled = NO;
@@ -481,6 +557,8 @@
                 }
                 if (rightans==10)
                 {
+                    circularProgressView.frame=star3.frame;
+
                     [self zoomObject:2];
                     [audioPlayerClap play];
                     self.view.userInteractionEnabled = NO;
@@ -491,6 +569,8 @@
                 }
                 if (rightans==15)
                 {
+                    circularProgressView.frame=star4.frame;
+
                     [self zoomObject:3];
                     [audioPlayerClap play];
                     self.view.userInteractionEnabled = NO;
@@ -501,6 +581,7 @@
                 }
                 if (rightans==20)
                 {
+                    circularProgressView.frame=star5.frame;
                     [self zoomObject:4];
                     [audioPlayerClap play];
                     self.view.userInteractionEnabled = NO;
@@ -511,6 +592,7 @@
                 }
                 if (rightans==25)
                 {
+                    [circularProgressView removeFromSuperview];
                     [self zoomObject:5];
                     [audioPlayerClap play];
                     self.view.userInteractionEnabled = NO;
@@ -532,14 +614,12 @@
             }
             else
             {
-                NSLog(@"wrong");
+                [self DisplayCorrectAnswer];
                 wrongans++;
-                
                 [wrongAudioPlayer play];
                 self.view.userInteractionEnabled = NO;
                 [self performSelector:@selector(wrongMusicStop) withObject:nil afterDelay:1];
-                
-                 numberOfInCorrectAnsLabel.text = [NSString stringWithFormat:@"%d",wrongans];
+                numberOfInCorrectAnsLabel.text = [NSString stringWithFormat:@"%d",wrongans];
                 
                 [UIView beginAnimations:nil context:NULL];
                 [UIView setAnimationDuration:1];
@@ -555,6 +635,8 @@
             if (leftcounterobjects==rightcounterobjects)
             {
                 rightans++;
+                 [self updateProgress];
+                [self DisplayCorrectAnswerMessage];
                 NSLog(@"correct");
                 
                 if (!(rightans==5 || rightans==10||rightans==15||rightans==20||rightans==25))
@@ -565,6 +647,7 @@
                 }
                 if (rightans==5)
                 {
+                    circularProgressView.frame=star2.frame;
                     [self zoomObject:1];
                     [audioPlayerClap play];
                     self.view.userInteractionEnabled = NO;
@@ -575,6 +658,7 @@
                 }
                 if (rightans==10)
                 {
+                    circularProgressView.frame=star3.frame;
                     [self zoomObject:2];
                     [audioPlayerClap play];
                     self.view.userInteractionEnabled = NO;
@@ -585,6 +669,7 @@
                 }
                 if (rightans==15)
                 {
+                    circularProgressView.frame=star4.frame;
                     [self zoomObject:3];
                     [audioPlayerClap play];
                     self.view.userInteractionEnabled = NO;
@@ -595,6 +680,7 @@
                 }
                 if (rightans==20)
                 {
+                    circularProgressView.frame=star5.frame;
                     [self zoomObject:4];
                     [audioPlayerClap play];
                     self.view.userInteractionEnabled = NO;
@@ -605,6 +691,7 @@
                 }
                 if (rightans==25)
                 {
+                    [circularProgressView removeFromSuperview];
                     [self zoomObject:5];
                     [audioPlayerClap play];
                     self.view.userInteractionEnabled = NO;
@@ -626,13 +713,13 @@
             }
             else
             {
+                [self DisplayCorrectAnswer];
                 wrongans++;
-                
                 [wrongAudioPlayer play];
                 self.view.userInteractionEnabled = NO;
                 [self performSelector:@selector(wrongMusicStop) withObject:nil afterDelay:1];
                 
-                 numberOfInCorrectAnsLabel.text = [NSString stringWithFormat:@"%d",wrongans];
+                numberOfInCorrectAnsLabel.text = [NSString stringWithFormat:@"%d",wrongans];
                 
                 [UIView beginAnimations:nil context:NULL];
                 [UIView setAnimationDuration:1];
@@ -653,6 +740,8 @@
             if ([leftNumberLbl.text intValue]<[rightNumberLbl.text intValue])
             {
                 rightans++;
+                 [self updateProgress];
+                [self DisplayCorrectAnswerMessage];
                 NSLog(@"correct");
                 
                 if (!(rightans==5 || rightans==10||rightans==15||rightans==20||rightans==25))
@@ -665,6 +754,7 @@
                 
                 if (rightans==5)
                 {
+                    circularProgressView.frame=star2.frame;
                     [self zoomObject:1];
                     [audioPlayerClap play];
                     self.view.userInteractionEnabled = NO;
@@ -675,6 +765,7 @@
                 }
                 if (rightans==10)
                 {
+                    circularProgressView.frame=star3.frame;
                     [self zoomObject:2];
                     [audioPlayerClap play];
                     self.view.userInteractionEnabled = NO;
@@ -685,6 +776,7 @@
                 }
                 if (rightans==15)
                 {
+                    circularProgressView.frame=star4.frame;
                     [self zoomObject:3];
                     [audioPlayerClap play];
                     self.view.userInteractionEnabled = NO;
@@ -695,6 +787,7 @@
                 }
                 if (rightans==20)
                 {
+                    circularProgressView.frame=star5.frame;
                     [self zoomObject:4];
                     [audioPlayerClap play];
                     self.view.userInteractionEnabled = NO;
@@ -705,6 +798,7 @@
                 }
                 if (rightans==25)
                 {
+                    [circularProgressView removeFromSuperview];
                     [self zoomObject:5];
                     [audioPlayerClap play];
                     self.view.userInteractionEnabled = NO;
@@ -726,6 +820,7 @@
             }
             else
             {
+                [self DisplayCorrectAnswer];
                 NSLog(@"wrong");
                 wrongans++;
                 
@@ -733,7 +828,7 @@
                 self.view.userInteractionEnabled = NO;
                 [self performSelector:@selector(wrongMusicStop) withObject:nil afterDelay:1];
                 
-                 numberOfInCorrectAnsLabel.text = [NSString stringWithFormat:@"%d",wrongans];
+                numberOfInCorrectAnsLabel.text = [NSString stringWithFormat:@"%d",wrongans];
                 
                 [UIView beginAnimations:nil context:NULL];
                 [UIView setAnimationDuration:1];
@@ -749,6 +844,8 @@
             if (leftcounterobjects<rightcounterobjects)
             {
                 rightans++;
+                 [self updateProgress];
+                [self DisplayCorrectAnswerMessage];
                 NSLog(@"correct");
                 
                 if (!(rightans==5 || rightans==10||rightans==15||rightans==20||rightans==25))
@@ -761,6 +858,7 @@
                 
                 if (rightans==5)
                 {
+                    circularProgressView.frame=star2.frame;
                     [self zoomObject:1];
                     [audioPlayerClap play];
                     self.view.userInteractionEnabled = NO;
@@ -771,6 +869,7 @@
                 }
                 if (rightans==10)
                 {
+                    circularProgressView.frame=star3.frame;
                     [self zoomObject:2];
                     [audioPlayerClap play];
                     self.view.userInteractionEnabled = NO;
@@ -781,6 +880,8 @@
                 }
                 if (rightans==15)
                 {
+                    circularProgressView.frame=star4.frame;
+
                     [self zoomObject:3];
                     [audioPlayerClap play];
                     self.view.userInteractionEnabled = NO;
@@ -791,6 +892,7 @@
                 }
                 if (rightans==20)
                 {
+                    circularProgressView.frame=star5.frame;
                     [self zoomObject:4];
                     [audioPlayerClap play];
                     self.view.userInteractionEnabled = NO;
@@ -822,9 +924,10 @@
             }
             else
             {
+                [self DisplayCorrectAnswer];
                 wrongans++;
                 self.view.userInteractionEnabled = NO;
-                 numberOfInCorrectAnsLabel.text = [NSString stringWithFormat:@"%d",wrongans];
+                numberOfInCorrectAnsLabel.text = [NSString stringWithFormat:@"%d",wrongans];
                 
                 [UIView beginAnimations:nil context:NULL];
                 [UIView setAnimationDuration:1];
@@ -837,8 +940,30 @@
         }
         
     }
-
+    
 }
+
+
+- (void)updateProgress{
+    CGFloat timer=0.0;
+    int temp=rightans;
+    if ((temp%5)>0) {
+        temp=temp%5;
+       timer=((CGFloat)temp/5);
+    }
+    else
+    {
+        NSLog(@"timer==%f",timer);
+    }
+    if (timer!=1) {
+        circularProgressView.progress = timer;
+    }
+    else
+    {
+        [circularProgressView removeFromSuperview];
+    }
+}
+
 
 -(void)buttonClicked:(id)sender
 {
@@ -1467,6 +1592,7 @@
 
 -(void)startGame
 {
+    
     if (ishighclass == YES)
     {
         // class 2
@@ -1518,7 +1644,6 @@
         }
     }
     
-    
 }
 
 -(void)makeObjects
@@ -1543,15 +1668,15 @@
     leftLabel4 = [[UILabel alloc]initWithFrame:CGRectMake(240, 40, 70, 30)];
     leftLabel4.backgroundColor = [UIColor greenColor];
     [objectViewLeft addSubview:leftLabel4];
-   
+    
     leftLabel5 = [[UILabel alloc]initWithFrame:CGRectMake(0, 90, 70, 30)];
     leftLabel5.backgroundColor = [UIColor greenColor];
     [objectViewLeft addSubview:leftLabel5];
-   
+    
     leftLabel6 = [[UILabel alloc]initWithFrame:CGRectMake(80, 90, 70, 30)];
     leftLabel6.backgroundColor = [UIColor greenColor];
     [objectViewLeft addSubview:leftLabel6];
-  
+    
     leftLabel7 = [[UILabel alloc]initWithFrame:CGRectMake(160, 90, 70, 30)];
     leftLabel7.backgroundColor = [UIColor greenColor];
     [objectViewLeft addSubview:leftLabel7];
@@ -1563,7 +1688,7 @@
     leftLabel9 = [[UILabel alloc]initWithFrame:CGRectMake(0, 140, 70, 30)];
     leftLabel9.backgroundColor = [UIColor greenColor];
     [objectViewLeft addSubview:leftLabel9];
-   
+    
     leftLabel10 = [[UILabel alloc]initWithFrame:CGRectMake(80, 140, 70, 30)];
     leftLabel10.backgroundColor = [UIColor greenColor];
     [objectViewLeft addSubview:leftLabel10];
@@ -1571,15 +1696,15 @@
     leftLabel11 = [[UILabel alloc]initWithFrame:CGRectMake(160, 140, 70, 30)];
     leftLabel11.backgroundColor = [UIColor greenColor];
     [objectViewLeft addSubview:leftLabel11];
-   
+    
     leftLabel12 = [[UILabel alloc]initWithFrame:CGRectMake(240, 140, 70, 30)];
     leftLabel12.backgroundColor = [UIColor greenColor];
     [objectViewLeft addSubview:leftLabel12];
-  
+    
     leftLabel13 = [[UILabel alloc]initWithFrame:CGRectMake(0, 190, 70, 30)];
     leftLabel13.backgroundColor = [UIColor greenColor];
     [objectViewLeft addSubview:leftLabel13];
-   
+    
     leftLabel14 = [[UILabel alloc]initWithFrame:CGRectMake(80, 190, 70, 30)];
     leftLabel14.backgroundColor = [UIColor greenColor];
     [objectViewLeft addSubview:leftLabel14];
@@ -1591,94 +1716,94 @@
     leftLabel16 = [[UILabel alloc]initWithFrame:CGRectMake(240, 190, 70, 30)];
     leftLabel16.backgroundColor = [UIColor greenColor];
     [objectViewLeft addSubview:leftLabel16];
-  
+    
     leftLabel17 = [[UILabel alloc]initWithFrame:CGRectMake(80, 240, 70, 30)];
     leftLabel17.backgroundColor = [UIColor greenColor];
     [objectViewLeft addSubview:leftLabel17];
- 
+    
     leftLabel18 = [[UILabel alloc]initWithFrame:CGRectMake(160, 240, 70, 30)];
     leftLabel18.backgroundColor = [UIColor greenColor];
     [objectViewLeft addSubview:leftLabel18];
-   
+    
     
     
     objectViewRight = [[UIView alloc]initWithFrame:CGRectMake(450, 470, 315, 340)];
     objectViewRight.backgroundColor = [UIColor clearColor];
     [self.view addSubview:objectViewRight];
- 
+    
     
     rightLabel1 = [[UILabel alloc]initWithFrame:CGRectMake(0, 40, 70, 30)];
     rightLabel1.backgroundColor = [UIColor colorWithRed:255/255.0 green:127/255.0 blue:80/255.0 alpha:1.0];
     [objectViewRight addSubview:rightLabel1];
-  
+    
     rightLabel2 = [[UILabel alloc]initWithFrame:CGRectMake(80, 40, 70, 30)];
     rightLabel2.backgroundColor = [UIColor colorWithRed:255/255.0 green:127/255.0 blue:80/255.0 alpha:1.0];
     [objectViewRight addSubview:rightLabel2];
-   
+    
     rightLabel3 = [[UILabel alloc]initWithFrame:CGRectMake(160, 40, 70, 30)];
     rightLabel3.backgroundColor = [UIColor colorWithRed:255/255.0 green:127/255.0 blue:80/255.0 alpha:1.0];
     [objectViewRight addSubview:rightLabel3];
-
+    
     rightLabel4 = [[UILabel alloc]initWithFrame:CGRectMake(240, 40, 70, 30)];
     rightLabel4.backgroundColor = [UIColor colorWithRed:255/255.0 green:127/255.0 blue:80/255.0 alpha:1.0];
     [objectViewRight addSubview:rightLabel4];
- 
+    
     rightLabel5 = [[UILabel alloc]initWithFrame:CGRectMake(0, 90, 70, 30)];
     rightLabel5.backgroundColor = [UIColor colorWithRed:255/255.0 green:127/255.0 blue:80/255.0 alpha:1.0];
     [objectViewRight addSubview:rightLabel5];
-  
+    
     rightLabel6 = [[UILabel alloc]initWithFrame:CGRectMake(80, 90, 70, 30)];
     rightLabel6.backgroundColor = [UIColor colorWithRed:255/255.0 green:127/255.0 blue:80/255.0 alpha:1.0];
     [objectViewRight addSubview:rightLabel6];
-   
+    
     rightLabel7 = [[UILabel alloc]initWithFrame:CGRectMake(160, 90, 70, 30)];
     rightLabel7.backgroundColor = [UIColor colorWithRed:255/255.0 green:127/255.0 blue:80/255.0 alpha:1.0];
     [objectViewRight addSubview:rightLabel7];
-   
+    
     rightLabel8 = [[UILabel alloc]initWithFrame:CGRectMake(240, 90, 70, 30)];
     rightLabel8.backgroundColor = [UIColor colorWithRed:255/255.0 green:127/255.0 blue:80/255.0 alpha:1.0];
     [objectViewRight addSubview:rightLabel8];
-
+    
     rightLabel9 = [[UILabel alloc]initWithFrame:CGRectMake(0, 140, 70, 30)];
     rightLabel9.backgroundColor = [UIColor colorWithRed:255/255.0 green:127/255.0 blue:80/255.0 alpha:1.0];
     [objectViewRight addSubview:rightLabel9];
-
+    
     rightLabel10 = [[UILabel alloc]initWithFrame:CGRectMake(80, 140, 70, 30)];
     rightLabel10.backgroundColor = [UIColor colorWithRed:255/255.0 green:127/255.0 blue:80/255.0 alpha:1.0];
     [objectViewRight addSubview:rightLabel10];
-
+    
     rightLabel11 = [[UILabel alloc]initWithFrame:CGRectMake(160, 140, 70, 30)];
     rightLabel11.backgroundColor = [UIColor colorWithRed:255/255.0 green:127/255.0 blue:80/255.0 alpha:1.0];
     [objectViewRight addSubview:rightLabel11];
-
+    
     rightLabel12 = [[UILabel alloc]initWithFrame:CGRectMake(240, 140, 70, 30)];
     rightLabel12.backgroundColor = [UIColor colorWithRed:255/255.0 green:127/255.0 blue:80/255.0 alpha:1.0];
     [objectViewRight addSubview:rightLabel12];
-
+    
     rightLabel13 = [[UILabel alloc]initWithFrame:CGRectMake(0, 190, 70, 30)];
     rightLabel13.backgroundColor = [UIColor colorWithRed:255/255.0 green:127/255.0 blue:80/255.0 alpha:1.0];
     [objectViewRight addSubview:rightLabel13];
-
+    
     rightLabel14 = [[UILabel alloc]initWithFrame:CGRectMake(80, 190, 70, 30)];
     rightLabel14.backgroundColor = [UIColor colorWithRed:255/255.0 green:127/255.0 blue:80/255.0 alpha:1.0];
     [objectViewRight addSubview:rightLabel14];
-
+    
     rightLabel15 = [[UILabel alloc]initWithFrame:CGRectMake(160, 190, 70, 30)];
     rightLabel15.backgroundColor = [UIColor colorWithRed:255/255.0 green:127/255.0 blue:80/255.0 alpha:1.0];
     [objectViewRight addSubview:rightLabel15];
-
+    
     rightLabel16 = [[UILabel alloc]initWithFrame:CGRectMake(240, 190, 70, 30)];
     rightLabel16.backgroundColor = [UIColor colorWithRed:255/255.0 green:127/255.0 blue:80/255.0 alpha:1.0];
     [objectViewRight addSubview:rightLabel16];
-
+    
     rightLabel17 = [[UILabel alloc]initWithFrame:CGRectMake(80, 240, 70, 30)];
     rightLabel17.backgroundColor = [UIColor colorWithRed:255/255.0 green:127/255.0 blue:80/255.0 alpha:1.0];
     [objectViewRight addSubview:rightLabel17];
-
+    
     rightLabel18 = [[UILabel alloc]initWithFrame:CGRectMake(160, 240, 70, 30)];
     rightLabel18.backgroundColor = [UIColor colorWithRed:255/255.0 green:127/255.0 blue:80/255.0 alpha:1.0];
     [objectViewRight addSubview:rightLabel18];
-
+    
     
     
     
@@ -1766,7 +1891,7 @@
     if (_numberOfObjects>4)
     {
         star5.transform = transform;
-    }    
+    }
     [UIView commitAnimations];
 }
 
@@ -1839,16 +1964,90 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)DisplayCorrectAnswer
+{
+    UILabel *answerLabel=[[UILabel alloc]initWithFrame:CGRectMake(220, 350, 330, 100)];
+    answerLabel.backgroundColor=[UIColor redColor];
+    answerLabel.textColor=[UIColor whiteColor];
+    answerLabel.layer.cornerRadius=10.0;
+    answerLabel.layer.borderWidth=1.0;
+    answerLabel.textAlignment=NSTextAlignmentCenter;
+    answerLabel.font=[UIFont fontWithName:@"Futura" size:30];
+    [self.view addSubview:answerLabel];
+    [answerLabel setHidden:NO];
+    
+    
+    if ([leftNumberLbl.text intValue]>[rightNumberLbl.text intValue])
+    {
+        answerLabel.text=[NSString stringWithFormat:@"Correct Answer is: >"];
+        
+    }
+    else if ([rightNumberLbl.text intValue]>[leftNumberLbl.text intValue]){
+        answerLabel.text=[NSString stringWithFormat:@"Correct Answer is: <"];
+    }
+    else
+    {
+        answerLabel.text=[NSString stringWithFormat:@"Correct Answer is: ="];
+    }
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 1.0 * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [answerLabel setHidden:YES];
+        [answerLabel removeFromSuperview];
+    });
+ 
+}
+
+-(void)DisplayCorrectAnswerMessage
+{
+    UILabel *correctAnswerLabel=[[UILabel alloc]initWithFrame:CGRectMake(220, 350, 330, 100)];
+    correctAnswerLabel.backgroundColor=[UIColor colorWithRed:120/255.0 green:192/255.0  blue:42/255.0  alpha:1];
+    correctAnswerLabel.textColor=[UIColor whiteColor];
+    correctAnswerLabel.layer.cornerRadius=10.0;
+    correctAnswerLabel.layer.borderWidth=1.0;
+    correctAnswerLabel.textAlignment=NSTextAlignmentCenter;
+    correctAnswerLabel.font=[UIFont fontWithName:@"Futura" size:30];
+    [self.view addSubview:correctAnswerLabel];
+    [correctAnswerLabel setHidden:NO];
+    correctAnswerLabel.text=@"Well Done !!";
+    
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 1.0 * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [correctAnswerLabel setHidden:YES];
+        [correctAnswerLabel removeFromSuperview];
+    });
+    
+    
+}
+-(void)DisplayWarning
+{
+    UILabel *warningLabel=[[UILabel alloc]initWithFrame:CGRectMake(220, 350, 330, 100)];
+    warningLabel.backgroundColor=[UIColor yellowColor];
+    warningLabel.textColor=[UIColor blackColor];
+    warningLabel.layer.cornerRadius=10.0;
+    warningLabel.layer.borderWidth=1.0;
+    warningLabel.textAlignment=NSTextAlignmentCenter;
+    warningLabel.font=[UIFont fontWithName:@"Futura" size:30];
+    [self.view addSubview:warningLabel];
+    [warningLabel setHidden:NO];
+    warningLabel.numberOfLines=0;
+    warningLabel.text=@"Choose from >,=,<";
+    
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 1.2 * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [warningLabel setHidden:YES];
+        [warningLabel removeFromSuperview];
+    });
+}
 -(void)viewWillDisappear:(BOOL)animated
 {
     [Util writeToPlist:dic];
-        if (timerStopValue ==1)
-        {
-            [audioPlayerClap stop];
-            self.view.userInteractionEnabled = YES;
-            self.view.alpha = 1;
-        }
-        [self.navigationController popViewControllerAnimated:NO];
+    if (timerStopValue ==1)
+    {
+        [audioPlayerClap stop];
+        self.view.userInteractionEnabled = YES;
+        self.view.alpha = 1;
+    }
+    [self.navigationController popViewControllerAnimated:NO];
 }
 
 @end

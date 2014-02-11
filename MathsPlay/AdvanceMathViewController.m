@@ -147,12 +147,9 @@
     [trackView4 addSubview:carImage4];
 
     
-    playButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [playButton setTitle:@"< GO >" forState:UIControlStateNormal];
-    [playButton setBackgroundColor:[UIColor greenColor]];
-    [playButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    playButton = [UIButton buttonWithType:UIButtonTypeCustom];
     playButton.frame = CGRectMake(315, 372, 150, 50);
-    playButton.titleLabel.font = [UIFont fontWithName:@"Chalkduster" size:20.0];;
+    [playButton setImage:[UIImage imageNamed:@"begin_race"] forState:UIControlStateNormal];
     [playButton addTarget:self action:@selector(goButtonClicked) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:playButton];
     

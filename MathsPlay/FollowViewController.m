@@ -80,7 +80,7 @@
     // set  button color
     [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor greenColor], UITextAttributeTextColor,nil] forState:UIControlStateNormal];
     
-    self.title = @"Follow the path";
+    self.title = @"Miscellaneous";
     self.view.backgroundColor = [UIColor grayColor];
     
     UIImageView *back = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 768, 1024)];
@@ -105,11 +105,7 @@
     timeleftValue.textAlignment = NSTextAlignmentCenter;
     timeleftValue.textColor = [UIColor yellowColor];
     [self.view addSubview:timeleftValue];
-    
-//    UIView *scoreView = [[UIView alloc]initWithFrame:CGRectMake(35, 70, 250, 140)];
-//    scoreView.backgroundColor = [UIColor lightTextColor];;
-//    scoreView.alpha = 0.2;
-//    [self.view addSubview:scoreView];
+
     
     currentScoreLabel = [[UILabel alloc]initWithFrame:CGRectMake(25, 75, 270, 60)];
     currentScoreLabel.text = [NSString stringWithFormat:@"Your Score : %d",currentscore];
@@ -426,6 +422,24 @@
     
 else {
         // wrong ans
+    
+    UILabel *answerLabel=[[UILabel alloc]initWithFrame:CGRectMake(490, 350, 250, 60)];
+    answerLabel.backgroundColor=[UIColor whiteColor];
+    answerLabel.textColor=[UIColor redColor];
+    answerLabel.layer.cornerRadius=5.0;
+    answerLabel.layer.borderWidth=1.0;
+    answerLabel.textAlignment=NSTextAlignmentCenter;
+    answerLabel.font=[UIFont boldSystemFontOfSize:18];
+    [self.view addSubview:answerLabel];
+    [answerLabel setHidden:NO];
+    answerLabel.text=[NSString stringWithFormat:@"Correct Answer is: %d",finalAns];
+    
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 1.0 * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [answerLabel setHidden:YES];
+
+    });
+
     
     [water setHidden:NO];
     [water setFrame:CGRectMake(water.frame.origin.x, water.frame.origin.y-10, water.frame.size.width, water.frame.size.height+10)];

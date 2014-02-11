@@ -253,6 +253,12 @@
 		FCAD8863184F4A1500045198 /* PWChalk.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FCAD8862184F4A1500045198 /* PWChalk.ttf */; };
 		FCAD8867184F4C1A00045198 /* Chalkboard by Marta van Eck.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FCAD8866184F4C1A00045198 /* Chalkboard by Marta van Eck.ttf */; };
 		FCAD8869184F61FD00045198 /* drop.png in Resources */ = {isa = PBXBuildFile; fileRef = FCAD8868184F61FD00045198 /* drop.png */; };
+		FCBF90CE18A9F26C00708FA0 /* greaterthan-sign.png in Resources */ = {isa = PBXBuildFile; fileRef = FCBF90CC18A9F26C00708FA0 /* greaterthan-sign.png */; };
+		FCBF90CF18A9F26C00708FA0 /* lessthan-sign.png in Resources */ = {isa = PBXBuildFile; fileRef = FCBF90CD18A9F26C00708FA0 /* lessthan-sign.png */; };
+		FCBF90D118A9F7C600708FA0 /* equal-sign.png in Resources */ = {isa = PBXBuildFile; fileRef = FCBF90D018A9F7C600708FA0 /* equal-sign.png */; };
+		FCBF90D318A9F84100708FA0 /* next-level.png in Resources */ = {isa = PBXBuildFile; fileRef = FCBF90D218A9F84100708FA0 /* next-level.png */; };
+		FCBF90D518AA004800708FA0 /* bground.png in Resources */ = {isa = PBXBuildFile; fileRef = FCBF90D418AA004800708FA0 /* bground.png */; };
+		FCBF90D718AA038300708FA0 /* truck.png in Resources */ = {isa = PBXBuildFile; fileRef = FCBF90D618AA038300708FA0 /* truck.png */; };
 		FCC21D3F186064B40036C44B /* sky.png in Resources */ = {isa = PBXBuildFile; fileRef = FCC21D3E186064B40036C44B /* sky.png */; };
 		FCC21D4B186075590036C44B /* fighter-3.png in Resources */ = {isa = PBXBuildFile; fileRef = FCC21D4A186075590036C44B /* fighter-3.png */; };
 		FCC7D67E1859896300039099 /* thumbs-up.png in Resources */ = {isa = PBXBuildFile; fileRef = FCC7D67C1859896300039099 /* thumbs-up.png */; };
@@ -601,6 +607,12 @@
 		FCAD8862184F4A1500045198 /* PWChalk.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PWChalk.ttf; sourceTree = "<group>"; };
 		FCAD8866184F4C1A00045198 /* Chalkboard by Marta van Eck.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Chalkboard by Marta van Eck.ttf"; sourceTree = "<group>"; };
 		FCAD8868184F61FD00045198 /* drop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = drop.png; sourceTree = "<group>"; };
+		FCBF90CC18A9F26C00708FA0 /* greaterthan-sign.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "greaterthan-sign.png"; sourceTree = "<group>"; };
+		FCBF90CD18A9F26C00708FA0 /* lessthan-sign.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lessthan-sign.png"; sourceTree = "<group>"; };
+		FCBF90D018A9F7C600708FA0 /* equal-sign.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "equal-sign.png"; sourceTree = "<group>"; };
+		FCBF90D218A9F84100708FA0 /* next-level.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "next-level.png"; sourceTree = "<group>"; };
+		FCBF90D418AA004800708FA0 /* bground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bground.png; sourceTree = "<group>"; };
+		FCBF90D618AA038300708FA0 /* truck.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = truck.png; sourceTree = "<group>"; };
 		FCC21D3E186064B40036C44B /* sky.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sky.png; sourceTree = "<group>"; };
 		FCC21D4A186075590036C44B /* fighter-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fighter-3.png"; sourceTree = "<group>"; };
 		FCC7D67C1859896300039099 /* thumbs-up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumbs-up.png"; sourceTree = "<group>"; };
@@ -844,6 +856,12 @@
 		6815A1A3183203AC00E5CC74 /* ImagesForClassOne */ = {
 			isa = PBXGroup;
 			children = (
+				FCBF90D618AA038300708FA0 /* truck.png */,
+				FCBF90D418AA004800708FA0 /* bground.png */,
+				FCBF90D218A9F84100708FA0 /* next-level.png */,
+				FCBF90D018A9F7C600708FA0 /* equal-sign.png */,
+				FCBF90CC18A9F26C00708FA0 /* greaterthan-sign.png */,
+				FCBF90CD18A9F26C00708FA0 /* lessthan-sign.png */,
 				687B71B91834E0F100DE772E /* next1.png */,
 				687B71B71834BACC00DE772E /* lessthan.jpg */,
 				687B71B51834BAC200DE772E /* equalto.jpg */,
@@ -1450,6 +1468,8 @@
 				68069C961820F5B9009A24F6 /* next_icon.png in Resources */,
 				683458DD1836007700EFF321 /* board.jpg in Resources */,
 				680AB4B118165F8F00A49012 /* flash.png in Resources */,
+				FCBF90D718AA038300708FA0 /* truck.png in Resources */,
+				FCBF90CE18A9F26C00708FA0 /* greaterthan-sign.png in Resources */,
 				68345922183647BD00EFF321 /* raceicon7.png in Resources */,
 				687B71B81834BACC00DE772E /* lessthan.jpg in Resources */,
 				683458D01835FE9E00EFF321 /* spikes.png in Resources */,
@@ -1500,6 +1520,7 @@
 				680AB4B318165F8F00A49012 /* minion.png in Resources */,
 				68B1B872181AA2A600CB8CA0 /* background.jpg in Resources */,
 				683458C51835FE9E00EFF321 /* ball2.png in Resources */,
+				FCBF90D518AA004800708FA0 /* bground.png in Resources */,
 				6816711F182A810A008440B6 /* win1.mp3 in Resources */,
 				68167119182A810A008440B6 /* level 1.mp3 in Resources */,
 				FCAD8863184F4A1500045198 /* PWChalk.ttf in Resources */,
@@ -1527,6 +1548,7 @@
 				FCF12E541898FF710063929B /* checked.png in Resources */,
 				68B1B874181AA33500CB8CA0 /* game_background.png in Resources */,
 				68A51439182B686E0052EC43 /* treasurebox.png in Resources */,
+				FCBF90CF18A9F26C00708FA0 /* lessthan-sign.png in Resources */,
 				FCC98FAD18A1135400805888 /* square_root.png in Resources */,
 				6815A1B418324AF800E5CC74 /* butterfly2.png in Resources */,
 				689F2B3D18152C0B00DC8553 /* InfoPlist.strings in Resources */,
@@ -1547,6 +1569,7 @@
 				68DDD850181E3CF5004D7830 /* minus.png in Resources */,
 				68FE92E6182B5E80004A6306 /* incorrect.png in Resources */,
 				683458EC1836042A00EFF321 /* white_square.png in Resources */,
+				FCBF90D118A9F7C600708FA0 /* equal-sign.png in Resources */,
 				FCCEE9FA185AC43300AA690F /* arial-cloud.png in Resources */,
 				68069C901820EB5F009A24F6 /* fish1.png in Resources */,
 				6807E814184774BE00423B42 /* insect.mp3 in Resources */,
@@ -1558,6 +1581,7 @@
 				68A5143D182B75C60052EC43 /* whale.png in Resources */,
 				6807E80C18472E8000423B42 /* spider2.png in Resources */,
 				68DDD86A181E77F5004D7830 /* school.png in Resources */,
+				FCBF90D318A9F84100708FA0 /* next-level.png in Resources */,
 				683459161836455000EFF321 /* raceiconfree.png in Resources */,
 				FCAD8869184F61FD00045198 /* drop.png in Resources */,
 				68DDD87B181E955A004D7830 /* speech-bubble-xxl.png in Resources */,

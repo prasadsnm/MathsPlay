@@ -57,23 +57,7 @@
     
 #pragma mark Progress View starts
     
-    //    progressView = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
-    //    progressView.frame=CGRectMake(180, 100, 200, 20);
-    //    progressView.progressImage=[UIImage imageNamed:@"progress-fill-red"];
-    //    [lightBackgroundView addSubview: progressView];
-    //    CGAffineTransform transform = CGAffineTransformMakeScale(1.0f, 2.0f);
-    //    progressView.transform = transform;
-    
-    //    UILabel* percentLabel = [[UILabel alloc] initWithFrame:CGRectMake(progressView.frame.origin.x,40,progressView.frame.size.width,50)];
-    //    [percentLabel setTag:1];
-    //    [percentLabel setText:@"0 % completed"];
-    //    [percentLabel setBackgroundColor:[UIColor clearColor]];
-    //    [percentLabel setFont:[UIFont boldSystemFontOfSize:16]];
-    //    [percentLabel setTextAlignment:NSTextAlignmentCenter];
-    //    [lightBackgroundView addSubview:percentLabel];
-    //
-    
-#pragma mark Progress View ends
+
     if (sqrtLabel) {
         sqrtLabel=nil;
     }

@@ -630,10 +630,6 @@
                     [answerLabel setHidden:YES];
                 });
                 
-                
-                
-                NSLog(@"answer is %d",ans);
-                
                 NSValue *touchPointValue = [NSValue valueWithCGPoint:touchPoint];
                 [UIView beginAnimations:nil context:(__bridge void *)(touchPointValue)];
                 [UIView setAnimationDuration:0.15];

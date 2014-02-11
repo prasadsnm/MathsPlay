@@ -418,8 +418,8 @@
     reverseDropGame.frame = CGRectMake(372, 140, 100, 80);
     reverseDropGame.tag = 305;
     [reverseDropGame setImage:[UIImage imageNamed:@"raceiconfree"] forState:UIControlStateNormal];
-    UILabel *footnoteReverseDrop = [[UILabel alloc]initWithFrame:CGRectMake(-10, 50, 120, 60)];
-    footnoteReverseDrop.text = @"Division";
+    UILabel *footnoteReverseDrop = [[UILabel alloc]initWithFrame:CGRectMake(-10, 50, 150, 60)];
+    footnoteReverseDrop.text = @"Coming Soon ..";
     footnoteReverseDrop.textColor = [UIColor blackColor];
     footnoteReverseDrop.backgroundColor = [UIColor clearColor];
     footnoteReverseDrop.textAlignment = NSTextAlignmentCenter;

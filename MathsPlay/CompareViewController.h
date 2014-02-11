@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 #import <AVFoundation/AVFoundation.h>
+#import "CircularProgressView.h"
 
 @interface CompareViewController : UIViewController
 {
@@ -30,7 +31,8 @@
     NSError *error,*error2;
     NSTimer *timerForWinningStage;
     int timerStopValue;
-    
+    CircularProgressView *circularProgressView;
+    UILabel *centerLabel;
 }
 
 
