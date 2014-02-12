@@ -613,6 +613,7 @@
 		FCBF90D218A9F84100708FA0 /* next-level.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "next-level.png"; sourceTree = "<group>"; };
 		FCBF90D418AA004800708FA0 /* bground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bground.png; sourceTree = "<group>"; };
 		FCBF90D618AA038300708FA0 /* truck.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = truck.png; sourceTree = "<group>"; };
+		FCBFB76818ABAF4500573922 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		FCC21D3E186064B40036C44B /* sky.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sky.png; sourceTree = "<group>"; };
 		FCC21D4A186075590036C44B /* fighter-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fighter-3.png"; sourceTree = "<group>"; };
 		FCC7D67C1859896300039099 /* thumbs-up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumbs-up.png"; sourceTree = "<group>"; };
@@ -1103,6 +1104,7 @@
 		689F2B3118152C0B00DC8553 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FCBFB76818ABAF4500573922 /* CoreText.framework */,
 				FCD764B218978438003D0EAC /* QuartzCore.framework */,
 				FCD077BE18582C4D006CE8DF /* SpriteKit.framework */,
 				680AB4C818168D8300A49012 /* AssetsLibrary.framework */,
@@ -1810,7 +1812,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
@@ -1845,7 +1847,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 				VALIDATE_PRODUCT = YES;
@@ -1855,6 +1857,7 @@
 		689F2B5C18152C0B00DC8553 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1862,7 +1865,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MathsPlay/MathsPlay-Prefix.pch";
 				INFOPLIST_FILE = "MathsPlay/MathsPlay-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 2;
@@ -1873,6 +1876,7 @@
 		689F2B5D18152C0B00DC8553 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1880,7 +1884,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MathsPlay/MathsPlay-Prefix.pch";
 				INFOPLIST_FILE = "MathsPlay/MathsPlay-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 2;

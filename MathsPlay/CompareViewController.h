@@ -32,7 +32,7 @@
     NSTimer *timerForWinningStage;
     int timerStopValue;
     CircularProgressView *circularProgressView;
-    UILabel *centerLabel;
+    UILabel *centerLabel,*levelTag,*chooseOperatorLabel;
 }
 
 

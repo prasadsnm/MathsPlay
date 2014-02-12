@@ -53,6 +53,7 @@
     
     
     circularProgressView=[[CircularProgressView alloc]initWithFrame:CGRectMake(lightBackgroundView.frame.size.width-70, 20, 50, 50)];
+    circularProgressView.strokeWidth=1.0;
     [lightBackgroundView addSubview:circularProgressView];
     
 #pragma mark Progress View starts
