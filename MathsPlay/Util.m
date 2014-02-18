@@ -13,7 +13,8 @@
 BOOL ishighclass;
 + (UIFont *)themeFontWithSize:(CGFloat)size {
     
-    return [UIFont fontWithName:@"Helvetica Light" size:size];
+    //return [UIFont fontWithName:@"Helvetica Light" size:size];
+    return [UIFont boldSystemFontOfSize:size];
 }
 
 + (NSMutableDictionary *)readPListData
