@@ -53,7 +53,6 @@
 
 }
 
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -71,7 +70,6 @@
     girl_avatar_index = 0;
     oldsegmentindex = 0;
     
-    
     UIImageView *backImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 768, 1024)];
     backImage.image = [UIImage imageNamed:@"back3"];
 
@@ -85,20 +83,19 @@
     backImage2.backgroundColor = [UIColor clearColor];
     [self.view addSubview:backImage2];
     
-    UILabel *usernameLabel = [[UILabel alloc]initWithFrame:CGRectMake(145, 40, 180, 45)];
+    UILabel *usernameLabel = [[UILabel alloc]initWithFrame:CGRectMake(155, 45, 180, 45)];
     usernameLabel.text = @"NAME ";
-    usernameLabel.textColor = [UIColor colorWithRed:0/255.0 green:100/255.0 blue:0/255.0 alpha:1.0];
+    //usernameLabel.textColor = [UIColor colorWithRed:0/255.0 green:100/255.0 blue:0/255.0 alpha:1.0];
     usernameLabel.backgroundColor = [UIColor clearColor];
-    usernameLabel.textAlignment = NSTextAlignmentLeft;
-    usernameLabel.font = [Util themeFontWithSize:27];
+    usernameLabel.font = [Util themeFontWithSize:18];
     [self.view addSubview:usernameLabel];
     
     UIImageView *ovalImage = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"speech-bubble-xxl (1)"]];
-    ovalImage.frame = CGRectMake(277, 10, 300, 100);
+    ovalImage.frame = CGRectMake(250, 10, 300, 100);
     [self.view addSubview:ovalImage];
     
     UIImageView *ovalImage2 = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"tweety3"]];
-    ovalImage2.frame = CGRectMake(577, 0, 100, 100);
+    ovalImage2.frame = CGRectMake(550, 0, 100, 100);
     [self.view addSubview:ovalImage2];
     
     nameTextfield = [[UITextField alloc]initWithFrame:CGRectMake(295, 35, 260, 60)];
@@ -141,12 +138,12 @@
     [self.view addSubview:segmentForGender];
     
   
-    UILabel *avatarLabel = [[UILabel alloc]initWithFrame:CGRectMake(120, 230, 180, 45)];
+    UILabel *avatarLabel = [[UILabel alloc]initWithFrame:CGRectMake(180, 230, 180, 45)];
     avatarLabel.text = @"AVATAR";
-    avatarLabel.textColor = [UIColor colorWithRed:0/255.0 green:100/255.0 blue:0/255.0 alpha:1.0];
+    //avatarLabel.textColor = [UIColor colorWithRed:0/255.0 green:100/255.0 blue:0/255.0 alpha:1.0];
     avatarLabel.backgroundColor = [UIColor clearColor];
     avatarLabel.textAlignment = NSTextAlignmentLeft;
-    avatarLabel.font = [Util themeFontWithSize:27.0];
+    avatarLabel.font = [Util themeFontWithSize:18];
     [self.view addSubview:avatarLabel];
     
     UIButton *avatarArrowLeft = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -178,12 +175,12 @@
     avatarImage.backgroundColor = [UIColor clearColor];
     [self.view addSubview:avatarImage];
     
-    UILabel *skillLabel = [[UILabel alloc]initWithFrame:CGRectMake(130, 310, 100, 45)];
-    skillLabel.text = @"SKILL";
-    skillLabel.textColor = [UIColor colorWithRed:0/255.0 green:100/255.0 blue:0/255.0 alpha:1.0];
+    UILabel *skillLabel = [[UILabel alloc]initWithFrame:CGRectMake(180, 310, 100, 45)];
+    skillLabel.text = @"Level";
+    //skillLabel.textColor = [UIColor colorWithRed:0/255.0 green:100/255.0 blue:0/255.0 alpha:1.0];
     skillLabel.backgroundColor = [UIColor clearColor];
     skillLabel.textAlignment = NSTextAlignmentLeft;
-    skillLabel.font = [Util themeFontWithSize:27.0];
+    skillLabel.font = [Util themeFontWithSize:18];
     [self.view addSubview:skillLabel];
     
     UIButton *skillArrowLeft = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -204,14 +201,14 @@
     
     skillLabelValue = [[UILabel alloc]initWithFrame:CGRectMake(300, 310, 190, 45)];
     skillLabelValue.text = @"EASY";
-    skillLabelValue.textColor = [UIColor blackColor];
+    skillLabelValue.textColor = [UIColor colorWithRed:0/255.0 green:100/255.0 blue:0/255.0 alpha:1.0];
     skillLabelValue.backgroundColor = [UIColor clearColor];
     skillLabelValue.textAlignment = NSTextAlignmentCenter;
     skillLabelValue.font = [Util themeFontWithSize:22.0];
     [self.view addSubview:skillLabelValue];
     
     classSegmentControl = [[UISegmentedControl alloc]initWithItems:[NSArray arrayWithObjects:@"CLASS I",@"CLASS II",@"CLASS III",@"CLASS IV",@"CLASS V",@"CLASS VI" ,nil]];
-    classSegmentControl.frame = CGRectMake(10, 400, 748, 50);
+    classSegmentControl.frame = CGRectMake(10, 400, 750, 50);
     classSegmentControl.selectedSegmentIndex = 0;
     
     NSDictionary *attributesForClass = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -249,13 +246,12 @@
 #pragma mark Class 1 Games
 
 - (void)showClassOneGames {
-    
-    
-    classOneView = [[UIView alloc]initWithFrame:CGRectMake(78, 495, 645, 250)];
+
+    classOneView = [[UIView alloc]initWithFrame:CLASS_FRAME];
     classOneView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:classOneView];
     
-    UIView *borderview = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 645, 250)];
+    UIView *borderview = [[UIView alloc]initWithFrame:BORDER_FRAME];
     borderview.alpha = 0.3;
     borderview.layer.borderWidth = 1.0;
     borderview.layer.cornerRadius = 15.0;
@@ -264,10 +260,10 @@
     [classOneView addSubview:borderview];
     
     UIButton *compareGame = [UIButton buttonWithType:UIButtonTypeCustom];
-    compareGame.frame = CGRectMake(10, 10, 100, 80);
+    compareGame.frame = FIRST_BUTTON_FRAME;
     compareGame.tag = 101;
     [compareGame setImage:[UIImage imageNamed:@"compare"] forState:UIControlStateNormal];
-    UILabel *footnoteCompare = [[UILabel alloc]initWithFrame:CGRectMake(0, 80, 100, 20)];
+    UILabel *footnoteCompare = [[UILabel alloc]initWithFrame:COMMON_BUTTON_FOOT_NOTE_FRAME];
     footnoteCompare.text = @"Compare";
     footnoteCompare.textColor = [UIColor blackColor];
     footnoteCompare.backgroundColor = [UIColor clearColor];
@@ -277,13 +273,12 @@
     [compareGame addSubview:footnoteCompare];
     [classOneView addSubview:compareGame];
     
-    
     UIButton *addGame = [UIButton buttonWithType:UIButtonTypeCustom];
-    addGame.frame = CGRectMake(267, 20, 100, 80);
+    addGame.frame = SECOND_BUTTON_FRAME;
     addGame.tag = 102;
     [addGame setImage:[UIImage imageNamed:@"add"] forState:UIControlStateNormal];
-    UILabel *footnoteAdd = [[UILabel alloc]initWithFrame:CGRectMake(0, 65, 100, 15)];
-    footnoteAdd.text = @"Add";
+    UILabel *footnoteAdd = [[UILabel alloc]initWithFrame:COMMON_BUTTON_FOOT_NOTE_FRAME];
+    footnoteAdd.text = @"Addition";
     footnoteAdd.textColor = [UIColor blackColor];
     footnoteAdd.backgroundColor = [UIColor clearColor];
     footnoteAdd.textAlignment = NSTextAlignmentCenter;
@@ -294,11 +289,11 @@
     
     
     UIButton *subtractGame = [UIButton buttonWithType:UIButtonTypeCustom];
-    subtractGame.frame = CGRectMake(522,20,100,80);
+    subtractGame.frame = THIRD_BUTTON_FRAME;
     subtractGame.tag = 103;
     [subtractGame setImage:[UIImage imageNamed:@"minus"] forState:UIControlStateNormal];
-    UILabel *footnoteSubtract = [[UILabel alloc]initWithFrame:CGRectMake(0, 65, 100, 15)];
-    footnoteSubtract.text = @"Subtract";
+    UILabel *footnoteSubtract = [[UILabel alloc]initWithFrame:COMMON_BUTTON_FOOT_NOTE_FRAME];
+    footnoteSubtract.text = @"Subtraction";
     footnoteSubtract.textColor = [UIColor blackColor];
     footnoteSubtract.backgroundColor = [UIColor clearColor];
     footnoteSubtract.textAlignment = NSTextAlignmentCenter;
@@ -308,10 +303,10 @@
     [classOneView addSubview:subtractGame];
 
     UIButton *dropGame = [UIButton buttonWithType:UIButtonTypeCustom];
-    dropGame.frame = CGRectMake(122, 125, 100, 80);
+    dropGame.frame = FOURTH_BUTTON_FRAME;
     dropGame.tag = 104;
     [dropGame setImage:[UIImage imageNamed:@"bubble"] forState:UIControlStateNormal];
-    UILabel *footnoteDrop = [[UILabel alloc]initWithFrame:CGRectMake(-10, 80, 120, 20)];
+    UILabel *footnoteDrop = [[UILabel alloc]initWithFrame:COMMON_BUTTON_FOOT_NOTE_FRAME];
     footnoteDrop.text = @"Counting";
     footnoteDrop.textColor = [UIColor blackColor];
     footnoteDrop.backgroundColor = [UIColor clearColor];
@@ -322,10 +317,10 @@
     [classOneView addSubview:dropGame];
     
     UIButton *reverseDropGame = [UIButton buttonWithType:UIButtonTypeCustom];
-    reverseDropGame.frame = CGRectMake(372, 125, 100, 80);
+    reverseDropGame.frame = FIFTH_BUTTON_FRAME;
     reverseDropGame.tag = 105;
     [reverseDropGame setImage:[UIImage imageNamed:@"reversebubble"] forState:UIControlStateNormal];
-    UILabel *footnoteReverseDrop = [[UILabel alloc]initWithFrame:CGRectMake(0, 70, 120, 60)];
+    UILabel *footnoteReverseDrop = [[UILabel alloc]initWithFrame:COMMON_BUTTON_FOOT_NOTE_FRAME];
     footnoteReverseDrop.text = @"Reverse Counting";
     footnoteReverseDrop.numberOfLines = 0;
     footnoteReverseDrop.lineBreakMode = NSLineBreakByWordWrapping;
@@ -343,11 +338,11 @@
 
 - (void)showClassThreeGames
 {
-    classThreeView = [[UIView alloc]initWithFrame:CGRectMake(78, 495, 645, 250)];
+    classThreeView = [[UIView alloc]initWithFrame:CLASS_FRAME];
     classThreeView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:classThreeView];
-    
-    UIView *borderview = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 645, 250)];
+
+    UIView *borderview = [[UIView alloc]initWithFrame:BORDER_FRAME];
     borderview.alpha = 0.3;
     borderview.layer.borderWidth = 1.0;
     borderview.layer.cornerRadius = 15.0;
@@ -355,11 +350,40 @@
     borderview.backgroundColor = [UIColor lightGrayColor];
     [classThreeView addSubview:borderview];
     
+    UIButton *addGame = [UIButton buttonWithType:UIButtonTypeCustom];
+    addGame.frame = FIRST_BUTTON_FRAME;
+    addGame.tag = 302;
+    [addGame setImage:[UIImage imageNamed:@"add"] forState:UIControlStateNormal];
+    UILabel *footnoteAdd = [[UILabel alloc]initWithFrame:COMMON_BUTTON_FOOT_NOTE_FRAME];
+    footnoteAdd.text = @"Addition";
+    footnoteAdd.textColor = [UIColor blackColor];
+    footnoteAdd.backgroundColor = [UIColor clearColor];
+    footnoteAdd.textAlignment = NSTextAlignmentCenter;
+    footnoteAdd.font = [UIFont fontWithName:@"Optima-ExtraBlack" size:18.0];
+    [addGame addTarget:self action:@selector(loadClassThreeComponent:) forControlEvents:UIControlEventTouchUpInside];
+    [addGame addSubview:footnoteAdd];
+    [classThreeView addSubview:addGame];
+    
+    UIButton *subtractGame = [UIButton buttonWithType:UIButtonTypeCustom];
+    subtractGame.frame = SECOND_BUTTON_FRAME;
+    subtractGame.tag = 303;
+    [subtractGame setImage:[UIImage imageNamed:@"minus"] forState:UIControlStateNormal];
+    UILabel *footnoteSubtract = [[UILabel alloc]initWithFrame:COMMON_BUTTON_FOOT_NOTE_FRAME];
+    footnoteSubtract.text = @"Subtraction";
+    footnoteSubtract.textColor = [UIColor blackColor];
+    footnoteSubtract.backgroundColor = [UIColor clearColor];
+    footnoteSubtract.textAlignment = NSTextAlignmentCenter;
+    footnoteSubtract.font = [UIFont fontWithName:@"Optima-ExtraBlack" size:18.0];
+    [subtractGame addTarget:self action:@selector(loadClassThreeComponent:) forControlEvents:UIControlEventTouchUpInside];
+    [subtractGame addSubview:footnoteSubtract];
+    [classThreeView addSubview:subtractGame];
+    
     UIButton *compareGame = [UIButton buttonWithType:UIButtonTypeCustom];
-    compareGame.frame = CGRectMake(522,20,100,90);
+    compareGame.frame = THIRD_BUTTON_FRAME;
     compareGame.tag = 301;
     [compareGame setImage:[UIImage imageNamed:@"puzzle"] forState:UIControlStateNormal];
-    UILabel *footnoteCompare = [[UILabel alloc]initWithFrame:CGRectMake(0, 88, 100, 45)];
+    [compareGame setContentMode:UIViewContentModeCenter];
+    UILabel *footnoteCompare = [[UILabel alloc]initWithFrame:COMMON_BUTTON_FOOT_NOTE_FRAME];
     footnoteCompare.text = @"Miscellaneous";
     footnoteCompare.numberOfLines = 0;
     footnoteCompare.lineBreakMode = NSLineBreakByWordWrapping;
@@ -371,41 +395,11 @@
     [compareGame addSubview:footnoteCompare];
     [classThreeView addSubview:compareGame];
     
-    
-    UIButton *addGame = [UIButton buttonWithType:UIButtonTypeCustom];
-    addGame.frame = CGRectMake(10, 10, 100, 80);
-    addGame.tag = 302;
-    [addGame setImage:[UIImage imageNamed:@"add"] forState:UIControlStateNormal];
-    UILabel *footnoteAdd = [[UILabel alloc]initWithFrame:CGRectMake(0, 65, 100, 15)];
-    footnoteAdd.text = @"Addition";
-    footnoteAdd.textColor = [UIColor blackColor];
-    footnoteAdd.backgroundColor = [UIColor clearColor];
-    footnoteAdd.textAlignment = NSTextAlignmentCenter;
-    footnoteAdd.font = [UIFont fontWithName:@"Optima-ExtraBlack" size:18.0];
-    [addGame addTarget:self action:@selector(loadClassThreeComponent:) forControlEvents:UIControlEventTouchUpInside];
-    [addGame addSubview:footnoteAdd];
-    [classThreeView addSubview:addGame];
-    
-    
-    UIButton *subtractGame = [UIButton buttonWithType:UIButtonTypeCustom];
-    subtractGame.frame = CGRectMake(267, 20, 130, 80);
-    subtractGame.tag = 303;
-    [subtractGame setImage:[UIImage imageNamed:@"minus"] forState:UIControlStateNormal];
-    UILabel *footnoteSubtract = [[UILabel alloc]initWithFrame:CGRectMake(0, 65, 130, 15)];
-    footnoteSubtract.text = @"Subtraction";
-    footnoteSubtract.textColor = [UIColor blackColor];
-    footnoteSubtract.backgroundColor = [UIColor clearColor];
-    footnoteSubtract.textAlignment = NSTextAlignmentCenter;
-    footnoteSubtract.font = [UIFont fontWithName:@"Optima-ExtraBlack" size:18.0];
-    [subtractGame addTarget:self action:@selector(loadClassThreeComponent:) forControlEvents:UIControlEventTouchUpInside];
-    [subtractGame addSubview:footnoteSubtract];
-    [classThreeView addSubview:subtractGame];
-    
     UIButton *dropGame = [UIButton buttonWithType:UIButtonTypeCustom];
-    dropGame.frame = CGRectMake(122, 140, 100, 80);
+    dropGame.frame = FOURTH_BUTTON_FRAME;
     dropGame.tag = 304;
     [dropGame setImage:[UIImage imageNamed:@"raceiconfree"] forState:UIControlStateNormal];
-    UILabel *footnoteDrop = [[UILabel alloc]initWithFrame:CGRectMake(-10, 70, 130, 20)];
+    UILabel *footnoteDrop = [[UILabel alloc]initWithFrame:COMMON_BUTTON_FOOT_NOTE_FRAME];
     footnoteDrop.text = @"Multiplication";
     footnoteDrop.textColor = [UIColor blackColor];
     footnoteDrop.backgroundColor = [UIColor clearColor];
@@ -416,10 +410,10 @@
     [classThreeView addSubview:dropGame];
     
     UIButton *reverseDropGame = [UIButton buttonWithType:UIButtonTypeCustom];
-    reverseDropGame.frame = CGRectMake(372, 140, 100, 80);
+    reverseDropGame.frame = FIFTH_BUTTON_FRAME;
     reverseDropGame.tag = 305;
     [reverseDropGame setImage:[UIImage imageNamed:@"raceiconfree"] forState:UIControlStateNormal];
-    UILabel *footnoteReverseDrop = [[UILabel alloc]initWithFrame:CGRectMake(-10, 50, 150, 60)];
+    UILabel *footnoteReverseDrop = [[UILabel alloc]initWithFrame:COMMON_BUTTON_FOOT_NOTE_FRAME];
     footnoteReverseDrop.text = @"Coming Soon ..";
     footnoteReverseDrop.textColor = [UIColor blackColor];
     footnoteReverseDrop.backgroundColor = [UIColor clearColor];
@@ -434,11 +428,11 @@
 
 - (void)showClassFiveGames
 {
-    classFiveView = [[UIView alloc]initWithFrame:CGRectMake(78, 495, 645, 250)];
+    classFiveView = [[UIView alloc]initWithFrame:CLASS_FRAME];
     classFiveView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:classFiveView];
     
-    UIView *borderview = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 645, 250)];
+    UIView *borderview = [[UIView alloc]initWithFrame:BORDER_FRAME];
     borderview.alpha = 0.3;
     borderview.layer.borderWidth = 1.0;
     borderview.layer.cornerRadius = 15.0;
@@ -446,26 +440,11 @@
     borderview.backgroundColor = [UIColor lightGrayColor];
     [classFiveView addSubview:borderview];
     
-    UIButton *squareRoot = [UIButton buttonWithType:UIButtonTypeCustom];
-    squareRoot.frame = CGRectMake(522,20,120,80);
-    squareRoot.tag = 501;
-    [squareRoot setImage:[UIImage imageNamed:@"square_root"] forState:UIControlStateNormal];
-    UILabel *footnoteSqrt = [[UILabel alloc]initWithFrame:CGRectMake(0, 80, 120, 20)];
-    footnoteSqrt.text = @"Square Root";
-    footnoteSqrt.textColor = [UIColor blackColor];
-    footnoteSqrt.backgroundColor = [UIColor clearColor];
-    footnoteSqrt.textAlignment = NSTextAlignmentCenter;
-    footnoteSqrt.font = [UIFont fontWithName:@"Optima-ExtraBlack" size:18.0];
-    [squareRoot addTarget:self action:@selector(loadClassFiveComponent:) forControlEvents:UIControlEventTouchUpInside];
-    [squareRoot addSubview:footnoteSqrt];
-    [classFiveView addSubview:squareRoot];
-    
-    
     UIButton *divisibility = [UIButton buttonWithType:UIButtonTypeCustom];
-    divisibility.frame = CGRectMake(10, 10, 100, 80);
+    divisibility.frame = FIRST_BUTTON_FRAME;
     divisibility.tag = 502;
     [divisibility setImage:[UIImage imageNamed:@"add"] forState:UIControlStateNormal];
-    UILabel *footnoteDiv = [[UILabel alloc]initWithFrame:CGRectMake(0, 65, 100, 25)];
+    UILabel *footnoteDiv = [[UILabel alloc]initWithFrame:COMMON_BUTTON_FOOT_NOTE_FRAME];
     footnoteDiv.text = @"Divisibility Rules";
     footnoteDiv.numberOfLines = 0;
     footnoteDiv.lineBreakMode = NSLineBreakByWordWrapping;
@@ -473,16 +452,16 @@
     footnoteDiv.backgroundColor = [UIColor clearColor];
     footnoteDiv.textAlignment = NSTextAlignmentCenter;
     footnoteDiv.font = [UIFont fontWithName:@"Optima-ExtraBlack" size:18.0];
+    [footnoteDiv adjustsFontSizeToFitWidth];
     [divisibility addTarget:self action:@selector(loadClassFiveComponent:) forControlEvents:UIControlEventTouchUpInside];
     [divisibility addSubview:footnoteDiv];
     [classFiveView addSubview:divisibility];
     
-    
     UIButton *multiplication = [UIButton buttonWithType:UIButtonTypeCustom];
-    multiplication.frame = CGRectMake(267, 20, 130, 80);
+    multiplication.frame = SECOND_BUTTON_FRAME;
     multiplication.tag = 503;
     [multiplication setImage:[UIImage imageNamed:@"minus"] forState:UIControlStateNormal];
-    UILabel *footnoteMul = [[UILabel alloc]initWithFrame:CGRectMake(0, 65, 130, 15)];
+    UILabel *footnoteMul = [[UILabel alloc]initWithFrame:COMMON_BUTTON_FOOT_NOTE_FRAME];
     footnoteMul.text = @"Multiplication";
     footnoteMul.textColor = [UIColor blackColor];
     footnoteMul.backgroundColor = [UIColor clearColor];
@@ -492,11 +471,25 @@
     [multiplication addSubview:footnoteMul];
     [classFiveView addSubview:multiplication];
     
+    UIButton *squareRoot = [UIButton buttonWithType:UIButtonTypeCustom];
+    squareRoot.frame = THIRD_BUTTON_FRAME;
+    squareRoot.tag = 501;
+    [squareRoot setImage:[UIImage imageNamed:@"square_root"] forState:UIControlStateNormal];
+    UILabel *footnoteSqrt = [[UILabel alloc]initWithFrame:COMMON_BUTTON_FOOT_NOTE_FRAME];
+    footnoteSqrt.text = @"Square Root";
+    footnoteSqrt.textColor = [UIColor blackColor];
+    footnoteSqrt.backgroundColor = [UIColor clearColor];
+    footnoteSqrt.textAlignment = NSTextAlignmentCenter;
+    footnoteSqrt.font = [UIFont fontWithName:@"Optima-ExtraBlack" size:18.0];
+    [squareRoot addTarget:self action:@selector(loadClassFiveComponent:) forControlEvents:UIControlEventTouchUpInside];
+    [squareRoot addSubview:footnoteSqrt];
+    [classFiveView addSubview:squareRoot];
+    
     UIButton *pattern = [UIButton buttonWithType:UIButtonTypeCustom];
-    pattern.frame = CGRectMake(122, 125, 100, 80);
+    pattern.frame = FOURTH_BUTTON_FRAME;
     pattern.tag = 504;
     [pattern setImage:[UIImage imageNamed:@"number_puzzle"] forState:UIControlStateNormal];
-    UILabel *footnotePattern = [[UILabel alloc]initWithFrame:CGRectMake(-10, 70, 120, 50)];
+    UILabel *footnotePattern = [[UILabel alloc]initWithFrame:COMMON_BUTTON_FOOT_NOTE_FRAME];
     footnotePattern.text = @"Complete The Pattern";
     footnotePattern.numberOfLines = 0;
     footnotePattern.lineBreakMode = NSLineBreakByWordWrapping;
@@ -509,10 +502,10 @@
     [classFiveView addSubview:pattern];
     
     UIButton *HcfLcm = [UIButton buttonWithType:UIButtonTypeCustom];
-    HcfLcm.frame = CGRectMake(372, 125, 100, 80);
+    HcfLcm.frame = FIFTH_BUTTON_FRAME;
     HcfLcm.tag = 505;
     [HcfLcm setImage:[UIImage imageNamed:@"reversebubble"] forState:UIControlStateNormal];
-    UILabel *footnoteHcfLcm = [[UILabel alloc]initWithFrame:CGRectMake(0, 70, 120, 60)];
+    UILabel *footnoteHcfLcm = [[UILabel alloc]initWithFrame:COMMON_BUTTON_FOOT_NOTE_FRAME];
     footnoteHcfLcm.text = @"HCF & LCM";
     footnoteHcfLcm.textColor = [UIColor blackColor];
     footnoteHcfLcm.backgroundColor = [UIColor clearColor];
@@ -523,18 +516,15 @@
     [classFiveView addSubview:HcfLcm];
 }
 
-
-
-
 #pragma mark Class Six Games
 
 - (void)showClassSixGames
 {
-    classSixView = [[UIView alloc]initWithFrame:CGRectMake(78, 495, 645, 250)];
+    classSixView = [[UIView alloc]initWithFrame:CLASS_FRAME];
     classSixView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:classSixView];
     
-    UIView *borderview = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 645, 250)];
+    UIView *borderview = [[UIView alloc]initWithFrame:BORDER_FRAME];
     borderview.alpha = 0.3;
     borderview.layer.borderWidth = 1.0;
     borderview.layer.cornerRadius = 15.0;
@@ -542,26 +532,11 @@
     borderview.backgroundColor = [UIColor lightGrayColor];
     [classSixView addSubview:borderview];
     
-    UIButton *quadRant = [UIButton buttonWithType:UIButtonTypeCustom];
-    quadRant.frame = CGRectMake(522,20,120,80);
-    quadRant.tag = 601;
-    [quadRant setImage:[UIImage imageNamed:@"barGraph"] forState:UIControlStateNormal];
-    UILabel *footnoteSqrt = [[UILabel alloc]initWithFrame:CGRectMake(0, 80, 120, 20)];
-    footnoteSqrt.text = @"Bar Graph";
-    footnoteSqrt.textColor = [UIColor blackColor];
-    footnoteSqrt.backgroundColor = [UIColor clearColor];
-    footnoteSqrt.textAlignment = NSTextAlignmentCenter;
-    footnoteSqrt.font = [UIFont fontWithName:@"Optima-ExtraBlack" size:18.0];
-    [quadRant addTarget:self action:@selector(loadClassSixComponent:) forControlEvents:UIControlEventTouchUpInside];
-    [quadRant addSubview:footnoteSqrt];
-    [classSixView addSubview:quadRant];
-    
-    
     UIButton *divisibility = [UIButton buttonWithType:UIButtonTypeCustom];
-    divisibility.frame = CGRectMake(10, 10, 100, 80);
+    divisibility.frame = FIRST_BUTTON_FRAME;
     divisibility.tag = 602;
     [divisibility setImage:[UIImage imageNamed:@"add"] forState:UIControlStateNormal];
-    UILabel *footnoteDiv = [[UILabel alloc]initWithFrame:CGRectMake(0, 65, 100, 25)];
+    UILabel *footnoteDiv = [[UILabel alloc]initWithFrame:COMMON_BUTTON_FOOT_NOTE_FRAME];
     footnoteDiv.text = @"Coming soon..";
     footnoteDiv.numberOfLines = 0;
     footnoteDiv.lineBreakMode = NSLineBreakByWordWrapping;
@@ -573,12 +548,11 @@
     [divisibility addSubview:footnoteDiv];
     [classSixView addSubview:divisibility];
     
-    
     UIButton *multiplication = [UIButton buttonWithType:UIButtonTypeCustom];
-    multiplication.frame = CGRectMake(267, 20, 130, 80);
+    multiplication.frame = SECOND_BUTTON_FRAME;
     multiplication.tag = 603;
     [multiplication setImage:[UIImage imageNamed:@"minus"] forState:UIControlStateNormal];
-    UILabel *footnoteMul = [[UILabel alloc]initWithFrame:CGRectMake(0, 65, 130, 15)];
+    UILabel *footnoteMul = [[UILabel alloc]initWithFrame:COMMON_BUTTON_FOOT_NOTE_FRAME];
     footnoteMul.text = @"Coming soon..";
     footnoteMul.textColor = [UIColor blackColor];
     footnoteMul.backgroundColor = [UIColor clearColor];
@@ -588,11 +562,25 @@
     [multiplication addSubview:footnoteMul];
     [classSixView addSubview:multiplication];
     
+    UIButton *quadRant = [UIButton buttonWithType:UIButtonTypeCustom];
+    quadRant.frame = THIRD_BUTTON_FRAME;
+    quadRant.tag = 601;
+    [quadRant setImage:[UIImage imageNamed:@"barGraph"] forState:UIControlStateNormal];
+    UILabel *footnoteSqrt = [[UILabel alloc]initWithFrame:COMMON_BUTTON_FOOT_NOTE_FRAME];
+    footnoteSqrt.text = @"Bar Graph";
+    footnoteSqrt.textColor = [UIColor blackColor];
+    footnoteSqrt.backgroundColor = [UIColor clearColor];
+    footnoteSqrt.textAlignment = NSTextAlignmentCenter;
+    footnoteSqrt.font = [UIFont fontWithName:@"Optima-ExtraBlack" size:18.0];
+    [quadRant addTarget:self action:@selector(loadClassSixComponent:) forControlEvents:UIControlEventTouchUpInside];
+    [quadRant addSubview:footnoteSqrt];
+    [classSixView addSubview:quadRant];
+    
     UIButton *pattern = [UIButton buttonWithType:UIButtonTypeCustom];
-    pattern.frame = CGRectMake(122, 125, 100, 80);
+    pattern.frame = FOURTH_BUTTON_FRAME;
     pattern.tag = 604;
     [pattern setImage:[UIImage imageNamed:@"bubble"] forState:UIControlStateNormal];
-    UILabel *footnotePattern = [[UILabel alloc]initWithFrame:CGRectMake(-10, 70, 120, 50)];
+    UILabel *footnotePattern = [[UILabel alloc]initWithFrame:COMMON_BUTTON_FOOT_NOTE_FRAME];
     footnotePattern.text = @"Coming soon..";
     footnotePattern.numberOfLines = 0;
     footnotePattern.lineBreakMode = NSLineBreakByWordWrapping;
@@ -605,10 +593,10 @@
     [classSixView addSubview:pattern];
     
     UIButton *HcfLcm = [UIButton buttonWithType:UIButtonTypeCustom];
-    HcfLcm.frame = CGRectMake(372, 125, 100, 80);
+    HcfLcm.frame = FIFTH_BUTTON_FRAME;
     HcfLcm.tag = 605;
     [HcfLcm setImage:[UIImage imageNamed:@"reversebubble"] forState:UIControlStateNormal];
-    UILabel *footnoteHcfLcm = [[UILabel alloc]initWithFrame:CGRectMake(0, 70, 120, 60)];
+    UILabel *footnoteHcfLcm = [[UILabel alloc]initWithFrame:COMMON_BUTTON_FOOT_NOTE_FRAME];
     footnoteHcfLcm.text = @"Coming soon..";
     footnoteHcfLcm.textColor = [UIColor blackColor];
     footnoteHcfLcm.backgroundColor = [UIColor clearColor];

@@ -705,6 +705,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
+    [super viewWillDisappear:animated];
     if ([clockTimer isValid]) {
         [clockTimer invalidate];
     }

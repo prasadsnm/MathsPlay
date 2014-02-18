@@ -382,7 +382,16 @@
     
     [audioPlayer stop];
     [winAudioPlayer stop];
-    
+    if([bugMoveTimer isValid]) {
+        [bugMoveTimer invalidate];
+    }
+    if([bugFallTimer isValid]) {
+        [bugFallTimer invalidate];
+    }
+    if([axeFallTimer isValid]) {
+        [axeFallTimer invalidate];
+    }
+    [super viewWillDisappear:animated];
 }
 
 

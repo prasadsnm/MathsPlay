@@ -33,8 +33,15 @@
 #define SET_LAYOUT self.edgesForExtendedLayout = UIRectEdgeNone;
 #define SET_USERNAME_AS_TITLE  [self setTitle:[NSString stringWithFormat:@"Hi %@",[[Util readPListData] objectForKey:@"username"]]];
 
-
-
+#define CLASS_FRAME CGRectMake(78, 495, 645, 250)
+#define BORDER_FRAME CGRectMake(0, 0, 645, 250)
+#define FIRST_BUTTON_FRAME CGRectMake(40, 20, 100, 80)
+#define SECOND_BUTTON_FRAME CGRectMake(267, 20, 100, 80)
+#define SECOND_BUTTON_FRAME CGRectMake(267, 20, 100, 80)
+#define THIRD_BUTTON_FRAME CGRectMake(502,20,100,80)
+#define FOURTH_BUTTON_FRAME CGRectMake(142, 125, 100, 80)
+#define FIFTH_BUTTON_FRAME CGRectMake(392, 125, 100, 80)
+#define COMMON_BUTTON_FOOT_NOTE_FRAME CGRectMake(-50, 70, 200, 30)
 
 #define MODAL_FOR_RULES UIViewController *modalForRules=[[UIViewController alloc]init];modalForRules.view.backgroundColor=[UIColor colorWithRed:132/255.0 green:240/255.0 blue:88/255.0 alpha:1];modalForRules.modalTransitionStyle=UIModalTransitionStyleCoverVertical;modalForRules.modalPresentationStyle=UIModalPresentationFormSheet;[self presentViewController:modalForRules animated:YES completion:NULL];UITapGestureRecognizer *tapEvent=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(handleTapOnModal:)];[modalForRules.view addGestureRecognizer:tapEvent];
 
