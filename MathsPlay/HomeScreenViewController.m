@@ -104,12 +104,12 @@
     
     if (NSFoundationVersionNumber <= NSFoundationVersionNumber_iOS_6_1) {
         // ios 6 or earlier
-        nameTextfield.text = @"Popularly Called";
+        nameTextfield.text = @"NickName";
     }
     else
     {
        // ios 7 or later
-        nameTextfield.placeholder = @"Popularly Called";
+        nameTextfield.placeholder = @"NickName";
         
     }
     
@@ -1212,12 +1212,12 @@
         nameTextfield.backgroundColor = [UIColor colorWithRed:135/255.0 green:123/255.0 blue:129/255.0 alpha:1.0];
         if (NSFoundationVersionNumber <= NSFoundationVersionNumber_iOS_6_1) {
             // ios 6 or earlier
-            nameTextfield.text = @"Popularly Called";
+            nameTextfield.text = @"NickName";
         }
         else
         {
             nameTextfield.text = @"";
-            nameTextfield.placeholder = @"Popularly Called";
+            nameTextfield.placeholder = @"NickName";
         }
         
     }
@@ -1234,12 +1234,12 @@
         // Text was empty or only whitespace.
         if (NSFoundationVersionNumber <= NSFoundationVersionNumber_iOS_6_1) {
             // ios 6 or earlier
-            nameTextfield.text = @"Popularly Called";
+            nameTextfield.text = @"NickName";
         }
         else
         {
             nameTextfield.text = @"";
-            nameTextfield.placeholder = @"Popularly Called";
+            nameTextfield.placeholder = @"NickName";
         }
     }
     [nameTextfield resignFirstResponder];
@@ -1265,7 +1265,7 @@
         // Text was empty or only whitespace.
         [plistdic setObject:@"learner" forKey:@"username"];
     } else {
-        if ([nameTextfield.text isEqualToString:@"Popularly Called"]) {
+        if ([nameTextfield.text isEqualToString:@"NickName"]) {
             [plistdic setObject:@"learner" forKey:@"username"];
         }
         else

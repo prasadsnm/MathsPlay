@@ -17,7 +17,7 @@
     //--------- ORANGE BUBBLE ------
     UIView *optionView1,*optionView2,*optionView3,*optionView4;
     //UIImageView *optionImage1,*optionImage2,*optionImage3,*optionImage4;
-    UILabel *optionLabel1,*optionLabel2,*optionLabel3,*optionLabel4;
+    UILabel *optionLabel1,*optionLabel2,*optionLabel3,*optionLabel4,*levelTag;
     NSArray *optionViewArray; // stores the bubble views
     
     UITouch *touch;
@@ -26,6 +26,7 @@
     int ans; // contains the ans for the sum
     int correctAnsCount , wrongAnsCount;
     int wrongOrRightValue; // 1 is for right 0 if for wrong; it is used so that I can zoom the smile or sad logo and den unzoom it
+    UIButton *nextLevelBtn;
 }
 @property(nonatomic,copy)NSString *addOrSub;
 @end
