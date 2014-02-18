@@ -307,7 +307,6 @@
 #pragma mark TOUCH EVENT
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-	
 	// We only support single touches, so anyObject retrieves just that touch from touches
 	touch = [touches anyObject];
 	if ([touch tapCount] == 1)

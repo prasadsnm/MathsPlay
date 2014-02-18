@@ -11,6 +11,7 @@
 #import "CustomAudioToolBox.h"
 #import "Goodies.h"
 #import "CircularProgressView.h"
+#import "CustomSpeechSynthesizer.h"
 
 
 @interface LCMAndHCFViewController : UIViewController<UIViewControllerTransitioningDelegate>
@@ -30,6 +31,19 @@
     Goodies *goodies;
     CircularProgressView *circularProgressView;
     UIButton *helpButton;
+    NSArray *optionArray;
+    int selectedIndex;
+    int selectedAnswer;
+    UIImageView *tanker;
+    BOOL isALligned;
+    int currentHighlightedTag;
+    int correctAnswerLabelTag,totalGiftObject;    //totalGiftObject is gift earned (1 in 5 correct)
+    int scoreCount,totalQuestionCount;             //
+    UIViewController *modal;
+    UILabel *resultLabel;
+    UILabel *progresslabel;
+    CustomSpeechSynthesizer *speechsynthesizer;
+    
     
 }
 

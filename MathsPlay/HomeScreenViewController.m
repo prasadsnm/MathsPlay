@@ -74,6 +74,7 @@
     
     UIImageView *backImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 768, 1024)];
     backImage.image = [UIImage imageNamed:@"back3"];
+
     backImage.alpha = 1.0;
     backImage.backgroundColor = [UIColor clearColor];
     [self.view addSubview:backImage];

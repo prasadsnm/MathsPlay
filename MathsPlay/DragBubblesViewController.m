@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 QAInfotech. All rights reserved.
 //
 
+
+//images sources http://wall.alphacoders.com/
 #import "DragBubblesViewController.h"
 
 @interface DragBubblesViewController ()
@@ -57,6 +59,7 @@ static float alph = 0.7;
     //self.view.backgroundColor = [UIColor colorWithRed:77/255.0 green:77/255.0 blue:77/255.0 alpha:1];
     
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"ocean7.jpg"]];
+
     
     if (NSFoundationVersionNumber <= NSFoundationVersionNumber_iOS_6_1) {
         self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:65/255.0 green:105/255.0 blue:225/255.0 alpha:1.0];

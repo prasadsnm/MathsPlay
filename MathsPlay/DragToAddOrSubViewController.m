@@ -34,7 +34,24 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	self.view.backgroundColor = [UIColor darkGrayColor];
+ 
+    
+    UIButton * helpButton=[UIButton buttonWithType:UIButtonTypeCustom];
+    [helpButton setImage:[UIImage imageNamed:@"rules"] forState:UIControlStateNormal];
+    helpButton.tag=100011;
+    [helpButton addTarget:self action:@selector(buttonActionMethod:) forControlEvents:UIControlEventTouchUpInside];
+    helpButton.frame=CGRectMake(self.view.frame.size.width-100 ,20, 90, 50);
+    helpButton.showsTouchWhenHighlighted=YES;
+    [self.view addSubview:helpButton];
+    
+    //http://all-free-download.com/free-vector/vector-background/free_vector_cartoon_natural_278578_download.html
+   UIGraphicsBeginImageContext(CGSizeMake(self.view.frame.size.width, self.view.frame.size.height));
+    [[UIImage imageNamed:@"background-4"] drawInRect:self.view.bounds];
+   UIImage *image =UIGraphicsGetImageFromCurrentImageContext();
+   UIGraphicsEndImageContext();
+  [self.view setBackgroundColor:[UIColor colorWithPatternImage:image]];
+    
+    
     
     if (NSFoundationVersionNumber <= NSFoundationVersionNumber_iOS_6_1) {
         self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:65/255.0 green:105/255.0 blue:225/255.0 alpha:1.0];
@@ -117,11 +134,11 @@
     
     
     hangmanImage = [[UIImageView alloc]initWithFrame:CGRectMake(250, 250, 50, 50)];
-    hangmanImage.image = [UIImage imageNamed:@""];
+    hangmanImage.image = [UIImage imageNamed:@"aaa"];
     [self.view addSubview:hangmanImage];
     
     firstNumberLabel = [[UILabel alloc]initWithFrame:CGRectMake(30, 450, 150, 100)];
-    firstNumberLabel.textColor = [UIColor yellowColor];
+    firstNumberLabel.textColor = [UIColor magentaColor];
     firstNumberLabel.backgroundColor = [UIColor clearColor];
     firstNumberLabel.textAlignment = NSTextAlignmentCenter;
     firstNumberLabel.font = [UIFont fontWithName:@"GillSans-Bold" size:100.0];
@@ -144,7 +161,7 @@
     
     secondNumberLabel = [[UILabel alloc]initWithFrame:CGRectMake(260, 450, 150, 100)];
     secondNumberLabel.backgroundColor = [UIColor clearColor];
-    secondNumberLabel.textColor = [UIColor yellowColor];
+    secondNumberLabel.textColor = [UIColor magentaColor];
     secondNumberLabel.textAlignment = NSTextAlignmentCenter;
     secondNumberLabel.font = [UIFont fontWithName:@"GillSans-Bold" size:100.0];
     [self.view addSubview:secondNumberLabel];
@@ -223,19 +240,43 @@
     [optionView4 addSubview:optionLabel4];
 
     [self.view addSubview:optionView4];
-
+    NSString *rules;
     
     optionViewArray = [[NSArray alloc]initWithObjects:optionView1,optionView2,optionView3,optionView4, nil];
     if ([self.addOrSub isEqualToString:@"add"])
     {
         [self showRandomAddValues];
+        rules=@"a)Drag the correct answer to the answer area.\n\nb)If answer is correct an art is revealed.\n\nc)complete the hidden image by giving correct answer";
+
     }
     else
     {
         [self showRandomSubValues];
+        rules=@"a)Choose correct operator.(>,=,<)\n\nb)On completing 5 question correctly you earn a star.\n\nc)Try to earn maximum stars to clear different level.";
+
     }
 
+    
+    
+    
 }
+
+#pragma mark Rules Method
+-(void)buttonActionMethod:(UIButton *)sender
+{
+    MODAL_FOR_RULES;
+    HEADER_TITLE;
+    SPIRAL_VIEW;
+    INSTRUCTION_LABEL_WITHOUT_TEXT;
+    instructionLabel.text=@"a)Choose correct operator.(>,=,<)\n\nb)On completing 5 question correctly you earn a star.\n\nc)Try to earn maximum stars to clear different level.";
+    FOOTER_TITLE;
+}
+-(void)handleTapOnModal:(UITapGestureRecognizer *)recognizer
+{
+    [self dismissViewControllerAnimated:YES completion:NULL];
+}
+
+
 
 #pragma mark Random Value Code
 
@@ -245,9 +286,9 @@
     numberOfCorrectAnsLabel.text = [NSString stringWithFormat:@"%d",correctAnsCount];
     numberOfInCorrectAnsLabel.text = [NSString stringWithFormat:@"%d",wrongAnsCount];
     
-    optionView1.frame = CGRectMake(105, 760, 110, 100);
-    optionView2.frame = CGRectMake(255, 620, 110, 100);
-    optionView3.frame = CGRectMake(375, 800, 110, 100);
+    optionView1.frame = CGRectMake(90, 760, 110, 100);
+    optionView2.frame = CGRectMake(255, 670, 110, 100);
+    optionView3.frame = CGRectMake(375, 820, 110, 100);
     optionView4.frame = CGRectMake(595, 720, 110, 100);
     int firstNo;
     int secondNo;
@@ -715,9 +756,7 @@
 }
 
 - (void)animateFirstTouchAtPoint:(CGPoint)touchPoint
-{
-	
-	
+{	
 #define GROW_ANIMATION_DURATION_SECONDS 0.15
 	
 	NSValue *touchPointValue = [NSValue valueWithCGPoint:touchPoint];

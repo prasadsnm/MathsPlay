@@ -14,16 +14,6 @@
 
 @interface LCMAndHCFViewController ()
 {
-    NSArray *optionArray;
-    int selectedIndex;
-    int selectedAnswer;
-    UIImageView *tanker;
-    BOOL isALligned;
-    int currentHighlightedTag;
-    int correctAnswerLabelTag,totalGiftObject;    //totalGiftObject is gift earned (1 in 5 correct)
-    int scoreCount,totalQuestionCount;             //
-    UIViewController *modal;
-    UILabel *resultLabel;
 }
 @property(nonatomic,assign) CGPoint targetCenter;
 
@@ -44,6 +34,8 @@
 {
     [super viewDidLoad];
     
+    speechsynthesizer=[[CustomSpeechSynthesizer alloc]init] ;
+    [speechsynthesizer speakText:@"Welcome to mathplay"];
     scoreCount=totalQuestionCount=totalGiftObject=0;
     modal=nil;
     
@@ -156,13 +148,19 @@
     [self start];
     [self startEmmitter];
     
-    circularProgressView=[[CircularProgressView alloc]initWithFrame:CGRectMake(self.view.frame.size.width-50, self.view.frame.size.height-110, 44, 44)];
+    circularProgressView=[[CircularProgressView alloc]initWithFrame:CGRectMake(self.view.frame.size.width-50, self.view.frame.size.height-150, 44, 44)];
     circularProgressView.tag=55555;
     circularProgressView.fillColor=[UIColor grayColor];
     circularProgressView.fillBackgroundColor=[UIColor whiteColor];
     [self.view addSubview:circularProgressView];
 
-    
+    progresslabel=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, circularProgressView.frame.size.width, circularProgressView.frame.size.height/2)];
+    progresslabel.text=[NSString stringWithFormat:@"0/%d",TOTAL_QUESTION_COUNT];
+    progresslabel.textAlignment=NSTextAlignmentCenter;
+    [progresslabel adjustsFontSizeToFitWidth];
+    progresslabel.center=CGPointMake(circularProgressView.center.x, circularProgressView.center.y+circularProgressView.frame.size.height);
+    [self.view addSubview:progresslabel];
+
 }
 
 -(void)buttonActionMethod:(UIButton *)sender
@@ -497,10 +495,14 @@ int lcm(int a, int b)
             CGFloat fraction=((CGFloat)totalQuestionCount)/TOTAL_QUESTION_COUNT;
             if (fraction!=1) {
                 circularProgressView.progress = fraction;
+                progresslabel.text=[NSString stringWithFormat:@"%.0f/%d",fraction*10,TOTAL_QUESTION_COUNT];
+                
+                
             }
             else
             {
                 [circularProgressView removeFromSuperview];
+                [progresslabel removeFromSuperview];
             }
 
             

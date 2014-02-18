@@ -31,8 +31,10 @@
     UIProgressView *progreeView;
     DropDownAlert *dropAlert;
     CircularProgressView *circularProgressView;
+    UIProgressView *progressView ;
+    UIView *lightBackgroundView;
+    UILabel *progresslabel;
     
-
 }
 -(int)getRandomPerfectSquare;
 -(void)showQuestion;

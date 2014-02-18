@@ -16,6 +16,8 @@
     AVAudioPlayer *audioPlayer, *winAudioPlayer;
     UILabel *winOrLoseMessage;
     NSString *usernameString;
+    UIImageView *boy1,*boy2,*boy3;
+    
 }
 @end
 
@@ -73,15 +75,15 @@
     }
     [self generateOptionTitles];
     
-    UIImageView *boy1 = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"sleepy"]];
+    boy1 = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"sleepy"]];
     boy1.frame = CGRectMake(580, 350, 150, 150);
     [self.view addSubview:boy1];
     
-    UIImageView *boy2 = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"sleepy"]];
+    boy2 = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"sleepy"]];
     boy2.frame = CGRectMake(580, 450, 150, 150);
     [self.view addSubview:boy2];
     
-    UIImageView *boy3 = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"sleepy"]];
+    boy3 = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"sleepy"]];
     boy3.frame = CGRectMake(580, 550, 150, 150);
     [self.view addSubview:boy3];
     
@@ -208,26 +210,30 @@
     else
     {
         // wrong ans
-        
-        [audioPlayer stop];
-        
-        //audio player start
-        NSURL *url = [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/lose2.mp3", [[NSBundle mainBundle] resourcePath]]];
-        NSError *error;
-        winAudioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
-        winAudioPlayer.numberOfLoops = 0;
-        [winAudioPlayer play];
-        [spiderLineView setHidden:YES];
-
-        self.view.userInteractionEnabled = NO;
         [button setBackgroundColor:[UIColor redColor]];
-        [bugMoveTimer invalidate];
-        bugImage.frame = CGRectMake(600, 550, bugImage.frame.size.width+50, bugImage.frame.size.height+50);
+        [self wrongAnswer];
         
-        [self performSelector:@selector(hideChild) withObject:nil afterDelay:1];
     }
 }
 
+-(void)wrongAnswer
+{
+    [audioPlayer stop];
+    
+    //audio player start
+    NSURL *url = [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/lose2.mp3", [[NSBundle mainBundle] resourcePath]]];
+    NSError *error;
+    winAudioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
+    winAudioPlayer.numberOfLoops = 0;
+    [winAudioPlayer play];
+    [spiderLineView setHidden:YES];
+    
+    self.view.userInteractionEnabled = NO;
+    [bugMoveTimer invalidate];
+    bugImage.frame = CGRectMake(600, 550, bugImage.frame.size.width+50, bugImage.frame.size.height+50);
+    [self performSelector:@selector(hideChild) withObject:nil afterDelay:1];
+
+}
 
 - (void)hideChild {
     
@@ -292,6 +298,12 @@
 
 - (void)bugMovement
 {
+    
+    if (spiderLineView.frame.size.width>boy1.frame.origin.x) {
+        [self wrongAnswer];
+        
+    }
+    
     spiderLineView.frame = CGRectMake(spiderLineView.frame.origin.x, 435, spiderLineView.frame.size.width+1, 2);
     bugImage.frame = CGRectMake(bugImage.frame.origin.x+1, bugImage.frame.origin.y, bugImage.frame.size.width, bugImage.frame.size.height);
 }

@@ -25,12 +25,9 @@
     splashImage = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"splashscreen"]];
     splashImage.frame = CGRectMake(0, 0, 768, 1024);
     [self.window addSubview:splashImage];
-    [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(fadeScreen) userInfo:nil repeats:NO];
+    [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(fadeScreen) userInfo:nil repeats:NO];
     self.window.rootViewController = [[UIViewController alloc]init];
     [self.window makeKeyAndVisible];
-    
-    
-    [self fadeScreen];
     return YES;
 }
 
@@ -52,7 +49,6 @@
     self.window.rootViewController = navigation;
     [self.window addSubview:navigation.view];
 }
-
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

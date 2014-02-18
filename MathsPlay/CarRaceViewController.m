@@ -197,7 +197,7 @@
     HEADER_TITLE;
     SPIRAL_VIEW;
     INSTRUCTION_LABEL_WITHOUT_TEXT;
-    instructionLabel.text=@"a)Choose the right option among the ballons.\n\nb)If answer is correct your car's(red) speed increases.\n\nc)Answer quickly to accelerate the car.";
+    instructionLabel.text=@"a)Choose the right option among the ballons.\n\nb)If answer is correct your car's(2nd from top) speed increases.\n\nc)Answer quickly to accelerate the car.";
     FOOTER_TITLE;
 }
 

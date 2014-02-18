@@ -404,8 +404,7 @@
                     
                     incorrectAnswerCount++;
                     [audioToolBox playSound:@"wrong" withExtension:@"mp3"];
-
-                    [resultLabel setText:@"Wrong !!"];
+                    [resultLabel setText:[NSString stringWithFormat:@"Wrong !!\n correct answer is :%d",[answer integerValue]]];
 
                     [UIView animateWithDuration:1.0 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
                         [self centerButtonAnimation:resultLabel];

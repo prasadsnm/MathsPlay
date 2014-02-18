@@ -6,10 +6,14 @@
 //  Copyright (c) 2013 QAInfotech. All rights reserved.
 //
 
+
+
+ 
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 #import <AVFoundation/AVFoundation.h>
 #import <AssetsLibrary/AssetsLibrary.h>
+#import "CircularProgressView.h"
 
 @interface DragBubblesViewController : UIViewController
 {
@@ -34,7 +38,8 @@
     int timerStopValue; // if timer is on den value is 1 and if 1 den on bak btn press invalidate the timer
     
     NSTimer *fish1, *fish2, *fish3, *fish4, *fish5, *fish6;
-    
+    CircularProgressView *circularProgressView;
+
 }
 
 -(void)showRandomValues;

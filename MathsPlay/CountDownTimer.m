@@ -22,9 +22,7 @@ int secondsLeft;
       //  myCounterLabel.backgroundColor=[UIColor colorWithRed:126/255.0 green:188/255.0 blue:74/255.0 alpha:1.0];
         myCounterLabel.backgroundColor=[UIColor clearColor];
         [self addSubview:myCounterLabel];
-       
-        
-    }
+        }
     return self;
 }
 

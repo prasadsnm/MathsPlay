@@ -8,12 +8,7 @@
 
 #import "SquareRootViewController.h"
 #import <math.h>
-
 @interface SquareRootViewController ()
-{
-    UIProgressView *progressView ;
-    UIView *lightBackgroundView;
-}
 @end
 
 @implementation SquareRootViewController
@@ -56,6 +51,12 @@
     circularProgressView.strokeWidth=1.0;
     [lightBackgroundView addSubview:circularProgressView];
     
+    progresslabel=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, circularProgressView.frame.size.width, circularProgressView.frame.size.height/2)];
+    progresslabel.text=[NSString stringWithFormat:@"0/%d",[questionArray count]];
+    progresslabel.textAlignment=NSTextAlignmentCenter;
+    [progresslabel adjustsFontSizeToFitWidth];
+    progresslabel.center=CGPointMake(circularProgressView.center.x, circularProgressView.center.y+circularProgressView.frame.size.height);
+    [lightBackgroundView addSubview:progresslabel];
 #pragma mark Progress View starts
     
 
@@ -158,10 +159,13 @@
 - (void)updateProgress:(CGFloat )timer {
     if (timer!=1) {
         circularProgressView.progress = timer;
+        progresslabel.text=[NSString stringWithFormat:@"%.0f/%d",timer*10,[questionArray count]];
+
     }
     else
     {
         [circularProgressView removeFromSuperview];
+        [progresslabel removeFromSuperview];
     }
 }
 
@@ -190,8 +194,11 @@
 
 -(void)handleTapOnModal:(UITapGestureRecognizer *)recognizer
 {
-    [self resignFirstResponder];
-    [self dismissViewControllerAnimated:YES completion:NULL];
+   // AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
+    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+    
+[self resignFirstResponder];
+[self dismissViewControllerAnimated:YES completion:NULL];
     
 }
 
