@@ -7,6 +7,7 @@
 //
 
 #import "DragToAddOrSubViewController.h"
+#define GREEN_COLOR [UIColor colorWithRed:120/255.0 green:192/255.0  blue:42/255.0  alpha:1]
 
 @interface DragToAddOrSubViewController ()
 {
@@ -45,11 +46,54 @@
     [self.view addSubview:helpButton];
     
     //http://all-free-download.com/free-vector/vector-background/free_vector_cartoon_natural_278578_download.html
-   UIGraphicsBeginImageContext(CGSizeMake(self.view.frame.size.width, self.view.frame.size.height));
+    UIGraphicsBeginImageContext(CGSizeMake(self.view.frame.size.width, self.view.frame.size.height));
     [[UIImage imageNamed:@"background-4"] drawInRect:self.view.bounds];
-   UIImage *image =UIGraphicsGetImageFromCurrentImageContext();
-   UIGraphicsEndImageContext();
-  [self.view setBackgroundColor:[UIColor colorWithPatternImage:image]];
+    UIImage *image =UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:image]];
+    
+    UIView *LeftContainerView=[[UIView alloc]initWithFrame:CGRectMake(-5, 20, 200,200)];
+    LeftContainerView.backgroundColor=[UIColor yellowColor];
+    LeftContainerView.layer.cornerRadius=7.0;
+    LeftContainerView.layer.borderWidth=1.5;
+    LeftContainerView.layer.borderColor=[UIColor whiteColor].CGColor;
+    UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:LeftContainerView.bounds];
+    //   rightView.layer.masksToBounds = NO;
+    LeftContainerView.layer.shadowColor = [UIColor whiteColor].CGColor;
+    LeftContainerView.layer.shadowOffset = CGSizeMake(0.0f, 20.0f);
+    LeftContainerView.layer.shadowRadius=10.0;
+    LeftContainerView.layer.shadowOpacity = 0.5f;
+    LeftContainerView.layer.shadowPath = shadowPath.CGPath;
+    [self.view addSubview:LeftContainerView];
+    
+    
+    
+    levelTag = [[UILabel alloc]initWithFrame:CGRectMake(20, 0, 150, 30)];
+    levelTag.text = [NSString stringWithFormat:@"LEVEL : %@",[[Util readPListData]objectForKey:@"level"]];
+    levelTag.font = [UIFont fontWithName:@"Futura" size:15];
+    levelTag.textColor = [UIColor whiteColor];
+    levelTag.layer.cornerRadius=5.0;
+    levelTag.textAlignment=NSTextAlignmentCenter;
+    levelTag.backgroundColor = GREEN_COLOR;
+    [LeftContainerView  addSubview:levelTag];
+
+    numberOfCorrectAnsLabel = [[UILabel alloc]initWithFrame:CGRectMake(30, 50,LeftContainerView.frame.size.width, 30)];
+    numberOfCorrectAnsLabel.textColor = [UIColor blackColor];
+    numberOfCorrectAnsLabel.backgroundColor = [UIColor clearColor];
+    numberOfCorrectAnsLabel.text = [NSString stringWithFormat:@"Correct : %d",correctAnsCount];
+    numberOfCorrectAnsLabel.textAlignment = NSTextAlignmentLeft;
+    numberOfCorrectAnsLabel.font = [UIFont fontWithName:@"Futura" size:20.0];
+    [LeftContainerView addSubview:numberOfCorrectAnsLabel];
+    
+    
+    numberOfInCorrectAnsLabel = [[UILabel alloc]initWithFrame:CGRectMake(30, 100, LeftContainerView.frame.size.width, 30)];
+    numberOfInCorrectAnsLabel.textColor = [UIColor redColor];
+    numberOfInCorrectAnsLabel.backgroundColor = [UIColor clearColor];
+    numberOfInCorrectAnsLabel.text = [NSString stringWithFormat:@"Wrong : %d",wrongAnsCount];
+    numberOfInCorrectAnsLabel.textAlignment = NSTextAlignmentLeft;
+    numberOfInCorrectAnsLabel.font = [UIFont fontWithName:@"Futura" size:20.0];
+    [LeftContainerView addSubview:numberOfInCorrectAnsLabel];
+
     
     
     
@@ -66,71 +110,27 @@
     // set  button color
     [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor greenColor], UITextAttributeTextColor,nil] forState:UIControlStateNormal];
     
-    UILabel *usernameLabel = [[UILabel alloc]initWithFrame:CGRectMake(100, 10, 600, 40)];
-    usernameLabel.textColor = [UIColor colorWithRed:0/255.0 green:171/255.0 blue:189/255.0 alpha:1.0];
-    usernameLabel.backgroundColor = [UIColor clearColor];
-    usernameLabel.text = [NSString stringWithFormat:@"HI   %@",[[Util readPListData]objectForKey:@"username"]];
-    usernameLabel.textAlignment = NSTextAlignmentCenter;
-    usernameLabel.font = [UIFont fontWithName:@"BradleyHandITCTT-Bold" size:40.0];
+    UILabel *usernameLabel = [[UILabel alloc]initWithFrame:CGRectMake(250, 10, 300, 40)];
+    usernameLabel.textColor = [UIColor whiteColor];
+    usernameLabel.font=[UIFont fontWithName:@"Futura" size:20];
+    usernameLabel.backgroundColor =[UIColor clearColor];
+    usernameLabel.textAlignment=NSTextAlignmentCenter;
+    
+    usernameLabel.text = [NSString stringWithFormat:@"Hi   %@",[[Util readPListData]objectForKey:@"username"]];
     [self.view addSubview:usernameLabel];
     
-    currentLevelLabel = [[UILabel alloc]initWithFrame:CGRectMake(400, 100, 300, 40)];
-    currentLevelLabel.textColor = [UIColor colorWithRed:255/225.0 green:236/255.0 blue:146/255.0 alpha:1.0];
-    currentLevelLabel.backgroundColor = [UIColor clearColor];
-    currentLevelLabel.text = [NSString stringWithFormat:@"Its - %@ Level",[[Util readPListData]objectForKey:@"level"]];
-    currentLevelLabel.textAlignment = NSTextAlignmentCenter;
-    currentLevelLabel.font = [UIFont fontWithName:@"BradleyHandITCTT-Bold" size:30.0];
-    [self.view addSubview:currentLevelLabel];
-
-    
-    if (![[[Util readPListData]objectForKey:@"level"] isEqualToString:@"HARD"])
+     if (![[[Util readPListData]objectForKey:@"level"] isEqualToString:@"HARD"])
     {
-        UIButton *nextLevelButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [nextLevelButton setFrame:CGRectMake(440, 170, 150, 45)];
-        nextLevelButton.layer.borderWidth = 1.0;
-        nextLevelButton.layer.borderColor = [[UIColor colorWithRed:255/225.0 green:236/255.0 blue:146/255.0 alpha:1.0]CGColor];
-        [nextLevelButton setTitleColor:[UIColor colorWithRed:255/225.0 green:236/255.0 blue:146/255.0 alpha:1.0] forState:UIControlStateNormal];
-        [nextLevelButton addTarget:self action:@selector(nextLevel:) forControlEvents:UIControlEventTouchUpInside];
-        [nextLevelButton setTitle:@"Next Level" forState:UIControlStateNormal];
-        [self.view addSubview:nextLevelButton];
+        nextLevelBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [nextLevelBtn setTitle:@"SKIP LEVEL" forState:UIControlStateNormal];
+        [nextLevelBtn setFrame:CGRectMake(20, LeftContainerView.frame.size.height-30, 150, 30)];
+        nextLevelBtn.layer.cornerRadius=5.0;
+        nextLevelBtn.titleLabel.font= [UIFont fontWithName:@"Futura" size:15];
+        nextLevelBtn.backgroundColor = GREEN_COLOR;
+        [nextLevelBtn addTarget:self action:@selector(nextLevel:) forControlEvents:UIControlEventTouchUpInside];
+        [LeftContainerView addSubview:nextLevelBtn];
+
     }
-    
-    UIImageView *correctImageLogo = [[UIImageView alloc]initWithFrame:CGRectMake(40, 100, 40, 40)];
-    correctImageLogo.image = [UIImage imageNamed:@"correct"];
-    [self.view addSubview:correctImageLogo];
-
-    
-    numberOfCorrectAnsLabel = [[UILabel alloc]initWithFrame:CGRectMake(90, 105, 40, 40)];
-    numberOfCorrectAnsLabel.textColor = [UIColor greenColor];
-    numberOfCorrectAnsLabel.backgroundColor = [UIColor clearColor];
-    numberOfCorrectAnsLabel.text = [NSString stringWithFormat:@"%d",correctAnsCount];
-    numberOfCorrectAnsLabel.textAlignment = NSTextAlignmentCenter;
-    numberOfCorrectAnsLabel.font = [UIFont fontWithName:@"GillSans-Bold" size:30.0];
-    [self.view addSubview:numberOfCorrectAnsLabel];
-
-    
-    smileLogo = [[UIImageView alloc]initWithFrame:CGRectMake(150, 100, 40, 40)];
-    smileLogo.image = [UIImage imageNamed:@"smile"];
-    [self.view addSubview:smileLogo];
-
-    
-    UIImageView *inCorrectImageLogo = [[UIImageView alloc]initWithFrame:CGRectMake(40, 180, 40, 40)];
-    inCorrectImageLogo.image = [UIImage imageNamed:@"incorrect"];
-    [self.view addSubview:inCorrectImageLogo];
-
-    
-    numberOfInCorrectAnsLabel = [[UILabel alloc]initWithFrame:CGRectMake(90, 185, 40, 40)];
-    numberOfInCorrectAnsLabel.textColor = [UIColor redColor];
-    numberOfInCorrectAnsLabel.backgroundColor = [UIColor clearColor];
-    numberOfInCorrectAnsLabel.text = [NSString stringWithFormat:@"%d",wrongAnsCount];
-    numberOfInCorrectAnsLabel.textAlignment = NSTextAlignmentCenter;
-    numberOfInCorrectAnsLabel.font = [UIFont fontWithName:@"GillSans-Bold" size:30.0];
-    [self.view addSubview:numberOfInCorrectAnsLabel];
-
-    
-    sadLogo = [[UIImageView alloc]initWithFrame:CGRectMake(150, 180, 40, 40)];
-    sadLogo.image = [UIImage imageNamed:@"sad"];
-    [self.view addSubview:sadLogo];
     
     
     hangmanImage = [[UIImageView alloc]initWithFrame:CGRectMake(250, 250, 50, 50)];
@@ -138,7 +138,7 @@
     [self.view addSubview:hangmanImage];
     
     firstNumberLabel = [[UILabel alloc]initWithFrame:CGRectMake(30, 450, 150, 100)];
-    firstNumberLabel.textColor = [UIColor magentaColor];
+    firstNumberLabel.textColor = [UIColor orangeColor];
     firstNumberLabel.backgroundColor = [UIColor clearColor];
     firstNumberLabel.textAlignment = NSTextAlignmentCenter;
     firstNumberLabel.font = [UIFont fontWithName:@"GillSans-Bold" size:100.0];
@@ -161,14 +161,14 @@
     
     secondNumberLabel = [[UILabel alloc]initWithFrame:CGRectMake(260, 450, 150, 100)];
     secondNumberLabel.backgroundColor = [UIColor clearColor];
-    secondNumberLabel.textColor = [UIColor magentaColor];
+    secondNumberLabel.textColor = [UIColor orangeColor];
     secondNumberLabel.textAlignment = NSTextAlignmentCenter;
     secondNumberLabel.font = [UIFont fontWithName:@"GillSans-Bold" size:100.0];
     [self.view addSubview:secondNumberLabel];
 
     
-    UIImageView *equalImage = [[UIImageView alloc]initWithFrame:CGRectMake(420, 477, 50, 50)];
-    equalImage.image = [UIImage imageNamed:@"equal"];
+    UIImageView *equalImage = [[UIImageView alloc]initWithFrame:CGRectMake(410, 465, 70, 70)];
+    equalImage.image = [UIImage imageNamed:@"equalto"];
     [self.view addSubview:equalImage];
 
     
@@ -179,6 +179,13 @@
     ansBoxView.layer.cornerRadius = 9.0;
     [self.view addSubview:ansBoxView];
 
+    
+    UITapGestureRecognizer *recognizer=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(handleTap:)];
+    recognizer.numberOfTapsRequired=1;
+    ansBoxView.userInteractionEnabled=YES;
+    [ansBoxView addGestureRecognizer:recognizer];
+
+    
     
     #pragma mark ORANGE BUBBLE CODE
     
@@ -261,6 +268,11 @@
     
 }
 
+
+-(void)handleTap:(UITapGestureRecognizer *)recognizer {
+    [self DisplayWarning];
+}
+
 #pragma mark Rules Method
 -(void)buttonActionMethod:(UIButton *)sender
 {
@@ -283,8 +295,9 @@
 -(void)showRandomAddValues
 {
     self.view.userInteractionEnabled = YES;
-    numberOfCorrectAnsLabel.text = [NSString stringWithFormat:@"%d",correctAnsCount];
-    numberOfInCorrectAnsLabel.text = [NSString stringWithFormat:@"%d",wrongAnsCount];
+    
+    numberOfCorrectAnsLabel.text = [NSString stringWithFormat:@"Correct : %d",correctAnsCount];
+    numberOfInCorrectAnsLabel.text = [NSString stringWithFormat:@"Wrong : %d",wrongAnsCount];
     
     optionView1.frame = CGRectMake(90, 760, 110, 100);
     optionView2.frame = CGRectMake(255, 670, 110, 100);
@@ -416,8 +429,8 @@
     
     self.view.userInteractionEnabled = YES;
     
-    numberOfCorrectAnsLabel.text = [NSString stringWithFormat:@"%d",correctAnsCount];
-    numberOfInCorrectAnsLabel.text = [NSString stringWithFormat:@"%d",wrongAnsCount];
+    numberOfCorrectAnsLabel.text = [NSString stringWithFormat:@"Correct : %d",correctAnsCount];
+    numberOfInCorrectAnsLabel.text = [NSString stringWithFormat:@"Wrong : %d",wrongAnsCount];
     
     optionView1.frame = CGRectMake(105, 740, 110, 100);
     optionView2.frame = CGRectMake(255, 600, 110, 100);
@@ -530,7 +543,7 @@
         [sender removeFromSuperview];
     }
     [Util writeToPlist:plistDict];
-    currentLevelLabel.text = [NSString stringWithFormat:@"Its - %@ Level",[[Util readPListData]objectForKey:@"level"]];
+    levelTag.text = [NSString stringWithFormat:@"LEVEL : %@",[[Util readPListData]objectForKey:@"level"]];
     if ([self.addOrSub isEqualToString:@"add"])
     {
         [self showRandomAddValues];
@@ -644,6 +657,7 @@
                 
                 [touch view].center = ansBoxView.center;
                 correctAnsCount++;
+                [self DisplayCorrectAnswerMessage];
                 NSString *imageName = [NSString stringWithFormat:@"bodypart%d",correctAnsCount];
                 hangmanImage.image = [UIImage imageNamed:imageName];
                 hangmanImage.frame = CGRectMake(hangmanImage.frame.origin.x, hangmanImage.frame.origin.y,hangmanImage.frame.size.width+correctAnsCount*2, hangmanImage.frame.size.height + correctAnsCount*2);
@@ -654,22 +668,7 @@
                 wrongOrRightValue = 0;
                 
                 
-                UILabel *answerLabel=[[UILabel alloc]initWithFrame:CGRectMake(490, 350, 250, 60)];
-                answerLabel.backgroundColor=[UIColor whiteColor];
-                answerLabel.textColor=[UIColor redColor];
-                answerLabel.layer.cornerRadius=5.0;
-                answerLabel.layer.borderWidth=1.0;
-                answerLabel.textAlignment=NSTextAlignmentCenter;
-                answerLabel.font=[UIFont boldSystemFontOfSize:18];
-                [self.view addSubview:answerLabel];
-                [answerLabel setHidden:NO];
-                answerLabel.text=[NSString stringWithFormat:@"Correct Answer is: %d",ans];
-                
-
-                dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 1.0 * NSEC_PER_SEC);
-                dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-                    [answerLabel setHidden:YES];
-                });
+                [self DisplayCorrectAnswer];
                 
                 NSValue *touchPointValue = [NSValue valueWithCGPoint:touchPoint];
                 [UIView beginAnimations:nil context:(__bridge void *)(touchPointValue)];
@@ -683,7 +682,6 @@
                 //orangeImage.image = [UIImage imageNamed:@"wrong"];
                 touch.view.center = ansBoxView.center;
                 wrongAnsCount++;
-                
             }
             [self performSelector:@selector(showNextQuestion:) withObject:orangeImage afterDelay:1.0];
                 
@@ -780,6 +778,69 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)DisplayWarning
+{
+    UILabel *warningLabel=[[UILabel alloc]initWithFrame:CGRectMake(220, 320, 330, 100)];
+    warningLabel.backgroundColor=[UIColor yellowColor];
+    warningLabel.textColor=[UIColor blackColor];
+    warningLabel.layer.cornerRadius=10.0;
+   // warningLabel.layer.borderWidth=1.0;
+    warningLabel.textAlignment=NSTextAlignmentCenter;
+    warningLabel.font=[UIFont fontWithName:@"Futura" size:25];
+    [self.view addSubview:warningLabel];
+    [warningLabel setHidden:NO];
+    warningLabel.numberOfLines=0;
+    warningLabel.text=@"Drag bubble in answer area";
+    
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 1.2 * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [warningLabel setHidden:YES];
+        [warningLabel removeFromSuperview];
+    });
+}
+-(void)DisplayCorrectAnswer
+{
+    UILabel *answerLabel=[[UILabel alloc]initWithFrame:CGRectMake(220, 320, 330, 100)];
+    answerLabel.backgroundColor=[UIColor redColor];
+    answerLabel.textColor=[UIColor whiteColor];
+    answerLabel.layer.cornerRadius=10.0;
+  //  answerLabel.layer.borderWidth=1.0;
+    answerLabel.textAlignment=NSTextAlignmentCenter;
+    answerLabel.font=[UIFont fontWithName:@"Futura" size:30];
+    [self.view addSubview:answerLabel];
+    [answerLabel setHidden:NO];
+    answerLabel.text=[NSString stringWithFormat:@"Correct Answer is: %d",ans];
+
+     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 1.0 * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [answerLabel setHidden:YES];
+        [answerLabel removeFromSuperview];
+    });
+    
+}
+
+-(void)DisplayCorrectAnswerMessage
+{
+    UILabel *correctAnswerLabel=[[UILabel alloc]initWithFrame:CGRectMake(220, 320, 330, 100)];
+    correctAnswerLabel.backgroundColor=GREEN_COLOR;
+    correctAnswerLabel.textColor=[UIColor whiteColor];
+    correctAnswerLabel.layer.cornerRadius=10.0;
+   // correctAnswerLabel.layer.borderWidth=1.0;
+    correctAnswerLabel.textAlignment=NSTextAlignmentCenter;
+    correctAnswerLabel.font=[UIFont fontWithName:@"Futura" size:30];
+    [self.view addSubview:correctAnswerLabel];
+    [correctAnswerLabel setHidden:NO];
+    correctAnswerLabel.text=@"Well Done !!";
+    
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 1.0 * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [correctAnswerLabel setHidden:YES];
+        [correctAnswerLabel removeFromSuperview];
+    });
+    
+    
 }
 
 @end
