@@ -101,7 +101,7 @@
     winOrLoseMessage = [[UILabel alloc]initWithFrame:CGRectMake(250, 450, 350, 80)];
     winOrLoseMessage.backgroundColor = [UIColor clearColor];
     winOrLoseMessage.textColor = [UIColor darkGrayColor];
-    winOrLoseMessage.font = [Util themeFontWithSize:35.0];
+    winOrLoseMessage.font=[UIFont fontWithName:@"Markerfelt-Thin" size:50.0];
     [winOrLoseMessage setHidden:YES];
     [self.view addSubview:winOrLoseMessage];
     
@@ -135,6 +135,7 @@
     answerLabel.layer.cornerRadius = 8.0;
     answerLabel.textAlignment = NSTextAlignmentCenter;
     answerLabel.textColor = [UIColor whiteColor];
+    answerLabel.text=@"?";
     [self.view addSubview:answerLabel];
     
     operatorLabel2 = [HMAView createLabelWithFrame:CGRectMake(545, 70, 50, 50)];

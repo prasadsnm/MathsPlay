@@ -280,7 +280,7 @@
     HEADER_TITLE;
     SPIRAL_VIEW;
     INSTRUCTION_LABEL_WITHOUT_TEXT;
-    instructionLabel.text=@"a)Choose correct operator.(>,=,<)\n\nb)On completing 5 question correctly you earn a star.\n\nc)Try to earn maximum stars to clear different level.";
+    instructionLabel.text=@"a)Drag correct answer bubble in answer area.\n\nb)If answer is correct a image is revealed.\n\nc)Get the full image by giving all correct answers.";
     FOOTER_TITLE;
 }
 -(void)handleTapOnModal:(UITapGestureRecognizer *)recognizer

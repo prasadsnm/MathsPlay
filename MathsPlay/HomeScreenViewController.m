@@ -1224,7 +1224,7 @@
         nameTextfield.backgroundColor = [UIColor colorWithRed:135/255.0 green:123/255.0 blue:129/255.0 alpha:1.0];
         if (NSFoundationVersionNumber <= NSFoundationVersionNumber_iOS_6_1) {
             // ios 6 or earlier
-            nameTextfield.text = @"NickName";
+           nameTextfield.text = @"NickName";
         }
         else
         {

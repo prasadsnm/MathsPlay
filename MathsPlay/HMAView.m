@@ -22,7 +22,7 @@
 + (UILabel *)createLabelWithFrame:(CGRect)rect
 {
     UILabel *label = [[UILabel alloc]initWithFrame:rect];
-    label.font = [UIFont fontWithName:@"Markerfelt-Thin" size:45.0];
+    label.font = [UIFont fontWithName:@"Markerfelt-Thin" size:50.0];
     label.backgroundColor = [UIColor clearColor];
     return label;
 }
@@ -33,7 +33,7 @@
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     //button.backgroundColor = [UIColor colorWithRed:147/255.0 green:112/255.0 blue:219/255.0 alpha:1.0];
     button.layer.cornerRadius = 10.0;
-    button.titleLabel.font = [UIFont fontWithName:@"Markerfelt-Thin" size:45.0];
+    button.titleLabel.font = [UIFont fontWithName:@"Markerfelt-Thin" size:50.0];
     [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [button setFrame:rect];
     return button;
